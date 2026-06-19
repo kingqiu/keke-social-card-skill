@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN" data-system="rednote-native" data-theme="coral-blue">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Keke Rednote Native Seed</title>
+<style>
+:root {
+  --bg: #fff7ed;
+  --ink: #111111;
+  --muted: #5f5a54;
+  --coral: #f25555;
+  --blue: #b8dcf4;
+  --mint: #cfe7d2;
+  --yellow: #ffe083;
+  --cream: #fffdf7;
+  --line: rgba(17,17,17,.14);
+  --shadow: rgba(38, 28, 18, .18);
+  --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei UI", sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #222; font-family: var(--sans); color: var(--ink); }
+body { padding: 48px; display: grid; gap: 48px; justify-content: center; }
+.poster { position: relative; overflow: hidden; background: var(--bg); color: var(--ink); }
+.poster.xhs { width: 1080px; height: 1440px; }
+.poster.square { width: 1080px; height: 1080px; }
+.poster.wide { width: 2100px; height: 900px; }
+.poster figure { margin: 0; }
+.grain { position:absolute; inset:0; pointer-events:none; opacity:.24; background-image: radial-gradient(rgba(17,17,17,.12) .7px, transparent .7px); background-size: 7px 7px; mix-blend-mode:multiply; }
+.brush-blue { position:absolute; left:72px; right:72px; top:350px; height:58px; background: var(--blue); opacity:.82; transform: rotate(-2deg); border-radius: 80% 30% 60% 40%; }
+.brush-coral { position:absolute; right:86px; top:228px; width:460px; height:34px; background: var(--coral); opacity:.82; transform: rotate(-6deg); border-radius: 60% 35% 65% 30%; }
+.pop-mark { position:absolute; left:74px; top:54px; width:86px; height:72px; }
+.pop-mark::before,.pop-mark::after { content:""; position:absolute; background:var(--coral); border-radius:999px; }
+.pop-mark::before { width:58px; height:14px; left:4px; top:24px; transform: rotate(12deg); }
+.pop-mark::after { width:14px; height:56px; left:52px; top:0; transform: rotate(-2deg); }
+.content { position:relative; z-index:2; height:100%; padding:72px 70px 58px; display:flex; flex-direction:column; gap:28px; }
+.rn-cover-system { position:relative; z-index:2; height:100%; padding:66px 64px 52px; display:grid; grid-template-rows:auto auto 1fr auto; gap:24px; }
+.rn-hero-title { font-size:118px; line-height:.92; letter-spacing:0; font-weight:950; margin:0; text-shadow: 0 5px 0 #fff, 0 0 18px rgba(255,255,255,.76); max-width: 8.8ch; }
+.rn-hero-title strong { color: var(--coral); }
+.rn-subtitle { display:inline-flex; align-self:flex-start; font-size:36px; line-height:1.1; font-weight:760; background:rgba(255,255,255,.84); border:4px solid var(--coral); border-radius:999px; padding:16px 30px; box-shadow: 7px 7px 0 rgba(242,85,85,.15); }
+.rn-chip-row { display:flex; flex-wrap:wrap; gap:16px; }
+.rn-chip { font-size:30px; line-height:1; font-weight:720; padding:15px 24px; background:#fff; border:2px dashed rgba(17,17,17,.18); border-radius:999px; }
+.rn-chip:nth-child(odd) { background:#e8f4fb; }
+.rn-chip:nth-child(even) { background:#ffe8e8; }
+.rn-proof-lockup { min-height:0; display:grid; grid-template-columns:.9fr 1.1fr; gap:28px; align-items:stretch; }
+.rn-hook-panel { display:flex; flex-direction:column; gap:18px; justify-content:center; }
+.rn-proof-panel { position:relative; background:#fff; border:2px solid rgba(17,17,17,.10); border-radius:36px; box-shadow:0 30px 76px var(--shadow); padding:24px; overflow:hidden; }
+.rn-proof-panel::before { content:""; position:absolute; inset:14px; border:1px dashed rgba(17,17,17,.16); border-radius:28px; pointer-events:none; }
+.rn-phone-shot { position:relative; z-index:1; height:100%; min-height:520px; border:12px solid #111; border-radius:44px; background:#fffdf7; padding:28px; display:flex; flex-direction:column; gap:18px; box-shadow:0 18px 44px rgba(0,0,0,.18); }
+.rn-phone-bar { width:132px; height:24px; border-radius:999px; background:#111; margin:0 auto 8px; }
+.rn-chat { max-width:92%; border-radius:24px; padding:18px 20px; font-size:27px; line-height:1.25; font-weight:720; background:#ffe8e8; }
+.rn-chat.ai { margin-left:auto; background:#e8f4fb; }
+.rn-chat.result { background:#eef7ed; border:2px solid rgba(17,17,17,.10); }
+.rn-evidence-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:4px; }
+.rn-evidence { background:#fff; border:2px solid rgba(17,17,17,.10); border-radius:24px; padding:18px; min-height:122px; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 12px 28px rgba(38,28,18,.09); }
+.rn-evidence b { font-size:30px; line-height:1; }
+.rn-evidence span { font-size:21px; line-height:1.18; color:var(--muted); font-weight:650; }
+.rn-stage { flex:1; display:grid; grid-template-columns: .96fr 1.04fr; gap:30px; align-items:stretch; min-height:0; }
+.rn-card { position:relative; background:rgba(255,255,255,.88); border:1px solid rgba(17,17,17,.10); border-radius:34px; box-shadow: 0 24px 70px var(--shadow); overflow:hidden; }
+.rn-card img { width:100%; height:100%; object-fit:cover; display:block; }
+.rn-proof { padding:28px; display:flex; flex-direction:column; gap:20px; }
+.rn-proof h2 { margin:0; font-size:54px; line-height:1; font-weight:900; }
+.rn-proof p { margin:0; font-size:28px; line-height:1.34; color:var(--muted); font-weight:560; }
+.rn-result-list { display:grid; gap:14px; margin-top:auto; }
+.rn-result { background:#fff; border:2px solid rgba(17,17,17,.10); border-radius:22px; padding:18px 20px; font-size:28px; font-weight:760; }
+.rn-before-after { display:grid; grid-template-columns:1fr 1fr; gap:18px; min-height:0; }
+.rn-before-after .rn-card { padding:24px; display:flex; flex-direction:column; gap:16px; }
+.rn-before-after h3 { margin:0; font-size:42px; line-height:1; font-weight:920; }
+.rn-before-after p { margin:0; font-size:27px; line-height:1.3; color:var(--muted); font-weight:620; }
+.rn-save-strip { display:flex; gap:14px; align-items:center; justify-content:center; background:#111; color:#fff; border-radius:26px; padding:18px 22px; font-size:29px; font-weight:850; }
+.rn-save-strip mark { background:var(--yellow); color:#111; padding:4px 10px; border-radius:999px; }
+.rn-sticker { position:absolute; right:56px; top:56px; z-index:3; background:var(--coral); color:#fff; font-size:34px; font-weight:900; padding:16px 22px; border-radius:24px; transform: rotate(3deg); box-shadow:0 10px 0 rgba(0,0,0,.18); }
+.rn-foot { margin-top:auto; display:flex; justify-content:space-between; font-size:22px; color:var(--muted); border-top:1px solid var(--line); padding-top:18px; }
+.brand-signature::before { content:"「两克伴」出品"; }
+</style>
+</head>
+<body>
+<!-- POSTERS_HERE -->
+</body>
+</html>

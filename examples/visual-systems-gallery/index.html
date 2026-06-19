@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN" data-demo="visual-systems-gallery">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>克克社交卡片视觉系统样例</title>
+<style>
+:root{
+  --ink:#12100d;
+  --muted:#655e55;
+  --paper:#f5efe3;
+  --line:rgba(18,16,13,.16);
+  --blue:#b8d8ec;
+  --red:#ef5b54;
+  --green:#9ebd9e;
+  --yellow:#f3cf5b;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Microsoft YaHei UI",sans-serif;
+  --serif:"Songti SC","Noto Serif SC","STSong",serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#24211e;color:var(--ink);font-family:var(--sans)}
+body{display:grid;gap:48px;justify-content:center;padding:48px}
+.poster{position:relative;width:1080px;height:1440px;overflow:hidden;background:var(--paper)}
+.grain{position:absolute;inset:0;opacity:.2;background-image:radial-gradient(rgba(18,16,13,.14) .7px,transparent .7px);background-size:7px 7px}
+.content{position:relative;z-index:2;height:100%;padding:72px;display:flex;flex-direction:column;gap:28px}
+.brand-signature::before{content:"「两克伴」出品"}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:18px;display:flex;justify-content:space-between;color:var(--muted);font-size:22px}
+.kicker{font-size:22px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.title{margin:0;font-size:86px;line-height:1.02;letter-spacing:0;font-weight:920}
+.serif{font-family:var(--serif);font-weight:700}
+.lead{margin:0;font-size:31px;line-height:1.42;color:var(--muted);font-weight:620}
+.panel{background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 22px 60px rgba(40,30,20,.12)}
+.tag{display:inline-flex;align-self:flex-start;padding:12px 20px;border:2px solid currentColor;border-radius:999px;background:#fff;font-size:25px;font-weight:850}
+.editorial{background:#f3eee5}
+.editorial .title{font-size:92px;max-width:850px}
+.editorial .essay{display:grid;grid-template-columns:1fr 280px;gap:26px;flex:1;align-items:stretch}
+.editorial .quote{font-family:var(--serif);font-size:44px;line-height:1.18}
+.editorial .side{display:grid;align-content:space-between}
+.swiss{background:#fafaf8}
+.swiss .content{padding:84px}
+.swiss .title{font-size:154px;line-height:.95;font-weight:250}
+.swiss-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:18px}
+.swiss-cell{border-top:8px solid #002fa7;padding:22px;background:#f0f0ee}
+.swiss-cell b{font-size:58px;font-weight:300}
+.swiss-cell p{font-size:25px;line-height:1.35;color:var(--muted);font-weight:620}
+.rednote{background:#fbf5ea}
+.rednote .brush{position:absolute;left:70px;right:70px;top:350px;height:62px;background:var(--blue);border-radius:60% 35% 70% 35%;transform:rotate(-2deg)}
+.rednote .title{font-size:116px;line-height:.92;text-shadow:0 5px 0 #fff;max-width:8ch}
+.rednote .title strong{color:var(--red)}
+.chips{display:flex;flex-wrap:wrap;gap:16px}
+.chip{padding:14px 22px;border-radius:999px;background:#fff;border:2px dashed var(--line);font-size:29px;font-weight:800}
+.red-stage{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.red-card{display:flex;flex-direction:column;justify-content:space-between;background:#fff;border-radius:32px;padding:28px;box-shadow:0 24px 70px rgba(40,30,20,.16)}
+.red-card h2{margin:0;font-size:52px;line-height:1}
+.red-card p{font-size:29px;line-height:1.32;color:var(--muted);font-weight:640}
+.proof{background:#f6f5f1;background-image:linear-gradient(#dce3e1 1px,transparent 1px),linear-gradient(90deg,#dce3e1 1px,transparent 1px);background-size:64px 64px}
+.proof .title{font-size:76px}
+.proof-grid{flex:1;display:grid;grid-template-rows:390px 1fr;gap:24px}
+.screen{background:#141817;color:#f5f2e8;border-radius:24px;padding:28px;display:grid;gap:16px;box-shadow:0 24px 70px rgba(0,0,0,.22)}
+.screen-line{height:42px;border-radius:999px;background:#4a7a74}
+.screen-line:nth-child(2){width:72%;background:#f5f2e8}.screen-line:nth-child(3){width:86%;opacity:.62}.screen-line:nth-child(4){width:56%;opacity:.45}
+.proof-notes{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.proof-notes .panel h2{font-size:42px;margin:0 0 10px}
+.proof-notes .panel p{font-size:25px;line-height:1.34;color:var(--muted)}
+.lookbook{background:#f7f1e6}
+.lookbook .title{font-family:var(--serif);font-size:78px}
+.board{flex:1;display:grid;grid-template-columns:240px 1fr 240px;gap:18px;align-items:stretch}
+.figure{display:grid;place-items:center;background:rgba(255,255,255,.38);border-radius:30px;border:1px solid var(--line)}
+.outfit{width:320px;height:620px;position:relative}
+.circle{position:absolute;border-radius:50%;background:#e7c4ab;border:6px solid #fff;left:113px;top:0;width:94px;height:94px}
+.top{position:absolute;left:64px;top:112px;width:190px;height:225px;background:#c7dcee;border:7px solid #fff;border-radius:38px 38px 20px 20px}
+.coat{position:absolute;left:34px;top:120px;width:250px;height:260px;border:17px solid #e3d3bd;border-radius:48px 48px 20px 20px}
+.bottom{position:absolute;left:78px;top:340px;width:168px;height:260px;background:#171717;border:7px solid #fff;border-radius:18px 18px 26px 26px}
+.note{background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:20px;padding:18px}
+.note h2{margin:0 0 8px;font-size:30px}.note p{margin:0;font-size:22px;line-height:1.26;color:var(--muted);font-weight:620}
+.notes{display:grid;align-content:space-between;gap:14px}
+</style>
+</head>
+<body>
+<section class="poster editorial" data-name="editorial-eink">
+  <div class="grain"></div>
+  <div class="content">
+    <div class="kicker">Editorial E-ink</div>
+    <h1 class="title serif">把长内容变成有呼吸感的封面</h1>
+    <div class="editorial essay">
+      <div class="panel"><p class="quote">适合观点、读书、旅行、生活记录。用纸感、留白和边注，让信息慢下来。</p></div>
+      <div class="side">
+        <div class="panel"><p class="lead">主标题负责情绪，副标题负责承诺，图片可以是氛围，也可以是证据。</p></div>
+        <span class="tag">适合公众号封面</span>
+      </div>
+    </div>
+    <div class="foot"><span class="brand-signature"></span><span>Editorial E-ink</span></div>
+  </div>
+</section>
+
+<section class="poster swiss" data-name="swiss-system">
+  <div class="content">
+    <div class="kicker">Swiss System</div>
+    <h1 class="title">4 STEP SYSTEM</h1>
+    <p class="lead">适合框架、清单、数据、职场方法。网格要清楚，层级要克制。</p>
+    <div class="swiss-grid">
+      <div class="swiss-cell"><b>01</b><p>明确问题</p></div>
+      <div class="swiss-cell"><b>02</b><p>拆成步骤</p></div>
+      <div class="swiss-cell"><b>03</b><p>给出判断</p></div>
+      <div class="swiss-cell"><b>04</b><p>落到行动</p></div>
+    </div>
+    <div class="foot"><span class="brand-signature"></span><span>Swiss System</span></div>
+  </div>
+</section>
+
+<section class="poster rednote" data-name="rednote-native">
+  <div class="grain"></div><div class="brush"></div>
+  <div class="content">
+    <div class="kicker">Rednote Native</div>
+    <h1 class="title">一眼想点<br><strong>再看证据</strong></h1>
+    <p class="lead">适合小红书首图：大标题先拦住用户，再用结果、情绪或证据让人愿意点开。</p>
+    <div class="chips"><span class="chip">强标题</span><span class="chip">结果前置</span><span class="chip">缩略图可读</span></div>
+    <div class="red-stage">
+      <div class="red-card"><h2>先说痛点</h2><p>别让用户先理解产品，先让她看见自己的场景。</p></div>
+      <div class="red-card"><h2>再给结果</h2><p>卡片里必须有能证明标题的内容，不做空喊口号。</p></div>
+    </div>
+    <div class="foot"><span class="brand-signature"></span><span>Rednote Native</span></div>
+  </div>
+</section>
+
+<section class="poster proof" data-name="proof-lab">
+  <div class="content">
+    <div class="kicker">Proof Lab</div>
+    <h1 class="title">截图、结果、流程要能被看清</h1>
+    <p class="lead">适合 AI 工具、教程、产品测评。证据图是主角，说明只做辅助。</p>
+    <div class="proof-grid">
+      <div class="screen"><div class="screen-line"></div><div class="screen-line"></div><div class="screen-line"></div><div class="screen-line"></div></div>
+      <div class="proof-notes">
+        <div class="panel"><h2>证据优先</h2><p>截图不能缩成装饰，关键文字必须可读。</p></div>
+        <div class="panel"><h2>少量标注</h2><p>1-2 个 callout 就够，避免把画面讲碎。</p></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand-signature"></span><span>Proof Lab</span></div>
+  </div>
+</section>
+
+<section class="poster lookbook" data-name="lookbook-journal">
+  <div class="grain"></div>
+  <div class="content">
+    <div class="kicker">Lookbook Journal</div>
+    <h1 class="title">完整结果放中间，细节围绕它解释</h1>
+    <div class="board">
+      <div class="notes">
+        <div class="note"><h2>场景</h2><p>通勤 / 约会 / 家居 / 食谱 / 单品拆解。</p></div>
+        <div class="note"><h2>理由</h2><p>为什么这样搭，哪些地方要避雷。</p></div>
+      </div>
+      <div class="figure">
+        <div class="outfit"><div class="circle"></div><div class="top"></div><div class="coat"></div><div class="bottom"></div></div>
+      </div>
+      <div class="notes">
+        <div class="note"><h2>单品</h2><p>上衣、下装、鞋包、配饰分别说明。</p></div>
+        <div class="note"><h2>质感</h2><p>手帐感可以活泼，但信息不能散。</p></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand-signature"></span><span>Lookbook Journal</span></div>
+  </div>
+</section>
+</body>
+</html>

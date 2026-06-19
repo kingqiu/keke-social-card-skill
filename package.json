@@ -1,0 +1,14 @@
+{
+  "name": "keke-social-card-skill",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "克克社交卡片 Skill: deterministic Chinese social card images plus Xiaohongshu copy packages.",
+  "scripts": {
+    "render": "node scripts/render-social-deck.mjs",
+    "validate": "node scripts/validate-social-deck.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.60.0"
+  },
+  "license": "UNLICENSED"
+}

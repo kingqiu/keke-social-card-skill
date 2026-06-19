@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN" data-system="rednote-native" data-theme="coral-blue">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Rednote Native Demo</title>
+<style>
+:root {
+  --bg: #fbf6ee;
+  --ink: #111111;
+  --muted: #5f5a54;
+  --coral: #f25555;
+  --blue: #b9d9ef;
+  --cream: #fffdf7;
+  --line: rgba(17,17,17,.14);
+  --shadow: rgba(38, 28, 18, .18);
+  --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei UI", sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #222; font-family: var(--sans); color: var(--ink); }
+body { padding: 48px; display: grid; gap: 48px; justify-content: center; }
+.poster { position: relative; overflow: hidden; background: var(--bg); color: var(--ink); }
+.poster.xhs { width: 1080px; height: 1440px; }
+.grain { position:absolute; inset:0; pointer-events:none; opacity:.24; background-image: radial-gradient(rgba(17,17,17,.12) .7px, transparent .7px); background-size: 7px 7px; mix-blend-mode:multiply; }
+.brush-blue { position:absolute; left:72px; right:72px; top:350px; height:58px; background: var(--blue); opacity:.82; transform: rotate(-2deg); border-radius: 80% 30% 60% 40%; }
+.brush-coral { position:absolute; right:86px; top:228px; width:460px; height:34px; background: var(--coral); opacity:.82; transform: rotate(-6deg); border-radius: 60% 35% 65% 30%; }
+.pop-mark { position:absolute; left:74px; top:54px; width:86px; height:72px; }
+.pop-mark::before,.pop-mark::after { content:""; position:absolute; background:var(--coral); border-radius:999px; }
+.pop-mark::before { width:58px; height:14px; left:4px; top:24px; transform: rotate(12deg); }
+.pop-mark::after { width:14px; height:56px; left:52px; top:0; transform: rotate(-2deg); }
+.content { position:relative; z-index:2; height:100%; padding:72px 70px 58px; display:flex; flex-direction:column; gap:28px; }
+.rn-hero-title { font-size:118px; line-height:.92; letter-spacing:0; font-weight:950; margin:0; text-shadow: 0 5px 0 #fff, 0 0 18px rgba(255,255,255,.76); max-width: 8.8ch; }
+.rn-hero-title strong { color: var(--coral); }
+.rn-subtitle { display:inline-flex; align-self:flex-start; font-size:36px; line-height:1.1; font-weight:760; background:rgba(255,255,255,.84); border:4px solid var(--coral); border-radius:999px; padding:16px 30px; box-shadow: 7px 7px 0 rgba(242,85,85,.15); }
+.rn-chip-row { display:flex; flex-wrap:wrap; gap:16px; }
+.rn-chip { font-size:30px; line-height:1; font-weight:720; padding:15px 24px; background:#fff; border:2px dashed rgba(17,17,17,.18); border-radius:999px; }
+.rn-chip:nth-child(odd) { background:#e8f4fb; }
+.rn-chip:nth-child(even) { background:#ffe8e8; }
+.rn-stage { flex:1; display:grid; grid-template-columns: .96fr 1.04fr; gap:30px; align-items:stretch; min-height:0; }
+.rn-card { position:relative; background:rgba(255,255,255,.88); border:1px solid rgba(17,17,17,.10); border-radius:34px; box-shadow: 0 24px 70px var(--shadow); overflow:hidden; }
+.rn-proof { padding:28px; display:flex; flex-direction:column; gap:20px; }
+.rn-proof h2 { margin:0; font-size:54px; line-height:1; font-weight:900; }
+.rn-proof p { margin:0; font-size:28px; line-height:1.34; color:var(--muted); font-weight:560; }
+.rn-result-list { display:grid; gap:14px; margin-top:auto; }
+.rn-result { background:#fff; border:2px solid rgba(17,17,17,.10); border-radius:22px; padding:18px 20px; font-size:28px; font-weight:760; }
+.rn-sticker { position:absolute; right:56px; top:56px; z-index:3; background:var(--coral); color:#fff; font-size:34px; font-weight:900; padding:16px 22px; border-radius:24px; transform: rotate(3deg); box-shadow:0 10px 0 rgba(0,0,0,.18); }
+.rn-foot { margin-top:auto; display:flex; justify-content:space-between; font-size:22px; color:var(--muted); border-top:1px solid var(--line); padding-top:18px; }
+.brand-signature::before { content:"「两克伴」出品"; }
+</style>
+</head>
+<body>
+<section class="poster xhs" data-name="xhs-01-cover">
+  <div class="grain"></div>
+  <div class="brush-blue"></div>
+  <div class="brush-coral"></div>
+  <div class="pop-mark"></div>
+  <div class="rn-sticker">真实体验</div>
+  <div class="content">
+    <h1 class="rn-hero-title">今天穿啥？<br><strong>问搭子</strong></h1>
+    <div class="rn-subtitle">场合 / 天气 / 风格，一句话就能问</div>
+    <div class="rn-chip-row">
+      <span class="rn-chip">通勤</span>
+      <span class="rn-chip">约会</span>
+      <span class="rn-chip">周末</span>
+    </div>
+    <div class="rn-stage">
+      <div class="rn-card rn-proof">
+        <h2>先问一句</h2>
+        <p>把场合、天气、偏好说清楚，不需要先整理一堆参数。</p>
+        <div class="rn-result-list">
+          <div class="rn-result">明天通勤，想显瘦一点</div>
+          <div class="rn-result">周末约会，想温柔但别太甜</div>
+          <div class="rn-result">26℃多云，怎么穿？</div>
+        </div>
+      </div>
+      <div class="rn-card rn-proof">
+        <h2>直接给方案</h2>
+        <p>输出能穿出门的 OOTD 思路，图片素材可换成真实结果图或 Skill 输出图。</p>
+        <div class="rn-result-list">
+          <div class="rn-result">上衣 / 下装 / 鞋包</div>
+          <div class="rn-result">风格理由</div>
+          <div class="rn-result">避雷提醒</div>
+        </div>
+      </div>
+    </div>
+    <div class="rn-foot"><span class="brand-signature"></span><span>Rednote Native</span></div>
+  </div>
+</section>
+</body>
+</html>

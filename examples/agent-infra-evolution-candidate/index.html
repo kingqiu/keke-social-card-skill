@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN" data-demo="agent-infra-evolution">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Agent 基础设施演进全景 · Candidate</title>
+<style>
+:root {
+  --paper:#f4efe6;
+  --paper-2:#e6dece;
+  --ink:#12110f;
+  --muted:#625c53;
+  --line:rgba(18,17,15,.18);
+  --blue:#315d93;
+  --green:#4c775e;
+  --gold:#d7a64c;
+  --red:#b94f43;
+  --dark:#101214;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Microsoft YaHei UI",sans-serif;
+  --serif:"Songti SC","Noto Serif SC","STSong",serif;
+  --mono:"SFMono-Regular","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#1b1b1b;color:var(--ink);font-family:var(--sans)}
+body{display:grid;gap:48px;justify-content:center;padding:48px}
+.poster{position:relative;overflow:hidden;background:var(--paper)}
+.poster.xhs{width:1080px;height:1440px}
+.poster figure{margin:0}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.26;background-image:radial-gradient(rgba(18,17,15,.12) .7px,transparent .7px);background-size:6px 6px;mix-blend-mode:multiply}
+.wash{position:absolute;inset:0;background:radial-gradient(70% 60% at 80% 12%,rgba(49,93,147,.16),transparent 62%),linear-gradient(180deg,rgba(255,255,255,.12),rgba(18,17,15,.05));pointer-events:none}
+.brand-signature::before{content:"「两克伴」出品"}
+.kicker{font-family:var(--mono);font-size:22px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:22px}
+.source-row{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px}
+.source-chip{border:1px solid var(--line);background:rgba(255,255,255,.52);padding:12px 16px;font-size:23px;font-weight:700;color:var(--muted)}
+.image-frame{position:relative;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 24px 70px rgba(28,22,16,.16)}
+.image-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.image-frame.contain img,.proof-card.contain img{object-fit:contain;background:#fff;padding:22px}
+.caption-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.caption-strip span{background:rgba(255,255,255,.68);border:1px solid var(--line);padding:13px 14px;font-size:22px;line-height:1.15;font-weight:760;text-align:center}
+.thesis-card{background:rgba(255,255,255,.72);border:1px solid var(--line);padding:22px;border-radius:20px}
+.thesis-card b{display:block;font-size:34px;line-height:1;margin-bottom:10px}
+.thesis-card span{display:block;color:var(--muted);font-size:24px;line-height:1.3;font-weight:560}
+.xhs .content{position:relative;z-index:2;height:100%;padding:70px;display:flex;flex-direction:column;gap:26px}
+.xhs-title{font-size:96px;line-height:.98;letter-spacing:0;font-weight:920;margin:0;max-width:9ch}
+.xhs-title strong{color:var(--red)}
+.xhs-sub{font-size:32px;line-height:1.32;color:var(--muted);font-weight:620;margin:0;max-width:850px}
+.proof-card{position:relative;flex:1;min-height:0;border-radius:34px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 24px 70px rgba(28,22,16,.15)}
+.proof-card img{width:100%;height:100%;object-fit:cover;display:block}
+.proof-badge{position:absolute;left:28px;top:28px;background:var(--dark);color:#fff;border-radius:999px;padding:14px 22px;font-size:26px;font-weight:850}
+.takeaway{background:#111;color:#fff;border-radius:28px;padding:24px 28px;font-size:31px;line-height:1.2;font-weight:850}
+.takeaway mark{background:var(--gold);color:#111;border-radius:999px;padding:4px 10px}
+.layer-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:18px}
+.layer-card{background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:24px;padding:24px;display:flex;flex-direction:column;justify-content:space-between}
+.layer-card:nth-child(1){background:#e7eef5}
+.layer-card:nth-child(2){background:#edf2e9}
+.layer-card:nth-child(3){background:#f5ead7}
+.layer-card:nth-child(4){background:#efe7f2}
+.layer-card:nth-child(5){background:#f6e4df}
+.layer-num{font-family:var(--mono);font-size:24px;letter-spacing:.08em;color:var(--muted)}
+.layer-card h2{font-size:43px;line-height:1.02;margin:0;font-weight:900}
+.layer-card p{font-size:24px;line-height:1.26;color:var(--muted);font-weight:580;margin:0}
+.decision-layout{flex:1;display:grid;grid-template-rows:1fr auto;gap:20px;min-height:0}
+.decision-image{border-radius:34px}
+.rule-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rule{background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:22px;padding:22px}
+.rule b{display:block;font-size:31px;line-height:1.05;margin-bottom:10px}
+.rule span{font-size:22px;line-height:1.25;color:var(--muted);font-weight:580}
+</style>
+</head>
+<body>
+<section class="poster xhs" data-name="xhs-01-cover">
+  <div class="grain"></div><div class="wash"></div>
+  <div class="content">
+    <div class="kicker">小红书转发卡 · 01</div>
+    <h1 class="xhs-title">别只盯<br><strong>模型榜</strong></h1>
+    <p class="xhs-sub">2026 上半年更值得看的变化：Agent 周围那层运行时，正在变厚。</p>
+    <figure class="proof-card contain"><img src="assets/01-runtime-thickening.png" alt="运行时变厚示意图"><span class="proof-badge">核心判断</span></figure>
+    <div class="takeaway">Agent 从 demo 到生产，差的不是一句 prompt，而是一整套 <mark>运行系统</mark>。</div>
+    <div class="foot"><span class="brand-signature"></span><span>Rednote Native + Editorial</span></div>
+  </div>
+</section>
+
+<section class="poster xhs" data-name="xhs-02-five-layers">
+  <div class="grain"></div>
+  <div class="content">
+    <div class="kicker">小红书转发卡 · 02</div>
+    <h1 class="xhs-title">Agent 落地<br><strong>变厚的 5 层</strong></h1>
+    <p class="xhs-sub">真正影响企业采用的，往往是模型外面这些不花哨的工程层。</p>
+    <div class="layer-grid">
+      <div class="layer-card"><span class="layer-num">01</span><h2>部署能力</h2><p>角色、流程、协作界面、任务状态。</p></div>
+      <div class="layer-card"><span class="layer-num">02</span><h2>Harness</h2><p>工具、权限、边界、爆炸半径。</p></div>
+      <div class="layer-card"><span class="layer-num">03</span><h2>连接形态</h2><p>API、CLI、MCP 不是信仰之争。</p></div>
+      <div class="layer-card"><span class="layer-num">04</span><h2>上下文调度</h2><p>哪些常驻，哪些按需加载，哪些留给工具。</p></div>
+      <div class="layer-card"><span class="layer-num">05</span><h2>Runtime</h2><p>长期运行、状态、观测、恢复和多租户。</p></div>
+      <div class="layer-card"><span class="layer-num">PLUS</span><h2>反馈循环</h2><p>没有验证的 loop，只是在反复生成。</p></div>
+    </div>
+    <div class="foot"><span class="brand-signature"></span><span>Swiss System</span></div>
+  </div>
+</section>
+
+<section class="poster xhs" data-name="xhs-03-enterprise-advice">
+  <div class="grain"></div><div class="wash"></div>
+  <div class="content">
+    <div class="kicker">小红书转发卡 · 03</div>
+    <h1 class="xhs-title">企业落地<br><strong>先别急着多 Agent</strong></h1>
+    <p class="xhs-sub">先判断任务到底需要什么：一次模型调用、稳定 workflow，还是动态 Agent。</p>
+    <div class="decision-layout">
+      <figure class="image-frame decision-image"><img src="assets/09-agent-decision-map.png" alt="任务分流示意图"></figure>
+      <div class="rule-row">
+        <div class="rule"><b>简单任务</b><span>一个模型调用就够，别过度工程。</span></div>
+        <div class="rule"><b>路径稳定</b><span>Workflow 更便宜、更可控、更好调试。</span></div>
+        <div class="rule"><b>步骤开放</b><span>需要动态判断时，再交给 Agent。</span></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand-signature"></span><span>Proof / Framework</span></div>
+  </div>
+</section>
+</body>
+</html>

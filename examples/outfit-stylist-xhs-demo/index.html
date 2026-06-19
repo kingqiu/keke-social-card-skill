@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-CN" data-demo="outfit-stylist-xhs">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>穿衣搭子 Skill 小红书 Demo</title>
+<style>
+:root {
+  --paper:#fbf5ea;
+  --ink:#15110d;
+  --muted:#675d52;
+  --coral:#ef5b54;
+  --blue:#b9d9ef;
+  --green:#9fc3a7;
+  --line:rgba(21,17,13,.16);
+  --card:rgba(255,255,255,.82);
+  --shadow:rgba(42,31,20,.17);
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Microsoft YaHei UI",sans-serif;
+  --serif:"Songti SC","Noto Serif SC","STSong",serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#26211d;color:var(--ink);font-family:var(--sans)}
+body{display:grid;gap:48px;justify-content:center;padding:48px}
+.poster{position:relative;width:1080px;height:1440px;overflow:hidden;background:var(--paper)}
+.grain{position:absolute;inset:0;opacity:.22;background-image:radial-gradient(rgba(21,17,13,.13) .7px,transparent .7px);background-size:7px 7px;pointer-events:none}
+.content{position:relative;z-index:2;height:100%;padding:70px;display:flex;flex-direction:column;gap:28px}
+.brand-signature::before{content:"「两克伴」出品"}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:18px;display:flex;justify-content:space-between;color:var(--muted);font-size:22px}
+.pill{display:inline-flex;align-self:flex-start;padding:13px 22px;border:2px solid var(--ink);border-radius:999px;background:#fff;font-size:27px;font-weight:800;box-shadow:7px 7px 0 rgba(239,91,84,.16)}
+.cover-title{font-size:108px;line-height:.96;letter-spacing:0;font-weight:950;margin:0;max-width:9ch;text-shadow:0 5px 0 #fff}
+.cover-title strong{color:var(--coral)}
+.subtitle{font-size:36px;line-height:1.18;font-weight:760;color:var(--muted);max-width:820px;margin:0}
+.brush{position:absolute;left:52px;right:72px;top:292px;height:54px;background:var(--blue);border-radius:60% 35% 70% 35%;transform:rotate(-2deg);opacity:.86}
+.phone{width:430px;height:620px;border:14px solid #171717;border-radius:48px;background:#fefdf8;box-shadow:0 26px 72px var(--shadow);padding:30px;display:flex;flex-direction:column;gap:22px}
+.phone .bar{height:30px;width:150px;border-radius:999px;background:#171717;margin:0 auto 10px}
+.bubble{border-radius:26px;padding:20px 22px;font-size:27px;line-height:1.25;font-weight:720;background:#ffe9e6}
+.bubble.ai{background:#e6f3fb}
+.cover-grid{flex:1;display:grid;grid-template-columns:.95fr 1.05fr;gap:34px;align-items:center}
+.scene-list{display:grid;gap:16px}
+.scene{background:#fff;border:2px dashed var(--line);border-radius:28px;padding:24px;font-size:30px;font-weight:820}
+.scene small{display:block;margin-top:8px;color:var(--muted);font-size:22px;font-weight:620}
+.page-title{font-size:74px;line-height:1.02;font-weight:930;margin:0;letter-spacing:0}
+.cards{display:grid;grid-template-columns:1fr;gap:22px;flex:1}
+.plan{display:grid;grid-template-columns:190px 1fr;gap:22px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:30px;padding:24px;box-shadow:0 20px 56px var(--shadow)}
+.plan-tag{height:150px;border-radius:24px;display:grid;place-items:center;text-align:center;font-size:34px;line-height:1.04;font-weight:900;color:#fff;background:var(--coral)}
+.plan:nth-child(2) .plan-tag{background:#1b1b1b}
+.plan:nth-child(3) .plan-tag{background:var(--green);color:#102015}
+.plan h2{margin:0 0 10px;font-size:42px;line-height:1;font-weight:920}
+.plan p{margin:0;color:var(--muted);font-size:26px;line-height:1.32;font-weight:600}
+.lookbook{flex:1;display:grid;grid-template-columns:250px 1fr 250px;gap:18px;min-height:0}
+.look-center{display:flex;align-items:center;justify-content:center;position:relative}
+.person{width:330px;height:650px;position:relative}
+.head{position:absolute;left:118px;top:0;width:94px;height:94px;border-radius:50%;background:#e9c8af;border:5px solid #fff;box-shadow:0 8px 24px var(--shadow)}
+.hair{position:absolute;left:100px;top:0;width:118px;height:104px;border-radius:54% 46% 50% 50%;background:#2b211b}
+.body{position:absolute;left:72px;top:90px;width:190px;height:240px;background:#cfdff0;border-radius:34px 34px 20px 20px;border:7px solid #fff}
+.cardigan{position:absolute;left:45px;top:104px;width:240px;height:250px;border-radius:44px 44px 20px 20px;border:16px solid #e5d8c3;background:transparent}
+.pants{position:absolute;left:80px;top:322px;width:170px;height:270px;background:#151515;border-radius:18px 18px 28px 28px;border:7px solid #fff}
+.shoe{position:absolute;bottom:0;width:120px;height:46px;background:#111;border-radius:999px}
+.shoe.left{left:54px}.shoe.right{right:54px}
+.callouts{display:grid;align-content:space-between;gap:14px}
+.callout{background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:20px;padding:18px;min-height:150px}
+.callout h3{margin:0 0 8px;font-size:28px;line-height:1;font-weight:900}
+.callout p{margin:0;font-size:22px;line-height:1.28;color:var(--muted);font-weight:600}
+.swatch{width:54px;height:54px;border-radius:50%;border:5px solid #fff;margin-top:12px;box-shadow:0 0 0 1px var(--line);background:#cfdff0}
+.swatch.black{background:#151515}.swatch.oat{background:#e5d8c3}
+</style>
+</head>
+<body>
+<section class="poster" data-name="xhs-01-cover">
+  <div class="grain"></div><div class="brush"></div>
+  <div class="content">
+    <span class="pill">AI Skills / 穿衣搭子</span>
+    <h1 class="cover-title">每天纠结<br>穿什么？<br><strong>直接问搭子</strong></h1>
+    <p class="subtitle">不用先拍衣橱，不用整理参数。把场合、天气、想要的感觉说出来，AI 先给你搭一版。</p>
+    <div class="cover-grid">
+      <div class="scene-list">
+        <div class="scene">明天见客户 <small>专业一点，但不要太硬</small></div>
+        <div class="scene">周末约会 <small>温柔、有气色、别太甜</small></div>
+        <div class="scene">26℃多云 <small>显瘦、舒服、能走路</small></div>
+      </div>
+      <div class="phone">
+        <div class="bar"></div>
+        <div class="bubble">明天第一次见客户，上海 18-24℃，想要柔和商务。</div>
+        <div class="bubble ai">推荐：浅蓝衬衫 + 米色针织 + 黑色直筒裤。</div>
+        <div class="bubble ai">理由：专业但不硬，颜色干净，通勤可直接穿。</div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand-signature"></span><span>Rednote Native</span></div>
+  </div>
+</section>
+
+<section class="poster" data-name="xhs-02-use-cases">
+  <div class="grain"></div>
+  <div class="content">
+    <span class="pill">不是拍照工具，是随时能问的搭子</span>
+    <h1 class="page-title">一句话，让 AI 先出 3 套能穿出门的方案</h1>
+    <div class="cards">
+      <div class="plan">
+        <div class="plan-tag">通勤<br>职场</div>
+        <div><h2>场合先行</h2><p>告诉它“见客户 / 开会 / 日常坐班”，先锁定正式度，再处理颜色和单品。</p></div>
+      </div>
+      <div class="plan">
+        <div class="plan-tag">天气<br>体感</div>
+        <div><h2>天气约束</h2><p>温度、下雨、要不要走很多路，都可以直接变成搭配条件。</p></div>
+      </div>
+      <div class="plan">
+        <div class="plan-tag">风格<br>偏好</div>
+        <div><h2>不用懂术语</h2><p>说“温柔但不甜”“显瘦但别紧”“像认真准备过”，它会翻译成穿搭语言。</p></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand-signature"></span><span>Proof Lab</span></div>
+  </div>
+</section>
+
+<section class="poster" data-name="xhs-03-lookbook">
+  <div class="grain"></div>
+  <div class="content">
+    <span class="pill">示例输出：柔和商务 OOTD</span>
+    <h1 class="page-title">第一次见客户，专业但不硬</h1>
+    <div class="lookbook">
+      <div class="callouts">
+        <div class="callout"><h3>外套</h3><p>米色针织开衫，降低距离感。</p><div class="swatch oat"></div></div>
+        <div class="callout"><h3>鞋包</h3><p>黑色乐福鞋 + 托特包，稳重但不压人。</p><div class="swatch black"></div></div>
+      </div>
+      <div class="look-center">
+        <div class="person">
+          <div class="hair"></div><div class="head"></div><div class="body"></div><div class="cardigan"></div><div class="pants"></div><div class="shoe left"></div><div class="shoe right"></div>
+        </div>
+      </div>
+      <div class="callouts">
+        <div class="callout"><h3>上衣</h3><p>浅蓝衬衫提亮肤色，保留职场感。</p><div class="swatch"></div></div>
+        <div class="callout"><h3>下装</h3><p>黑色直筒裤，利落、显瘦、不挑场地。</p><div class="swatch black"></div></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand-signature"></span><span>Lookbook Journal</span></div>
+  </div>
+</section>
+</body>
+</html>
