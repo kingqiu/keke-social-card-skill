@@ -32,6 +32,15 @@ Accepted Gold references:
 | Opinion/framework | `examples/swiss-agent-infra-full-candidate` |
 | Technical announcement/open spec | `examples/swiss-okf-brief-gold-candidate` |
 
+Coverage gaps:
+
+| Scenario | Status | Required next Gold |
+|---|---|---|
+| Product/gear/food breakdown | Pending | A Lookbook Journal board using a real or high-quality generated product/food result asset, not CSS placeholders. |
+| Essay/culture/reading/travel | Pending | An Editorial E-ink deck with magazine pacing, source-backed copy, and atmospheric image treatment. |
+
+Do not mark these scenarios as covered until the example package meets all Gold criteria below and has rendered output images.
+
 ## Example Package Requirements
 
 Each golden example should include:

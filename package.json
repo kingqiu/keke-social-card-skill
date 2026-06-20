@@ -9,6 +9,8 @@
     "check:xhs-copy": "node scripts/check-xhs-copy.mjs",
     "check:portrait-fit": "node scripts/check-portrait-fit.mjs",
     "check:style-routing": "node scripts/check-style-routing.mjs",
+    "check:local-fonts": "node scripts/check-local-fonts.mjs",
+    "check:golden-examples": "node scripts/check-golden-examples.mjs",
     "check:proof-lab-theme": "node scripts/check-proof-lab-theme-contract.mjs",
     "check:all": "node scripts/run-quality-gates.mjs",
     "validate:swiss-palettes": "node scripts/render-swiss-palette-validation.mjs",

@@ -12,6 +12,7 @@ const outputRoot = path.join(root, "output");
 const htmlDir = path.join(outputRoot, "html");
 const imageDir = path.join(outputRoot, "images");
 const accents = ["ikb", "lemon-yellow", "lemon-green", "safety-orange", "peacock"];
+const fontHref = path.relative(htmlDir, path.resolve(process.cwd(), "assets", "fonts", "keke-fonts.css")).replaceAll(path.sep, "/");
 
 if (!fs.existsSync(indexPath)) {
   console.error(`not found: ${indexPath}`);
@@ -54,7 +55,10 @@ const summary = [];
 let hasFail = false;
 
 for (const accent of accents) {
-  const html = baseHtml.replace(/<html([^>]*)data-accent="[^"]+"/, `<html$1data-accent="${accent}"`);
+  const html = baseHtml
+    .replace(/<link rel="preconnect" href="https:\/\/fonts\.googleapis\.com">\n\s*<link rel="preconnect" href="https:\/\/fonts\.gstatic\.com" crossorigin>\n\s*<link rel="stylesheet" href="https:\/\/fonts\.googleapis\.com[^"]+">\n\s*/, `<link rel="stylesheet" href="${fontHref}">\n  `)
+    .replace('href="fonts/keke-fonts.css"', `href="${fontHref}"`)
+    .replace(/<html([^>]*)data-accent="[^"]+"/, `<html$1data-accent="${accent}"`);
   const htmlPath = path.join(htmlDir, `${accent}.html`);
   fs.writeFileSync(htmlPath, html);
 

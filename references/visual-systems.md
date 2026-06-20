@@ -8,6 +8,16 @@ All visual systems must use the exact visible signature `「两克伴」出品` 
 
 Before using any visual system, apply `aesthetic-standards.md`. A visual system is not valid just because it renders. It must produce a publishable page family where page 2+ do not look weaker than the cover.
 
+## Shared Typography Rule
+
+All production visual systems must load vendored fonts from `assets/fonts/keke-fonts.css`; do not depend on external font services during rendering. Typography should be system-specific, not a single generic stack:
+
+- Swiss System: `Keke Inter` for Latin/numeric structure, `Keke Noto Sans SC` for Chinese reading, `Keke IBM Plex Mono` for code and labels. Large Chinese titles should stay light but not fragile.
+- Rednote Native: `Keke Noto Sans SC` first; use heavier weights and compact line-height for thumbnail impact. Avoid thin titles that look like tool documentation.
+- Proof Lab: `Keke Inter` for labels/numbers and `Keke Noto Sans SC` for Chinese explanation. Keep weights precise and restrained so evidence feels credible.
+- Lookbook Journal: `Keke Noto Serif SC` for editorial/result titles, `Keke Noto Sans SC` for callouts. The serif should add lifestyle warmth without becoming a scrapbook font.
+- Editorial E-ink: `Keke Noto Serif SC` and `Keke Playfair Display` carry the magazine voice; sans text is secondary.
+
 ## Shared Inheritance Rule
 
 The five visual systems are inherited template systems. They are not mood-board labels.
@@ -35,6 +45,7 @@ Inheritance baseline:
 
 - Start from `assets/template-editorial-eink.html`.
 - Preserve the magazine-paper grammar: serif/Songti display, paper atmosphere, editorial pacing, image wells, ledgers, pull quotes, and restrained accent.
+- Use vendored local fonts from `assets/fonts/keke-fonts.css`; serif typography is part of the system identity.
 - Do not turn it into a flat beige infographic or a sans-serif checklist system.
 
 Traits:
@@ -126,6 +137,7 @@ Inheritance baseline:
 
 - Start from `assets/template-rednote-native.html`.
 - Preserve the feed-native grammar: oversized hook, concrete proof/result area, warm high-click color, sticker/brush energy, and thumbnail-first hierarchy.
+- Use vendored local fonts from `assets/fonts/keke-fonts.css`; title weights may be heavy, but body text must remain readable and not cartoonishly inflated.
 - Do not sterilize it into a clean corporate grid.
 - Use the native scenario/proof components (`.rn-pain-card`, `.rn-output-card`, `.rn-output-shelf`, `.rn-caption-preview`) when the page must prove an AI/tool result without relying on screenshots.
 - Reject feature-list explainer pages: "can generate cover/images/copy" is not proof unless the page also shows what the reader receives.
@@ -194,6 +206,7 @@ Inheritance baseline:
 
 - Start from `assets/template-proof-lab.html`.
 - Preserve the evidence-first grammar: large screenshot/result hero, bounded proof frame, measured callouts, and credible product-lab tone.
+- Use vendored local fonts from `assets/fonts/keke-fonts.css`; labels/numbers should feel technical and exact, while Chinese body text remains calm.
 - Do not shrink evidence into decoration or replace proof with abstract AI art.
 - Use `.pl-proof-inspector`, `.pl-inspector-media`, and `.pl-inspector-rail` when a diagram, screenshot, or workflow state needs to be inspected rather than merely shown.
 - Default Proof Lab proof surfaces should be light: use paper/surface backgrounds, fine borders, and restrained shadows. Do not use large black proof blocks outside `SL-05 Signal Noir` or a small local status element.
@@ -262,6 +275,7 @@ Inheritance baseline:
 
 - Start from `assets/template-lookbook-journal.html`.
 - Preserve the result-first board grammar: central inspectable result, surrounding item/detail notes, swatches/crops, paper texture, and controlled hand-note energy.
+- Use vendored local fonts from `assets/fonts/keke-fonts.css`; titles use the local serif stack, notes use the local sans stack.
 - Do not turn it into an e-commerce spec sheet or a generic scrapbook.
 
 Traits:

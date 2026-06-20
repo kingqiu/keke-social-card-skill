@@ -10,6 +10,7 @@ const templatePath = path.join(root, "assets", "template-rednote-native.html");
 const outputRoot = path.join(root, "examples", "rednote-native-validation", "output", "themes");
 const htmlDir = path.join(outputRoot, "html");
 const imageDir = path.join(outputRoot, "images");
+const fontHref = path.relative(htmlDir, path.join(root, "assets", "fonts", "keke-fonts.css")).replaceAll(path.sep, "/");
 const themes = [
   { name: "plum-cream", role: "default / refined Xiaohongshu" },
   { name: "berry-ink", role: "high-click launch" },
@@ -139,6 +140,7 @@ let hasFail = false;
 
 for (const theme of [...themes, ...legacyThemes]) {
   const html = baseHtml
+    .replace('href="fonts/keke-fonts.css"', `href="${fontHref}"`)
     .replace(/<html([^>]*)data-theme="[^"]+"/, `<html$1data-theme="${theme.name}"`)
     .replace("<!-- POSTERS_HERE -->", posters);
   const htmlPath = path.join(htmlDir, `${theme.name}.html`);

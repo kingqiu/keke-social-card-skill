@@ -10,6 +10,7 @@ const templatePath = path.join(root, "assets", "template-rednote-native.html");
 const outRoot = path.join(root, "examples", "rednote-native-validation", "output");
 const htmlPath = path.join(outRoot, "index.html");
 const imageDir = path.join(outRoot, "images");
+const fontHref = path.relative(path.dirname(htmlPath), path.join(root, "assets", "fonts", "keke-fonts.css")).replaceAll(path.sep, "/");
 
 if (!fs.existsSync(templatePath)) {
   console.error(`not found: ${templatePath}`);
@@ -96,7 +97,9 @@ const posters = `
 </section>
 `;
 
-const html = fs.readFileSync(templatePath, "utf8").replace("<!-- POSTERS_HERE -->", posters);
+const html = fs.readFileSync(templatePath, "utf8")
+  .replace('href="fonts/keke-fonts.css"', `href="${fontHref}"`)
+  .replace("<!-- POSTERS_HERE -->", posters);
 fs.writeFileSync(htmlPath, html);
 
 const browser = await chromium.launch({

@@ -12,10 +12,27 @@ const rednotePath = path.join(root, "assets", "template-rednote-native.html");
 const rednote = fs.readFileSync(rednotePath, "utf8");
 const lookbookPath = path.join(root, "assets", "template-lookbook-journal.html");
 const lookbook = fs.readFileSync(lookbookPath, "utf8");
+const editorialPath = path.join(root, "assets", "template-editorial-eink.html");
+const editorial = fs.readFileSync(editorialPath, "utf8");
 const visualSystems = fs.readFileSync(path.join(root, "references", "visual-systems.md"), "utf8");
 const localFontsCss = fs.readFileSync(path.join(root, "assets", "fonts", "keke-fonts.css"), "utf8");
 
 const failures = [];
+
+for (const [label, html] of [
+  ["Swiss", swiss],
+  ["Proof Lab", proofLab],
+  ["Rednote Native", rednote],
+  ["Lookbook Journal", lookbook],
+  ["Editorial E-ink", editorial],
+]) {
+  if (html.includes("fonts.googleapis.com") || html.includes("fonts.gstatic.com")) {
+    failures.push(`${label} template must use vendored local font assets, not external Google Fonts links`);
+  }
+  if (!html.includes("fonts/keke-fonts.css")) {
+    failures.push(`${label} template must load assets/fonts/keke-fonts.css`);
+  }
+}
 
 const swissForbidden = [
   { pattern: /\.xhs-swiss-/g, reason: "Swiss template must not contain Keke-specific Swiss lookalike classes" },
@@ -46,13 +63,7 @@ for (const required of [".poster.swiss-okf", ".okf-topbar", ".okf-title", ".okf-
     failures.push(`Swiss template missing OKF Brief primitive ${required}`);
   }
 }
-if (swiss.includes("fonts.googleapis.com") || swiss.includes("fonts.gstatic.com")) {
-  failures.push("Swiss template must use vendored local font assets, not external Google Fonts links");
-}
-if (!swiss.includes("fonts/keke-fonts.css")) {
-  failures.push("Swiss template must load assets/fonts/keke-fonts.css");
-}
-for (const requiredFont of ["Keke Inter", "Keke Noto Sans SC", "Keke IBM Plex Mono"]) {
+for (const requiredFont of ["Keke Inter", "Keke Noto Sans SC", "Keke IBM Plex Mono", "Keke Noto Serif SC", "Keke Playfair Display"]) {
   if (!localFontsCss.includes(requiredFont)) {
     failures.push(`Local font CSS missing ${requiredFont}`);
   }

@@ -16,14 +16,10 @@ const gates = [
   ["content plan", ["node", "scripts/check-content-plan.mjs", taskDir]],
   ["xhs copy", ["node", "scripts/check-xhs-copy.mjs", taskDir]],
   ["portrait fit", ["node", "scripts/check-portrait-fit.mjs", taskDir]],
-  ["style routing", ["node", "scripts/check-style-routing.mjs"]],
-  ["template inheritance", ["node", "scripts/check-template-inheritance.mjs"]],
-  ["proof lab theme contract", ["node", "scripts/check-proof-lab-theme-contract.mjs"]],
-  ["social deck", ["node", "scripts/validate-social-deck.mjs", taskDir]],
 ];
 
 if (!skipPalettes) {
-  gates.splice(3, 0,
+  gates.push(
     ["swiss palettes", ["node", "scripts/render-swiss-palette-validation.mjs"]],
     ["swiss okf brief", ["node", "scripts/render-swiss-okf-brief-validation.mjs"]],
     ["proof lab themes", ["node", "scripts/render-proof-lab-theme-validation.mjs"]],
@@ -32,7 +28,16 @@ if (!skipPalettes) {
     ["lookbook journal", ["node", "scripts/render-lookbook-journal-validation.mjs"]],
   );
 }
-gates.splice(skipPalettes ? 3 : 7, 0, ["proof lab", ["node", "scripts/render-proof-lab-validation.mjs"]]);
+
+gates.push(
+  ["proof lab", ["node", "scripts/render-proof-lab-validation.mjs"]],
+  ["local fonts", ["node", "scripts/check-local-fonts.mjs"]],
+  ["golden examples", ["node", "scripts/check-golden-examples.mjs"]],
+  ["style routing", ["node", "scripts/check-style-routing.mjs"]],
+  ["template inheritance", ["node", "scripts/check-template-inheritance.mjs"]],
+  ["proof lab theme contract", ["node", "scripts/check-proof-lab-theme-contract.mjs"]],
+  ["social deck", ["node", "scripts/validate-social-deck.mjs", taskDir]],
+);
 
 const failed = [];
 

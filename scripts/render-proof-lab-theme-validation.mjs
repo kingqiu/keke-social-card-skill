@@ -11,6 +11,7 @@ const indexPath = path.join(root, "index.html");
 const outputRoot = path.join(root, "output", "themes");
 const htmlDir = path.join(outputRoot, "html");
 const imageDir = path.join(outputRoot, "images");
+const fontHref = path.relative(htmlDir, path.resolve(process.cwd(), "assets", "fonts", "keke-fonts.css")).replaceAll(path.sep, "/");
 const themes = [
   "SL-01 Electric Blue",
   "SL-02 Graphite Mint",
@@ -64,7 +65,10 @@ const summary = [];
 let hasFail = false;
 
 for (const theme of themes) {
-  const html = baseHtml.replace(/<html([^>]*)data-theme="[^"]+"/, `<html$1data-theme="${theme}"`);
+  const html = baseHtml
+    .replace(/<meta name="viewport" content="width=device-width,initial-scale=1" \/>\n(?!<link rel="stylesheet" href=")/, `<meta name="viewport" content="width=device-width,initial-scale=1" />\n<link rel="stylesheet" href="${fontHref}">\n`)
+    .replace(/<link rel="stylesheet" href="[^"]*keke-fonts\.css">/, `<link rel="stylesheet" href="${fontHref}">`)
+    .replace(/<html([^>]*)data-theme="[^"]+"/, `<html$1data-theme="${theme}"`);
   const slug = slugTheme(theme);
   const htmlPath = path.join(htmlDir, `${slug}.html`);
   fs.writeFileSync(htmlPath, html);
