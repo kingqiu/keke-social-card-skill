@@ -23,8 +23,9 @@ const gates = [
 
 if (!skipPalettes) {
   gates.splice(3, 0, ["swiss palettes", ["node", "scripts/render-swiss-palette-validation.mjs"]]);
+  gates.splice(4, 0, ["proof lab themes", ["node", "scripts/render-proof-lab-theme-validation.mjs"]]);
 }
-gates.splice(skipPalettes ? 3 : 4, 0, ["proof lab", ["node", "scripts/render-proof-lab-validation.mjs"]]);
+gates.splice(skipPalettes ? 3 : 5, 0, ["proof lab", ["node", "scripts/render-proof-lab-validation.mjs"]]);
 
 const failed = [];
 

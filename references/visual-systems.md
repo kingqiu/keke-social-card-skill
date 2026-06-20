@@ -167,11 +167,23 @@ Required composition:
 Template validation:
 
 - Run `npm run validate:proof-lab`.
+- Run `npm run validate:proof-lab-themes`.
 - Run `npm run check:proof-lab-theme`.
 - The validation sample lives in `examples/proof-lab-validation`.
 - The validation checks evidence hero size, step-flow structure, before/after structure, overflow, callout count, and exact brand signature.
+- The theme validation renders all five Signal themes and checks background/text, accent-label, surface, and proof-frame contrast.
 - The theme contract check blocks non-contract hex colors and core theme variable redeclarations outside `:root` / `html[data-theme]`.
 - Gold reference is `examples/proof-lab-skill-handbook-candidate`, covering diagram-heavy AI workflow/tutorial content with portrait-fit decisions and Xiaohongshu copy.
+
+Signal themes:
+
+| Theme | Best use |
+|---|---|
+| `SL-01 Electric Blue` | default technical/product proof and SaaS workflows |
+| `SL-02 Graphite Mint` | calm AI workflow/tutorial cards; current default |
+| `SL-03 Safety Coral` | warnings, before/after, failure analysis, mistakes |
+| `SL-04 Acid Lime` | diagnostic/checklist/highlight pages that need sharper attention |
+| `SL-05 Signal Noir` | dark product screenshots, premium/night-mode proof pages |
 
 Good recipes:
 

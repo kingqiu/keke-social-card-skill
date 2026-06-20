@@ -39,7 +39,7 @@ Status: `locked`; Gold example: `examples/proof-lab-skill-handbook-candidate`.
 Audit result:
 
 - The Proof Lab seed keeps the Signal Ledger / Graphite Mint evidence-first grammar.
-- The Proof Lab seed now declares the full `SL-01` to `SL-05` Signal theme token set and blocks one-off per-card palette drift.
+- The Proof Lab seed now declares and validates the full `SL-01` to `SL-05` Signal theme token set and blocks one-off per-card palette drift.
 - The accepted Gold example is `examples/proof-lab-skill-handbook-candidate`, upgraded with portrait cover redraw, pattern evidence ledgers, caption package, and portrait-fit decisions.
 - Native primitives are `pl-evidence-hero`, `pl-callout`, `pl-step-flow`, `pl-before-after`, `pl-proof-side`, and `pl-takeaway`.
 - Public card branding is added only through `.brand-signature::before`, with exact text `「两克伴」出品`.
@@ -53,6 +53,7 @@ Accepted deviations:
 Guard:
 
 - `npm run validate:proof-lab`
+- `npm run validate:proof-lab-themes`
 - `npm run check:proof-lab-theme`
 
 Locked because:

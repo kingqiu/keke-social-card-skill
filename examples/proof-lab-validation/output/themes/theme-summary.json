@@ -1,0 +1,107 @@
+[
+  {
+    "theme": "SL-01 Electric Blue",
+    "slug": "electric-blue",
+    "palette": {
+      "bg": "#F7F6F2",
+      "surface": "#FFFFFF",
+      "fg": "#15181D",
+      "muted": "#6C7580",
+      "accent": "#2F5EA7",
+      "dark": "#12161D",
+      "proofOnDark": "#F7F6F2"
+    },
+    "posterContrast": 16.45,
+    "labelContrast": 5.92,
+    "surfaceTitleContrast": 17.79,
+    "surfaceBodyContrast": 4.67,
+    "proofContrast": 16.77,
+    "sections": 3,
+    "status": "pass",
+    "failures": []
+  },
+  {
+    "theme": "SL-02 Graphite Mint",
+    "slug": "graphite-mint",
+    "palette": {
+      "bg": "#F6F5F1",
+      "surface": "#FFFFFF",
+      "fg": "#171A1D",
+      "muted": "#6D7680",
+      "accent": "#47756F",
+      "dark": "#141817",
+      "proofOnDark": "#F6F5F1"
+    },
+    "posterContrast": 16.02,
+    "labelContrast": 4.76,
+    "surfaceTitleContrast": 17.47,
+    "surfaceBodyContrast": 4.61,
+    "proofContrast": 16.41,
+    "sections": 3,
+    "status": "pass",
+    "failures": []
+  },
+  {
+    "theme": "SL-03 Safety Coral",
+    "slug": "safety-coral",
+    "palette": {
+      "bg": "#F7F4F0",
+      "surface": "#FFFFFF",
+      "fg": "#171515",
+      "muted": "#746B67",
+      "accent": "#B84932",
+      "dark": "#161514",
+      "proofOnDark": "#F7F4F0"
+    },
+    "posterContrast": 16.59,
+    "labelContrast": 4.74,
+    "surfaceTitleContrast": 18.19,
+    "surfaceBodyContrast": 5.2,
+    "proofContrast": 16.63,
+    "sections": 3,
+    "status": "pass",
+    "failures": []
+  },
+  {
+    "theme": "SL-04 Acid Lime",
+    "slug": "acid-lime",
+    "palette": {
+      "bg": "#F5F7EF",
+      "surface": "#FFFFFF",
+      "fg": "#151715",
+      "muted": "#6E7369",
+      "accent": "#566F10",
+      "dark": "#151713",
+      "proofOnDark": "#F5F7EF"
+    },
+    "posterContrast": 16.68,
+    "labelContrast": 5.29,
+    "surfaceTitleContrast": 18.02,
+    "surfaceBodyContrast": 4.86,
+    "proofContrast": 16.7,
+    "sections": 3,
+    "status": "pass",
+    "failures": []
+  },
+  {
+    "theme": "SL-05 Signal Noir",
+    "slug": "signal-noir",
+    "palette": {
+      "bg": "#131110",
+      "surface": "#1C1916",
+      "fg": "#F2ECDF",
+      "muted": "#A29A8C",
+      "accent": "#C9A461",
+      "dark": "#0C0A08",
+      "proofOnDark": "#F2ECDF"
+    },
+    "posterContrast": 15.99,
+    "labelContrast": 8.04,
+    "surfaceTitleContrast": 14.87,
+    "surfaceBodyContrast": 6.28,
+    "proofContrast": 16.79,
+    "sections": 3,
+    "status": "pass",
+    "failures": []
+  }
+]

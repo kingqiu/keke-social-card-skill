@@ -193,6 +193,7 @@ Use `references/xhs-copywriting-guidelines.md`:
 - Check Xiaohongshu copy with `node scripts/check-xhs-copy.mjs <task-dir>`.
 - Check portrait image fit with `node scripts/check-portrait-fit.mjs <task-dir>`.
 - When using Proof Lab, check theme compliance with `node scripts/check-proof-lab-theme-contract.mjs`.
+- When changing Proof Lab theme colors, validate all themes with `npm run validate:proof-lab-themes`.
 - Validate only when requested or before final handoff: `node scripts/validate-social-deck.mjs <task-dir>`.
 - Before final handoff for a publishing-quality package, run `npm run check:all -- <task-dir>`.
 

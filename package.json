@@ -12,6 +12,7 @@
     "check:all": "node scripts/run-quality-gates.mjs",
     "validate:swiss-palettes": "node scripts/render-swiss-palette-validation.mjs",
     "validate:proof-lab": "node scripts/render-proof-lab-validation.mjs",
+    "validate:proof-lab-themes": "node scripts/render-proof-lab-theme-validation.mjs",
     "render": "node scripts/render-social-deck.mjs",
     "validate": "node scripts/validate-social-deck.mjs"
   },

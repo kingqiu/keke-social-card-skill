@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="zh-CN" data-system="signal-ledger" data-theme="SL-02 Graphite Mint">
+<html lang="zh-CN" data-system="signal-ledger" data-theme="SL-05 Signal Noir">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Keke Proof Lab Seed</title>
+<title>Proof Lab Validation</title>
 <style>
 :root {
   --sl-display: "IBM Plex Sans", Inter, "Source Han Sans SC", "Noto Sans CJK SC", "PingFang SC", "Noto Sans", system-ui, sans-serif;
@@ -133,12 +133,107 @@ body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
 .pl-proof-side h3 { margin:0; font-size:38px; line-height:1; }
 .pl-shot-box { flex:1; min-height:0; background:var(--soft); border:1px solid var(--line); display:grid; place-items:center; overflow:hidden; }
 .pl-shot-box img { width:100%; height:100%; object-fit:cover; }
-.pl-before-after .pl-shot-box { flex:0 0 650px; height:650px; }
 .pl-takeaway { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:20px 0 0; border-top:1px solid var(--line); color:var(--muted); font-size:21px; }
 .brand-signature::before { content:"「两克伴」出品"; }
+.fake-ui { width:100%; height:100%; padding:88px 38px 34px; display:grid; grid-template-rows:auto 1fr auto; gap:24px; background:var(--dark); }
+.fake-ui h3 { margin:0; color:var(--proof-on-dark); font-size:44px; line-height:1; }
+.fake-ui .rows { display:grid; gap:14px; align-content:start; }
+.fake-ui .row { height:34px; border-radius:999px; background:var(--accent); }
+.fake-ui .row:nth-child(2) { width:74%; background:var(--proof-on-dark); }
+.fake-ui .row:nth-child(3) { width:88%; opacity:.62; }
+.fake-ui .row:nth-child(4) { width:58%; opacity:.42; }
+.fake-ui .result { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+.fake-ui .metric { border:1px solid color-mix(in srgb, var(--surface) 18%, transparent); padding:16px; color:var(--proof-on-dark); }
+.fake-ui .metric b { display:block; font-size:38px; line-height:1; color:var(--accent); }
+.fake-ui .metric span { display:block; margin-top:8px; font-size:17px; color:color-mix(in srgb, var(--proof-on-dark) 72%, transparent); }
+.mini-ui { width:100%; height:100%; padding:18px; display:grid; gap:12px; align-content:start; background:var(--dark); }
+.mini-ui .bar { height:26px; border-radius:999px; background:var(--accent); }
+.mini-ui .bar:nth-child(2) { width:76%; background:var(--proof-on-dark); }
+.mini-ui .bar:nth-child(3) { width:88%; opacity:.52; }
+.mini-ui .chip-row { display:flex; gap:8px; margin-top:14px; }
+.mini-ui .chip { flex:1; height:48px; background:color-mix(in srgb, var(--accent) 20%, var(--dark)); border:1px solid color-mix(in srgb, var(--surface) 12%, transparent); }
+.pl-proof-layout.proof-only { grid-template-rows:minmax(890px, 1fr); }
 </style>
 </head>
 <body>
-<!-- POSTERS_HERE -->
+<section class="poster" id="proof-01" data-name="proof-01-evidence-hero">
+  <div class="pl-page">
+    <header class="pl-head">
+      <div class="sl-label">PROOF LAB · EVIDENCE FIRST <span style="float:right" class="brand-signature"></span></div>
+      <h1 class="pl-title">先给结果<br>再解释功能</h1>
+      <p class="pl-subtitle">截图和产物必须成为画面主角，标题只负责告诉读者为什么值得看。</p>
+    </header>
+    <main class="pl-proof-layout proof-only">
+      <div class="pl-evidence-hero">
+        <div class="pl-browser-bar"><span class="pl-dot"></span><span class="pl-dot"></span><span class="pl-dot"></span></div>
+        <div class="fake-ui">
+          <h3>Workflow Result</h3>
+          <div class="rows"><div class="row"></div><div class="row"></div><div class="row"></div><div class="row"></div></div>
+          <div class="result">
+            <div class="metric"><b>3</b><span>inputs checked</span></div>
+            <div class="metric"><b>8</b><span>steps traced</span></div>
+            <div class="metric"><b>1</b><span>final artifact</span></div>
+          </div>
+        </div>
+        <div class="pl-zoom-card"><b>证据要能看清</b><span>proof 区域不能缩成装饰图。</span></div>
+      </div>
+    </main>
+    <footer class="pl-takeaway"><span class="sl-caption">Result before explanation</span><span class="sl-number">01</span></footer>
+  </div>
+</section>
+
+<section class="poster" id="proof-02" data-name="proof-02-step-flow">
+  <div class="pl-page">
+    <header class="pl-head">
+      <div class="sl-label">PROOF LAB · STEP FLOW <span style="float:right" class="brand-signature"></span></div>
+      <h1 class="pl-title">每一步<br>都要有产物</h1>
+      <p class="pl-subtitle">教程页不是功能清单，而是 input、process、output 一步步能被看见。</p>
+    </header>
+    <main class="pl-step-flow">
+      <div class="pl-step">
+        <div class="pl-step-num">01</div>
+        <h3>输入素材</h3>
+        <p>明确用户给了什么，不用抽象词糊过去。</p>
+        <div class="pl-mini-proof"><div class="mini-ui"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div>
+      </div>
+      <div class="pl-step">
+        <div class="pl-step-num">02</div>
+        <h3>处理过程</h3>
+        <p>展示中间状态，让可信度来自流程本身。</p>
+        <div class="pl-mini-proof"><div class="mini-ui"><div class="bar"></div><div class="bar"></div><div class="chip-row"><div class="chip"></div><div class="chip"></div></div></div></div>
+      </div>
+      <div class="pl-step">
+        <div class="pl-step-num">03</div>
+        <h3>输出结果</h3>
+        <p>最后结果必须能检查，不能只写“效果很好”。</p>
+        <div class="pl-mini-proof"><div class="mini-ui"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="chip-row"><div class="chip"></div><div class="chip"></div><div class="chip"></div></div></div></div>
+      </div>
+    </main>
+    <footer class="pl-takeaway"><span class="sl-caption">One action and one proof per step</span><span class="sl-number">02</span></footer>
+  </div>
+</section>
+
+<section class="poster" id="proof-03" data-name="proof-03-before-after">
+  <div class="pl-page">
+    <header class="pl-head">
+      <div class="sl-label">PROOF LAB · BEFORE AFTER <span style="float:right" class="brand-signature"></span></div>
+      <h1 class="pl-title">前后对比<br>要有同一尺度</h1>
+      <p class="pl-subtitle">对比页要让读者看出变化来自哪里，不能把 before 和 after 做成两张无关截图。</p>
+    </header>
+    <main class="pl-before-after">
+      <div class="pl-proof-side">
+        <h3>Before</h3>
+        <div class="pl-shot-box"><div class="mini-ui"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div>
+        <p class="sl-body">输入分散、判断路径不可见，读者不知道结果怎么来的。</p>
+      </div>
+      <div class="pl-proof-side">
+        <h3>After</h3>
+        <div class="pl-shot-box"><div class="mini-ui"><div class="bar"></div><div class="bar"></div><div class="chip-row"><div class="chip"></div><div class="chip"></div><div class="chip"></div></div></div></div>
+        <p class="sl-body">输出、理由、下一步都在同一画面里，才有可验证性。</p>
+      </div>
+    </main>
+    <footer class="pl-takeaway"><span class="sl-caption">Same scale, visible delta</span><span class="sl-number">03</span></footer>
+  </div>
+</section>
 </body>
 </html>
