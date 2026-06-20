@@ -26,6 +26,7 @@ Use these bands as defaults:
 |---|---:|---|
 | One narrow tip, one product result, or one simple announcement | 3-4 | Cover + credibility/result + usage/takeaway |
 | Tool launch, checklist, or compact tutorial with 3-5 points | 5-6 | Cover + one card per core use case or step |
+| Technical announcement about an open format/spec/API/data contract | 7-9 | Use Swiss OKF Brief: cover + context + definition + structure + principles + implementation/value + closing |
 | Medium essay or framework with 4-7 distinct ideas | 7-9 | Cover + grouped sections + conclusion |
 | Long essay/report with 8-10 numbered sections | 10-12 | Cover + one card per major section + conclusion |
 | More than 10 major sections or multiple audience goals | Split | Create Part 1 / Part 2 rather than overloading cards |
@@ -70,6 +71,34 @@ Definitions:
 - **Cut**: details intentionally omitted from the card.
 
 Every non-cover card should map to at least one source anchor. Do not create filler cards.
+
+## Swiss OKF Brief Page Plan
+
+Use this sequence for technical announcements about open specifications, public formats, APIs, data contracts, knowledge formats, or framework standards.
+
+Recommended length: **7-9 cards**.
+
+Default roles:
+
+| Card | Role | Must carry |
+|---:|---|---|
+| 1 | cover | Name the format/spec/object and the consequence. Avoid abstract headlines. |
+| 2 | context problem | Explain what broke before this format existed: scattered knowledge, repeated adaptation, vendor lock-in, brittle context, or manual glue. |
+| 3 | definition | State what it is and what it is not. Use plain Chinese and preserve the official term. |
+| 4 | structure | Show the format shape: directory, fields, schema, API contract, metadata, or file layout. |
+| 5 | principles | Explain the design constraints or philosophy that make the format portable. |
+| 6 | implementation proof | List who ships it, sample packages, producer/consumer roles, or how it is written/read. |
+| 7 | reader value | Explain why developers, teams, or Agent builders should care. |
+| 8 | closing | Distill the durable insight: why the format matters beyond the announcement. |
+| 9 | optional caveat | Add only when the source has real limitations, migration costs, or unresolved questions. |
+
+Writing rules:
+
+- The cover must include the exact format/spec name, not only a vague trend.
+- Every card must preserve the source's core claim in human language; do not turn technical content into mysterious slogans.
+- Use code/directory/metadata proof when available. If none exists, create a text-based schematic rather than decorative art.
+- Use `Swiss OKF Brief` visuals only when the source has a concrete format/spec/contract object.
+- Page labels like `03 · DEFINITION` are allowed in the top-left metadata area; bottom-right page numbers are not.
 
 ## Cover Requirement
 

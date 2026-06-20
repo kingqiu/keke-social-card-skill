@@ -149,11 +149,13 @@ Use `references/style-routing.md`:
 - Xiaohongshu + AI/tools/screenshots/tutorial -> Proof Lab.
 - Xiaohongshu + outfit/food/home/product breakdown -> Lookbook Journal.
 - Xiaohongshu + career/data/framework/checklist -> Swiss System.
+- Xiaohongshu + technical announcement/open specification/API or data format/framework standard -> Swiss System with `subTemplate: Swiss OKF Brief`.
 - Xiaohongshu + essay/culture/reading/travel -> Editorial E-ink.
 - For AI tools, decide Rednote Native vs Proof Lab by the primary reader job:
   - choose Rednote Native for launches, high-click first images, outcome promises, or native result packages without strong screenshots.
   - choose Proof Lab when screenshots, generated outputs, before/after evidence, or workflow steps are the main proof.
   - do not mix Rednote Native and Proof Lab inside one card deck; create separate packages if both routes are needed.
+- For open specifications, public formats, API/data contracts, and technical announcement explainers, choose `Swiss OKF Brief` when the reader needs to understand why the format matters. Use code/directory/metadata proof and plan 7-9 cards by default.
 
 ### 5. Source
 
