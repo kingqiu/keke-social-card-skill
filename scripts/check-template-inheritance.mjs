@@ -13,6 +13,7 @@ const rednote = fs.readFileSync(rednotePath, "utf8");
 const lookbookPath = path.join(root, "assets", "template-lookbook-journal.html");
 const lookbook = fs.readFileSync(lookbookPath, "utf8");
 const visualSystems = fs.readFileSync(path.join(root, "references", "visual-systems.md"), "utf8");
+const localFontsCss = fs.readFileSync(path.join(root, "assets", "fonts", "keke-fonts.css"), "utf8");
 
 const failures = [];
 
@@ -43,6 +44,17 @@ for (const requiredGold of ["examples/swiss-agent-infra-full-candidate", "exampl
 for (const required of [".poster.swiss-okf", ".okf-topbar", ".okf-title", ".okf-ghost", ".okf-lead", ".okf-code-card", ".okf-proof-row", ".okf-footer"]) {
   if (!swiss.includes(required)) {
     failures.push(`Swiss template missing OKF Brief primitive ${required}`);
+  }
+}
+if (swiss.includes("fonts.googleapis.com") || swiss.includes("fonts.gstatic.com")) {
+  failures.push("Swiss template must use vendored local font assets, not external Google Fonts links");
+}
+if (!swiss.includes("fonts/keke-fonts.css")) {
+  failures.push("Swiss template must load assets/fonts/keke-fonts.css");
+}
+for (const requiredFont of ["Keke Inter", "Keke Noto Sans SC", "Keke IBM Plex Mono"]) {
+  if (!localFontsCss.includes(requiredFont)) {
+    failures.push(`Local font CSS missing ${requiredFont}`);
   }
 }
 if (!swissSection.includes("Swiss OKF Brief sub-template") || !swissSection.includes("left yellow rail")) {

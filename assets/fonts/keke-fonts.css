@@ -1,0 +1,93 @@
+@font-face {
+  font-family: "Keke Inter";
+  font-style: normal;
+  font-weight: 200;
+  font-display: block;
+  src: url("./keke-inter/Inter-200.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Keke Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+  src: url("./keke-inter/Inter-300.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Keke Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("./keke-inter/Inter-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Keke Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url("./keke-inter/Inter-500.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Keke Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url("./keke-inter/Inter-600.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Keke Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url("./keke-inter/Inter-700.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Keke Noto Sans SC";
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+  src: url("./keke-noto-sans-sc/NotoSansSC-300.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Keke Noto Sans SC";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("./keke-noto-sans-sc/NotoSansSC-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Keke Noto Sans SC";
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url("./keke-noto-sans-sc/NotoSansSC-500.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Keke Noto Sans SC";
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url("./keke-noto-sans-sc/NotoSansSC-700.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Keke IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("./keke-ibm-plex-mono/IBMPlexMono-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Keke IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url("./keke-ibm-plex-mono/IBMPlexMono-500.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Keke IBM Plex Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url("./keke-ibm-plex-mono/IBMPlexMono-600.ttf") format("truetype");
+}

@@ -57,6 +57,7 @@ Inheritance baseline:
 
 - Start from `assets/template-swiss-system.html`.
 - Preserve strict Swiss grammar: light large type, grid alignment, hairline rules, straight modules, one accent color, and source template primitives.
+- Use vendored local fonts from `assets/fonts/keke-fonts.css`; do not depend on external Google Fonts during rendering.
 - Do not use rounded cards, shadows, multi-pastel blocks, heavy 800/900 display titles, or decorative stickers inside this system.
 - If a Xiaohongshu page needs warmer rounded proof cards, route it to Rednote Native or Proof Lab instead.
 
