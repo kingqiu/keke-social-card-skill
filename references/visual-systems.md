@@ -29,7 +29,7 @@ Inheritance status must be explicit:
 
 Use for Xiaohongshu essays, travel, reading notes, culture, and quiet lifestyle cards.
 
-Status: `pending-lock`.
+Status: `template-locked`; Gold example: `pending`.
 
 Inheritance baseline:
 
@@ -51,7 +51,7 @@ Avoid for screenshot-heavy tutorials or high-click result covers.
 
 Use for workplace, data, frameworks, checklists, structured comparisons.
 
-Status: `template-locked`; Gold example: `pending`.
+Status: `locked`; Gold example: `examples/swiss-agent-infra-full-candidate`.
 
 Inheritance baseline:
 
@@ -139,13 +139,15 @@ Avoid cheap big-character posters with no proof.
 
 Use for AI tools, app tutorials, screenshots, product workflows, before/after proof.
 
-Status: `pending-lock`.
+Status: `template-locked`; Gold example: `pending`.
 
 Inheritance baseline:
 
 - Start from `assets/template-proof-lab.html`.
 - Preserve the evidence-first grammar: large screenshot/result hero, bounded proof frame, measured callouts, and credible product-lab tone.
 - Do not shrink evidence into decoration or replace proof with abstract AI art.
+- Use only declared Signal theme tokens `SL-01 Electric Blue`, `SL-02 Graphite Mint`, `SL-03 Safety Coral`, `SL-04 Acid Lime`, or `SL-05 Signal Noir`.
+- Do not add one-off hex colors or per-card overrides for core theme variables. Switch `data-theme` instead.
 
 Traits:
 
@@ -161,6 +163,15 @@ Required composition:
 - Callouts must point to actual visible details. Do not label invisible or tiny content.
 - Step cards should read as a sequence with one action/result per step.
 - The title states the benefit, not the implementation detail.
+
+Template validation:
+
+- Run `npm run validate:proof-lab`.
+- Run `npm run check:proof-lab-theme`.
+- The validation sample lives in `examples/proof-lab-validation`.
+- The validation checks evidence hero size, step-flow structure, before/after structure, overflow, callout count, and exact brand signature.
+- The theme contract check blocks non-contract hex colors and core theme variable redeclarations outside `:root` / `html[data-theme]`.
+- This system still needs a real AI tool/product Gold example with inspectable proof assets.
 
 Good recipes:
 

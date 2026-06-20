@@ -75,6 +75,7 @@ This Skill is an integration layer, not a freehand visual rewrite.
 - Do not make "similar but softer" replacements for strict systems. A strict system must preserve its hard rules even when adapted for Xiaohongshu.
 - Keke-specific improvements belong in routing, Xiaohongshu copy, image policy, QA, example selection, and small wrapper components.
 - Any reusable CSS added to a source-derived template must be additive, scoped, and compatible with the template's existing primitives.
+- Proof Lab must use declared `SL-01` to `SL-05` theme tokens only. Do not add per-card core color overrides or one-off hex colors for `--bg`, `--surface`, `--fg`, `--muted`, `--accent`, `--line`, `--grid`, or `--dark`.
 - If a page cannot be made publishable while keeping the inherited template rules, route it to another visual system rather than diluting the current one.
 
 ## Workflow
@@ -156,6 +157,12 @@ Create `assets/IMAGE_REQUESTS.md` and `assets/SOURCES.md` whenever images are us
 
 Record image role, source route, subject zone, safe text zone, avoid zone, crop, and `object-position`.
 
+For every landscape source image considered for a portrait Xiaohongshu card, decide whether to redraw, recompose, split, or keep landscape:
+
+- Redraw or recompose landscape images used as cover art, hero illustration, mood, product, person, outfit, food, or scene visuals when they leave empty bands or make the subject small.
+- Keep landscape only when the image is itself the proof, screenshot, chart, or original diagram and fidelity matters. Record the reason in `QA.md`.
+- Do not use `object-fit: contain` as the default fix for unsuitable landscape cover art.
+
 ### 6. Copy
 
 Use `references/xhs-copywriting-guidelines.md`:
@@ -182,7 +189,9 @@ Use `references/xhs-copywriting-guidelines.md`:
 - Render with `node scripts/render-social-deck.mjs <task-dir>`.
 - For long-form sources, check planning with `node scripts/check-content-plan.mjs <task-dir>`.
 - Check Xiaohongshu copy with `node scripts/check-xhs-copy.mjs <task-dir>`.
+- When using Proof Lab, check theme compliance with `node scripts/check-proof-lab-theme-contract.mjs`.
 - Validate only when requested or before final handoff: `node scripts/validate-social-deck.mjs <task-dir>`.
+- Before final handoff for a publishing-quality package, run `npm run check:all -- <task-dir>`.
 
 ## Visual Systems
 

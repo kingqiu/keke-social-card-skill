@@ -21,6 +21,12 @@ Maintain examples across these scenarios:
 | Opinion/framework | Swiss System | hierarchy, memorable concept, not corporate PPT |
 | Essay/culture/reading/travel | Editorial E-ink | editorial mood, image atmosphere, restrained text |
 
+Accepted Gold references:
+
+| Scenario | Example |
+|---|---|
+| Opinion/framework | `examples/swiss-agent-infra-full-candidate` |
+
 ## Example Package Requirements
 
 Each golden example should include:

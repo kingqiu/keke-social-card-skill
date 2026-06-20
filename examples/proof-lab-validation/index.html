@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-CN" data-system="signal-ledger" data-theme="SL-02 Graphite Mint">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Proof Lab Validation</title>
+<style>
+:root {
+  --sl-display: "IBM Plex Sans", Inter, "Source Han Sans SC", "Noto Sans CJK SC", "PingFang SC", "Noto Sans", system-ui, sans-serif;
+  --sl-body: "IBM Plex Sans", Inter, "Source Han Sans SC", "Noto Sans CJK SC", "PingFang SC", "Noto Sans", system-ui, sans-serif;
+  --sl-label: "IBM Plex Sans", Inter, "Source Han Sans SC", "Noto Sans CJK SC", "PingFang SC", system-ui, sans-serif;
+  --sl-num: "IBM Plex Sans", Inter, "Source Han Sans SC", "Noto Sans CJK SC", "PingFang SC", system-ui, sans-serif;
+  --sl-mono: "IBM Plex Mono", "SFMono-Regular", "Roboto Mono", Consolas, monospace;
+  --bg: #F6F5F1;
+  --surface: #FFFFFF;
+  --fg: #171A1D;
+  --muted: #6D7680;
+  --accent: #4A7A74;
+  --line: #DCE3E1;
+  --grid: #E5ECEA;
+  --dark: #141817;
+  --soft: color-mix(in srgb, var(--accent) 8%, var(--surface));
+  --proof-on-dark: var(--bg);
+}
+html[data-theme="SL-01 Electric Blue"] {
+  --bg: #F7F6F2;
+  --surface: #FFFFFF;
+  --fg: #15181D;
+  --muted: #6C7580;
+  --accent: #2F5EA7;
+  --line: #DCE3EE;
+  --grid: #E7EDF5;
+  --dark: #12161D;
+}
+html[data-theme="SL-02 Graphite Mint"] {
+  --bg: #F6F5F1;
+  --surface: #FFFFFF;
+  --fg: #171A1D;
+  --muted: #6D7680;
+  --accent: #4A7A74;
+  --line: #DCE3E1;
+  --grid: #E5ECEA;
+  --dark: #141817;
+}
+html[data-theme="SL-03 Safety Coral"] {
+  --bg: #F7F4F0;
+  --surface: #FFFFFF;
+  --fg: #171515;
+  --muted: #746B67;
+  --accent: #E56A4B;
+  --line: #E5D9D4;
+  --grid: #EFE5E1;
+  --dark: #161514;
+}
+html[data-theme="SL-04 Acid Lime"] {
+  --bg: #F5F7EF;
+  --surface: #FFFFFF;
+  --fg: #151715;
+  --muted: #6E7369;
+  --accent: #A6C833;
+  --line: #DDE5CC;
+  --grid: #E7ECD8;
+  --dark: #151713;
+}
+html[data-theme="SL-05 Signal Noir"] {
+  --bg: #131110;
+  --surface: #1C1916;
+  --fg: #F2ECDF;
+  --muted: #A29A8C;
+  --accent: #C9A461;
+  --line: #2E2A24;
+  --grid: #221E18;
+  --dark: #0C0A08;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
+.poster {
+  width: 1080px;
+  height: 1440px;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 8%, transparent), transparent 44%),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    var(--bg);
+  background-size: auto, 64px 64px, 64px 64px, auto;
+  color: var(--fg);
+  padding: 66px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+.sl-label { font-family: var(--sl-label); font-size: 16px; line-height: 1; letter-spacing: .08em; font-weight: 640; color: var(--accent); }
+.sl-display { font-family: var(--sl-display); font-size: 72px; line-height: 1.00; letter-spacing: 0; font-weight: 580; margin: 0; }
+.sl-body { font-family: var(--sl-body); font-size: 25px; line-height: 1.38; letter-spacing: 0; font-weight: 440; color: var(--muted); margin: 0; }
+.sl-caption { font-family: var(--sl-label); font-size: 15px; line-height: 1.28; letter-spacing: .04em; color: var(--muted); }
+.sl-number { font-family: var(--sl-num); font-size: 92px; line-height: .92; letter-spacing: 0; font-weight: 620; color: var(--accent); font-variant-numeric: tabular-nums; }
+.sl-mono { font-family: var(--sl-mono); font-size: 18px; line-height: 1.34; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.sl-quote { font-family: var(--sl-display); font-size: 38px; line-height: 1.12; font-weight: 520; }
+.latin { font-family: var(--sl-label); }
+.num { font-family: var(--sl-num); font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--sl-mono); font-variant-numeric: tabular-nums; }
+.surface { background: var(--surface); border: 1px solid var(--line); padding: 28px; }
+.proof-frame { background: var(--dark); color: var(--proof-on-dark); border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line)); padding: 22px; }
+.pl-page { height:100%; display:grid; grid-template-rows:auto 1fr auto; gap:26px; }
+.pl-head { display:grid; gap:14px; }
+.pl-title { margin:0; font-family:var(--sl-display); font-size:78px; line-height:.98; letter-spacing:0; font-weight:640; max-width:930px; }
+.pl-subtitle { margin:0; font-size:28px; line-height:1.32; color:var(--muted); font-weight:470; max-width:850px; }
+.pl-proof-layout { min-height:0; display:grid; grid-template-rows:minmax(650px, 1fr) auto; gap:22px; }
+.pl-evidence-hero { position:relative; min-height:0; border-radius:34px; overflow:hidden; background:var(--dark); color:var(--proof-on-dark); box-shadow:0 26px 70px rgba(20,24,23,.25); border:1px solid color-mix(in srgb, var(--surface) 16%, transparent); }
+.pl-evidence-hero img { width:100%; height:100%; object-fit:cover; display:block; }
+.pl-evidence-hero.contain img { object-fit:contain; background:var(--dark); padding:26px; }
+.pl-browser-bar { position:absolute; left:0; right:0; top:0; height:54px; display:flex; align-items:center; gap:10px; padding:0 22px; background:rgba(0,0,0,.34); backdrop-filter:blur(10px); }
+.pl-dot { width:14px; height:14px; border-radius:50%; background:var(--accent); }
+.pl-dot:nth-child(2) { background:var(--line); }
+.pl-dot:nth-child(3) { background:var(--muted); }
+.pl-zoom-card { position:absolute; right:28px; bottom:28px; width:330px; background:var(--surface); color:var(--fg); border:1px solid var(--line); padding:20px; box-shadow:0 18px 52px rgba(0,0,0,.24); }
+.pl-zoom-card b { display:block; font-size:28px; line-height:1.08; margin-bottom:8px; }
+.pl-zoom-card span { display:block; font-size:21px; line-height:1.25; color:var(--muted); }
+.pl-callout-row { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+.pl-callout { background:var(--surface); border:1px solid var(--line); padding:24px; min-height:170px; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 12px 34px rgba(20,24,23,.08); }
+.pl-callout h3 { margin:0; font-size:36px; line-height:1.02; font-weight:640; }
+.pl-callout p { margin:12px 0 0; font-size:24px; line-height:1.32; color:var(--muted); }
+.pl-step-flow { min-height:0; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; align-items:stretch; }
+.pl-step { background:var(--surface); border:1px solid var(--line); padding:24px; display:grid; grid-template-rows:auto 1fr auto; gap:18px; }
+.pl-step-num { font-family:var(--sl-num); font-size:62px; line-height:.9; font-weight:620; color:var(--accent); }
+.pl-step h3 { margin:0; font-size:34px; line-height:1.05; font-weight:650; }
+.pl-step p { margin:0; font-size:23px; line-height:1.32; color:var(--muted); }
+.pl-mini-proof { background:var(--soft); border:1px solid var(--line); min-height:220px; display:grid; place-items:center; padding:16px; color:var(--muted); font-size:22px; }
+.pl-before-after { min-height:0; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.pl-proof-side { background:var(--surface); border:1px solid var(--line); padding:22px; display:flex; flex-direction:column; gap:18px; }
+.pl-proof-side h3 { margin:0; font-size:38px; line-height:1; }
+.pl-shot-box { flex:1; min-height:0; background:var(--soft); border:1px solid var(--line); display:grid; place-items:center; overflow:hidden; }
+.pl-shot-box img { width:100%; height:100%; object-fit:cover; }
+.pl-takeaway { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:20px 0 0; border-top:1px solid var(--line); color:var(--muted); font-size:21px; }
+.brand-signature::before { content:"「两克伴」出品"; }
+.fake-ui { width:100%; height:100%; padding:88px 38px 34px; display:grid; grid-template-rows:auto 1fr auto; gap:24px; background:var(--dark); }
+.fake-ui h3 { margin:0; color:var(--proof-on-dark); font-size:44px; line-height:1; }
+.fake-ui .rows { display:grid; gap:14px; align-content:start; }
+.fake-ui .row { height:34px; border-radius:999px; background:var(--accent); }
+.fake-ui .row:nth-child(2) { width:74%; background:var(--proof-on-dark); }
+.fake-ui .row:nth-child(3) { width:88%; opacity:.62; }
+.fake-ui .row:nth-child(4) { width:58%; opacity:.42; }
+.fake-ui .result { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+.fake-ui .metric { border:1px solid color-mix(in srgb, var(--surface) 18%, transparent); padding:16px; color:var(--proof-on-dark); }
+.fake-ui .metric b { display:block; font-size:38px; line-height:1; color:var(--accent); }
+.fake-ui .metric span { display:block; margin-top:8px; font-size:17px; color:color-mix(in srgb, var(--proof-on-dark) 72%, transparent); }
+.mini-ui { width:100%; height:100%; padding:18px; display:grid; gap:12px; align-content:start; background:var(--dark); }
+.mini-ui .bar { height:26px; border-radius:999px; background:var(--accent); }
+.mini-ui .bar:nth-child(2) { width:76%; background:var(--proof-on-dark); }
+.mini-ui .bar:nth-child(3) { width:88%; opacity:.52; }
+.mini-ui .chip-row { display:flex; gap:8px; margin-top:14px; }
+.mini-ui .chip { flex:1; height:48px; background:color-mix(in srgb, var(--accent) 20%, var(--dark)); border:1px solid color-mix(in srgb, var(--surface) 12%, transparent); }
+.pl-proof-layout.proof-only { grid-template-rows:minmax(890px, 1fr); }
+</style>
+</head>
+<body>
+<section class="poster" id="proof-01" data-name="proof-01-evidence-hero">
+  <div class="pl-page">
+    <header class="pl-head">
+      <div class="sl-label">PROOF LAB · EVIDENCE FIRST <span style="float:right" class="brand-signature"></span></div>
+      <h1 class="pl-title">先给结果<br>再解释功能</h1>
+      <p class="pl-subtitle">截图和产物必须成为画面主角，标题只负责告诉读者为什么值得看。</p>
+    </header>
+    <main class="pl-proof-layout proof-only">
+      <div class="pl-evidence-hero">
+        <div class="pl-browser-bar"><span class="pl-dot"></span><span class="pl-dot"></span><span class="pl-dot"></span></div>
+        <div class="fake-ui">
+          <h3>Workflow Result</h3>
+          <div class="rows"><div class="row"></div><div class="row"></div><div class="row"></div><div class="row"></div></div>
+          <div class="result">
+            <div class="metric"><b>3</b><span>inputs checked</span></div>
+            <div class="metric"><b>8</b><span>steps traced</span></div>
+            <div class="metric"><b>1</b><span>final artifact</span></div>
+          </div>
+        </div>
+        <div class="pl-zoom-card"><b>证据要能看清</b><span>proof 区域不能缩成装饰图。</span></div>
+      </div>
+    </main>
+    <footer class="pl-takeaway"><span class="sl-caption">Result before explanation</span><span class="sl-number">01</span></footer>
+  </div>
+</section>
+
+<section class="poster" id="proof-02" data-name="proof-02-step-flow">
+  <div class="pl-page">
+    <header class="pl-head">
+      <div class="sl-label">PROOF LAB · STEP FLOW <span style="float:right" class="brand-signature"></span></div>
+      <h1 class="pl-title">每一步<br>都要有产物</h1>
+      <p class="pl-subtitle">教程页不是功能清单，而是 input、process、output 一步步能被看见。</p>
+    </header>
+    <main class="pl-step-flow">
+      <div class="pl-step">
+        <div class="pl-step-num">01</div>
+        <h3>输入素材</h3>
+        <p>明确用户给了什么，不用抽象词糊过去。</p>
+        <div class="pl-mini-proof"><div class="mini-ui"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div>
+      </div>
+      <div class="pl-step">
+        <div class="pl-step-num">02</div>
+        <h3>处理过程</h3>
+        <p>展示中间状态，让可信度来自流程本身。</p>
+        <div class="pl-mini-proof"><div class="mini-ui"><div class="bar"></div><div class="bar"></div><div class="chip-row"><div class="chip"></div><div class="chip"></div></div></div></div>
+      </div>
+      <div class="pl-step">
+        <div class="pl-step-num">03</div>
+        <h3>输出结果</h3>
+        <p>最后结果必须能检查，不能只写“效果很好”。</p>
+        <div class="pl-mini-proof"><div class="mini-ui"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="chip-row"><div class="chip"></div><div class="chip"></div><div class="chip"></div></div></div></div>
+      </div>
+    </main>
+    <footer class="pl-takeaway"><span class="sl-caption">One action and one proof per step</span><span class="sl-number">02</span></footer>
+  </div>
+</section>
+
+<section class="poster" id="proof-03" data-name="proof-03-before-after">
+  <div class="pl-page">
+    <header class="pl-head">
+      <div class="sl-label">PROOF LAB · BEFORE AFTER <span style="float:right" class="brand-signature"></span></div>
+      <h1 class="pl-title">前后对比<br>要有同一尺度</h1>
+      <p class="pl-subtitle">对比页要让读者看出变化来自哪里，不能把 before 和 after 做成两张无关截图。</p>
+    </header>
+    <main class="pl-before-after">
+      <div class="pl-proof-side">
+        <h3>Before</h3>
+        <div class="pl-shot-box"><div class="mini-ui"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div>
+        <p class="sl-body">输入分散、判断路径不可见，读者不知道结果怎么来的。</p>
+      </div>
+      <div class="pl-proof-side">
+        <h3>After</h3>
+        <div class="pl-shot-box"><div class="mini-ui"><div class="bar"></div><div class="bar"></div><div class="chip-row"><div class="chip"></div><div class="chip"></div><div class="chip"></div></div></div></div>
+        <p class="sl-body">输出、理由、下一步都在同一画面里，才有可验证性。</p>
+      </div>
+    </main>
+    <footer class="pl-takeaway"><span class="sl-caption">Same scale, visible delta</span><span class="sl-number">03</span></footer>
+  </div>
+</section>
+</body>
+</html>

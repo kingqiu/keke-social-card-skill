@@ -1,0 +1,39 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "id": "proof-01",
+      "name": "proof-01-evidence-hero",
+      "overflow": 0,
+      "hasBrand": true,
+      "hasHero": true,
+      "heroRatio": 0.5586975549768518,
+      "callouts": 0,
+      "steps": 0,
+      "beforeAfter": false
+    },
+    {
+      "id": "proof-02",
+      "name": "proof-02-step-flow",
+      "overflow": 0,
+      "hasBrand": true,
+      "hasHero": false,
+      "heroRatio": 0,
+      "callouts": 0,
+      "steps": 3,
+      "beforeAfter": false
+    },
+    {
+      "id": "proof-03",
+      "name": "proof-03-before-after",
+      "overflow": 0,
+      "hasBrand": true,
+      "hasHero": false,
+      "heroRatio": 0,
+      "callouts": 0,
+      "steps": 0,
+      "beforeAfter": true
+    }
+  ],
+  "failures": []
+}

@@ -8,6 +8,7 @@ Use this together with `aesthetic-standards.md`. Passing thumbnail readability i
 - No clear reason to click.
 - Proof/result image too small.
 - Screenshot treated as decoration.
+- Landscape cover art pasted into a portrait card without redraw or vertical recomposition.
 - Pretty but vague.
 - Title promises something the card does not show.
 
@@ -32,3 +33,5 @@ At 25% size, the viewer should still know:
 - Set `object-position` intentionally.
 - Use localized backing/tint only when needed.
 - Do not use abstract AI art where proof is needed.
+- If a landscape source image is used as cover art, hero illustration, or mood/product/person visual, redraw or recompose it into a portrait asset unless the original image itself is the proof.
+- For proof diagrams/screenshots that must stay landscape, avoid tiny centered postage-stamp treatment; enlarge, annotate, split, or move to a proof page instead of weakening the cover.

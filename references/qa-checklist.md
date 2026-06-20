@@ -27,6 +27,7 @@
 - Footer/captions do not collide.
 - Screenshots and result images are readable.
 - Images are not stretched.
+- Landscape hero/illustration images are either redrawn/recomposed for portrait, split across pages, or explicitly justified as proof assets.
 - Faces, logos, food, product details, and key UI text are not covered.
 - 3:4 cards fill the portrait canvas intentionally.
 
@@ -73,6 +74,8 @@ At 25% size, cover should show:
 - `SOURCES.md` exists when images are used.
 - Public-source URLs are recorded.
 - AI images are marked as AI-generated assets.
+- Wide source images record `portrait-fit decision` in `IMAGE_REQUESTS.md` or `QA.md`.
+- `object-fit: contain` is not used as a lazy fix for unsuitable landscape cover art.
 
 ## Human Gate
 

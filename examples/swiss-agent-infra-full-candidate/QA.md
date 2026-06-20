@@ -1,6 +1,6 @@
 # QA
 
-Status: `Gold Candidate / Full Coverage`
+Status: `Gold`
 
 ## Card Count
 
@@ -41,7 +41,7 @@ Standalone readability:
 ## Checks
 
 - Visual system: Swiss System
-- Template status: `template-locked`
+- Template status: `locked`
 - Board size: 1080x1440
 - Brand signature: `「两克伴」出品`
 - Source images: local article assets
@@ -64,3 +64,7 @@ Density warnings are accepted for this candidate because the deck follows the in
 - Are the later cards as strong as the first five-card candidate?
 - Does the 10-card length still feel useful for Xiaohongshu, or should it be split into Part 1 / Part 2 later?
 - Does the page plan in `BRIEF.md` still match the rendered cards after future edits?
+
+## Gold Reference
+
+This example is the accepted Swiss System Gold reference for opinion/framework long-form Xiaohongshu cards.

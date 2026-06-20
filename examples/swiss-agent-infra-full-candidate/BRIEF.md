@@ -1,6 +1,6 @@
-# Swiss Agent Infrastructure Full Candidate
+# Swiss Agent Infrastructure
 
-Status: `Gold Candidate / Full Coverage`
+Status: `Gold`
 
 Source article:
 
@@ -41,18 +41,17 @@ Use 10 cards:
 ## Visual System
 
 - System: Swiss System
-- Template status: `template-locked`
+- Template status: `locked`
 - Accent: IKB
 - Board: Xiaohongshu 1080x1440
 
-## Gold Gate
+## Gold Acceptance
 
-Promote to `Gold` only after:
-
-- validator has 0 fails
-- user confirms the card count and copy coverage
-- weakest page still feels publishable
-- text remains clear without requiring the article context
+- Validator has 0 fails.
+- User confirmed the 10-card full-coverage plan.
+- Copy coverage and card text are clear without the original article context.
+- Weakest page is still acceptable for publishing.
+- Swiss palette validation passes.
 
 ## Content Coverage QA
 
