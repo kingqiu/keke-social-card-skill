@@ -67,6 +67,23 @@ Traits:
 - clean hierarchy
 - ledgers, matrices, numbered systems
 
+Accent palettes:
+
+| Accent | Use |
+|---|---|
+| `ikb` | Default serious technical/workplace deck |
+| `lemon-yellow` | High-visibility notes, lightweight frameworks |
+| `lemon-green` | Fresh/diagnostic/checklist cards |
+| `safety-orange` | Warnings, contradictions, mistake-to-avoid cards |
+| `peacock` | Special edition or strong editorial emphasis |
+
+Palette validation:
+
+- Run `npm run validate:swiss-palettes`.
+- The validation sample lives in `examples/swiss-palette-validation`.
+- All five palettes must pass paper/ink contrast, accent text contrast, overflow, and brand-signature checks before they are treated as available for production.
+- Do not mix palettes within one production deck.
+
 Required composition:
 
 - Each page must have a clear judgment, not only a neutral framework list.

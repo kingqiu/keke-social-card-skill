@@ -1,0 +1,72 @@
+[
+  {
+    "accent": "ikb",
+    "palette": {
+      "paper": "#fafaf8",
+      "ink": "#0a0a0a",
+      "accent": "#002FA7",
+      "accentOn": "#ffffff"
+    },
+    "posterContrast": 18.94,
+    "accentContrast": 10.69,
+    "sections": 3,
+    "status": "pass",
+    "failures": []
+  },
+  {
+    "accent": "lemon-yellow",
+    "palette": {
+      "paper": "#fafaf8",
+      "ink": "#0a0a0a",
+      "accent": "#FFD500",
+      "accentOn": "#0a0a0a"
+    },
+    "posterContrast": 18.94,
+    "accentContrast": 13.92,
+    "sections": 3,
+    "status": "pass",
+    "failures": []
+  },
+  {
+    "accent": "lemon-green",
+    "palette": {
+      "paper": "#fafaf8",
+      "ink": "#0a0a0a",
+      "accent": "#C5E803",
+      "accentOn": "#0a0a0a"
+    },
+    "posterContrast": 18.94,
+    "accentContrast": 14.06,
+    "sections": 3,
+    "status": "pass",
+    "failures": []
+  },
+  {
+    "accent": "safety-orange",
+    "palette": {
+      "paper": "#fafaf8",
+      "ink": "#0a0a0a",
+      "accent": "#FF6B35",
+      "accentOn": "#0a0a0a"
+    },
+    "posterContrast": 18.94,
+    "accentContrast": 6.98,
+    "sections": 3,
+    "status": "pass",
+    "failures": []
+  },
+  {
+    "accent": "peacock",
+    "palette": {
+      "paper": "#12633c",
+      "ink": "#f7fbfb",
+      "accent": "#fff0c9",
+      "accentOn": "#123f53"
+    },
+    "posterContrast": 7.01,
+    "accentContrast": 9.97,
+    "sections": 3,
+    "status": "pass",
+    "failures": []
+  }
+]
