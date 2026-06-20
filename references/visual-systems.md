@@ -39,7 +39,7 @@ Inheritance status must be explicit:
 
 Use for Xiaohongshu essays, travel, reading notes, culture, and quiet lifestyle cards.
 
-Status: `template-locked`; Gold example: `pending`.
+Status: `locked`; Gold example: `examples/editorial-reading-travel-gold-candidate`.
 
 Inheritance baseline:
 
@@ -106,6 +106,7 @@ Required composition:
 - Cards may be strict, but should still feel hand-picked for the reader's scenario.
 - Page 2+ must include a reason to keep reading: a concrete test, a contradiction, a mistake to avoid, or a useful checklist.
 - Do not place a giant `01` on the cover, and do not use bottom-right page serials as decoration. Large numeric typography is for metrics, framework steps, or interior page structure, not pagination.
+- Swiss decks need purposeful density, not maximal fill. Large white space is acceptable only when it frames a strong thesis, image, or proof block. A page with a weak bottom band must add a verdict strip, source-backed row, or decision block rather than a decorative page number.
 
 Swiss OKF Brief sub-template:
 

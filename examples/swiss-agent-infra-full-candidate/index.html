@@ -834,6 +834,19 @@
       padding-top: var(--sp-5);
       align-items: center;
     }
+    .poster.xhs .hero-stat-bottom.is-verdict {
+      padding: var(--sp-5);
+      min-height: 168px;
+      background: var(--ink);
+      color: var(--paper);
+      border-top: 0;
+    }
+    .poster.xhs .hero-stat-bottom.is-verdict .body {
+      color: var(--paper);
+      font-size: 27px;
+      line-height: 1.35;
+    }
+    .poster.xhs .hero-stat-bottom.is-verdict .body + .body { margin-top: var(--sp-3); }
     .poster.xhs .hero-stat-bottom .num-mega { font-size: 128px; line-height: 1; }
     .poster.square .matrix-fill{ grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; }
     .poster.square .matrix-fill .matrix-cell { min-height: 0; }
@@ -1069,9 +1082,11 @@
           <div class="matrix-cell"><span class="cell-nb">FDE</span><span class="cell-title">谁能进入客户现场，把流程和权限接起来</span></div>
           <div class="matrix-cell"><span class="cell-nb">CHOICE</span><span class="cell-title">企业别只追新模型，要把边界和回滚先设计进去</span></div>
         </div>
-        <div class="hero-stat-bottom">
-          <p class="body">这些活儿不花哨，但决定了 Agent 能不能从 demo 走到生产。</p>
-          <p class="num-mega">10</p>
+        <div class="hero-stat-bottom is-verdict">
+          <div>
+            <p class="body">这些活儿不花哨，但决定了 Agent 能不能从 demo 走到生产。</p>
+            <p class="body">下半年真正要看的，是谁能把权限、上下文、运行轨迹和组织流程接成一个可复盘的系统。</p>
+          </div>
         </div>
       </div>
     </section>

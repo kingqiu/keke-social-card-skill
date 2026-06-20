@@ -73,8 +73,15 @@ Swiss OKF Brief route output should include:
 For every task decide:
 
 - `visualSystem`
+- `subTemplate` when applicable
 - `theme`
 - `recipeSequence`
 - `imagePolicy`
 - `copyStrategy`
 - `qaFocus`
+- `confidence`: `high`, `medium`, or `low`
+- `matchedKeywords`: the terms or source cues that made this route win
+
+Use `node scripts/route-style.mjs "<request or source summary>"` as a deterministic first pass, then override only when the source assets or reader job clearly contradict the keyword route.
+
+If confidence is `low`, do not silently guess for a publishing-quality package. Ask once for the missing route-changing information: platform intent, proof assets, or whether the user wants a launch deck, tutorial deck, framework deck, product/lifestyle board, or essay deck.

@@ -62,6 +62,16 @@ for (const [scenario, rel] of accepted) {
   if (fs.existsSync(qaPath) && !/Gold/i.test(fs.readFileSync(qaPath, "utf8"))) {
     failures.push(`${rel}/QA.md must declare Gold status`);
   }
+  const indexPath = path.join(dir, "index.html");
+  if (fs.existsSync(indexPath)) {
+    const html = fs.readFileSync(indexPath, "utf8");
+    if (/fonts\.googleapis\.com|fonts\.gstatic\.com/.test(html)) {
+      failures.push(`${rel}/index.html must not depend on external Google Fonts`);
+    }
+    if (!html.includes("keke-fonts.css")) {
+      failures.push(`${rel}/index.html must load assets/fonts/keke-fonts.css`);
+    }
+  }
 }
 
 if (!doc.includes("Coverage gaps:")) failures.push("golden-examples.md must include Coverage gaps");

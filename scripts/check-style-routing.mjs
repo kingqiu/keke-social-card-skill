@@ -3,6 +3,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import { routeStyle } from "./route-style.mjs";
 
 const root = process.cwd();
 const styleRoutingPath = path.join(root, "references", "style-routing.md");
@@ -29,6 +30,8 @@ requireText("references/style-routing.md", "do not call it proof", "feature list
 requireText("references/style-routing.md", "Swiss OKF Brief", "technical format/spec announcements need an explicit Swiss OKF Brief route");
 requireText("references/style-routing.md", "open specification", "open specs and technical formats should route before ordinary Swiss");
 requireText("references/style-routing.md", "subTemplate: Swiss OKF Brief", "route output should expose the Swiss OKF Brief sub-template");
+requireText("references/style-routing.md", "confidence", "route output should include confidence");
+requireText("references/style-routing.md", "matchedKeywords", "route output should expose routing evidence");
 
 requireText("references/visual-systems.md", "Boundary with Proof Lab", "Rednote Native must document its boundary with Proof Lab");
 requireText("references/visual-systems.md", "Boundary with Rednote Native", "Proof Lab must document its boundary with Rednote Native");
@@ -45,6 +48,26 @@ if (!contentPlanning.includes("## Swiss OKF Brief Page Plan")) {
 }
 if (!contentPlanning.includes("7-9 cards")) {
   failures.push("references/content-planning.md: missing 7-9 card default for Swiss OKF Brief");
+}
+
+const routeFixtures = [
+  ["Google 推出 Open Knowledge Format，开放规范，Markdown YAML 知识格式", "Swiss OKF Brief"],
+  ["AI 工具教程，三张 UI 截图，前后对比，操作步骤", "Proof Lab"],
+  ["新开发的 AI Skill 发布，小红书结果包，使用场景和省时间", "Rednote Native"],
+  ["新手手冲咖啡器具购买，滤杯，电子秤，产品拆解", "Lookbook Journal"],
+  ["旅行阅读随笔，窗边咖啡，慢书和生活方式", "Editorial E-ink"],
+  ["2026 Agent 基础设施趋势观察，框架，清单，判断矩阵", "Swiss System"],
+];
+
+for (const [input, expected] of routeFixtures) {
+  const route = routeStyle(input);
+  const actual = route.subTemplate || route.visualSystem;
+  if (actual !== expected) {
+    failures.push(`route-style fixture failed: expected ${expected}, got ${actual} for "${input}"`);
+  }
+  for (const field of ["visualSystem", "theme", "recipeSequence", "imagePolicy", "copyStrategy", "qaFocus", "confidence", "matchedKeywords"]) {
+    if (!(field in route)) failures.push(`route-style output missing ${field}`);
+  }
 }
 
 if (failures.length) {

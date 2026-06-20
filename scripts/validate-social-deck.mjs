@@ -166,6 +166,17 @@ for (let sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
         type: "footer",
       });
     }
+    for (const node of el.querySelectorAll(".rn-foot span:last-child, .lj-summary strong, .foot span:last-child")) {
+      const text = (node.textContent || "").trim();
+      if (!/^\d{1,2}$/.test(text)) continue;
+      const cs = getComputedStyle(node);
+      out.push({
+        cls: node.className ? "." + node.className.split(" ").filter(Boolean).join(".") : node.tagName.toLowerCase(),
+        size: Math.round(parseFloat(cs.fontSize) || 0),
+        text,
+        type: "footer",
+      });
+    }
     return out;
   }, sectionIndex);
   for (const mark of coverPageMark) {
@@ -300,7 +311,8 @@ for (let sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
     warns.push({ rule: "R7", msg: `${f.cls} has horizontal figure margin ${f.ml}px / ${f.mr}px${f.text ? ` near "${f.text}"` : ""}`, fix: "reset figure margins in the seed or task CSS: .poster figure { margin: 0; }" });
   }
 
-  // R5 4-band density (3:4 only)
+  // R5 4-band density (3:4 only). Swiss keeps deliberate white space, so this
+  // catches truly under-built pages instead of punishing every quiet grid.
   if (meta.board === "xhs") {
     const bands = await s.evaluate(el => {
       const er = el.getBoundingClientRect();
@@ -340,7 +352,7 @@ for (let sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
     });
     const total = bands.occ.reduce((a, b) => a + b, 0) / 4;
     const pct = (o) => Math.round(o * 100) + "%";
-    if (total < 0.745) {
+    if (total < 0.575) {
       warns.push({ rule: "R5", msg: `density ${pct(total)} (bands ${bands.occ.map(pct).join(" / ")})`, fix: "expand copy or switch recipe — see qa-checklist.md 4-band density" });
     }
     for (let i = 0; i < 3; i++) {
