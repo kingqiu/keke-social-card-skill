@@ -57,6 +57,7 @@ At 25% size, cover should show:
 - Main body stays within 1000 characters.
 - Main body is detailed enough for the source; long-form/framework posts should not collapse into a tiny abstract.
 - Copy has a visible human position, friction, or handprint instead of a neutral brochure voice.
+- Copy does not expose production workflow: no mention of how many cards/images were generated, how the article was split, or which card says what.
 - Copy avoids common AI-flavored phrases such as `赋能`, `重塑`, `重新定义`, `随着...发展`, and `未来可期`.
 - Caption has 3-6 concrete takeaways, steps, or use cases.
 - Caption includes a natural comment/discussion prompt.

@@ -31,8 +31,9 @@ Standalone readability:
 - Caption opening explains why the reader should care before listing card details.
 - Caption body stays within 1000 characters while remaining detailed enough for a long-form technical deck.
 - Caption has a visible human position: the writer is explaining why they no longer only watch model rankings.
-- Caption adds a reader-use angle: use the cards as a checklist for judging whether an Agent project can enter production.
-- Caption summarizes the 10-card path without pasting the full source article.
+- Caption adds a reader-use angle: use the source questions as a checklist for judging whether an Agent project can enter production.
+- Caption summarizes the source argument path without pasting the full source article.
+- Caption does not expose production workflow: no card count, image count, generation, or article-splitting language.
 - CTA is discussion-oriented, not hard conversion.
 - Hashtags: 8 relevant tags, no unrelated hot tags.
 - Copy does not add unsupported claims, fake data, fake endorsements, or platform-external pressure.

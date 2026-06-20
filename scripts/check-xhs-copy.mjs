@@ -49,6 +49,20 @@ const aiFlavorPhrases = [
   "总而言之",
 ];
 
+const workflowLeakagePatterns = [
+  /这组\s*\d+\s*张(?:卡|图|图片)/,
+  /这篇.{0,12}拆成/,
+  /我.{0,8}拆成/,
+  /按.{0,12}拆/,
+  /生成了?\s*\d+\s*张/,
+  /做成了?\s*\d+\s*张/,
+  /第\s*\d+\s*张(?:卡|图|图片)/,
+  /卡片里(?:会)?讲/,
+  /这组卡/,
+  /这些卡/,
+  /卡组/,
+];
+
 const checks = [];
 
 function read(filePath) {
@@ -98,6 +112,7 @@ if (caption) {
   add(bodyLength >= 450, "Caption body is substantial", "Write enough body copy to explain the post without relying on the cards alone; aim for 650-950 chars for long-form posts.");
   add(bodyLength <= 1000, "Caption body stays within 1000 chars", "Keep the main body within 1000 characters.");
   add(!aiFlavorPhrases.some((phrase) => body.includes(phrase) || title.includes(phrase)), "Copy avoids common AI-flavored phrases", "Remove generic AI/product-marketing language such as 赋能、重塑、未来可期、随着、本文将.");
+  add(!workflowLeakagePatterns.some((pattern) => pattern.test(body) || pattern.test(title)), "Copy avoids production workflow leakage", "Do not mention card/image count, splitting, generation, or which card/page explains what.");
   add(!body.includes("——"), "Copy avoids em dash polish", "Use commas, periods, or plain rewrites instead of decorative em dashes.");
   add((body.match(/不是/g) || []).length <= 1, "Copy limits mechanical contrast formulas", "Avoid repeated '不是 X，而是 Y' style formulas.");
   add(/评论|你觉得|你会|你最|留言|想看|欢迎|一起聊|你关注/i.test(body), "Caption includes natural CTA", "End with a natural comment prompt or discussion question.");

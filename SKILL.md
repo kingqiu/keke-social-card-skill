@@ -166,6 +166,7 @@ Use `references/xhs-copywriting-guidelines.md`:
 - For long-form/framework posts, preserve the source meaning while making the copy understandable without the original article.
 - Keep the main caption body within 1000 characters; for long-form/framework posts, aim for detailed 650-950 character copy rather than a tiny abstract.
 - Give the copy a visible human position, friction, or handprint. Avoid neutral brochure voice and common AI-flavored phrases.
+- Do not expose production workflow in the caption. Never say how many cards/images were generated, how the article was split, or which page/card contains what. Tell the source story directly.
 - Include 3-5 title variants, 2-3 opening variants, 2-3 CTA/comment prompts, and compact/broader hashtag sets in `copy-variants.md`.
 - Use 5-8 relevant hashtags by default.
 - Avoid inflated claims, fake data, fake endorsements, and misleading tags.

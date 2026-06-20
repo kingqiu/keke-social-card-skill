@@ -107,7 +107,8 @@ This is better than:
 For long-form/framework posts:
 
 - Do not paste the whole article into the caption.
-- Do summarize the full card path so readers know why the carousel has this many pages.
+- Do summarize the source argument path so readers know what the post is about.
+- Do not mention production actions such as how many cards/images were generated, how the article was split, or how the deck was structured. That is internal workflow, not reader-facing storytelling.
 - Use plain language: one idea per paragraph or bullet.
 - Explain terms enough for a reader who has not read the article.
 - Add one angle that is not merely a table of contents: a personal observation, a tension, a mistake people make, or a reason the reader should care.
@@ -122,6 +123,7 @@ Avoid:
 - Platform-external hard sell.
 - Contact, transaction, or private-channel pressure unless the user explicitly provides a compliant commercial flow.
 - Repeating card text word for word.
+- Workflow leakage: `这组 10 张卡`, `我把文章拆成`, `这篇被拆成`, `生成了几张图`, `第几张图讲`, `卡片里会讲`. The caption should tell the story, not describe the production process.
 - Excessive "AI 味": empty adjectives, grand claims, and vague phrases like `赋能`, `颠覆`, `重塑未来` unless the source specifically uses and supports them.
 - Generic openings: `随着...快速发展`, `在当今时代`, `近年来`, `本文将`, `以下是`.
 - Meaning inflation: `标志着`, `彰显了`, `重新定义`, `开启新篇章`, `未来可期`.
@@ -176,6 +178,7 @@ Check:
 - Is the body detailed enough for the source, not a tiny abstract?
 - Does the copy have a visible position, cost, or handprint?
 - Does it avoid generic AI/product-marketing language?
+- Does it avoid workflow leakage such as card count, image count, or "I split/generated this into..."?
 - Is the body understandable without the original source?
 - Are there 3-6 concrete takeaways or use cases?
 - Is there a natural CTA/comment prompt?
