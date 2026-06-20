@@ -3,42 +3,42 @@
   font-style: normal;
   font-weight: 200;
   font-display: block;
-  src: url("./keke-inter/Inter-200.ttf") format("truetype");
+  src: url("./keke-inter/Inter-200.woff2") format("woff2");
 }
 @font-face {
   font-family: "Keke Inter";
   font-style: normal;
   font-weight: 300;
   font-display: block;
-  src: url("./keke-inter/Inter-300.ttf") format("truetype");
+  src: url("./keke-inter/Inter-300.woff2") format("woff2");
 }
 @font-face {
   font-family: "Keke Inter";
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("./keke-inter/Inter-400.ttf") format("truetype");
+  src: url("./keke-inter/Inter-400.woff2") format("woff2");
 }
 @font-face {
   font-family: "Keke Inter";
   font-style: normal;
   font-weight: 500;
   font-display: block;
-  src: url("./keke-inter/Inter-500.ttf") format("truetype");
+  src: url("./keke-inter/Inter-500.woff2") format("woff2");
 }
 @font-face {
   font-family: "Keke Inter";
   font-style: normal;
   font-weight: 600;
   font-display: block;
-  src: url("./keke-inter/Inter-600.ttf") format("truetype");
+  src: url("./keke-inter/Inter-600.woff2") format("woff2");
 }
 @font-face {
   font-family: "Keke Inter";
   font-style: normal;
   font-weight: 700;
   font-display: block;
-  src: url("./keke-inter/Inter-700.ttf") format("truetype");
+  src: url("./keke-inter/Inter-700.woff2") format("woff2");
 }
 
 @font-face {
@@ -46,28 +46,28 @@
   font-style: normal;
   font-weight: 300;
   font-display: block;
-  src: url("./keke-noto-sans-sc/NotoSansSC-300.ttf") format("truetype");
+  src: url("./keke-noto-sans-sc/NotoSansSC-300.woff2") format("woff2");
 }
 @font-face {
   font-family: "Keke Noto Sans SC";
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("./keke-noto-sans-sc/NotoSansSC-400.ttf") format("truetype");
+  src: url("./keke-noto-sans-sc/NotoSansSC-400.woff2") format("woff2");
 }
 @font-face {
   font-family: "Keke Noto Sans SC";
   font-style: normal;
   font-weight: 500;
   font-display: block;
-  src: url("./keke-noto-sans-sc/NotoSansSC-500.ttf") format("truetype");
+  src: url("./keke-noto-sans-sc/NotoSansSC-500.woff2") format("woff2");
 }
 @font-face {
   font-family: "Keke Noto Sans SC";
   font-style: normal;
   font-weight: 700;
   font-display: block;
-  src: url("./keke-noto-sans-sc/NotoSansSC-700.ttf") format("truetype");
+  src: url("./keke-noto-sans-sc/NotoSansSC-700.woff2") format("woff2");
 }
 
 @font-face {
@@ -75,21 +75,21 @@
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("./keke-ibm-plex-mono/IBMPlexMono-400.ttf") format("truetype");
+  src: url("./keke-ibm-plex-mono/IBMPlexMono-400.woff2") format("woff2");
 }
 @font-face {
   font-family: "Keke IBM Plex Mono";
   font-style: normal;
   font-weight: 500;
   font-display: block;
-  src: url("./keke-ibm-plex-mono/IBMPlexMono-500.ttf") format("truetype");
+  src: url("./keke-ibm-plex-mono/IBMPlexMono-500.woff2") format("woff2");
 }
 @font-face {
   font-family: "Keke IBM Plex Mono";
   font-style: normal;
   font-weight: 600;
   font-display: block;
-  src: url("./keke-ibm-plex-mono/IBMPlexMono-600.ttf") format("truetype");
+  src: url("./keke-ibm-plex-mono/IBMPlexMono-600.woff2") format("woff2");
 }
 
 @font-face {
@@ -97,28 +97,28 @@
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("./keke-noto-serif-sc/NotoSerifSC-400.ttf") format("truetype");
+  src: url("./keke-noto-serif-sc/NotoSerifSC-400.woff2") format("woff2");
 }
 @font-face {
   font-family: "Keke Noto Serif SC";
   font-style: normal;
   font-weight: 500;
   font-display: block;
-  src: url("./keke-noto-serif-sc/NotoSerifSC-500.ttf") format("truetype");
+  src: url("./keke-noto-serif-sc/NotoSerifSC-500.woff2") format("woff2");
 }
 @font-face {
   font-family: "Keke Noto Serif SC";
   font-style: normal;
   font-weight: 700;
   font-display: block;
-  src: url("./keke-noto-serif-sc/NotoSerifSC-700.ttf") format("truetype");
+  src: url("./keke-noto-serif-sc/NotoSerifSC-700.woff2") format("woff2");
 }
 @font-face {
   font-family: "Keke Noto Serif SC";
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url("./keke-noto-serif-sc/NotoSerifSC-900.ttf") format("truetype");
+  src: url("./keke-noto-serif-sc/NotoSerifSC-900.woff2") format("woff2");
 }
 
 @font-face {
@@ -126,19 +126,19 @@
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("./keke-playfair-display/PlayfairDisplay-400.ttf") format("truetype");
+  src: url("./keke-playfair-display/PlayfairDisplay-400.woff2") format("woff2");
 }
 @font-face {
   font-family: "Keke Playfair Display";
   font-style: normal;
   font-weight: 700;
   font-display: block;
-  src: url("./keke-playfair-display/PlayfairDisplay-700.ttf") format("truetype");
+  src: url("./keke-playfair-display/PlayfairDisplay-700.woff2") format("woff2");
 }
 @font-face {
   font-family: "Keke Playfair Display";
   font-style: italic;
   font-weight: 400;
   font-display: block;
-  src: url("./keke-playfair-display/PlayfairDisplay-Italic-400.ttf") format("truetype");
+  src: url("./keke-playfair-display/PlayfairDisplay-Italic-400.woff2") format("woff2");
 }

@@ -29,17 +29,19 @@ Accepted Gold references:
 | AI tool launch | `examples/rednote-native-card-skill-launch-candidate` |
 | AI workflow/tutorial | `examples/proof-lab-skill-handbook-candidate` |
 | Outfit/beauty/lifestyle | `examples/lookbook-outfit-gold-candidate` |
+| Product/gear/food breakdown | `examples/lookbook-coffee-gear-gold-candidate` |
 | Opinion/framework | `examples/swiss-agent-infra-full-candidate` |
 | Technical announcement/open spec | `examples/swiss-okf-brief-gold-candidate` |
+| Essay/culture/reading/travel | `examples/editorial-reading-travel-gold-candidate` |
 
 Coverage gaps:
 
 | Scenario | Status | Required next Gold |
 |---|---|---|
-| Product/gear/food breakdown | Pending | A Lookbook Journal board using a real or high-quality generated product/food result asset, not CSS placeholders. |
-| Essay/culture/reading/travel | Pending | An Editorial E-ink deck with magazine pacing, source-backed copy, and atmospheric image treatment. |
+| Product/gear/food breakdown | Covered | `examples/lookbook-coffee-gear-gold-candidate` establishes the first Lookbook Journal product/gear reference. |
+| Essay/culture/reading/travel | Covered | `examples/editorial-reading-travel-gold-candidate` establishes the first Editorial E-ink essay/travel reference. |
 
-Do not mark these scenarios as covered until the example package meets all Gold criteria below and has rendered output images.
+Do not mark a scenario as covered until the example package meets all Gold criteria below and has rendered output images.
 
 ## Example Package Requirements
 

@@ -21,7 +21,8 @@
     "validate:rednote-native-themes": "node scripts/render-rednote-native-theme-validation.mjs",
     "validate:lookbook-journal": "node scripts/render-lookbook-journal-validation.mjs",
     "render": "node scripts/render-social-deck.mjs",
-    "validate": "node scripts/validate-social-deck.mjs"
+    "validate": "node scripts/validate-social-deck.mjs",
+    "build:font-subsets": "node scripts/build-font-subsets.mjs"
   },
   "dependencies": {
     "playwright": "^1.60.0"

@@ -23,13 +23,10 @@ const accepted = [
   ["AI tool launch", "examples/rednote-native-card-skill-launch-candidate"],
   ["AI workflow/tutorial", "examples/proof-lab-skill-handbook-candidate"],
   ["Outfit/beauty/lifestyle", "examples/lookbook-outfit-gold-candidate"],
+  ["Product/gear/food breakdown", "examples/lookbook-coffee-gear-gold-candidate"],
   ["Opinion/framework", "examples/swiss-agent-infra-full-candidate"],
   ["Technical announcement/open spec", "examples/swiss-okf-brief-gold-candidate"],
-];
-
-const pending = [
-  "Product/gear/food breakdown",
-  "Essay/culture/reading/travel",
+  ["Essay/culture/reading/travel", "examples/editorial-reading-travel-gold-candidate"],
 ];
 
 for (const scenario of requiredScenarios) {
@@ -68,9 +65,12 @@ for (const [scenario, rel] of accepted) {
 }
 
 if (!doc.includes("Coverage gaps:")) failures.push("golden-examples.md must include Coverage gaps");
-for (const scenario of pending) {
-  if (!doc.includes(`| ${scenario} | Pending |`)) {
-    failures.push(`pending coverage gap missing: ${scenario}`);
+for (const [scenario, rel] of [
+  ["Product/gear/food breakdown", "examples/lookbook-coffee-gear-gold-candidate"],
+  ["Essay/culture/reading/travel", "examples/editorial-reading-travel-gold-candidate"],
+]) {
+  if (!doc.includes(`| ${scenario} | Covered | \`${rel}\``)) {
+    failures.push(`covered coverage row missing: ${scenario} -> ${rel}`);
   }
 }
 

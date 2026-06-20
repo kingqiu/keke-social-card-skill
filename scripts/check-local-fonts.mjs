@@ -51,7 +51,7 @@ for (const family of requiredFamilies) {
   }
 }
 
-const srcMatches = [...fontsCss.matchAll(/src:\s*url\("([^"]+)"\)\s*format\("truetype"\)/g)];
+const srcMatches = [...fontsCss.matchAll(/src:\s*url\("([^"]+)"\)\s*format\("woff2"\)/g)];
 if (srcMatches.length < 18) failures.push(`expected at least 18 local font src entries, found ${srcMatches.length}`);
 for (const match of srcMatches) {
   const rel = match[1].replace(/^\.\//, "");
@@ -66,6 +66,9 @@ if (!fs.existsSync(licensePath) || !fs.readFileSync(licensePath, "utf8").include
 }
 if (!fs.existsSync(sourcesPath)) {
   failures.push("assets/fonts/SOURCES.md missing");
+}
+if (!fs.existsSync(path.join(root, "assets", "fonts", "subset-chars.txt"))) {
+  failures.push("assets/fonts/subset-chars.txt missing; run npm run build:font-subsets after font changes");
 }
 
 if (!failures.length) {
