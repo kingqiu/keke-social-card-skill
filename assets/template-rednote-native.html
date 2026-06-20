@@ -1,22 +1,91 @@
 <!doctype html>
-<html lang="zh-CN" data-system="rednote-native" data-theme="coral-blue">
+<html lang="zh-CN" data-system="rednote-native" data-theme="plum-cream">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Keke Rednote Native Seed</title>
 <style>
 :root {
-  --bg: #fff7ed;
+  --bg: #fff6f2;
   --ink: #111111;
+  --muted: #62564f;
+  --coral: #c93655;
+  --blue: #beddeb;
+  --mint: #dce9d3;
+  --yellow: #f4d86b;
+  --cream: #fffdf8;
+  --chat-user: #f8dce3;
+  --chat-ai: #e7f3f8;
+  --chat-result: #edf6e7;
+  --accent-shadow: rgba(201,54,85,.18);
+  --line: rgba(17,17,17,.14);
+  --shadow: rgba(38, 28, 18, .18);
+  --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei UI", sans-serif;
+}
+html[data-theme="coral-blue"] {
+  --bg: #fff7ed;
   --muted: #5f5a54;
-  --coral: #f25555;
+  --coral: #d84f4f;
   --blue: #b8dcf4;
   --mint: #cfe7d2;
   --yellow: #ffe083;
   --cream: #fffdf7;
-  --line: rgba(17,17,17,.14);
-  --shadow: rgba(38, 28, 18, .18);
-  --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei UI", sans-serif;
+  --chat-user: #ffe8e8;
+  --chat-ai: #e8f4fb;
+  --chat-result: #eef7ed;
+  --accent-shadow: rgba(216,79,79,.18);
+}
+html[data-theme="berry-ink"] {
+  --bg: #fff6f2;
+  --muted: #62564f;
+  --coral: #c93655;
+  --blue: #beddeb;
+  --mint: #dce9d3;
+  --yellow: #f4d86b;
+  --cream: #fffdf8;
+  --chat-user: #f8dce3;
+  --chat-ai: #e7f3f8;
+  --chat-result: #edf6e7;
+  --accent-shadow: rgba(201,54,85,.18);
+}
+html[data-theme="matcha-black"] {
+  --bg: #f5f2e7;
+  --muted: #5c5d4f;
+  --coral: #55743a;
+  --blue: #d7e7ee;
+  --mint: #c7d8a9;
+  --yellow: #e8d877;
+  --cream: #fffdf3;
+  --chat-user: #edf1da;
+  --chat-ai: #e6f2f6;
+  --chat-result: #f6ecd8;
+  --accent-shadow: rgba(85,116,58,.18);
+}
+html[data-theme="sky-butter"] {
+  --bg: #f5fbff;
+  --muted: #50616d;
+  --coral: #2468a6;
+  --blue: #bfe2fa;
+  --mint: #d8ead9;
+  --yellow: #ffd76a;
+  --cream: #fffefa;
+  --chat-user: #e7f3ff;
+  --chat-ai: #fff1c4;
+  --chat-result: #e8f5e8;
+  --accent-shadow: rgba(36,104,166,.18);
+}
+html[data-theme="plum-cream"] {
+  --bg: #fff4f7;
+  --muted: #62525b;
+  --coral: #9d3f69;
+  --blue: #c9ddec;
+  --mint: #dce8d6;
+  --yellow: #f0d872;
+  --cream: #fffdf8;
+  --chat-user: #f5ddea;
+  --chat-ai: #eaf2f9;
+  --chat-result: #eef6e8;
+  --accent-shadow: rgba(157,63,105,.18);
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; background: #222; font-family: var(--sans); color: var(--ink); }
@@ -37,7 +106,7 @@ body { padding: 48px; display: grid; gap: 48px; justify-content: center; }
 .rn-cover-system { position:relative; z-index:2; height:100%; padding:66px 64px 52px; display:grid; grid-template-rows:auto auto 1fr auto; gap:24px; }
 .rn-hero-title { font-size:118px; line-height:.92; letter-spacing:0; font-weight:950; margin:0; text-shadow: 0 5px 0 #fff, 0 0 18px rgba(255,255,255,.76); max-width: 8.8ch; }
 .rn-hero-title strong { color: var(--coral); }
-.rn-subtitle { display:inline-flex; align-self:flex-start; font-size:36px; line-height:1.1; font-weight:760; background:rgba(255,255,255,.84); border:4px solid var(--coral); border-radius:999px; padding:16px 30px; box-shadow: 7px 7px 0 rgba(242,85,85,.15); }
+.rn-subtitle { display:inline-flex; align-self:flex-start; font-size:36px; line-height:1.1; font-weight:760; background:rgba(255,255,255,.84); border:4px solid var(--coral); border-radius:999px; padding:16px 30px; box-shadow: 7px 7px 0 var(--accent-shadow); }
 .rn-chip-row { display:flex; flex-wrap:wrap; gap:16px; }
 .rn-chip { font-size:30px; line-height:1; font-weight:720; padding:15px 24px; background:#fff; border:2px dashed rgba(17,17,17,.18); border-radius:999px; }
 .rn-chip:nth-child(odd) { background:#e8f4fb; }
@@ -48,9 +117,9 @@ body { padding: 48px; display: grid; gap: 48px; justify-content: center; }
 .rn-proof-panel::before { content:""; position:absolute; inset:14px; border:1px dashed rgba(17,17,17,.16); border-radius:28px; pointer-events:none; }
 .rn-phone-shot { position:relative; z-index:1; height:100%; min-height:520px; border:12px solid #111; border-radius:44px; background:#fffdf7; padding:28px; display:flex; flex-direction:column; gap:18px; box-shadow:0 18px 44px rgba(0,0,0,.18); }
 .rn-phone-bar { width:132px; height:24px; border-radius:999px; background:#111; margin:0 auto 8px; }
-.rn-chat { max-width:92%; border-radius:24px; padding:18px 20px; font-size:27px; line-height:1.25; font-weight:720; background:#ffe8e8; }
-.rn-chat.ai { margin-left:auto; background:#e8f4fb; }
-.rn-chat.result { background:#eef7ed; border:2px solid rgba(17,17,17,.10); }
+.rn-chat { max-width:92%; border-radius:24px; padding:18px 20px; font-size:27px; line-height:1.25; font-weight:720; background:var(--chat-user); }
+.rn-chat.ai { margin-left:auto; background:var(--chat-ai); }
+.rn-chat.result { background:var(--chat-result); border:2px solid rgba(17,17,17,.10); }
 .rn-evidence-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:4px; }
 .rn-evidence { background:#fff; border:2px solid rgba(17,17,17,.10); border-radius:24px; padding:18px; min-height:122px; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 12px 28px rgba(38,28,18,.09); }
 .rn-evidence b { font-size:30px; line-height:1; }

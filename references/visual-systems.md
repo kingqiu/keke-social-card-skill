@@ -104,7 +104,7 @@ Avoid turning it into generic corporate PPT.
 
 Use for Xiaohongshu first images that need feed-native stopping power.
 
-Status: `template-locked`; Gold example: `pending`.
+Status: `locked`; Gold example: `examples/rednote-native-card-skill-launch-candidate`.
 
 Inheritance baseline:
 
@@ -130,9 +130,26 @@ Required composition:
 Template validation:
 
 - Run `npm run validate:rednote-native`.
+- Run `npm run validate:rednote-native-themes`.
 - The validation sample is generated under `examples/rednote-native-validation/output`.
 - The validation checks oversized hero title, proof/result area size, phone proof, evidence strip, before/after save-value page, overflow, and exact brand signature.
+- Theme validation renders all production themes plus the legacy fallback and checks background/ink contrast, accent readability, sticker contrast, chat contrast, proof/result area size, overflow, and exact brand signature.
 - This is a template smoke test only. It is not a Gold aesthetic reference.
+
+Production themes:
+
+| Theme | Best use |
+|---|---|
+| `plum-cream` | Default refined Xiaohongshu look; AI tool launch, female-user lifestyle, soft proof |
+| `berry-ink` | Stronger high-click launch cards when the hook needs more urgency |
+| `matcha-black` | Calm lifestyle, save-value, personal experience, low-pressure education |
+| `sky-butter` | Light tutorials, friendly knowledge cards, practical how-to posts |
+
+Legacy theme:
+
+| Theme | Use |
+|---|---|
+| `coral-blue` | Compatibility only. Do not use as the default Gold direction because it reads more like a basic tool explainer. |
 
 Good recipes:
 

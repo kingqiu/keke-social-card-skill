@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="zh-CN" data-system="rednote-native" data-theme="plum-cream">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Rednote Native Card Skill Launch Gold Candidate</title>
+<style>
+:root {
+  --bg: #fff6f2;
+  --ink: #111111;
+  --muted: #62564f;
+  --coral: #c93655;
+  --blue: #beddeb;
+  --mint: #dce9d3;
+  --yellow: #f4d86b;
+  --cream: #fffdf8;
+  --chat-user: #f8dce3;
+  --chat-ai: #e7f3f8;
+  --chat-result: #edf6e7;
+  --accent-shadow: rgba(201,54,85,.18);
+  --line: rgba(17,17,17,.14);
+  --shadow: rgba(38, 28, 18, .18);
+  --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei UI", sans-serif;
+}
+html[data-theme="coral-blue"] {
+  --bg: #fff7ed;
+  --muted: #5f5a54;
+  --coral: #d84f4f;
+  --blue: #b8dcf4;
+  --mint: #cfe7d2;
+  --yellow: #ffe083;
+  --cream: #fffdf7;
+  --chat-user: #ffe8e8;
+  --chat-ai: #e8f4fb;
+  --chat-result: #eef7ed;
+  --accent-shadow: rgba(216,79,79,.18);
+}
+html[data-theme="berry-ink"] {
+  --bg: #fff6f2;
+  --muted: #62564f;
+  --coral: #c93655;
+  --blue: #beddeb;
+  --mint: #dce9d3;
+  --yellow: #f4d86b;
+  --cream: #fffdf8;
+  --chat-user: #f8dce3;
+  --chat-ai: #e7f3f8;
+  --chat-result: #edf6e7;
+  --accent-shadow: rgba(201,54,85,.18);
+}
+html[data-theme="matcha-black"] {
+  --bg: #f5f2e7;
+  --muted: #5c5d4f;
+  --coral: #55743a;
+  --blue: #d7e7ee;
+  --mint: #c7d8a9;
+  --yellow: #e8d877;
+  --cream: #fffdf3;
+  --chat-user: #edf1da;
+  --chat-ai: #e6f2f6;
+  --chat-result: #f6ecd8;
+  --accent-shadow: rgba(85,116,58,.18);
+}
+html[data-theme="sky-butter"] {
+  --bg: #f5fbff;
+  --muted: #50616d;
+  --coral: #2468a6;
+  --blue: #bfe2fa;
+  --mint: #d8ead9;
+  --yellow: #ffd76a;
+  --cream: #fffefa;
+  --chat-user: #e7f3ff;
+  --chat-ai: #fff1c4;
+  --chat-result: #e8f5e8;
+  --accent-shadow: rgba(36,104,166,.18);
+}
+html[data-theme="plum-cream"] {
+  --bg: #fff4f7;
+  --muted: #62525b;
+  --coral: #9d3f69;
+  --blue: #c9ddec;
+  --mint: #dce8d6;
+  --yellow: #f0d872;
+  --cream: #fffdf8;
+  --chat-user: #f5ddea;
+  --chat-ai: #eaf2f9;
+  --chat-result: #eef6e8;
+  --accent-shadow: rgba(157,63,105,.18);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #222; font-family: var(--sans); color: var(--ink); }
+body { padding: 48px; display: grid; gap: 48px; justify-content: center; }
+.poster { position: relative; overflow: hidden; background: var(--bg); color: var(--ink); }
+.poster.xhs { width: 1080px; height: 1440px; }
+.grain { position:absolute; inset:0; pointer-events:none; opacity:.24; background-image: radial-gradient(rgba(17,17,17,.12) .7px, transparent .7px); background-size: 7px 7px; mix-blend-mode:multiply; }
+.brush-blue { position:absolute; left:72px; right:72px; top:350px; height:58px; background: var(--blue); opacity:.82; transform: rotate(-2deg); border-radius: 80% 30% 60% 40%; }
+.brush-coral { position:absolute; right:86px; top:228px; width:460px; height:34px; background: var(--coral); opacity:.82; transform: rotate(-6deg); border-radius: 60% 35% 65% 30%; }
+.pop-mark { position:absolute; left:74px; top:54px; width:86px; height:72px; }
+.pop-mark::before,.pop-mark::after { content:""; position:absolute; background:var(--coral); border-radius:999px; }
+.pop-mark::before { width:58px; height:14px; left:4px; top:24px; transform: rotate(12deg); }
+.pop-mark::after { width:14px; height:56px; left:52px; top:0; transform: rotate(-2deg); }
+.rn-cover-system { position:relative; z-index:2; height:100%; padding:60px 64px 52px; display:grid; grid-template-rows:auto auto auto minmax(0,1fr) auto; gap:18px; }
+.content { position:relative; z-index:2; height:100%; padding:72px 70px 58px; display:flex; flex-direction:column; gap:26px; }
+.rn-hero-title { font-size:112px; line-height:.92; letter-spacing:0; font-weight:950; margin:0; text-shadow: 0 5px 0 #fff, 0 0 18px rgba(255,255,255,.76); max-width: 8.8ch; }
+.rn-hero-title strong { color: var(--coral); }
+.rn-hero-title.wide { max-width: 10ch; }
+.rn-subtitle { display:inline-flex; align-self:flex-start; font-size:33px; line-height:1.12; font-weight:760; background:rgba(255,255,255,.84); border:4px solid var(--coral); border-radius:999px; padding:15px 28px; box-shadow: 7px 7px 0 var(--accent-shadow); }
+.rn-chip-row { display:flex; flex-wrap:wrap; gap:14px; }
+.rn-chip { font-size:28px; line-height:1; font-weight:760; padding:14px 22px; background:#fff; border:2px dashed rgba(17,17,17,.18); border-radius:999px; }
+.rn-chip:nth-child(odd) { background:#e8f4fb; }
+.rn-chip:nth-child(even) { background:#ffe8e8; }
+.rn-proof-lockup { min-height:0; display:grid; grid-template-columns:.74fr 1.26fr; gap:24px; align-items:stretch; }
+.rn-hook-panel { display:flex; flex-direction:column; gap:14px; justify-content:flex-start; padding-top:8px; }
+.rn-pain-card { background:rgba(255,255,255,.90); border:3px solid color-mix(in srgb, var(--coral) 72%, transparent); border-radius:28px; padding:20px 22px; box-shadow:0 18px 42px rgba(38,28,18,.10); font-size:29px; line-height:1.22; font-weight:860; }
+.rn-pain-card span { display:block; margin-top:10px; color:var(--muted); font-size:23px; line-height:1.25; font-weight:680; }
+.rn-proof-panel { position:relative; background:#fff; border:2px solid rgba(17,17,17,.10); border-radius:36px; box-shadow:0 30px 76px var(--shadow); padding:18px; overflow:hidden; }
+.rn-proof-panel::before { content:""; position:absolute; inset:14px; border:1px dashed rgba(17,17,17,.16); border-radius:28px; pointer-events:none; }
+.rn-phone-shot { position:relative; z-index:1; height:100%; min-height:600px; border:12px solid #111; border-radius:44px; background:#fffdf7; padding:22px; display:flex; flex-direction:column; gap:14px; box-shadow:0 18px 44px rgba(0,0,0,.18); }
+.rn-phone-bar { width:132px; height:24px; border-radius:999px; background:#111; margin:0 auto 4px; flex:0 0 auto; }
+.rn-chat { max-width:92%; border-radius:22px; padding:16px 18px; font-size:25px; line-height:1.25; font-weight:720; background:var(--chat-user); }
+.rn-chat.ai { margin-left:auto; background:var(--chat-ai); }
+.rn-chat.result { background:var(--chat-result); border:2px solid rgba(17,17,17,.10); }
+.rn-result-preview { flex:1; min-height:0; border-radius:24px; overflow:hidden; border:2px solid rgba(17,17,17,.12); background:linear-gradient(180deg,#fffdf8,#f8efe9); padding:14px; display:flex; }
+.rn-output-card { position:relative; min-height:0; width:100%; border-radius:24px; border:2px solid rgba(17,17,17,.12); background:#fff; padding:18px; display:flex; flex-direction:column; gap:12px; box-shadow:0 18px 44px rgba(38,28,18,.12); overflow:hidden; }
+.rn-output-card::before { content:""; position:absolute; left:18px; right:18px; top:82px; height:22px; background:var(--yellow); opacity:.7; transform:rotate(-2deg); border-radius:999px; }
+.rn-output-top { position:relative; z-index:1; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.rn-output-label { font-size:20px; line-height:1; font-weight:900; color:var(--coral); letter-spacing:.02em; }
+.rn-output-pill { font-size:18px; line-height:1; font-weight:850; padding:9px 12px; border-radius:999px; background:var(--chat-result); border:1px solid rgba(17,17,17,.10); }
+.rn-output-hook { position:relative; z-index:1; font-size:47px; line-height:.96; font-weight:950; letter-spacing:0; max-width:8ch; }
+.rn-output-hook strong { color:var(--coral); }
+.rn-output-sub { position:relative; z-index:1; color:var(--muted); font-size:21px; line-height:1.28; font-weight:700; }
+.rn-output-shelf { position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.rn-output-chip { min-height:70px; border-radius:18px; border:1px solid rgba(17,17,17,.10); background:#fff8f1; padding:12px; font-size:19px; line-height:1.18; font-weight:800; display:flex; align-items:center; }
+.rn-output-chip:nth-child(2) { background:var(--chat-ai); }
+.rn-output-chip:nth-child(3) { background:var(--chat-user); }
+.rn-output-chip:nth-child(4) { background:var(--chat-result); }
+.rn-caption-preview { position:relative; z-index:1; margin-top:auto; border-radius:20px; border:2px dashed rgba(17,17,17,.14); background:#fffdf8; padding:14px; display:grid; gap:8px; }
+.rn-caption-preview b { font-size:21px; line-height:1.1; }
+.rn-caption-preview span { color:var(--muted); font-size:18px; line-height:1.25; font-weight:650; }
+.rn-evidence-strip { display:grid; grid-template-columns:1fr; gap:10px; margin-top:0; }
+.rn-evidence { background:#fff; border:2px solid rgba(17,17,17,.10); border-radius:22px; padding:15px 16px; min-height:88px; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 12px 28px rgba(38,28,18,.08); }
+.rn-evidence b { font-size:28px; line-height:1; }
+.rn-evidence span { font-size:21px; line-height:1.18; color:var(--muted); font-weight:650; }
+.rn-sticker { position:absolute; right:56px; top:56px; z-index:3; background:var(--coral); color:#fff; font-size:34px; font-weight:900; padding:16px 22px; border-radius:24px; transform: rotate(3deg); box-shadow:0 10px 0 rgba(0,0,0,.18); }
+.rn-foot { margin-top:auto; display:flex; justify-content:space-between; font-size:22px; color:var(--muted); border-top:1px solid var(--line); padding-top:18px; }
+.brand-signature::before { content:"「两克伴」出品"; }
+.rn-before-after { flex:1; min-height:0; display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.rn-before-after .rn-card { padding:24px; display:flex; flex-direction:column; gap:16px; }
+.rn-card { position:relative; background:rgba(255,255,255,.88); border:1px solid rgba(17,17,17,.10); border-radius:34px; box-shadow: 0 24px 70px var(--shadow); overflow:hidden; }
+.rn-before-after h3 { margin:0; font-size:42px; line-height:1; font-weight:920; }
+.rn-before-after p { margin:0; font-size:27px; line-height:1.3; color:var(--muted); font-weight:620; }
+.rn-result-list { display:grid; gap:14px; margin-top:auto; }
+.rn-result { background:#fff; border:2px solid rgba(17,17,17,.10); border-radius:22px; padding:18px 20px; font-size:28px; font-weight:760; }
+.rn-bad-demo { flex:1; min-height:0; border-radius:26px; background:linear-gradient(180deg,#fff,#f5f0e8); border:2px dashed rgba(17,17,17,.16); padding:22px; display:flex; flex-direction:column; gap:14px; justify-content:center; }
+.rn-bad-title { font-size:38px; line-height:1.02; font-weight:940; color:#b8aaa0; }
+.rn-bad-line { height:54px; border-radius:18px; background:#fff; border:1px solid rgba(17,17,17,.10); display:flex; align-items:center; padding:0 18px; color:#8b8178; font-size:23px; font-weight:760; }
+.rn-card-proof { flex:1; min-height:0; border-radius:26px; border:2px solid rgba(17,17,17,.10); overflow:hidden; background:linear-gradient(180deg,#fffdf8,#f4ebe4); padding:18px; display:flex; }
+.rn-card-proof .rn-output-card { padding:22px; }
+.rn-card-proof .rn-output-hook { font-size:55px; max-width:8.5ch; }
+.rn-card-proof .rn-output-sub { font-size:24px; }
+.rn-save-strip { display:flex; gap:14px; align-items:center; justify-content:center; background:#111; color:#fff; border-radius:26px; padding:18px 22px; font-size:29px; font-weight:850; }
+.rn-save-strip mark { background:var(--yellow); color:#111; padding:4px 10px; border-radius:999px; }
+.rn-proof-grid { flex:1; min-height:0; display:grid; grid-template-columns:1.08fr .92fr; grid-template-rows:1fr 1fr; gap:18px; }
+.rn-proof-grid .large { grid-row:span 2; }
+.rn-proof-card { position:relative; border-radius:30px; overflow:hidden; background:#fff; border:2px solid rgba(17,17,17,.12); box-shadow:0 22px 58px rgba(38,28,18,.14); padding:22px; display:flex; flex-direction:column; gap:14px; }
+.rn-proof-card.large { background:linear-gradient(180deg,#fff,#fff6ed); }
+.rn-proof-card.small-a { background:linear-gradient(180deg,#fff,#eef6fb); }
+.rn-proof-card.small-b { background:linear-gradient(180deg,#fff,#f7eef3); }
+.rn-proof-label { position:absolute; left:18px; top:18px; right:auto; bottom:auto; background:rgba(255,255,255,.92); border:2px solid rgba(17,17,17,.10); border-radius:999px; padding:12px 16px; font-size:22px; font-weight:840; line-height:1.05; box-shadow:0 10px 24px rgba(38,28,18,.10); }
+.rn-proof-card .rn-proof-label + * { margin-top:46px; }
+.rn-mini-cover-title { font-size:54px; line-height:.95; font-weight:950; max-width:7ch; }
+.rn-mini-cover-title strong { color:var(--coral); }
+.rn-mini-copy { color:var(--muted); font-size:24px; line-height:1.22; font-weight:700; }
+.rn-mini-board { margin-top:8px; flex:1; min-height:0; border-radius:26px; border:2px solid rgba(17,17,17,.10); background:linear-gradient(135deg,#fffdf8,#f5edf2); padding:18px; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto 1fr 1fr; gap:12px; align-content:center; }
+.rn-mini-board-title { grid-column:1 / -1; display:flex; align-items:center; justify-content:space-between; gap:12px; font-size:22px; line-height:1; font-weight:900; color:var(--coral); }
+.rn-mini-board-title span { color:var(--muted); font-size:18px; font-weight:760; }
+.rn-mini-node { border-radius:20px; background:#fff; border:1px solid rgba(17,17,17,.10); padding:13px; display:flex; flex-direction:column; justify-content:space-between; min-height:92px; box-shadow:0 10px 24px rgba(38,28,18,.06); }
+.rn-mini-node b { font-size:22px; line-height:1; }
+.rn-mini-node span { color:var(--muted); font-size:17px; line-height:1.15; font-weight:680; }
+.rn-mini-node.hero { grid-row:2 / 4; background:#111; color:#fff; }
+.rn-mini-node.hero b { font-size:30px; line-height:1.02; }
+.rn-mini-node.hero span { color:rgba(255,255,255,.72); }
+.rn-mini-stack { margin-top:auto; display:grid; gap:10px; }
+.rn-mini-row { border-radius:18px; border:1px solid rgba(17,17,17,.10); background:#fff; padding:12px 14px; font-size:23px; line-height:1.1; font-weight:830; }
+.rn-package-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.rn-package-item { min-height:88px; border-radius:18px; background:#fff; border:1px solid rgba(17,17,17,.10); padding:13px; display:flex; flex-direction:column; justify-content:space-between; }
+.rn-package-item b { font-size:21px; line-height:1; }
+.rn-package-item span { font-size:18px; line-height:1.18; color:var(--muted); font-weight:680; }
+.rn-note-paper { margin-top:auto; border-radius:22px; background:#fffdf8; border:2px dashed rgba(17,17,17,.16); padding:16px; font-size:22px; line-height:1.26; color:var(--muted); font-weight:700; }
+.rn-decision-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.rn-decision { background:#fff; border:2px solid rgba(17,17,17,.10); border-radius:24px; padding:18px; box-shadow:0 12px 28px rgba(38,28,18,.09); }
+.rn-decision b { display:block; font-size:30px; line-height:1; margin-bottom:8px; }
+.rn-decision span { display:block; color:var(--muted); font-size:21px; line-height:1.2; font-weight:650; }
+.mini-badges { display:flex; flex-direction:column; gap:10px; margin-top:auto; }
+.mini-badge { background:#111; color:#fff; border-radius:999px; padding:12px 16px; font-size:23px; line-height:1; font-weight:820; }
+</style>
+</head>
+<body>
+<section class="poster xhs" id="rn-gold-01" data-name="rn-gold-01-cover">
+  <div class="grain"></div>
+  <div class="brush-blue"></div>
+  <div class="brush-coral"></div>
+  <div class="pop-mark"></div>
+  <div class="rn-sticker">结果可见</div>
+  <div class="rn-cover-system">
+    <h1 class="rn-hero-title">小红书<br><strong>不再卡图</strong></h1>
+    <div class="rn-subtitle">把文章丢进去，封面、配图、文案一起想</div>
+    <div class="rn-chip-row">
+      <span class="rn-chip">先定钩子</span>
+      <span class="rn-chip">再排卡片</span>
+      <span class="rn-chip">最后写文案</span>
+    </div>
+    <div class="rn-proof-lockup">
+      <div class="rn-hook-panel">
+        <div class="rn-pain-card">卡住的不是写作，是最后一公里<span>封面没有钩子，配图没有结构，正文也不知道怎么收口。</span></div>
+        <div class="rn-evidence-strip">
+          <div class="rn-evidence"><b>首图</b><span>先让人知道为什么点开</span></div>
+          <div class="rn-evidence"><b>整组</b><span>每页都有自己的任务</span></div>
+          <div class="rn-evidence"><b>文案</b><span>标题正文标签一起给</span></div>
+        </div>
+        <div class="mini-badges">
+          <span class="mini-badge">适合长文</span>
+          <span class="mini-badge">适合产品</span>
+          <span class="mini-badge">适合教程</span>
+        </div>
+      </div>
+      <div class="rn-proof-panel">
+        <div class="rn-phone-shot">
+          <div class="rn-phone-bar"></div>
+          <div class="rn-chat">这篇内容适合发小红书吗？</div>
+          <div class="rn-chat ai">先提炼重点，再决定封面和卡片结构。</div>
+          <div class="rn-result-preview">
+            <div class="rn-output-card">
+              <div class="rn-output-top">
+                <span class="rn-output-label">XHS PACKAGE</span>
+                <span class="rn-output-pill">可直接发</span>
+              </div>
+              <div class="rn-output-hook">文章变成<br><strong>小红书卡片</strong></div>
+              <div class="rn-output-sub">先判断用户为什么点开，再把长文拆成能看懂、能收藏、能转发的一组图。</div>
+              <div class="rn-output-shelf">
+                <div class="rn-output-chip">首图：一句话讲清看点</div>
+                <div class="rn-output-chip">内页：每页只讲一个判断</div>
+                <div class="rn-output-chip">文案：像人写，不像说明书</div>
+                <div class="rn-output-chip">标签：围绕真实内容收束</div>
+              </div>
+              <div class="rn-caption-preview">
+                <b>标题建议：别再把长文硬塞进小红书了</b>
+                <span>正文从“这篇内容为什么值得看”开始讲，不交代生成了几张图。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rn-foot"><span class="brand-signature"></span><span>01</span></div>
+  </div>
+</section>
+
+<section class="poster xhs" id="rn-gold-02" data-name="rn-gold-02-before-after">
+  <div class="grain"></div>
+  <div class="content">
+    <h1 class="rn-hero-title wide">别先讲<br><strong>功能点</strong></h1>
+    <div class="rn-subtitle">先证明它能解决你发图文时卡住的那一步</div>
+    <div class="rn-before-after">
+      <div class="rn-card">
+        <h3>Before</h3>
+        <p>只说“能生成封面、配图、文案”，听起来完整，但用户还是不知道点开能得到什么。</p>
+        <div class="rn-bad-demo">
+          <div class="rn-bad-title">功能介绍式封面</div>
+          <div class="rn-bad-line">生成封面 / 图片 / 文案</div>
+          <div class="rn-bad-line">支持多种风格模板</div>
+          <div class="rn-bad-line">看不见最终效果</div>
+        </div>
+        <div class="rn-result-list">
+          <div class="rn-result">用户不知道为什么点开</div>
+          <div class="rn-result">首图没有判断力</div>
+        </div>
+      </div>
+      <div class="rn-card">
+        <h3>After</h3>
+        <p>先把真实结果放出来：封面能不能停住人，后几页有没有保存价值，一眼就能判断。</p>
+        <div class="rn-card-proof">
+          <div class="rn-output-card">
+            <div class="rn-output-top">
+              <span class="rn-output-label">RESULT FIRST</span>
+              <span class="rn-output-pill">读者视角</span>
+            </div>
+            <div class="rn-output-hook">先告诉她<br><strong>为什么要看</strong></div>
+            <div class="rn-output-sub">不是“我能生成图片”，而是“你这篇内容最值得被点开的那句话是什么”。封面先交代重点，内页再把判断讲透。</div>
+            <div class="rn-output-shelf">
+              <div class="rn-output-chip">封面：2026 年 Agent 基础设施观察</div>
+              <div class="rn-output-chip">内页：模型、工具、记忆、协作分层</div>
+              <div class="rn-output-chip">结尾：给读者可复用的判断框架</div>
+              <div class="rn-output-chip">文案：直接讲观点，不讲生成动作</div>
+            </div>
+            <div class="rn-caption-preview">
+              <b>它判断的不是模板，而是表达顺序。</b>
+              <span>先让读者知道这组图在解决什么问题，再谈风格和细节。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rn-save-strip">先给 <mark>结果证明</mark> 再解释能力</div>
+    <div class="rn-foot"><span class="brand-signature"></span><span>02</span></div>
+  </div>
+</section>
+
+<section class="poster xhs" id="rn-gold-03" data-name="rn-gold-03-save-value">
+  <div class="grain"></div>
+  <div class="content">
+    <h1 class="rn-hero-title wide">它先看<br><strong>三件事</strong></h1>
+    <div class="rn-decision-row">
+      <div class="rn-decision"><b>重点</b><span>用户没看上下文，也要知道这组内容在讲什么。</span></div>
+      <div class="rn-decision"><b>证据</b><span>能放结果就放结果，不用空泛装饰撑版面。</span></div>
+      <div class="rn-decision"><b>节奏</b><span>封面负责点击，后面负责解释和收藏。</span></div>
+    </div>
+    <div class="rn-proof-grid">
+      <div class="rn-proof-card large">
+        <div class="rn-proof-label">封面：先给场景和结果</div>
+        <div class="rn-mini-cover-title">2026<br><strong>Agent 基建</strong><br>怎么看</div>
+        <div class="rn-mini-copy">不是列技术名词，而是先讲清这一轮基础设施到底在解决什么生产问题。</div>
+        <div class="rn-mini-board">
+          <div class="rn-mini-board-title">内容骨架 <span>先判断，再排版</span></div>
+          <div class="rn-mini-node hero"><b>可复用的工作系统</b><span>封面先把原文主线说清楚。</span></div>
+          <div class="rn-mini-node"><b>模型能力</b><span>从聪明回答到稳定执行</span></div>
+          <div class="rn-mini-node"><b>工具与记忆</b><span>接上真实工作流</span></div>
+        </div>
+        <div class="rn-mini-stack">
+          <div class="rn-mini-row">一句话看点：从模型能力，走向可复用的工作系统</div>
+          <div class="rn-mini-row">首图任务：让用户知道这组卡片值得收藏</div>
+          <div class="rn-mini-row">避开问题：不把封面写成项目功能清单</div>
+        </div>
+      </div>
+      <div class="rn-proof-card small-a">
+        <div class="rn-proof-label">拆解：每页讲清理由</div>
+        <div class="rn-package-grid">
+          <div class="rn-package-item"><b>观点</b><span>先提炼原文判断</span></div>
+          <div class="rn-package-item"><b>解释</b><span>用人话补足上下文</span></div>
+          <div class="rn-package-item"><b>图像</b><span>横图不合适就重绘竖图</span></div>
+          <div class="rn-package-item"><b>节奏</b><span>从点击到收藏递进</span></div>
+        </div>
+        <div class="rn-note-paper">卡片少，所以每句话都要承担信息量；不能只写漂亮但空的标题。</div>
+      </div>
+      <div class="rn-proof-card small-b">
+        <div class="rn-proof-label">收尾：文案一起交付</div>
+        <div class="rn-package-grid">
+          <div class="rn-package-item"><b>标题</b><span>抓住真实矛盾</span></div>
+          <div class="rn-package-item"><b>正文</b><span>1000 字内讲完整</span></div>
+          <div class="rn-package-item"><b>标签</b><span>少而准，不堆词</span></div>
+          <div class="rn-package-item"><b>语气</b><span>像创作者本人在说</span></div>
+        </div>
+        <div class="rn-note-paper">正文直接讲内容本身，不出现“我把文章拆成几张卡片”这种幕后动作。</div>
+      </div>
+    </div>
+    <div class="rn-foot"><span class="brand-signature"></span><span>03</span></div>
+  </div>
+</section>
+</body>
+</html>

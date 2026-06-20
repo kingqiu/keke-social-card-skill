@@ -65,11 +65,13 @@ Locked because:
 
 ## Rednote Native
 
-Status: `template-locked`; Gold example: `pending`.
+Status: `locked`; Gold example: `examples/rednote-native-card-skill-launch-candidate`.
 
 Audit result:
 
 - The Rednote Native seed keeps the feed-native hook/proof grammar, oversized Chinese title, warm high-click color, sticker/brush energy, phone proof, evidence chips, and before/after save-value primitives.
+- The accepted Gold example is `examples/rednote-native-card-skill-launch-candidate`, covering AI tool launch cards with a thumbnail-first hook, visible product-result proof, before/after positioning, and Xiaohongshu copy.
+- The Rednote Native seed declares four production themes: `plum-cream`, `berry-ink`, `matcha-black`, and `sky-butter`. `plum-cream` is the default refined Xiaohongshu direction. `coral-blue` remains only as a legacy compatibility fallback.
 - Public card branding is added only through `.brand-signature::before`, with exact text `「两克伴」出品`.
 - Rednote Native should stay thumbnail-first and evidence-backed, not become a clean corporate grid.
 
@@ -81,13 +83,17 @@ Accepted deviations:
 Guard:
 
 - `npm run validate:rednote-native`
+- `npm run validate:rednote-native-themes`
 - `npm run check:inheritance`
 
-Template-locked because:
+Locked because:
 
 - Native primitives are protected by inheritance checks.
 - Smoke validation renders and checks structure, proof/result area, overflow, and brand signature.
-- No accepted Gold example exists yet.
+- `examples/rednote-native-card-skill-launch-candidate` is accepted as the Rednote Native Gold reference.
+- Manual visual review confirms the cover has feed-native stopping power and page 2+ remain evidence-led.
+- Theme validation passes for all four production themes and the legacy fallback.
+- `npm run check:all -- examples/rednote-native-card-skill-launch-candidate` passes.
 
 ## Lookbook Journal
 

@@ -69,9 +69,18 @@ for (const required of [".rn-hero-title", ".rn-proof-lockup", ".rn-phone-shot", 
   }
 }
 
+for (const theme of ["plum-cream", "berry-ink", "matcha-black", "sky-butter", "coral-blue"]) {
+  if (!rednote.includes(`html[data-theme="${theme}"]`) && !rednote.includes(`data-theme="${theme}"`)) {
+    failures.push(`Rednote Native template missing theme ${theme}`);
+  }
+}
+
 const rednoteSection = visualSystems.match(/## Rednote Native[\s\S]*?(?=\n## |\n$)/)?.[0] || "";
-if (!rednoteSection.includes("Status: `template-locked`; Gold example: `pending`.")) {
-  failures.push("Rednote Native status must be `template-locked` until a Gold example is accepted");
+if (!rednoteSection.includes("Status: `locked`; Gold example: `examples/rednote-native-card-skill-launch-candidate`.")) {
+  failures.push("Rednote Native status must be `locked` with the accepted Gold example path");
+}
+if (!rednoteSection.includes("`plum-cream`") || !rednoteSection.includes("`sky-butter`")) {
+  failures.push("Rednote Native visual-system docs must list the production themes");
 }
 
 for (const required of [".lj-title", ".lj-result-board", ".lj-photo", ".lj-callouts", ".lj-item-card", ".lj-verdict", ".brand-signature::before"]) {

@@ -25,6 +25,7 @@ Accepted Gold references:
 
 | Scenario | Example |
 |---|---|
+| AI tool launch | `examples/rednote-native-card-skill-launch-candidate` |
 | AI workflow/tutorial | `examples/proof-lab-skill-handbook-candidate` |
 | Outfit/beauty/lifestyle | `examples/lookbook-outfit-gold-candidate` |
 | Opinion/framework | `examples/swiss-agent-infra-full-candidate` |
