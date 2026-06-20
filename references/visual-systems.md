@@ -104,7 +104,7 @@ Avoid turning it into generic corporate PPT.
 
 Use for Xiaohongshu first images that need feed-native stopping power.
 
-Status: `pending-lock`.
+Status: `template-locked`; Gold example: `pending`.
 
 Inheritance baseline:
 
@@ -126,6 +126,13 @@ Required composition:
 - Page 2 explains credibility quickly: why it works, who it is for, or what changed.
 - Page 3+ should become proof/process/save-value pages, not generic feature summaries.
 - Use dense but warm Xiaohongshu language: scenario, benefit, proof, and personal relevance.
+
+Template validation:
+
+- Run `npm run validate:rednote-native`.
+- The validation sample is generated under `examples/rednote-native-validation/output`.
+- The validation checks oversized hero title, proof/result area size, phone proof, evidence strip, before/after save-value page, overflow, and exact brand signature.
+- This is a template smoke test only. It is not a Gold aesthetic reference.
 
 Good recipes:
 
@@ -197,7 +204,7 @@ Avoid fake robot art and unreadable screenshots.
 
 Use for outfit, beauty, food, home, product, gear, and result breakdown boards.
 
-Status: `pending-lock`.
+Status: `template-locked`; Gold example: `pending`.
 
 Inheritance baseline:
 
@@ -219,6 +226,13 @@ Required composition:
 - Use real or high-quality generated assets for faces, outfits, food, products, or UI. CSS stand-ins are Prototype-only.
 - Every note should answer why this choice matters: scene, comfort, color, texture, risk, or substitution.
 - Keep paper texture and hand-note energy, but avoid scrapbook clutter.
+
+Template validation:
+
+- Run `npm run validate:lookbook-journal`.
+- The validation sample is generated under `examples/lookbook-journal-validation/output`.
+- The validation checks result-first board structure, central result size, item cards, explanatory callouts, bottom verdict strip, overflow, and exact brand signature.
+- CSS/SVG placeholder figures are allowed only in validation smoke tests. Gold examples must use real or high-quality generated result assets.
 
 Good recipes:
 

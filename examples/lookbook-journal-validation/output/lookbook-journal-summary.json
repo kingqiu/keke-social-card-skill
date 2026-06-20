@@ -1,0 +1,21 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "id": "lj-01",
+      "name": "lj-01-result-board",
+      "overflow": 0,
+      "hasBrand": true,
+      "hasTitle": true,
+      "hasMeta": true,
+      "hasReason": true,
+      "hasResultBoard": true,
+      "hasPhoto": true,
+      "photoRatio": 0.2312157801247428,
+      "itemCards": 4,
+      "callouts": 2,
+      "hasVerdict": true
+    }
+  ],
+  "failures": []
+}

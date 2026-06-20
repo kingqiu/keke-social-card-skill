@@ -62,3 +62,55 @@ Locked because:
 - Proof/result areas are inspectable and not decorative.
 - Manual visual review confirms page 2+ do not collapse into generic SaaS UI.
 - `npm run check:all -- examples/proof-lab-skill-handbook-candidate` passes.
+
+## Rednote Native
+
+Status: `template-locked`; Gold example: `pending`.
+
+Audit result:
+
+- The Rednote Native seed keeps the feed-native hook/proof grammar, oversized Chinese title, warm high-click color, sticker/brush energy, phone proof, evidence chips, and before/after save-value primitives.
+- Public card branding is added only through `.brand-signature::before`, with exact text `「两克伴」出品`.
+- Rednote Native should stay thumbnail-first and evidence-backed, not become a clean corporate grid.
+
+Accepted deviations:
+
+- Validation examples may use synthetic phone/chat proof and CSS blocks as smoke-test placeholders.
+- Gold examples must use real product proof, screenshots, before/after outputs, or explicitly documented generated assets.
+
+Guard:
+
+- `npm run validate:rednote-native`
+- `npm run check:inheritance`
+
+Template-locked because:
+
+- Native primitives are protected by inheritance checks.
+- Smoke validation renders and checks structure, proof/result area, overflow, and brand signature.
+- No accepted Gold example exists yet.
+
+## Lookbook Journal
+
+Status: `template-locked`; Gold example: `pending`.
+
+Audit result:
+
+- The Lookbook Journal seed keeps the result-first board grammar, central inspectable result, surrounding item/detail notes, swatches/crops, paper texture, and controlled hand-note energy.
+- Public card branding is added only through `.brand-signature::before`, with exact text `「两克伴」出品`.
+- Lookbook Journal must remain lifestyle/product-result led, not become an e-commerce spec sheet or generic scrapbook.
+
+Accepted deviations:
+
+- CSS/SVG placeholder figures are allowed only in validation smoke tests.
+- Gold examples must use real or high-quality generated assets for outfits, products, food, beauty, home, or gear.
+
+Guard:
+
+- `npm run validate:lookbook-journal`
+- `npm run check:inheritance`
+
+Template-locked because:
+
+- Native primitives are protected by inheritance checks.
+- Smoke validation renders and checks result board structure, central result size, item cards, verdict strip, overflow, and brand signature.
+- No accepted Gold example exists yet.

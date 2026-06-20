@@ -8,6 +8,10 @@ const swissPath = path.join(root, "assets", "template-swiss-system.html");
 const swiss = fs.readFileSync(swissPath, "utf8");
 const proofLabPath = path.join(root, "assets", "template-proof-lab.html");
 const proofLab = fs.readFileSync(proofLabPath, "utf8");
+const rednotePath = path.join(root, "assets", "template-rednote-native.html");
+const rednote = fs.readFileSync(rednotePath, "utf8");
+const lookbookPath = path.join(root, "assets", "template-lookbook-journal.html");
+const lookbook = fs.readFileSync(lookbookPath, "utf8");
 const visualSystems = fs.readFileSync(path.join(root, "references", "visual-systems.md"), "utf8");
 
 const failures = [];
@@ -57,6 +61,28 @@ if (!/\.pl-before-after\s+\.pl-shot-box\s*\{[^}]*flex:\s*0\s+0\s+\d+px;[^}]*heig
 const proofLabSection = visualSystems.match(/## Proof Lab[\s\S]*?(?=\n## |\n$)/)?.[0] || "";
 if (!proofLabSection.includes("Status: `locked`; Gold example: `examples/proof-lab-skill-handbook-candidate`.")) {
   failures.push("Proof Lab status must be `locked` with the accepted Gold example path");
+}
+
+for (const required of [".rn-hero-title", ".rn-proof-lockup", ".rn-phone-shot", ".rn-evidence-strip", ".rn-before-after", ".brand-signature::before"]) {
+  if (!rednote.includes(required)) {
+    failures.push(`Rednote Native template missing required primitive ${required}`);
+  }
+}
+
+const rednoteSection = visualSystems.match(/## Rednote Native[\s\S]*?(?=\n## |\n$)/)?.[0] || "";
+if (!rednoteSection.includes("Status: `template-locked`; Gold example: `pending`.")) {
+  failures.push("Rednote Native status must be `template-locked` until a Gold example is accepted");
+}
+
+for (const required of [".lj-title", ".lj-result-board", ".lj-photo", ".lj-callouts", ".lj-item-card", ".lj-verdict", ".brand-signature::before"]) {
+  if (!lookbook.includes(required)) {
+    failures.push(`Lookbook Journal template missing required primitive ${required}`);
+  }
+}
+
+const lookbookSection = visualSystems.match(/## Lookbook Journal[\s\S]*?(?=\n## |\n$)/)?.[0] || "";
+if (!lookbookSection.includes("Status: `template-locked`; Gold example: `pending`.")) {
+  failures.push("Lookbook Journal status must be `template-locked` until a Gold example is accepted");
 }
 
 if (failures.length) {

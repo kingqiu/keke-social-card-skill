@@ -1,0 +1,34 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "id": "rn-01",
+      "name": "rn-01-cover",
+      "overflow": 0,
+      "hasBrand": true,
+      "hasHeroTitle": true,
+      "titleSize": 118,
+      "proofRatio": 0.3501440329218107,
+      "hasProofLockup": true,
+      "hasPhoneShot": true,
+      "hasEvidenceStrip": true,
+      "hasBeforeAfter": false,
+      "hasSaveStrip": false
+    },
+    {
+      "id": "rn-02",
+      "name": "rn-02-before-after",
+      "overflow": 0,
+      "hasBrand": true,
+      "hasHeroTitle": true,
+      "titleSize": 118,
+      "proofRatio": 0.27935715663580246,
+      "hasProofLockup": false,
+      "hasPhoneShot": false,
+      "hasEvidenceStrip": false,
+      "hasBeforeAfter": true,
+      "hasSaveStrip": true
+    }
+  ],
+  "failures": []
+}

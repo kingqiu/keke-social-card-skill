@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN" data-system="lookbook-journal" data-theme="soft-paper">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Keke Lookbook Journal Seed</title>
+<style>
+:root {
+  --paper: #f7f1e6;
+  --ink: #191512;
+  --muted: #6f6258;
+  --line: rgba(25,21,18,.16);
+  --accent: #d26b57;
+  --blue: #c6d9ea;
+  --sage: #a9bea0;
+  --butter: #f2d780;
+  --card: rgba(255,253,247,.88);
+  --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei UI", sans-serif;
+  --serif: "Songti SC", "Noto Serif SC", "STSong", serif;
+}
+* { box-sizing:border-box; }
+html, body { margin:0; padding:0; background:#24211f; color:var(--ink); font-family:var(--sans); }
+body { padding:48px; display:grid; gap:48px; justify-content:center; }
+.poster { position:relative; overflow:hidden; background:var(--paper); }
+.poster.xhs { width:1080px; height:1440px; }
+.poster.square { width:1080px; height:1080px; }
+.poster.wide { width:2100px; height:900px; }
+.poster figure { margin:0; }
+.grain { position:absolute; inset:0; opacity:.22; pointer-events:none; background-image:radial-gradient(rgba(25,21,18,.16) .65px, transparent .65px); background-size:6px 6px; }
+.tape { position:absolute; width:170px; height:38px; background:rgba(198,217,234,.78); transform:rotate(-8deg); border-radius:4px; }
+.tape.t1 { left:74px; top:122px; }
+.tape.t2 { right:70px; bottom:80px; transform:rotate(-10deg); }
+.content { position:relative; z-index:2; height:100%; padding:54px 58px 48px; display:flex; flex-direction:column; gap:18px; }
+.lj-title { font-family:var(--serif); font-size:74px; line-height:1.02; margin:0; letter-spacing:0; }
+.lj-meta { display:inline-flex; align-self:flex-start; gap:14px; align-items:center; padding:9px 14px; border:1px solid var(--line); background:rgba(255,255,255,.5); font-size:24px; font-weight:650; color:var(--muted); }
+.lj-reason { display:inline-flex; align-self:flex-start; gap:10px; background:rgba(198,217,234,.6); padding:10px 18px; border-radius:999px; font-size:25px; font-weight:720; }
+.lj-board { flex:1; min-height:0; display:grid; grid-template-columns: 250px 1fr 250px; gap:18px; align-items:stretch; }
+.lj-result-board { flex:1; min-height:0; display:grid; grid-template-columns:255px minmax(0,1fr) 255px; gap:18px; align-items:stretch; }
+.lj-center { position:relative; display:flex; align-items:center; justify-content:center; }
+.lj-figure { width:100%; height:100%; border-radius:28px; overflow:hidden; background:rgba(255,255,255,.35); display:flex; align-items:center; justify-content:center; }
+.lj-figure img { width:100%; height:100%; object-fit:contain; display:block; }
+.lj-photo-stage { position:relative; min-height:0; display:grid; place-items:center; padding:18px 10px; }
+.lj-photo { position:relative; width:100%; height:100%; min-height:720px; border-radius:30px; overflow:hidden; background:#fff; border:1px solid rgba(25,21,18,.12); box-shadow:0 24px 64px rgba(64,48,36,.16); }
+.lj-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+.lj-photo.contain img { object-fit:contain; padding:22px; background:#fffdf7; }
+.lj-photo-caption { position:absolute; left:20px; right:20px; bottom:20px; background:rgba(255,253,247,.88); backdrop-filter:blur(8px); border:1px solid var(--line); border-radius:18px; padding:14px 16px; font-size:23px; line-height:1.2; font-weight:720; color:var(--ink); }
+.lj-callouts { display:grid; align-content:space-between; gap:16px; }
+.lj-callout { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:16px; box-shadow:0 10px 34px rgba(64,48,36,.10); min-height:150px; }
+.lj-callout h3 { margin:0 0 8px; font-size:27px; line-height:1; font-weight:850; }
+.lj-callout p { margin:0; font-size:21px; line-height:1.25; color:var(--muted); }
+.lj-callout img { width:100%; max-height:118px; object-fit:contain; margin-top:10px; }
+.lj-item-card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:16px; min-height:174px; box-shadow:0 12px 34px rgba(64,48,36,.11); }
+.lj-item-card h3 { margin:0 0 8px; font-size:28px; line-height:1; font-weight:860; }
+.lj-item-card p { margin:0; font-size:21px; line-height:1.26; color:var(--muted); font-weight:540; }
+.lj-item-card img { width:100%; height:104px; object-fit:contain; margin-top:10px; border-radius:12px; }
+.lj-detail-crop { width:78px; height:78px; border-radius:50%; overflow:hidden; border:5px solid #fff; box-shadow:0 0 0 1px var(--line), 0 8px 20px rgba(0,0,0,.12); margin-top:10px; background:#fff; }
+.lj-detail-crop img { width:100%; height:100%; object-fit:cover; display:block; }
+.swatch { width:54px; height:54px; border-radius:50%; border:5px solid #fff; box-shadow:0 0 0 1px var(--line), 0 6px 18px rgba(0,0,0,.12); margin-top:10px; background:var(--blue); }
+.lj-verdict { display:grid; grid-template-columns:1.05fr .95fr; gap:16px; border-top:1px solid var(--line); padding-top:14px; }
+.lj-verdict-card { background:rgba(255,255,255,.62); border:1px solid var(--line); border-radius:18px; padding:14px 18px; font-size:23px; line-height:1.22; font-weight:720; color:var(--muted); }
+.lj-verdict-card strong { color:var(--ink); }
+.lj-stamp { display:inline-flex; align-self:flex-start; transform:rotate(-2deg); background:var(--butter); border:2px solid rgba(25,21,18,.22); border-radius:999px; padding:9px 16px; font-size:23px; font-weight:850; }
+.lj-summary { display:flex; justify-content:center; gap:18px; border-top:1px solid var(--line); padding-top:14px; font-size:25px; font-weight:700; color:var(--muted); }
+.lj-summary strong { color:var(--ink); }
+.brand-signature::before { content:"「两克伴」出品"; }
+</style>
+</head>
+<body>
+
+<section class="poster xhs" id="lj-01" data-name="lj-01-result-board">
+  <div class="grain"></div>
+  <div class="tape t1"></div>
+  <div class="tape t2"></div>
+  <div class="content">
+    <h1 class="lj-title">柔和商务 OOTD</h1>
+    <div class="lj-meta">场景：第一次见客户 | 上海 18-24°C</div>
+    <div class="lj-reason">首选理由：专业但不硬</div>
+    <div class="lj-result-board">
+      <div class="lj-callouts">
+        <div class="lj-item-card"><h3>外套</h3><p>米色针织，降低距离感。</p><div class="swatch" style="background:#ded2bf"></div></div>
+        <div class="lj-item-card"><h3>鞋包</h3><p>黑色乐福鞋和托特包，稳重不抢戏。</p><div class="swatch" style="background:#151515"></div></div>
+        <div class="lj-callout"><h3>风格提醒</h3><p>避免过甜元素，保留干净线条。</p></div>
+      </div>
+      <div class="lj-photo-stage">
+        <div class="lj-photo">
+          <svg viewBox="0 0 440 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="outfit placeholder">
+            <rect width="440" height="760" fill="#fffdf7"/>
+            <circle cx="220" cy="96" r="48" fill="#e7c6ad"/>
+            <path d="M168 94c18-58 94-50 108 0 10 38-22 64-58 64-38 0-62-28-50-64Z" fill="#2a211d"/>
+            <path d="M145 170h150l28 210H118l27-210Z" fill="#cbddec"/>
+            <path d="M118 182h205v226H118z" fill="#e5d9c5" opacity=".82"/>
+            <path d="M142 382h156l-18 290H160l-18-290Z" fill="#171717"/>
+            <path d="M133 682h112v36H122c0-18 5-28 11-36Z" fill="#111"/>
+            <path d="M205 682h112c8 8 12 18 12 36H205z" fill="#111"/>
+          </svg>
+          <div class="lj-photo-caption">浅蓝衬衫 + 米色针织 + 黑色直筒裤</div>
+        </div>
+      </div>
+      <div class="lj-callouts">
+        <div class="lj-item-card"><h3>上衣</h3><p>浅蓝衬衫提亮肤色，保留职场感。</p><div class="swatch" style="background:#cbddec"></div></div>
+        <div class="lj-item-card"><h3>下装</h3><p>黑色直筒裤，利落显瘦。</p><div class="swatch" style="background:#171717"></div></div>
+        <div class="lj-callout"><h3>替换建议</h3><p>怕冷可加薄风衣，颜色仍保持浅中性色。</p></div>
+      </div>
+    </div>
+    <div class="lj-verdict">
+      <div class="lj-verdict-card"><strong>适配场景：</strong>见客户、通勤、轻商务。</div>
+      <div class="lj-verdict-card"><strong>风险提醒：</strong>首饰少量即可，不要堆叠。</div>
+    </div>
+    <div class="lj-summary"><span class="brand-signature"></span><strong>Lookbook Journal Validation</strong></div>
+  </div>
+</section>
+
+</body>
+</html>
