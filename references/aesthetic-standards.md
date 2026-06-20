@@ -6,12 +6,15 @@ This file defines the publishing-quality visual bar for 克克社交卡片. Use 
 
 When improving this Skill, optimize in this order:
 
-1. **System standards first**: define what good output means before changing examples.
-2. **Visual systems second**: improve Rednote Native, Proof Lab, Lookbook Journal, Editorial E-ink, and Swiss System as reusable systems.
-3. **Golden examples third**: create representative examples that prove the systems work.
-4. **Individual demos last**: use demos to verify the system, not as one-off hand-designed rescue work.
+1. **Template inheritance first**: preserve the source template grammar before judging beauty or adding new ideas.
+2. **System standards second**: define what good output means before changing examples.
+3. **Visual systems third**: improve Rednote Native, Proof Lab, Lookbook Journal, Editorial E-ink, and Swiss System as reusable systems.
+4. **Golden examples fourth**: create representative examples that prove the systems work.
+5. **Individual demos last**: use demos to verify the system, not as one-off hand-designed rescue work.
 
 Do not keep iterating on a single demo if the underlying visual system is weak.
+
+If a card looks publishable but no longer follows the inherited template grammar, treat it as a new visual system candidate, not as a valid upgrade of the original system.
 
 ## Publishing-Level Bar
 

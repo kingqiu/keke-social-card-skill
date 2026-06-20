@@ -4,7 +4,7 @@ Status: `Silver Candidate`
 
 Source article:
 
-`/Users/jimqiu/Library/CloudStorage/GoogleDrive-azhuaqiu@gmail.com/My Drive/Obsidian/Work/business/content-accounts/wechat/2026-06-14_Agent基础设施演进全景/v8_20260618_Agent基础设施演进全景_配图版.md`
+User-supplied long-form article: `Agent 基础设施演进全景`
 
 ## Source Thesis
 

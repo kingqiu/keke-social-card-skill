@@ -38,13 +38,29 @@ At 25% size, cover should show:
 2. Why it is worth tapping.
 3. Where proof/result lives.
 
+## Content Coverage QA
+
+- `BRIEF.md` explains why this card count was chosen.
+- Long-form sources are not forced into 3-5 cards when that would lose major arguments.
+- Page plan maps every non-cover card to a source heading, paragraph, image, screenshot, or user-provided note.
+- Cover states the topic/domain, timeframe or scope when relevant, and the core observation.
+- Each card can be understood without reading the original source.
+- Each card has one main job; unrelated source sections are not merged just to reduce page count.
+- Omitted or compressed source material is named in `QA.md`.
+- The deck does not invent claims, numbers, examples, or endorsements.
+
 ## Copy QA
 
 - Title is not exaggerated or misleading.
+- Title, cover, caption opening, and first 2 cards make the same promise.
+- Caption explains why the post matters before listing details.
+- Caption has 3-6 concrete takeaways, steps, or use cases.
+- Caption includes a natural comment/discussion prompt.
 - Caption does not invent facts.
-- Hashtags are relevant.
+- Hashtags are relevant and normally limited to 5-8.
 - High-risk claims are sourced or removed.
 - Copy matches the card images.
+- `copy-variants.md` includes title options, opening options, CTA/comment prompts, and hashtag alternatives.
 
 ## Asset QA
 

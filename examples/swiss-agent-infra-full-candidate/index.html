@@ -1,0 +1,1091 @@
+<!doctype html>
+<html lang="zh-CN" data-accent="ikb">
+<head>
+  <meta charset="utf-8">
+  <title>Agent 基础设施的 2026 上半年 · Xiaohongshu Full Deck</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+SC:wght@200;300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    /* =========================================================
+       Swiss International — Social Card Seed Template
+       ---------------------------------------------------------
+       Xiaohongshu board:
+         .poster.xhs      1080×1440  (3:4 小红书)
+
+       Accent switching via <html data-accent="…">:
+         ikb (Klein Blue) | lemon-yellow | lemon-green | safety-orange | peacock
+
+       Fill posters where marked <!-- POSTERS_HERE -->.
+       Each poster carries one Layout Recipe (S01-S12) from
+       references/layout-recipes.md.
+       ========================================================= */
+
+    /* ---------- 1. Accent palettes (5 mutually exclusive) ---------- */
+    :root,
+    [data-accent="ikb"] {
+      --paper: #fafaf8;
+      --ink: #0a0a0a;
+      --grey-1: #f0f0ee;
+      --grey-2: #d4d4d2;
+      --grey-3: #737373;
+      --accent: #002FA7;
+      --accent-on: #ffffff;
+    }
+    [data-accent="lemon-yellow"] {
+      --paper: #fafaf8;
+      --ink: #0a0a0a;
+      --grey-1: #f0f0ee;
+      --grey-2: #d4d4d2;
+      --grey-3: #737373;
+      --accent: #FFD500;
+      --accent-on: #0a0a0a;
+    }
+    [data-accent="lemon-green"] {
+      --paper: #fafaf8;
+      --ink: #0a0a0a;
+      --grey-1: #f0f0ee;
+      --grey-2: #d4d4d2;
+      --grey-3: #737373;
+      --accent: #C5E803;
+      --accent-on: #0a0a0a;
+    }
+    [data-accent="safety-orange"] {
+      --paper: #fafaf8;
+      --ink: #0a0a0a;
+      --grey-1: #f0f0ee;
+      --grey-2: #d4d4d2;
+      --grey-3: #737373;
+      --accent: #FF6B35;
+      --accent-on: #ffffff;
+    }
+    [data-accent="peacock"] {
+      --paper: #229453;
+      --ink: #f7fbfb;
+      --grey-1: rgba(255,240,201,.14);
+      --grey-2: rgba(255,240,201,.46);
+      --grey-3: rgba(247,251,251,.76);
+      --accent: #fff0c9;
+      --accent-on: #123f53;
+      --stone-blue: #123f53;
+      --rouge: #d35264;
+      --moon-white: #edf5f8;
+      --line-gold: #fff0c9;
+    }
+
+    /* ---------- 2. Typography stack ---------- */
+    :root {
+      --sans:    "Inter", "Helvetica Neue", Helvetica, "Noto Sans SC",
+                 -apple-system, "PingFang SC", "Microsoft YaHei UI", sans-serif;
+      --sans-zh: "Noto Sans SC", -apple-system, "PingFang SC",
+                 "Microsoft YaHei UI", "Inter", sans-serif;
+      --mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Consolas, monospace;
+    }
+
+    /* ---------- 3. Spacing tokens (8/12/16/24/32/40/48/64/80/96/160) ---------- */
+    :root {
+      --sp-3:   8px;
+      --sp-4:  12px;
+      --sp-5:  16px;
+      --sp-6:  24px;
+      --sp-7:  32px;
+      --sp-8:  40px;
+      --sp-9:  48px;
+      --sp-10: 64px;
+      --sp-11: 80px;
+      --sp-12: 96px;
+      --sp-13:160px;
+    }
+
+    /* ---------- 4. Reset & sheet ---------- */
+    *,*::before,*::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: #1a1a1a;
+      font-family: var(--sans);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 64px 32px;
+    }
+    .sheet {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+    }
+
+    /* ---------- 5. Poster boards (fixed export sizes) ---------- */
+    .poster {
+      position: relative;
+      background: var(--paper);
+      color: var(--ink);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .poster.xhs    { width: 1080px; height: 1440px; }
+    .poster.square { width: 1080px; height: 1080px; }
+    .poster.wide   { width: 2100px; height:  900px; }
+    .poster figure { margin: 0; }
+
+    .poster.xhs    .content { padding: var(--sp-12) var(--sp-11); }
+    .poster.square .content { padding: var(--sp-11) var(--sp-11); }
+    .poster.wide   .content { padding: var(--sp-11) var(--sp-13); }
+    .content { position: relative; width: 100%; height: 100%; z-index: 2; }
+    .brand-signature::before { content: "「两克伴」出品"; }
+
+    /* Optional decorative layers — opt in per poster */
+    .dot-mat,
+    .ring-mat,
+    .cross-mat {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .dot-mat {
+      opacity: .08;
+      background-image: radial-gradient(var(--ink) 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+    }
+    .ring-mat {
+      opacity: .08;
+      background-image: radial-gradient(circle at 50% 50%, transparent 4px, var(--ink) 4.5px, var(--ink) 5px, transparent 5.5px);
+      background-size: 32px 32px;
+    }
+    .cross-mat {
+      opacity: .06;
+      background-image:
+        linear-gradient(var(--ink), var(--ink)),
+        linear-gradient(90deg, var(--ink), var(--ink));
+      background-size: 1px 14px, 14px 1px;
+      background-position: center, center;
+      background-repeat: repeat;
+    }
+
+    /* ---------- 6. Typography roles (Swiss extreme contrast) ----------
+       Hard rule: "the larger, the lighter"
+       ≥ 200px → weight 200 (ExtraLight)
+       Smaller text gets heavier weight (≥ 500). */
+    .h-hero {
+      font-family: var(--sans);
+      font-weight: 200;
+      font-size: 240px;
+      line-height: 1.02;
+      letter-spacing: -.02em;
+      margin: 0;
+      color: var(--ink);
+    }
+    .h-statement {
+      font-family: var(--sans);
+      font-weight: 200;
+      font-size: 180px;
+      line-height: 1.05;
+      letter-spacing: -.015em;
+      margin: 0;
+      color: var(--ink);
+    }
+    .h-xl {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 120px;
+      line-height: 1.08;
+      letter-spacing: -.01em;
+      margin: 0;
+      color: var(--ink);
+    }
+    .h-md {
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 56px;
+      line-height: 1.18;
+      margin: 0;
+      color: var(--ink);
+    }
+    .lead {
+      font-family: var(--sans-zh);
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 1.55;
+      color: var(--ink);
+      margin: 0;
+    }
+    .body {
+      font-family: var(--sans-zh);
+      font-weight: 400;
+      font-size: 26px;
+      line-height: 1.6;
+      color: var(--ink);
+      margin: 0;
+    }
+    .t-cat {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0;
+    }
+    .t-meta {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 20px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--grey-3);
+      margin: 0;
+    }
+    .num-mega {
+      font-family: var(--sans);
+      font-weight: 200;
+      font-size: 200px;
+      line-height: .92;
+      letter-spacing: -.03em;
+      color: var(--ink);
+      margin: 0;
+    }
+    .num-xl {
+      font-family: var(--sans);
+      font-weight: 200;
+      font-size: 144px;
+      line-height: .96;
+      letter-spacing: -.02em;
+      margin: 0;
+    }
+    .mono { font-family: var(--mono); }
+
+    /* XHS (3:4) boards: 1080×1440 has the tightest vertical budget,
+       so display sizes step down vs the .wide default. These caps
+       were validated by the smoke-ai-tools deck — 2-line h-xl @96px
+       leaves room for matrix + hero-stat-bottom inside 1440px. */
+    .poster.xhs .h-hero          { font-size: 168px; }
+    .poster.xhs .h-statement     { font-size: 124px; }
+    .poster.xhs .h-xl            { font-size: 96px; }
+    .poster.xhs .num-mega        { font-size: 168px; }
+    .poster.xhs .num-xl          { font-size: 120px; }
+
+    /* Square boards tighten scales */
+    .poster.square .h-hero       { font-size: 180px; }
+    .poster.square .h-statement  { font-size: 140px; }
+    .poster.square .h-xl         { font-size: 88px; }
+    .poster.square .num-mega     { font-size: 168px; }
+    .poster.square .num-xl       { font-size: 112px; }
+
+    /* Wide boards rely on horizontal real estate */
+    .poster.wide .h-hero         { font-size: 200px; }
+    .poster.wide .h-statement    { font-size: 156px; }
+    .poster.wide .h-xl           { font-size: 104px; }
+
+    /* ---------- 7. Layout primitives ---------- */
+    .stack    { display: flex; flex-direction: column; }
+    .row      { display: flex; flex-direction: row; }
+    .gap-3    { gap: var(--sp-3); }
+    .gap-4    { gap: var(--sp-4); }
+    .gap-5    { gap: var(--sp-5); }
+    .gap-6    { gap: var(--sp-6); }
+    .gap-7    { gap: var(--sp-7); }
+    .gap-8    { gap: var(--sp-8); }
+    .gap-9    { gap: var(--sp-9); }
+    .gap-10   { gap: var(--sp-10); }
+    .grow     { flex: 1; }
+    .grid-12  { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--sp-7); }
+    .grid-2-9 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-9); }
+    .grid-3   { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-7); }
+    .grid-4   { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-6); }
+    .span-2   { grid-column: span 2; }
+    .span-3   { grid-column: span 3; }
+    .span-4   { grid-column: span 4; }
+    .span-6   { grid-column: span 6; }
+    .span-8   { grid-column: span 8; }
+    .span-9   { grid-column: span 9; }
+    .span-12  { grid-column: span 12; }
+    .center   { text-align: center; }
+    .right    { text-align: right; }
+    .uppercase{ text-transform: uppercase; }
+    .hr-hairline {
+      height: 1px;
+      background: var(--grey-2);
+      border: 0;
+      margin: 0;
+    }
+    .hr-accent {
+      height: 3px;
+      background: var(--accent);
+      border: 0;
+      width: 96px;
+      margin: 0;
+    }
+
+    /* ---------- 8. Card fills (mutually exclusive — pick ONE) ----------
+       Hard rule: never combine card-ink/card-accent/card-fill/card-outlined
+       on the same node. Multi-card grids must use the same class. */
+    .card-ink {
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--sp-8);
+    }
+    .card-ink .t-cat,
+    .card-ink .t-meta,
+    .card-ink .lead,
+    .card-ink .body,
+    .card-ink .h-md { color: var(--paper); }
+    .card-accent {
+      background: var(--accent);
+      color: var(--accent-on);
+      padding: var(--sp-8);
+    }
+    .card-accent .t-cat,
+    .card-accent .t-meta,
+    .card-accent .lead,
+    .card-accent .body,
+    .card-accent .h-md { color: var(--accent-on); }
+    .card-fill {
+      background: var(--grey-1);
+      color: var(--ink);
+      padding: var(--sp-8);
+    }
+    .card-outlined {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--grey-2);
+      padding: var(--sp-8);
+    }
+
+    /* ---------- 9. Frame containers (image holders) ---------- */
+    .frame-img {
+      position: relative;
+      overflow: hidden;
+      background: var(--grey-1);
+      display: block;
+      margin: 0;
+    }
+    .frame-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+    }
+    .frame-img.fit-contain img { object-fit: contain; background: var(--paper); }
+    .frame-img.r-3x4   { aspect-ratio: 3 / 4; }
+    .frame-img.r-1x1   { aspect-ratio: 1 / 1; }
+    .frame-img.r-4x3   { aspect-ratio: 4 / 3; }
+    .frame-img.r-16x9  { aspect-ratio: 16 / 9; }
+    .frame-img.r-16x10 { aspect-ratio: 16 / 10; }
+    .frame-img.r-21x9  { aspect-ratio: 21 / 9; }
+    .swiss-img-caption {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--grey-3);
+      margin-top: var(--sp-5);
+    }
+
+    /* ---------- 9b. Screenshot treatment (.frame-shot) ---------- */
+    /* Swiss is stricter than Editorial: corners default square, shadows default
+       none. Override only when the shot must literally float off the page.   */
+    .frame-shot {
+      position: relative;
+      overflow: hidden;
+      display: block;
+      margin: 0;
+      background: var(--grey-1);
+      border-radius: 0;
+    }
+    .frame-shot.corners-sq { border-radius: 0; }
+    .frame-shot.corners-sm { border-radius: 4px; }
+    .frame-shot.corners-md { border-radius: 10px; }
+
+    /* Swiss shadows are flat — only the subtle outline scrim is welcome */
+    .frame-shot.shadow-soft { box-shadow: 0 12px 28px -16px rgba(0,0,0,.18); }
+    .frame-shot.shadow-ed   { box-shadow: 0 20px 40px -20px rgba(0,0,0,.22), 0 0 0 1px var(--grey-2); }
+
+    /* background tones — pure / dot / grid only. No accent colour fills. */
+    .frame-shot.bg-paper    { background: var(--paper); }
+    .frame-shot.bg-grey-1   { background: var(--grey-1); }
+    .frame-shot.bg-ink      { background: var(--ink); }
+    .frame-shot.bg-grid     {
+      background-color: var(--paper);
+      background-image:
+        linear-gradient(to right, var(--grey-2) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grey-2) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .frame-shot.bg-dot {
+      background-color: var(--paper);
+      background-image: radial-gradient(var(--grey-2) 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+
+    /* asset backgrounds — ported from PPT skill, real texture for screenshot wells.
+       Use ONLY when current accent matches the asset's accent (don't mix oranges and IKB). */
+    .frame-shot.bg-asset-ikb-dot          { background: #0c1a3a url("../assets/screenshot-backgrounds/style-b/ikb-dot-gradient.webp")       center/cover no-repeat; }
+    .frame-shot.bg-asset-lemon-green-dot  { background: #d6e08a url("../assets/screenshot-backgrounds/style-b/lemon-green-dot-shadow.webp") center/cover no-repeat; }
+    .frame-shot.bg-asset-lemon-grid       { background: #e6e9b8 url("../assets/screenshot-backgrounds/style-b/lemon-grid.webp")             center/cover no-repeat; }
+    .frame-shot.bg-asset-safety-orange    { background: #ff5b1f url("../assets/screenshot-backgrounds/style-b/safety-orange-halftone.webp") center/cover no-repeat; }
+
+    .frame-shot.inset-none > img,
+    .frame-shot.inset-none > .shot-body { padding: 0; }
+    .frame-shot.inset-sub  { padding: 20px; }
+    .frame-shot.inset-bal  { padding: 48px; }
+
+    .frame-shot.r-3x4   { aspect-ratio: 3 / 4; }
+    .frame-shot.r-1x1   { aspect-ratio: 1 / 1; }
+    .frame-shot.r-4x3   { aspect-ratio: 4 / 3; }
+    .frame-shot.r-16x9  { aspect-ratio: 16 / 9; }
+    .frame-shot.r-16x10 { aspect-ratio: 16 / 10; }
+    .frame-shot.r-21x9  { aspect-ratio: 21 / 9; }
+    .frame-shot.r-3x2   { aspect-ratio: 3 / 2; }
+
+    .frame-shot > img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      border-radius: inherit;
+    }
+    .frame-shot.fit-cover > img { object-fit: cover; }
+
+    /* device chrome — CSS-only, no SVG */
+    .device-browser {
+      position: relative;
+      background: var(--paper);
+      border: 1px solid var(--grey-2);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .device-browser::before {
+      content: '';
+      display: block;
+      height: 32px;
+      background: var(--grey-1);
+      border-bottom: 1px solid var(--grey-2);
+      background-image:
+        radial-gradient(circle at 16px 16px, var(--grey-3) 4px, transparent 4.5px),
+        radial-gradient(circle at 34px 16px, var(--grey-3) 4px, transparent 4.5px),
+        radial-gradient(circle at 52px 16px, var(--grey-3) 4px, transparent 4.5px);
+    }
+    .device-browser > .frame-shot,
+    .device-browser > img {
+      border-radius: 0;
+      display: block;
+      width: 100%;
+    }
+    .device-phone {
+      position: relative;
+      background: var(--ink);
+      border-radius: 28px;
+      padding: 12px;
+      box-shadow: 0 16px 36px -18px rgba(0,0,0,.32);
+    }
+    .device-phone > .frame-shot,
+    .device-phone > img {
+      border-radius: 18px;
+      display: block;
+      width: 100%;
+    }
+
+    /* ---------- 9c. Map block (.map-block) ---------- */
+    /* Static map for Swiss decks. Pins are pure HTML, no SVG text.
+       Use accent sparingly: at most one accent pin per board. */
+    .map-block {
+      position: relative;
+      background: var(--grey-1);
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      width: 100%;
+    }
+    .map-block.r-16x10 { aspect-ratio: 16 / 10; }
+    .map-block.r-16x9  { aspect-ratio: 16 / 9; }
+    .map-block.r-1x1   { aspect-ratio: 1 / 1; }
+    .map-block.r-3x4   { aspect-ratio: 3 / 4; }
+    .map-block > img,
+    .map-block > svg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      display: block;
+    }
+    .map-block > img { object-fit: cover; }
+    /* desaturated tile filter to keep Swiss strict tone */
+    .map-block.tone-paper > img { filter: saturate(0) contrast(1.05) brightness(1.02); }
+    .map-block.tone-ink > img   { filter: saturate(0) brightness(.58); }
+    /* schematic SVG defaults */
+    .map-block > svg .map-coast { fill: none; stroke: var(--grey-2); stroke-width: .4; }
+    .map-block > svg .map-road  { fill: none; stroke: var(--grey-3); stroke-width: .28; stroke-dasharray: 1.2 .8; opacity: .7; }
+    .map-block > svg .map-water { fill: var(--grey-1); }
+    .map-block > svg .map-grid  { stroke: var(--grey-2); stroke-width: .15; opacity: .5; }
+
+    .map-pin {
+      position: absolute;
+      width: 0; height: 0;
+      transform: translate(-50%, -50%);
+    }
+    .map-pin .dot {
+      position: absolute;
+      left: -6px; top: -6px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--ink);
+      border: 2px solid var(--paper);
+      box-shadow: 0 1px 3px rgba(0,0,0,.22);
+    }
+    .map-pin.accent .dot { background: var(--accent); }
+    .map-pin .line {
+      position: absolute;
+      left: 7px; top: 0;
+      width: 28px; height: 1px;
+      background: var(--ink);
+      opacity: .55;
+    }
+    .map-pin.left .line { left: auto; right: 7px; }
+    .map-pin .card {
+      position: absolute;
+      left: 38px; top: -20px;
+      min-width: 80px;
+      padding: 8px 10px;
+      background: rgba(250,250,248,.94);
+      box-shadow: 0 0 0 1px var(--grey-2);
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .map-pin.left .card { left: auto; right: 38px; }
+    .map-pin .card .name {
+      font-family: var(--sans-zh), var(--sans);
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+    .map-pin .card .meta {
+      display: block;
+      margin-top: 4px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--grey-3);
+    }
+    .map-pin.accent .card .name { color: var(--accent); }
+
+    .map-legend {
+      position: absolute;
+      left: 14px; bottom: 14px;
+      z-index: 3;
+      background: rgba(250,250,248,.94);
+      padding: 8px 12px;
+      box-shadow: 0 0 0 1px var(--grey-2);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--grey-3);
+    }
+    .map-legend.tr { left: auto; right: 14px; top: 14px; bottom: auto; }
+
+    /* ---------- 10. Swiss-specific components ---------- */
+
+    /* S08 Image Hero (port of S22) */
+    .image-hero {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: var(--sp-7);
+      height: 100%;
+    }
+    .image-hero .hero-img-wrap {
+      position: relative;
+      overflow: hidden;
+      background: var(--grey-1);
+    }
+    .image-hero .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+    }
+    .image-hero .hero-overlay-block {
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: var(--paper);
+      padding: var(--sp-7) var(--sp-8);
+      max-width: 60%;
+    }
+    .image-hero .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-8);
+      align-items: end;
+      border-top: 1px solid var(--grey-2);
+      padding-top: var(--sp-7);
+    }
+    .image-hero .hero-stats .stat-block .num {
+      font-family: var(--sans);
+      font-weight: 200;
+      font-size: 96px;
+      line-height: 1;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin: 0 0 var(--sp-4);
+    }
+    .image-hero .hero-stats .stat-block .lbl {
+      font-family: var(--mono);
+      font-size: 18px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--grey-3);
+      margin: 0;
+    }
+
+    /* S09 KPI Tower (port of S06) */
+    .kpi-tower-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-7);
+      align-items: end;
+      height: 100%;
+    }
+    .kpi-tower-row .tower-col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-5);
+      align-items: flex-start;
+    }
+    .kpi-tower-row .tower-col .num {
+      font-family: var(--sans);
+      font-weight: 200;
+      font-size: 112px;
+      line-height: 1;
+      letter-spacing: -.02em;
+      margin: 0;
+    }
+    .kpi-tower-row .tower-col .lbl {
+      font-family: var(--mono);
+      font-size: 20px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--grey-3);
+      margin: 0;
+    }
+    .kpi-tower-row .tower-col .bar-tower {
+      width: 100%;
+      height: var(--h, 240px);
+      background: var(--accent);
+      transform-origin: bottom;
+    }
+    .kpi-tower-row .tower-col.muted .bar-tower {
+      background: var(--grey-2);
+    }
+    .poster.xhs .kpi-tower-row { grid-template-columns: 1fr 1fr; gap: var(--sp-9); }
+    .poster.square .kpi-tower-row { grid-template-columns: 1fr 1fr; gap: var(--sp-9); }
+
+    /* S10 H-Bar Chart (port of S07) */
+    .h-bar-chart {
+      display: grid;
+      gap: var(--sp-6);
+    }
+    .h-bar-chart .bar-row {
+      display: grid;
+      grid-template-columns: 220px 1fr 120px;
+      gap: var(--sp-6);
+      align-items: center;
+    }
+    .h-bar-chart .bar-row .row-lbl {
+      font-family: var(--sans-zh);
+      font-weight: 500;
+      font-size: 26px;
+      color: var(--ink);
+    }
+    .h-bar-chart .bar-row .row-track {
+      position: relative;
+      height: 28px;
+      background: var(--grey-1);
+    }
+    .h-bar-chart .bar-row .row-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: var(--w, 50%);
+      background: var(--accent);
+    }
+    .h-bar-chart .bar-row .row-val {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 26px;
+      letter-spacing: .04em;
+      text-align: right;
+      color: var(--ink);
+    }
+    /* On portrait the labels move above the track */
+    .poster.xhs .h-bar-chart .bar-row {
+      grid-template-columns: 1fr;
+      gap: var(--sp-4);
+    }
+    .poster.xhs .h-bar-chart .bar-row .row-val {
+      text-align: left;
+    }
+
+    /* S11 Stacked Ledger (port of S20) */
+    .stacked-ledger {
+      display: flex;
+      flex-direction: column;
+    }
+    .stacked-ledger .ledger-row {
+      display: grid;
+      grid-template-columns: 280px 1fr auto;
+      gap: var(--sp-7);
+      align-items: baseline;
+      padding: var(--sp-7) 0;
+      border-bottom: 1px solid var(--grey-2);
+    }
+    .stacked-ledger .ledger-row:first-child { padding-top: 0; }
+    .stacked-ledger .ledger-row:last-child  { border-bottom: 0; }
+    .stacked-ledger .ledger-num {
+      font-family: var(--sans);
+      font-weight: 200;
+      font-size: 112px;
+      line-height: 1;
+      letter-spacing: -.02em;
+      margin: 0;
+    }
+    .stacked-ledger .ledger-lbl {
+      font-family: var(--sans-zh);
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+    .stacked-ledger .ledger-lbl .sub {
+      display: block;
+      font-weight: 400;
+      font-size: 22px;
+      color: var(--grey-3);
+      margin-top: var(--sp-3);
+    }
+    .stacked-ledger .ledger-icn {
+      width: 56px;
+      height: 56px;
+      color: var(--accent);
+    }
+    .poster.square .stacked-ledger .ledger-num { font-size: 88px; }
+    .poster.square .stacked-ledger .ledger-row { grid-template-columns: 220px 1fr auto; }
+
+    /* S12 Matrix Fill (port of S15) */
+    .matrix-fill {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 1fr;
+      gap: var(--sp-5);
+    }
+    .matrix-fill .matrix-cell {
+      background: var(--grey-1);
+      padding: var(--sp-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+      min-height: 160px;
+    }
+    .matrix-fill .matrix-cell .cell-nb {
+      font-family: var(--mono);
+      font-size: 18px;
+      letter-spacing: .12em;
+      color: var(--grey-3);
+    }
+    .matrix-fill .matrix-cell .cell-title {
+      font-family: var(--sans-zh);
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+    .matrix-fill .matrix-cell.is-accent {
+      background: var(--accent);
+      color: var(--accent-on);
+    }
+    .matrix-fill .matrix-cell.is-accent .cell-nb,
+    .matrix-fill .matrix-cell.is-accent .cell-title { color: var(--accent-on); }
+    .hero-stat-bottom {
+      margin-top: var(--sp-9);
+      padding-top: var(--sp-7);
+      border-top: 1px solid var(--grey-2);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: var(--sp-7);
+    }
+    /* xhs uses 2 columns; up to 8 cells = 4 rows. Switch to min-content
+       so rows don't stretch and crowd out hero-stat-bottom (validated
+       in smoke-ai-tools/xhs-04). When pairing matrix-fill with
+       hero-stat-bottom inside .poster.xhs, prefer 6 cells (3 rows). */
+    .poster.xhs .matrix-fill {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: min-content;
+      gap: var(--sp-4);
+    }
+    .poster.xhs .matrix-fill .matrix-cell { min-height: 0; padding: var(--sp-5); }
+    .poster.xhs .matrix-fill .matrix-cell .cell-title { font-size: 24px; }
+    .poster.xhs .hero-stat-bottom {
+      margin-top: var(--sp-6);
+      padding-top: var(--sp-5);
+      align-items: center;
+    }
+    .poster.xhs .hero-stat-bottom .num-mega { font-size: 128px; line-height: 1; }
+    .poster.square .matrix-fill{ grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; }
+    .poster.square .matrix-fill .matrix-cell { min-height: 0; }
+
+    /* ---------- 11. Issue label + corner metadata ---------- */
+    .chrome-min {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 18px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--grey-3);
+      padding-bottom: var(--sp-6);
+      border-bottom: 1px solid var(--grey-2);
+      margin-bottom: var(--sp-9);
+    }
+
+    /* ---------- 12. Pair preview frame ---------- */
+    .pair-preview {
+      width: 2400px;
+      min-height: 1180px;
+      background: var(--grey-1);
+      padding: var(--sp-9);
+      display: grid;
+      grid-template-columns: 2100px 1080px;
+      grid-template-rows: 900px 1080px;
+      gap: var(--sp-9);
+      align-content: center;
+      justify-content: center;
+    }
+    .pair-preview .preview-wide   { grid-column: 1; grid-row: 1 / span 2; align-self: center; }
+    .pair-preview .preview-square { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+    .pair-preview .preview-label {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--grey-3);
+      margin-bottom: var(--sp-5);
+    }
+
+    /* ---------- 13. Hard rules (visual guard rails) ----------
+       Swiss style refuses these — uncomment to find offenders.
+    .poster *[style*="border-radius"],
+    .poster *[style*="box-shadow"],
+    .poster *[style*="linear-gradient"] { outline: 4px solid red !important; }
+    */
+  </style>
+</head>
+<body>
+  <!-- ACCENT_OVERRIDE
+       Change <html data-accent="…"> above to:
+       ikb | lemon-yellow | lemon-green | safety-orange | peacock
+       One deck — one accent. Never combine.
+  -->
+  <main class="sheet">
+
+    <section class="poster xhs" id="xhs-01" data-name="xhs-01-cover">
+      <div class="content stack gap-7">
+        <div class="chrome-min"><span>AGENT INFRA · 01</span><span class="brand-signature"></span></div>
+        <div class="stack gap-5">
+          <p class="t-cat">2026 上半年 / Agent 基础设施演进观察</p>
+          <h1 class="h-statement">Agent 基础设施<br>变厚</h1>
+          <p class="lead">这组卡看一个核心变化：Agent 从 demo 走向生产时，模型外面的运行时系统正在变得更厚。</p>
+        </div>
+        <figure class="frame-img r-16x9 fit-contain"><img src="assets/01-runtime-thickening-crop.png" alt="运行时变厚示意图"></figure>
+        <div class="hero-stat-bottom">
+          <p class="body">这里的运行时不是某个产品名，而是工具、权限、上下文、状态、审计、恢复、评估和人机介入组成的系统外壳。</p>
+          <p class="num-mega">01</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="poster xhs" id="xhs-02" data-name="xhs-02-model-to-deployment">
+      <div class="content stack gap-7">
+        <div class="chrome-min"><span>DEPLOYMENT / SHIFT</span><span class="brand-signature"></span></div>
+        <div class="stack gap-5">
+          <p class="t-cat">FROM MODEL TO DEPLOYMENT</p>
+          <h2 class="h-xl">从模型<br>到部署</h2>
+          <p class="lead">模型还是底座，但厂商的产品动作已经开始围绕岗位角色、任务状态、协作界面和部署证明展开。</p>
+        </div>
+        <figure class="frame-img r-16x9 fit-contain"><img src="assets/02-model-to-deployment-crop.png" alt="从模型能力转向部署能力"></figure>
+        <div class="matrix-fill">
+          <div class="matrix-cell is-accent"><span class="cell-nb">ROLE</span><span class="cell-title">Agent 不再只服务开发者，而是进入具体岗位流程</span></div>
+          <div class="matrix-cell"><span class="cell-nb">FLOW</span><span class="cell-title">角色、工具和工作流开始被产品化</span></div>
+          <div class="matrix-cell"><span class="cell-nb">PROOF</span><span class="cell-title">任务状态、CI、PR、崩溃重启都要能交代</span></div>
+          <div class="matrix-cell"><span class="cell-nb">POINT</span><span class="cell-title">竞争从单次回答，转向能否进入真实协作系统</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="poster xhs" id="xhs-03" data-name="xhs-03-fde-deployment">
+      <div class="content stack gap-7">
+        <div class="chrome-min"><span>FDE / DEPLOYMENT</span><span class="brand-signature"></span></div>
+        <div class="stack gap-5">
+          <p class="t-cat">FORWARD DEPLOYED ENGINEERING</p>
+          <h2 class="h-xl">部署<br>变成产品</h2>
+          <p class="lead">FDE 重新变热，说明企业 AI 的瓶颈不只是有没有模型，而是模型怎么进入复杂组织的生产流程。</p>
+        </div>
+        <figure class="frame-img r-16x9 fit-contain"><img src="assets/03-fde-bridge-crop.png" alt="FDE 连接技术栈和组织现场"></figure>
+        <div class="matrix-fill">
+          <div class="matrix-cell is-accent"><span class="cell-nb">AUDIT</span><span class="cell-title">先审计业务流程和权限边界</span></div>
+          <div class="matrix-cell"><span class="cell-nb">EVALS</span><span class="cell-title">再证明 AI 是否真的有效</span></div>
+          <div class="matrix-cell"><span class="cell-nb">DEPLOY</span><span class="cell-title">从最小自主权开始部署</span></div>
+          <div class="matrix-cell"><span class="cell-nb">ORG</span><span class="cell-title">系统要接住 Agent，组织也要接住 Agent</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="poster xhs" id="xhs-04" data-name="xhs-04-harness-boundary">
+      <div class="content stack gap-7">
+        <div class="chrome-min"><span>HARNESS / BOUNDARY</span><span class="brand-signature"></span></div>
+        <div class="stack gap-5">
+          <p class="t-cat">HARNESS AS BOUNDARY</p>
+          <h2 class="h-xl">Harness<br>是边界</h2>
+          <p class="lead">Harness 不只是提示词和工具的外壳，而是把 Agent 能做什么、不能做什么写进系统里。</p>
+        </div>
+        <figure class="frame-img r-16x9 fit-contain"><img src="assets/04-harness-boundary-crop.png" alt="Harness 边界示意图"></figure>
+        <div class="matrix-fill">
+          <div class="matrix-cell"><span class="cell-nb">DIR</span><span class="cell-title">目录读写要有范围，不靠模型自觉</span></div>
+          <div class="matrix-cell"><span class="cell-nb">CMD</span><span class="cell-title">危险命令要批准，不能自动放行</span></div>
+          <div class="matrix-cell"><span class="cell-nb">NET</span><span class="cell-title">网络和凭据要隔离，减少爆炸半径</span></div>
+          <div class="matrix-cell is-accent"><span class="cell-nb">HUMAN</span><span class="cell-title">失败以后要能停下，交给人兜底</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="poster xhs" id="xhs-05" data-name="xhs-05-api-cli-mcp">
+      <div class="content stack gap-7">
+        <div class="chrome-min"><span>CONNECTORS / ROUTING</span><span class="brand-signature"></span></div>
+        <div class="stack gap-5">
+          <p class="t-cat">API · CLI · MCP</p>
+          <h2 class="h-xl">不是站队<br>是选路由</h2>
+          <p class="lead">API、CLI、MCP 不该被当成信仰之争。真正要问的是：Agent 要接哪里，权限怎么管，结果要不要进上下文。</p>
+        </div>
+        <figure class="frame-img r-16x9 fit-contain"><img src="assets/05-api-cli-mcp-crop.png" alt="API CLI MCP 三种连接形态"></figure>
+        <div class="matrix-fill">
+          <div class="matrix-cell is-accent"><span class="cell-nb">API</span><span class="cell-title">单点能力清楚时，直接 API 最省事</span></div>
+          <div class="matrix-cell"><span class="cell-nb">CLI</span><span class="cell-title">本地开发场景里，命令行反馈最快</span></div>
+          <div class="matrix-cell"><span class="cell-nb">MCP</span><span class="cell-title">跨客户端和远程系统，需要标准化接入</span></div>
+          <div class="matrix-cell"><span class="cell-nb">RULE</span><span class="cell-title">工具很多时按需发现，别全塞进上下文</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="poster xhs" id="xhs-06" data-name="xhs-06-context-routing">
+      <div class="content stack gap-7">
+        <div class="chrome-min"><span>CONTEXT / ROUTING</span><span class="brand-signature"></span></div>
+        <div class="stack gap-5">
+          <p class="t-cat">FROM WINDOW TO SCHEDULING</p>
+          <h2 class="h-xl">上下文<br>变调度</h2>
+          <p class="lead">上下文能力不只是窗口变大，而是哪些信息常驻、按需加载、压缩，哪些留在工具和文件系统里。</p>
+        </div>
+        <figure class="frame-img r-16x9 fit-contain"><img src="assets/06-context-routing-crop.png" alt="上下文管理示意图"></figure>
+        <div class="matrix-fill">
+          <div class="matrix-cell is-accent"><span class="cell-nb">STATIC</span><span class="cell-title">系统提示、工具和项目规则要稳定，利于缓存</span></div>
+          <div class="matrix-cell"><span class="cell-nb">LOAD</span><span class="cell-title">参考资料和 Skills 应该按需进入上下文</span></div>
+          <div class="matrix-cell"><span class="cell-nb">COMPRESS</span><span class="cell-title">长任务要压缩中间状态，避免污染</span></div>
+          <div class="matrix-cell"><span class="cell-nb">TOOLS</span><span class="cell-title">大量中间结果留给工具处理，别都交给模型读</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="poster xhs" id="xhs-07" data-name="xhs-07-runtime-not-framework">
+      <div class="content stack gap-7">
+        <div class="chrome-min"><span>RUNTIME / PRODUCTION</span><span class="brand-signature"></span></div>
+        <div class="stack gap-5">
+          <p class="t-cat">NOT ONLY FRAMEWORK</p>
+          <h2 class="h-xl">需要 Runtime<br>不只是框架</h2>
+          <p class="lead">Demo 跑一次就结束；生产里的 Agent 要长期运行、保存状态、等待审批，并在出错后能查清楚发生了什么。</p>
+        </div>
+        <figure class="frame-img r-16x9 fit-contain"><img src="assets/07-runtime-not-framework-crop.png" alt="Runtime 不是 Framework"></figure>
+        <div class="matrix-fill">
+          <div class="matrix-cell is-accent"><span class="cell-nb">DURABLE</span><span class="cell-title">长任务要能持续执行和恢复</span></div>
+          <div class="matrix-cell"><span class="cell-nb">MEMORY</span><span class="cell-title">跨会话状态不能只靠聊天记录</span></div>
+          <div class="matrix-cell"><span class="cell-nb">TENANT</span><span class="cell-title">多用户和多租户需要隔离</span></div>
+          <div class="matrix-cell"><span class="cell-nb">TRACE</span><span class="cell-title">观测、审计和轨迹，是生产系统的底座</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="poster xhs" id="xhs-08" data-name="xhs-08-loop-engineering">
+      <div class="content stack gap-7">
+        <div class="chrome-min"><span>LOOP / FEEDBACK</span><span class="brand-signature"></span></div>
+        <div class="stack gap-5">
+          <p class="t-cat">LOOP ENGINEERING</p>
+          <h2 class="h-xl">重点不是循环<br>而是反馈</h2>
+          <p class="lead">让模型多跑几轮并不难。真正难的是每一轮之后有没有验证、事件、轨迹和改进机制。</p>
+        </div>
+        <figure class="frame-img r-16x9 fit-contain"><img src="assets/08-feedback-loop-crop.png" alt="Loop Engineering 反馈示意图"></figure>
+        <div class="matrix-fill">
+          <div class="matrix-cell"><span class="cell-nb">AGENT</span><span class="cell-title">模型判断下一步、调用工具、观察结果</span></div>
+          <div class="matrix-cell is-accent"><span class="cell-nb">VALIDATE</span><span class="cell-title">没有验证的 loop，只是在反复生成</span></div>
+          <div class="matrix-cell"><span class="cell-nb">EVENT</span><span class="cell-title">事件驱动让任务能被中断、恢复和继续</span></div>
+          <div class="matrix-cell"><span class="cell-nb">IMPROVE</span><span class="cell-title">分析轨迹和失败模式，才可能持续改进</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="poster xhs" id="xhs-09" data-name="xhs-09-enterprise-agent-routing">
+      <div class="content stack gap-7">
+        <div class="chrome-min"><span>ENTERPRISE / DECISION</span><span class="brand-signature"></span></div>
+        <div class="stack gap-5">
+          <p class="t-cat">BEFORE MULTI-AGENT</p>
+          <h2 class="h-xl">先分任务<br>再上 Agent</h2>
+          <p class="lead">Agent 变热，不等于所有任务都要 Agent 化。先判断任务是不是简单、路径是否稳定、步骤是否开放。</p>
+        </div>
+        <figure class="frame-img r-16x9 fit-contain"><img src="assets/09-agent-decision-map-crop.png" alt="任务分流示意图"></figure>
+        <div class="matrix-fill">
+          <div class="matrix-cell is-accent"><span class="cell-nb">SIMPLE</span><span class="cell-title">简单任务：一次模型调用就够，不要过度工程</span></div>
+          <div class="matrix-cell"><span class="cell-nb">STABLE</span><span class="cell-title">路径稳定：Workflow 更便宜、更可控、更好调试</span></div>
+          <div class="matrix-cell"><span class="cell-nb">OPEN</span><span class="cell-title">步骤开放：需要动态判断时，再交给 Agent</span></div>
+          <div class="matrix-cell"><span class="cell-nb">MULTI</span><span class="cell-title">多 Agent 要等真实瓶颈出现，再拆边界清楚的任务</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="poster xhs" id="xhs-10" data-name="xhs-10-second-half-watchlist">
+      <div class="content stack gap-7">
+        <div class="chrome-min"><span>2026 H2 / WATCHLIST</span><span class="brand-signature"></span></div>
+        <div class="stack gap-5">
+          <p class="t-cat">WHAT TO WATCH NEXT</p>
+          <h2 class="h-xl">下半年<br>看什么</h2>
+          <p class="lead">最值得跟踪的不是谁又发了漂亮 demo，而是谁能把 Agent 放进组织和真实系统里稳定运行。</p>
+        </div>
+        <div class="matrix-fill">
+          <div class="matrix-cell is-accent"><span class="cell-nb">DEPLOY</span><span class="cell-title">部署能力会不会成为厂商竞争核心</span></div>
+          <div class="matrix-cell"><span class="cell-nb">HARNESS</span><span class="cell-title">权限、沙箱、工具调用会不会平台化</span></div>
+          <div class="matrix-cell"><span class="cell-nb">CONTEXT</span><span class="cell-title">上下文裁剪、缓存和 Skills 怎么产品化</span></div>
+          <div class="matrix-cell"><span class="cell-nb">RUNTIME</span><span class="cell-title">谁能留下可复盘的运行轨迹</span></div>
+          <div class="matrix-cell"><span class="cell-nb">FDE</span><span class="cell-title">谁能进入客户现场，把流程和权限接起来</span></div>
+          <div class="matrix-cell"><span class="cell-nb">CHOICE</span><span class="cell-title">企业别只追新模型，要把边界和回滚先设计进去</span></div>
+        </div>
+        <div class="hero-stat-bottom">
+          <p class="body">这些活儿不花哨，但决定了 Agent 能不能从 demo 走到生产。</p>
+          <p class="num-mega">10</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lucide icon initialization (used by stacked ledger / matrix accents) -->
+  <script>
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
+  </script>
+</body>
+</html>

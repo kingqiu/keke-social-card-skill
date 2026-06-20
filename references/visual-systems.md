@@ -8,9 +8,34 @@ All visual systems must use the exact visible signature `「两克伴」出品` 
 
 Before using any visual system, apply `aesthetic-standards.md`. A visual system is not valid just because it renders. It must produce a publishable page family where page 2+ do not look weaker than the cover.
 
+## Shared Inheritance Rule
+
+The five visual systems are inherited template systems. They are not mood-board labels.
+
+- Use the matching seed template as the baseline for every production card set.
+- Preserve that template's native typography, palette discipline, spacing model, shape language, and layout primitives.
+- Additions must be scoped and compatible. Do not replace the system with a hand-made approximation.
+- If the desired effect needs different visual grammar, switch systems or create a clearly named new system.
+- Keke-specific value should appear in routing, page planning, Xiaohongshu copy, proof selection, and QA, not in loosening the inherited template standards.
+
+Inheritance status must be explicit:
+
+- `template-locked`: source template grammar is audited and protected by checks, but no accepted Gold example exists yet.
+- `locked`: template grammar is documented, checked, and has at least one accepted rendered example.
+- `pending-lock`: template exists but still needs source-template audit, contract checks, and accepted rendered examples.
+- Do not call a system visually mature until it reaches `locked`; `template-locked` only means the template baseline is safe to build on.
+
 ## Editorial E-ink
 
 Use for Xiaohongshu essays, travel, reading notes, culture, and quiet lifestyle cards.
+
+Status: `pending-lock`.
+
+Inheritance baseline:
+
+- Start from `assets/template-editorial-eink.html`.
+- Preserve the magazine-paper grammar: serif/Songti display, paper atmosphere, editorial pacing, image wells, ledgers, pull quotes, and restrained accent.
+- Do not turn it into a flat beige infographic or a sans-serif checklist system.
 
 Traits:
 
@@ -26,6 +51,15 @@ Avoid for screenshot-heavy tutorials or high-click result covers.
 
 Use for workplace, data, frameworks, checklists, structured comparisons.
 
+Status: `template-locked`; Gold example: `pending`.
+
+Inheritance baseline:
+
+- Start from `assets/template-swiss-system.html`.
+- Preserve strict Swiss grammar: light large type, grid alignment, hairline rules, straight modules, one accent color, and source template primitives.
+- Do not use rounded cards, shadows, multi-pastel blocks, heavy 800/900 display titles, or decorative stickers inside this system.
+- If a Xiaohongshu page needs warmer rounded proof cards, route it to Rednote Native or Proof Lab instead.
+
 Traits:
 
 - strict grid
@@ -33,11 +67,33 @@ Traits:
 - clean hierarchy
 - ledgers, matrices, numbered systems
 
+Required composition:
+
+- Each page must have a clear judgment, not only a neutral framework list.
+- Replace equal-weight PPT grids with one dominant thesis block plus supporting proof/check rows.
+- Use Rednote-friendly save value: decision tree, diagnostic checklist, myth/fact, before/after, or action ladder.
+- Cards may be strict, but should still feel hand-picked for the reader's scenario.
+- Page 2+ must include a reason to keep reading: a concrete test, a contradiction, a mistake to avoid, or a useful checklist.
+
+Good recipes:
+
+- Myth/fact block + six diagnostic questions.
+- Decision map image + three routing rules + one black verdict strip.
+- One oversized number/statement + compact ledger rows.
+
 Avoid turning it into generic corporate PPT.
 
 ## Rednote Native
 
 Use for Xiaohongshu first images that need feed-native stopping power.
+
+Status: `pending-lock`.
+
+Inheritance baseline:
+
+- Start from `assets/template-rednote-native.html`.
+- Preserve the feed-native grammar: oversized hook, concrete proof/result area, warm high-click color, sticker/brush energy, and thumbnail-first hierarchy.
+- Do not sterilize it into a clean corporate grid.
 
 Traits:
 
@@ -66,6 +122,14 @@ Avoid cheap big-character posters with no proof.
 
 Use for AI tools, app tutorials, screenshots, product workflows, before/after proof.
 
+Status: `pending-lock`.
+
+Inheritance baseline:
+
+- Start from `assets/template-proof-lab.html`.
+- Preserve the evidence-first grammar: large screenshot/result hero, bounded proof frame, measured callouts, and credible product-lab tone.
+- Do not shrink evidence into decoration or replace proof with abstract AI art.
+
 Traits:
 
 - screenshot/result as hero
@@ -92,6 +156,14 @@ Avoid fake robot art and unreadable screenshots.
 ## Lookbook Journal
 
 Use for outfit, beauty, food, home, product, gear, and result breakdown boards.
+
+Status: `pending-lock`.
+
+Inheritance baseline:
+
+- Start from `assets/template-lookbook-journal.html`.
+- Preserve the result-first board grammar: central inspectable result, surrounding item/detail notes, swatches/crops, paper texture, and controlled hand-note energy.
+- Do not turn it into an e-commerce spec sheet or a generic scrapbook.
 
 Traits:
 

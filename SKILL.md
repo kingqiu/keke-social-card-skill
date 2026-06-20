@@ -10,12 +10,12 @@ Create complete Xiaohongshu/Rednote publishing packages: rendered 3:4 card-style
 Architecture:
 
 ```text
-deterministic render workflow + Xiaohongshu visual systems + routing layer
+deterministic render workflow + locked source templates + Xiaohongshu routing/copy layer
 ```
 
 - Use seed HTML templates, local assets, HTML/CSS to PNG, platform specs, provenance files, and QA.
-- Use feed-native Xiaohongshu cover patterns, proof cards, paper styles, style packs, and quality gates.
-- Use routing to choose the visual system, copy strategy, image policy, and QA focus.
+- Preserve inherited template standards before adding new styling. Keke may route, adapt copy, and add QA; it must not replace a source template with a looser lookalike.
+- Use routing to choose the inherited visual system, copy strategy, image policy, and QA focus.
 
 ## Output Package
 
@@ -51,10 +51,12 @@ Do not replace the brackets, omit `出品`, use half-width punctuation, or show 
 Read only the relevant files:
 
 - `references/style-routing.md` for platform/category/intent routing.
+- `references/content-planning.md` before choosing card count or compressing long-form source material.
 - `references/aesthetic-standards.md` before designing or revising any card set.
 - `references/golden-examples.md` when creating examples, evaluating quality, or improving this Skill.
 - `references/gold-example-inputs.md` before creating or upgrading a `Gold` example.
 - `references/roadmap.md` when improving the Skill itself rather than producing a user card package.
+- `references/template-inheritance-audit.md` when locking or auditing inherited visual-system templates.
 - `references/visual-systems.md` when choosing among Editorial E-ink, Swiss System, Rednote Native, Proof Lab, and Lookbook Journal.
 - `references/xhs-feed-strategy.md` for Xiaohongshu first-image strategy.
 - `references/xhs-cover-quality.md` before delivering a Xiaohongshu cover.
@@ -62,6 +64,18 @@ Read only the relevant files:
 - `references/image-source-brief.md` when any user, AI-generated, or public image is used.
 - `references/platform-specs.md` for sizes and filenames.
 - `references/qa-checklist.md` before final delivery.
+
+## Template Inheritance Contract
+
+This Skill is an integration layer, not a freehand visual rewrite.
+
+- Start every card set from one of the seed templates in `assets/`.
+- Treat each seed template as the source of truth for typography, spacing, palette, shape language, and component behavior.
+- Do not rename a visual system while changing its grammar. If the template standard is changed, create a new visual system name instead.
+- Do not make "similar but softer" replacements for strict systems. A strict system must preserve its hard rules even when adapted for Xiaohongshu.
+- Keke-specific improvements belong in routing, Xiaohongshu copy, image policy, QA, example selection, and small wrapper components.
+- Any reusable CSS added to a source-derived template must be additive, scoped, and compatible with the template's existing primitives.
+- If a page cannot be made publishable while keeping the inherited template rules, route it to another visual system rather than diluting the current one.
 
 ## Workflow
 
@@ -88,15 +102,32 @@ C. 我找公开图源，记录到 SOURCES.md
 
 Accept the user's choice and do not keep re-prompting.
 
-### 2. Story
+### 2. Content Plan
 
-Compress the source into:
+Use `references/content-planning.md` before choosing page count.
+
+Do not default to 3-5 cards. Decide the smallest card set that preserves the source meaning:
 
 1. Core claim.
 2. Reader promise.
 3. Evidence/result.
-4. Page plan.
-5. One task per page.
+4. Source structure and major sections.
+5. Recommended card count.
+6. One task per page.
+
+For long-form or structured source material, create a page plan in `BRIEF.md` with:
+
+```text
+Card | Role | Source anchor | Must carry | Reader sentence | Visual proof | Cut
+```
+
+Rules:
+
+- Cover must include the domain/object, timeframe or scope when relevant, and the core observation.
+- Every non-cover card must map to a source anchor.
+- Card text must be understandable without the original article.
+- Do not compress unrelated major sections into one card only to keep the deck short.
+- If honest coverage needs more than 12 cards, split into Part 1 / Part 2.
 
 ### 3. Standard
 
@@ -131,8 +162,12 @@ Use `references/xhs-copywriting-guidelines.md`:
 
 - Generate `xiaohongshu-caption.md`.
 - Generate `copy-variants.md`.
-- Make title/caption match the image promise.
+- Make title, cover, caption opening, and first 2 cards match the same promise.
+- For long-form/framework posts, preserve the source meaning while making the copy understandable without the original article.
+- Include 3-5 title variants, 2-3 opening variants, 2-3 CTA/comment prompts, and compact/broader hashtag sets in `copy-variants.md`.
+- Use 5-8 relevant hashtags by default.
 - Avoid inflated claims, fake data, fake endorsements, and misleading tags.
+- Avoid hard external conversion pressure unless the user provides a compliant commercial flow.
 - Mark official/platform-rule uncertainty in `QA.md` when needed.
 
 ### 7. Build
@@ -142,6 +177,8 @@ Use `references/xhs-copywriting-guidelines.md`:
 - Replace `<!-- POSTERS_HERE -->` with one poster section per page.
 - Put assets under the task folder's `assets/`.
 - Render with `node scripts/render-social-deck.mjs <task-dir>`.
+- For long-form sources, check planning with `node scripts/check-content-plan.mjs <task-dir>`.
+- Check Xiaohongshu copy with `node scripts/check-xhs-copy.mjs <task-dir>`.
 - Validate only when requested or before final handoff: `node scripts/validate-social-deck.mjs <task-dir>`.
 
 ## Visual Systems
@@ -173,6 +210,8 @@ Final response should include:
 ## Non-Negotiables
 
 - Do not silently publish image-only output for Xiaohongshu when the user expects a post.
+- Do not approximate inherited templates from memory. Use the seed template and its rules as the baseline.
+- Do not call a result `Swiss System`, `Editorial E-ink`, `Rednote Native`, `Proof Lab`, or `Lookbook Journal` if it violates that system's template grammar.
 - Do not make claims not supported by the source.
 - Do not shrink screenshots or result images into decoration.
 - Do not let title/caption promise something the cards do not show.

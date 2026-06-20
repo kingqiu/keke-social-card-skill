@@ -4,6 +4,9 @@
   "type": "module",
   "description": "克克社交卡片 Skill: deterministic Chinese social card images plus Xiaohongshu copy packages.",
   "scripts": {
+    "check:inheritance": "node scripts/check-template-inheritance.mjs",
+    "check:content-plan": "node scripts/check-content-plan.mjs",
+    "check:xhs-copy": "node scripts/check-xhs-copy.mjs",
     "render": "node scripts/render-social-deck.mjs",
     "validate": "node scripts/validate-social-deck.mjs"
   },
