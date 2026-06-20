@@ -71,12 +71,46 @@ Recommended structure:
 5. Limitation: honest boundary if relevant.
 6. CTA: comment prompt asking for scenes, questions, feedback, or experience.
 
+Length:
+
+- Keep the main body within 1000 characters.
+- For long-form/framework posts, aim for 650-950 characters. Do not stop at a 200-character summary if the source has enough substance.
+- For simple tool launches or compact tips, 450-800 characters is usually enough.
+- Hashtags are separate from the main body, but the final post should still feel light enough to read in one scroll.
+
+## Human Voice Standard
+
+Use this section to keep copy from becoming flat, generic, or AI-flavored.
+
+The caption should feel like a specific person making a useful judgment, not a neutral product brochure.
+
+Borrow these principles from the Renwei writing standard:
+
+- **Position**: write from a visible position. The reader should know why this post matters to the writer: `我最近看 Agent，越来越不想只看模型榜` is stronger than `本文将介绍 Agent 基础设施趋势`.
+- **Cost**: let the judgment carry a little friction, tradeoff, or lived observation. Good copy can say `这些活不性感，但最容易决定能不能落地`.
+- **Handprint**: allow natural rhythm, mild self-correction, and ordinary wording. Do not over-polish every sentence into symmetrical slogans.
+- **White description first**: when unsure, describe the thing plainly. Do not invent poetic metaphors or abstract elevation.
+- **Few clever lines**: one memorable sentence is enough. Do not stack slogans.
+
+Good Xiaohongshu technical copy can still have personality:
+
+```text
+我以前也会先看模型榜。后来越看越觉得，Agent 真正卡住的地方，经常不在模型，而在模型外面那堆不太好看的东西：权限、上下文、工具、状态、审计、失败恢复。
+```
+
+This is better than:
+
+```text
+随着 AI 技术快速发展，Agent 基础设施正在重塑企业智能化新范式。
+```
+
 For long-form/framework posts:
 
 - Do not paste the whole article into the caption.
 - Do summarize the full card path so readers know why the carousel has this many pages.
 - Use plain language: one idea per paragraph or bullet.
 - Explain terms enough for a reader who has not read the article.
+- Add one angle that is not merely a table of contents: a personal observation, a tension, a mistake people make, or a reason the reader should care.
 - End with a discussion prompt, not a hard sell.
 
 Avoid:
@@ -89,6 +123,10 @@ Avoid:
 - Contact, transaction, or private-channel pressure unless the user explicitly provides a compliant commercial flow.
 - Repeating card text word for word.
 - Excessive "AI 味": empty adjectives, grand claims, and vague phrases like `赋能`, `颠覆`, `重塑未来` unless the source specifically uses and supports them.
+- Generic openings: `随着...快速发展`, `在当今时代`, `近年来`, `本文将`, `以下是`.
+- Meaning inflation: `标志着`, `彰显了`, `重新定义`, `开启新篇章`, `未来可期`.
+- Mechanical depth formulas: repeated `不是 X，而是 Y`, forced three-part parallelism, and slogan endings.
+- Decorative punctuation and emoji when they do not match the account voice.
 
 ## Hashtags
 
@@ -134,6 +172,10 @@ Check:
 - Does caption invent facts?
 - Does the title match the cover and card content?
 - Does the first paragraph explain why the reader should care?
+- Is the body within 1000 characters?
+- Is the body detailed enough for the source, not a tiny abstract?
+- Does the copy have a visible position, cost, or handprint?
+- Does it avoid generic AI/product-marketing language?
 - Is the body understandable without the original source?
 - Are there 3-6 concrete takeaways or use cases?
 - Is there a natural CTA/comment prompt?

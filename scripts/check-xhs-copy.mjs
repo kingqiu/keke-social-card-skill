@@ -27,6 +27,28 @@ const riskyTitleWords = [
   "100%",
 ];
 
+const aiFlavorPhrases = [
+  "随着",
+  "在当今",
+  "近年来",
+  "本文将",
+  "以下是",
+  "赋能",
+  "颠覆",
+  "重塑",
+  "重新定义",
+  "开启新篇章",
+  "未来可期",
+  "彰显",
+  "标志着",
+  "不容错过",
+  "令人惊叹",
+  "极致体验",
+  "值得注意的是",
+  "需要指出的是",
+  "总而言之",
+];
+
 const checks = [];
 
 function read(filePath) {
@@ -50,6 +72,10 @@ function countHashtags(text) {
   return [...text.matchAll(/#[\p{L}\p{N}_\-\u4e00-\u9fff]+/gu)].map((match) => match[0]);
 }
 
+function compactLength(text) {
+  return [...text.replace(/\s/g, "")].length;
+}
+
 const caption = read(captionPath);
 const variants = read(variantsPath);
 const qa = read(qaPath);
@@ -63,12 +89,17 @@ if (caption) {
   const body = section(caption, "正文");
   const tagsSection = section(caption, "标签");
   const hashtags = countHashtags(tagsSection || caption);
+  const bodyLength = compactLength(body);
 
   add(Boolean(title), "Caption has title section", "Add '# 小红书标题' with one final title.");
   add([...title].length >= 8 && [...title].length <= 40, "Title length is reasonable", "Keep final title roughly 8-40 Chinese characters.");
   add(!riskyTitleWords.some((word) => title.includes(word)), "Title avoids risky clickbait words", "Remove unsupported absolutes or low-quality bait words from the title.");
   add(Boolean(body), "Caption has body section", "Add '# 正文' with hook, promise, takeaways, limitation if relevant, and CTA.");
-  add(body.length >= 120, "Caption body is substantial", "Write enough body copy to explain the post without relying on the cards alone.");
+  add(bodyLength >= 450, "Caption body is substantial", "Write enough body copy to explain the post without relying on the cards alone; aim for 650-950 chars for long-form posts.");
+  add(bodyLength <= 1000, "Caption body stays within 1000 chars", "Keep the main body within 1000 characters.");
+  add(!aiFlavorPhrases.some((phrase) => body.includes(phrase) || title.includes(phrase)), "Copy avoids common AI-flavored phrases", "Remove generic AI/product-marketing language such as 赋能、重塑、未来可期、随着、本文将.");
+  add(!body.includes("——"), "Copy avoids em dash polish", "Use commas, periods, or plain rewrites instead of decorative em dashes.");
+  add((body.match(/不是/g) || []).length <= 1, "Copy limits mechanical contrast formulas", "Avoid repeated '不是 X，而是 Y' style formulas.");
   add(/评论|你觉得|你会|你最|留言|想看|欢迎|一起聊|你关注/i.test(body), "Caption includes natural CTA", "End with a natural comment prompt or discussion question.");
   add(Boolean(tagsSection), "Caption has hashtag section", "Add '# 标签' with 5-8 relevant tags.");
   add(hashtags.length >= 5 && hashtags.length <= 8, "Hashtag count is 5-8", "Use 5-8 relevant hashtags; avoid stuffing unrelated hot tags.");

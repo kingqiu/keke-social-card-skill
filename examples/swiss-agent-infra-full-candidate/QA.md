@@ -29,6 +29,9 @@ Standalone readability:
 
 - Title matches the cover promise: 2026 H1 Agent infrastructure is getting thicker.
 - Caption opening explains why the reader should care before listing card details.
+- Caption body stays within 1000 characters while remaining detailed enough for a long-form technical deck.
+- Caption has a visible human position: the writer is explaining why they no longer only watch model rankings.
+- Caption adds a reader-use angle: use the cards as a checklist for judging whether an Agent project can enter production.
 - Caption summarizes the 10-card path without pasting the full source article.
 - CTA is discussion-oriented, not hard conversion.
 - Hashtags: 8 relevant tags, no unrelated hot tags.

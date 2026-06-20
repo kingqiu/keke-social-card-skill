@@ -54,6 +54,10 @@ At 25% size, cover should show:
 - Title is not exaggerated or misleading.
 - Title, cover, caption opening, and first 2 cards make the same promise.
 - Caption explains why the post matters before listing details.
+- Main body stays within 1000 characters.
+- Main body is detailed enough for the source; long-form/framework posts should not collapse into a tiny abstract.
+- Copy has a visible human position, friction, or handprint instead of a neutral brochure voice.
+- Copy avoids common AI-flavored phrases such as `赋能`, `重塑`, `重新定义`, `随着...发展`, and `未来可期`.
 - Caption has 3-6 concrete takeaways, steps, or use cases.
 - Caption includes a natural comment/discussion prompt.
 - Caption does not invent facts.
