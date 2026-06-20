@@ -204,7 +204,7 @@ Avoid fake robot art and unreadable screenshots.
 
 Use for outfit, beauty, food, home, product, gear, and result breakdown boards.
 
-Status: `template-locked`; Gold example: `pending`.
+Status: `locked`; Gold example: `examples/lookbook-outfit-gold-candidate`.
 
 Inheritance baseline:
 

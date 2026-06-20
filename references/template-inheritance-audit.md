@@ -91,11 +91,12 @@ Template-locked because:
 
 ## Lookbook Journal
 
-Status: `template-locked`; Gold example: `pending`.
+Status: `locked`; Gold example: `examples/lookbook-outfit-gold-candidate`.
 
 Audit result:
 
 - The Lookbook Journal seed keeps the result-first board grammar, central inspectable result, surrounding item/detail notes, swatches/crops, paper texture, and controlled hand-note energy.
+- The accepted Gold example is `examples/lookbook-outfit-gold-candidate`, covering outfit/lifestyle cards with generated bitmap assets, item logic, texture close-ups, and Xiaohongshu copy.
 - Public card branding is added only through `.brand-signature::before`, with exact text `「两克伴」出品`.
 - Lookbook Journal must remain lifestyle/product-result led, not become an e-commerce spec sheet or generic scrapbook.
 
@@ -109,8 +110,10 @@ Guard:
 - `npm run validate:lookbook-journal`
 - `npm run check:inheritance`
 
-Template-locked because:
+Locked because:
 
 - Native primitives are protected by inheritance checks.
 - Smoke validation renders and checks result board structure, central result size, item cards, verdict strip, overflow, and brand signature.
-- No accepted Gold example exists yet.
+- `examples/lookbook-outfit-gold-candidate` is accepted as the Lookbook Journal Gold reference.
+- Manual visual review confirms page 2+ do not collapse into weak template filler.
+- Realistic bitmap assets are documented and used inside the inherited template rather than replacing the whole card with generated posters.

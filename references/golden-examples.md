@@ -26,6 +26,7 @@ Accepted Gold references:
 | Scenario | Example |
 |---|---|
 | AI workflow/tutorial | `examples/proof-lab-skill-handbook-candidate` |
+| Outfit/beauty/lifestyle | `examples/lookbook-outfit-gold-candidate` |
 | Opinion/framework | `examples/swiss-agent-infra-full-candidate` |
 
 ## Example Package Requirements

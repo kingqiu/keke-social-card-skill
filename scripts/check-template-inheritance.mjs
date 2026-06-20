@@ -81,8 +81,8 @@ for (const required of [".lj-title", ".lj-result-board", ".lj-photo", ".lj-callo
 }
 
 const lookbookSection = visualSystems.match(/## Lookbook Journal[\s\S]*?(?=\n## |\n$)/)?.[0] || "";
-if (!lookbookSection.includes("Status: `template-locked`; Gold example: `pending`.")) {
-  failures.push("Lookbook Journal status must be `template-locked` until a Gold example is accepted");
+if (!lookbookSection.includes("Status: `locked`; Gold example: `examples/lookbook-outfit-gold-candidate`.")) {
+  failures.push("Lookbook Journal status must be `locked` with the accepted Gold example path");
 }
 
 if (failures.length) {
