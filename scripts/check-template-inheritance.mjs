@@ -48,10 +48,17 @@ for (const rule of proofLabForbidden) {
   }
 }
 
-for (const required of [".pl-evidence-hero", ".pl-step-flow", ".pl-before-after", ".brand-signature::before"]) {
+for (const required of [".pl-evidence-hero", ".pl-proof-inspector", ".pl-inspector-media", ".pl-inspector-rail", ".pl-step-flow", ".pl-before-after", ".brand-signature::before"]) {
   if (!proofLab.includes(required)) {
     failures.push(`Proof Lab template missing required primitive ${required}`);
   }
+}
+
+if (/\.pl-evidence-hero\s*\{[^}]*background:\s*var\(--dark\)/s.test(proofLab)) {
+  failures.push("Proof Lab default evidence hero must use a light proof surface, not var(--dark)");
+}
+if (/\.proof-frame\s*\{[^}]*background:\s*var\(--dark\)/s.test(proofLab)) {
+  failures.push("Proof Lab default proof frame must use a light proof surface, not var(--dark)");
 }
 
 if (!/\.pl-before-after\s+\.pl-shot-box\s*\{[^}]*flex:\s*0\s+0\s+\d+px;[^}]*height:\s*\d+px;/s.test(proofLab)) {

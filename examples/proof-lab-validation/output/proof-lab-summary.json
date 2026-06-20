@@ -7,8 +7,10 @@
       "overflow": 0,
       "hasBrand": true,
       "hasHero": true,
-      "heroRatio": 0.5586975549768518,
+      "heroRatio": 0.5985861545138889,
       "callouts": 0,
+      "hasInspector": true,
+      "inspectorItems": 3,
       "steps": 0,
       "beforeAfter": false
     },
@@ -20,6 +22,8 @@
       "hasHero": false,
       "heroRatio": 0,
       "callouts": 0,
+      "hasInspector": false,
+      "inspectorItems": 0,
       "steps": 3,
       "beforeAfter": false
     },
@@ -31,6 +35,8 @@
       "hasHero": false,
       "heroRatio": 0,
       "callouts": 0,
+      "hasInspector": false,
+      "inspectorItems": 0,
       "steps": 0,
       "beforeAfter": true
     }

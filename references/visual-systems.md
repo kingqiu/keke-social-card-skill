@@ -91,6 +91,7 @@ Required composition:
 - Use Rednote-friendly save value: decision tree, diagnostic checklist, myth/fact, before/after, or action ladder.
 - Cards may be strict, but should still feel hand-picked for the reader's scenario.
 - Page 2+ must include a reason to keep reading: a concrete test, a contradiction, a mistake to avoid, or a useful checklist.
+- Do not place a giant `01` on the cover, and do not use bottom-right page serials as decoration. Large numeric typography is for metrics, framework steps, or interior page structure, not pagination.
 
 Good recipes:
 
@@ -179,6 +180,8 @@ Inheritance baseline:
 - Start from `assets/template-proof-lab.html`.
 - Preserve the evidence-first grammar: large screenshot/result hero, bounded proof frame, measured callouts, and credible product-lab tone.
 - Do not shrink evidence into decoration or replace proof with abstract AI art.
+- Use `.pl-proof-inspector`, `.pl-inspector-media`, and `.pl-inspector-rail` when a diagram, screenshot, or workflow state needs to be inspected rather than merely shown.
+- Default Proof Lab proof surfaces should be light: use paper/surface backgrounds, fine borders, and restrained shadows. Do not use large black proof blocks outside `SL-05 Signal Noir` or a small local status element.
 - Use only declared Signal theme tokens `SL-01 Electric Blue`, `SL-02 Graphite Mint`, `SL-03 Safety Coral`, `SL-04 Acid Lime`, or `SL-05 Signal Noir`.
 - Do not add one-off hex colors or per-card overrides for core theme variables. Switch `data-theme` instead.
 
@@ -192,7 +195,9 @@ Traits:
 Required composition:
 
 - At least 55% of the card should be occupied by the screenshot/result/proof area when proof is the page purpose.
-- Use a dark or bounded proof frame only when it improves readability; avoid decorative browser chrome that steals space.
+- Inspector pages must give the proof image/state the dominant width; explanatory rails sit below or beside it and must not make the proof unreadable.
+- Use a bounded proof frame when it improves readability; reserve dark proof frames for `SL-05 Signal Noir` or small status/chrome details.
+- Do not place a giant `01` in the cover footer or a right-bottom page serial on interior pages. Proof Lab footers should use takeaway text plus a semantic label such as `Step Flow`, not `02`.
 - Callouts must point to actual visible details. Do not label invisible or tiny content.
 - Step cards should read as a sequence with one action/result per step.
 - The title states the benefit, not the implementation detail.
@@ -203,7 +208,7 @@ Template validation:
 - Run `npm run validate:proof-lab-themes`.
 - Run `npm run check:proof-lab-theme`.
 - The validation sample lives in `examples/proof-lab-validation`.
-- The validation checks evidence hero size, step-flow structure, before/after structure, overflow, callout count, and exact brand signature.
+- The validation checks evidence hero size, proof inspector structure, step-flow structure, before/after structure, overflow, callout count, and exact brand signature.
 - The theme validation renders all five Signal themes and checks background/text, accent-label, surface, and proof-frame contrast.
 - The theme contract check blocks non-contract hex colors and core theme variable redeclarations outside `:root` / `html[data-theme]`.
 - Gold reference is `examples/proof-lab-skill-handbook-candidate`, covering diagram-heavy AI workflow/tutorial content with portrait-fit decisions and Xiaohongshu copy.

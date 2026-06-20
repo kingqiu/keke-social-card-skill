@@ -16,7 +16,7 @@ Card count: 10
 - Proof Lab treatment keeps supplied diagrams as visible evidence, with `object-fit: contain` on technical diagrams.
 - The cover keeps the Proof Lab HTML/CSS template and uses a portrait-first GPT Image 2 bitmap redraw only for the inserted hero illustration asset.
 - Card 02 replaces two landscape auxiliary concept images with portrait GPT Image 2 bitmap redraws so the definition comparison fills the vertical card intentionally.
-- Five pattern pages use original source diagrams plus a right-side evidence ledger for when to use the pattern, main risk, and expected output.
+- Five pattern pages use original source diagrams as large inspectable evidence, with the evidence ledger moved below the diagram so the proof is not reduced to a decorative thumbnail.
 - The final page switches to a text board because the source conclusion is conceptual, not diagram-led.
 - Brand signature uses the required exact mark: `「两克伴」出品`.
 

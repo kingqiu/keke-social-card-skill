@@ -39,9 +39,11 @@ Status: `locked`; Gold example: `examples/proof-lab-skill-handbook-candidate`.
 Audit result:
 
 - The Proof Lab seed keeps the Signal Ledger / Graphite Mint evidence-first grammar.
+- The Proof Lab seed includes proof-inspector primitives (`.pl-proof-inspector`, `.pl-inspector-media`, `.pl-inspector-rail`) so evidence images stay inspectable instead of becoming decorative thumbnails.
+- The Proof Lab default proof surface is light, with fine borders and restrained shadows. Large black proof blocks are reserved for `SL-05 Signal Noir` or small status elements.
 - The Proof Lab seed now declares and validates the full `SL-01` to `SL-05` Signal theme token set and blocks one-off per-card palette drift.
 - The accepted Gold example is `examples/proof-lab-skill-handbook-candidate`, upgraded with portrait cover redraw, pattern evidence ledgers, caption package, and portrait-fit decisions.
-- Native primitives are `pl-evidence-hero`, `pl-callout`, `pl-step-flow`, `pl-before-after`, `pl-proof-side`, and `pl-takeaway`.
+- Native primitives are `pl-evidence-hero`, `pl-proof-inspector`, `pl-inspector-media`, `pl-inspector-rail`, `pl-callout`, `pl-step-flow`, `pl-before-after`, `pl-proof-side`, and `pl-takeaway`.
 - Public card branding is added only through `.brand-signature::before`, with exact text `「两克伴」出品`.
 - Proof Lab must keep screenshots/results as the visual center; abstract AI art and generic robot illustrations are not valid proof.
 
@@ -60,6 +62,7 @@ Locked because:
 
 - A real AI workflow/tutorial Gold example exists and is rendered.
 - Proof/result areas are inspectable and not decorative.
+- Smoke validation renders and checks proof inspector structure in addition to proof/result size.
 - Manual visual review confirms page 2+ do not collapse into generic SaaS UI.
 - `npm run check:all -- examples/proof-lab-skill-handbook-candidate` passes.
 

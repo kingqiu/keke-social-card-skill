@@ -95,29 +95,35 @@ body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
 .sl-display { font-family: var(--sl-display); font-size: 72px; line-height: 1.00; letter-spacing: 0; font-weight: 580; margin: 0; }
 .sl-body { font-family: var(--sl-body); font-size: 25px; line-height: 1.38; letter-spacing: 0; font-weight: 440; color: var(--muted); margin: 0; }
 .sl-caption { font-family: var(--sl-label); font-size: 15px; line-height: 1.28; letter-spacing: .04em; color: var(--muted); }
-.sl-number { font-family: var(--sl-num); font-size: 92px; line-height: .92; letter-spacing: 0; font-weight: 620; color: var(--accent); font-variant-numeric: tabular-nums; }
+.sl-number { font-family: var(--sl-num); font-size: 34px; line-height: 1; letter-spacing: 0; font-weight: 620; color: var(--accent); font-variant-numeric: tabular-nums; }
 .sl-mono { font-family: var(--sl-mono); font-size: 18px; line-height: 1.34; letter-spacing: 0; font-variant-numeric: tabular-nums; }
 .sl-quote { font-family: var(--sl-display); font-size: 38px; line-height: 1.12; font-weight: 520; }
 .latin { font-family: var(--sl-label); }
 .num { font-family: var(--sl-num); font-variant-numeric: tabular-nums; }
 .mono { font-family: var(--sl-mono); font-variant-numeric: tabular-nums; }
 .surface { background: var(--surface); border: 1px solid var(--line); padding: 28px; }
-.proof-frame { background: var(--dark); color: var(--proof-on-dark); border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line)); padding: 22px; }
+.proof-frame { background: var(--surface); color: var(--fg); border: 1px solid color-mix(in srgb, var(--accent) 26%, var(--line)); padding: 22px; }
 .pl-page { height:100%; display:grid; grid-template-rows:auto 1fr auto; gap:26px; }
 .pl-head { display:grid; gap:14px; }
 .pl-title { margin:0; font-family:var(--sl-display); font-size:78px; line-height:.98; letter-spacing:0; font-weight:640; max-width:930px; }
 .pl-subtitle { margin:0; font-size:28px; line-height:1.32; color:var(--muted); font-weight:470; max-width:850px; }
 .pl-proof-layout { min-height:0; display:grid; grid-template-rows:minmax(650px, 1fr) auto; gap:22px; }
-.pl-evidence-hero { position:relative; min-height:0; border-radius:34px; overflow:hidden; background:var(--dark); color:var(--proof-on-dark); box-shadow:0 26px 70px rgba(20,24,23,.25); border:1px solid color-mix(in srgb, var(--surface) 16%, transparent); }
+.pl-evidence-hero { position:relative; min-height:0; border-radius:34px; overflow:hidden; background:var(--surface); color:var(--fg); box-shadow:0 22px 56px rgba(20,24,23,.13); border:1px solid color-mix(in srgb, var(--accent) 20%, var(--line)); }
 .pl-evidence-hero img { width:100%; height:100%; object-fit:cover; display:block; }
-.pl-evidence-hero.contain img { object-fit:contain; background:var(--dark); padding:26px; }
-.pl-browser-bar { position:absolute; left:0; right:0; top:0; height:54px; display:flex; align-items:center; gap:10px; padding:0 22px; background:rgba(0,0,0,.34); backdrop-filter:blur(10px); }
+.pl-evidence-hero.contain img { object-fit:contain; background:var(--surface); padding:26px; }
+.pl-browser-bar { position:absolute; left:0; right:0; top:0; height:54px; display:flex; align-items:center; gap:10px; padding:0 22px; background:color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
 .pl-dot { width:14px; height:14px; border-radius:50%; background:var(--accent); }
-.pl-dot:nth-child(2) { background:var(--line); }
-.pl-dot:nth-child(3) { background:var(--muted); }
-.pl-zoom-card { position:absolute; right:28px; bottom:28px; width:330px; background:var(--surface); color:var(--fg); border:1px solid var(--line); padding:20px; box-shadow:0 18px 52px rgba(0,0,0,.24); }
+.pl-dot:nth-child(2) { background:color-mix(in srgb, var(--accent) 32%, var(--line)); }
+.pl-dot:nth-child(3) { background:color-mix(in srgb, var(--muted) 52%, var(--line)); }
+.pl-zoom-card { position:absolute; right:28px; bottom:28px; width:330px; background:var(--surface); color:var(--fg); border:1px solid var(--line); padding:20px; box-shadow:0 16px 40px rgba(20,24,23,.13); }
 .pl-zoom-card b { display:block; font-size:28px; line-height:1.08; margin-bottom:8px; }
 .pl-zoom-card span { display:block; font-size:21px; line-height:1.25; color:var(--muted); }
+.pl-proof-inspector { padding:22px; display:grid; grid-template-rows:minmax(0,1fr) auto; gap:16px; align-items:stretch; }
+.pl-inspector-media { min-height:0; border-radius:18px; overflow:hidden; border:1px solid var(--line); background:var(--surface); display:grid; place-items:center; }
+.pl-inspector-media img { width:100%; height:100%; object-fit:contain; display:block; background:var(--surface); }
+.pl-inspector-rail { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.pl-inspector-rail span { display:block; min-height:76px; padding:12px 14px; background:var(--surface); color:var(--fg); border:1px solid var(--line); font-size:20px; line-height:1.18; font-weight:640; }
+.pl-inspector-rail b { display:block; margin-bottom:6px; color:var(--accent); font-size:14px; line-height:1; letter-spacing:.08em; font-family:var(--sl-label); }
 .pl-callout-row { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
 .pl-callout { background:var(--surface); border:1px solid var(--line); padding:24px; min-height:170px; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 12px 34px rgba(20,24,23,.08); }
 .pl-callout h3 { margin:0; font-size:36px; line-height:1.02; font-weight:640; }
@@ -135,17 +141,17 @@ body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
 .pl-shot-box img { width:100%; height:100%; object-fit:cover; }
 .pl-takeaway { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:20px 0 0; border-top:1px solid var(--line); color:var(--muted); font-size:21px; }
 .brand-signature::before { content:"「两克伴」出品"; }
-.fake-ui { width:100%; height:100%; padding:88px 38px 34px; display:grid; grid-template-rows:auto 1fr auto; gap:24px; background:var(--dark); }
-.fake-ui h3 { margin:0; color:var(--proof-on-dark); font-size:44px; line-height:1; }
+.fake-ui { width:100%; height:100%; padding:88px 38px 34px; display:grid; grid-template-rows:auto 1fr auto; gap:24px; background:linear-gradient(180deg, var(--surface), var(--soft)); }
+.fake-ui h3 { margin:0; color:var(--fg); font-size:44px; line-height:1; }
 .fake-ui .rows { display:grid; gap:14px; align-content:start; }
 .fake-ui .row { height:34px; border-radius:999px; background:var(--accent); }
-.fake-ui .row:nth-child(2) { width:74%; background:var(--proof-on-dark); }
+.fake-ui .row:nth-child(2) { width:74%; background:color-mix(in srgb, var(--accent) 18%, var(--surface)); border:1px solid var(--line); }
 .fake-ui .row:nth-child(3) { width:88%; opacity:.62; }
 .fake-ui .row:nth-child(4) { width:58%; opacity:.42; }
 .fake-ui .result { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
-.fake-ui .metric { border:1px solid color-mix(in srgb, var(--surface) 18%, transparent); padding:16px; color:var(--proof-on-dark); }
+.fake-ui .metric { border:1px solid var(--line); background:var(--surface); padding:16px; color:var(--fg); }
 .fake-ui .metric b { display:block; font-size:38px; line-height:1; color:var(--accent); }
-.fake-ui .metric span { display:block; margin-top:8px; font-size:17px; color:color-mix(in srgb, var(--proof-on-dark) 72%, transparent); }
+.fake-ui .metric span { display:block; margin-top:8px; font-size:17px; color:var(--muted); }
 .mini-ui { width:100%; height:100%; padding:18px; display:grid; gap:12px; align-content:start; background:var(--dark); }
 .mini-ui .bar { height:26px; border-radius:999px; background:var(--accent); }
 .mini-ui .bar:nth-child(2) { width:76%; background:var(--proof-on-dark); }
@@ -164,21 +170,27 @@ body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
       <p class="pl-subtitle">截图和产物必须成为画面主角，标题只负责告诉读者为什么值得看。</p>
     </header>
     <main class="pl-proof-layout proof-only">
-      <div class="pl-evidence-hero">
+      <div class="pl-evidence-hero pl-proof-inspector">
         <div class="pl-browser-bar"><span class="pl-dot"></span><span class="pl-dot"></span><span class="pl-dot"></span></div>
-        <div class="fake-ui">
-          <h3>Workflow Result</h3>
-          <div class="rows"><div class="row"></div><div class="row"></div><div class="row"></div><div class="row"></div></div>
-          <div class="result">
-            <div class="metric"><b>3</b><span>inputs checked</span></div>
-            <div class="metric"><b>8</b><span>steps traced</span></div>
-            <div class="metric"><b>1</b><span>final artifact</span></div>
+        <div class="pl-inspector-media">
+          <div class="fake-ui">
+            <h3>Workflow Result</h3>
+            <div class="rows"><div class="row"></div><div class="row"></div><div class="row"></div><div class="row"></div></div>
+            <div class="result">
+              <div class="metric"><b>3</b><span>inputs checked</span></div>
+              <div class="metric"><b>8</b><span>steps traced</span></div>
+              <div class="metric"><b>1</b><span>final artifact</span></div>
+            </div>
           </div>
         </div>
-        <div class="pl-zoom-card"><b>证据要能看清</b><span>proof 区域不能缩成装饰图。</span></div>
+        <div class="pl-inspector-rail">
+          <span><b>READABLE</b>证据区不能缩成装饰图。</span>
+          <span><b>VISIBLE</b>结果、步骤、状态要能被检查。</span>
+          <span><b>LIMIT</b>说明服务证据，不抢主角。</span>
+        </div>
       </div>
     </main>
-    <footer class="pl-takeaway"><span class="sl-caption">Result before explanation</span><span class="sl-number">01</span></footer>
+    <footer class="pl-takeaway"><span class="sl-caption">Result before explanation</span><span class="sl-caption">Proof Lab</span></footer>
   </div>
 </section>
 
@@ -209,7 +221,7 @@ body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
         <div class="pl-mini-proof"><div class="mini-ui"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="chip-row"><div class="chip"></div><div class="chip"></div><div class="chip"></div></div></div></div>
       </div>
     </main>
-    <footer class="pl-takeaway"><span class="sl-caption">One action and one proof per step</span><span class="sl-number">02</span></footer>
+    <footer class="pl-takeaway"><span class="sl-caption">One action and one proof per step</span><span class="sl-caption">Step Flow</span></footer>
   </div>
 </section>
 
@@ -232,7 +244,7 @@ body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
         <p class="sl-body">输出、理由、下一步都在同一画面里，才有可验证性。</p>
       </div>
     </main>
-    <footer class="pl-takeaway"><span class="sl-caption">Same scale, visible delta</span><span class="sl-number">03</span></footer>
+    <footer class="pl-takeaway"><span class="sl-caption">Same scale, visible delta</span><span class="sl-caption">Before / After</span></footer>
   </div>
 </section>
 </body>

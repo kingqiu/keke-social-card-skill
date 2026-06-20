@@ -16,6 +16,7 @@
  *   R6  h-xl hard cap         display title lines/chars exceed the per-board cap
  *   R7  figure margin drift    browser-default <figure> margin offsets media alignment
  *   R8  brand signature        visible card signature must be exactly 「两克伴」出品
+ *   R9  cover page mark        cover must not use a giant page number such as 01
  */
 import { chromium } from "playwright";
 import { fileURLToPath } from "node:url";
@@ -92,7 +93,8 @@ const HXL_CAPS = {
 
 const DISPLAY_CLASSES = ["h-xl", "h-hero", "h-statement", "h-display", "num-mega", "num-xl"];
 
-for (const s of sections) {
+for (let sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
+  const s = sections[sectionIndex];
   const meta = await s.evaluate(el => {
     const w = el.clientWidth, h = el.clientHeight;
     let board = el.classList.contains("xhs") ? "xhs"
@@ -105,7 +107,7 @@ for (const s of sections) {
       else if (Math.abs(ratio - 7 / 3) < 0.05) board = "wide"; // 21:9
       else board = "unknown";
     }
-    return { id: el.id || "(no-id)", dataId: el.dataset.id || "", board, clientH: h, scrollH: el.scrollHeight, clientW: w };
+    return { id: el.id || "(no-id)", dataId: el.dataset.id || "", dataName: el.dataset.name || "", board, clientH: h, scrollH: el.scrollHeight, clientW: w };
   });
   const fails = [];
   const warns = [];
@@ -131,6 +133,46 @@ for (const s of sections) {
       ? `public card brand contains forbidden term "${brandIssue.bad}"; use ${brandIssue.expected}`
       : `missing exact public brand signature ${brandIssue.expected}`;
     fails.push({ rule: "R8", msg, fix: "add <span class=\"brand-signature\"></span> or exact visible text 「两克伴」出品" });
+  }
+
+  // R9 page mark — a giant "01" on the first card reads as a template
+  // artifact on Xiaohongshu covers. Right-footer serials also make Proof Lab
+  // cards feel like PPT pages rather than social cards.
+  const coverPageMark = await s.evaluate((el, index) => {
+    const isCover = index === 0 || el.classList.contains("cover") || /cover/i.test(`${el.id} ${el.dataset.name || ""}`);
+    const out = [];
+    for (const node of el.querySelectorAll(".sl-number, .num-mega")) {
+      const text = (node.textContent || "").trim();
+      if (!/^0?1$/.test(text)) continue;
+      const cs = getComputedStyle(node);
+      const size = parseFloat(cs.fontSize) || 0;
+      if (isCover && size >= 48) {
+        out.push({
+          cls: node.className ? "." + node.className.split(" ").filter(Boolean).join(".") : node.tagName.toLowerCase(),
+          size: Math.round(size),
+          text,
+          type: "cover",
+        });
+      }
+    }
+    for (const node of el.querySelectorAll(".pl-takeaway .sl-number")) {
+      const text = (node.textContent || "").trim();
+      if (!/^\d{1,2}$/.test(text)) continue;
+      const cs = getComputedStyle(node);
+      out.push({
+        cls: node.className ? "." + node.className.split(" ").filter(Boolean).join(".") : node.tagName.toLowerCase(),
+        size: Math.round(parseFloat(cs.fontSize) || 0),
+        text,
+        type: "footer",
+      });
+    }
+    return out;
+  }, sectionIndex);
+  for (const mark of coverPageMark) {
+    const msg = mark.type === "footer"
+      ? `right-footer page serial ${mark.cls} "${mark.text}" makes the card feel like a slide`
+      : `cover uses giant page mark ${mark.cls} "${mark.text}" at ${mark.size}px`;
+    fails.push({ rule: "R9", msg, fix: "omit page-number marks; use a small semantic metadata label only if needed" });
   }
 
   // R1 overflow
@@ -377,7 +419,7 @@ for (const { meta, fails, warns } of report) {
 }
 
 lines.push("");
-lines.push(`Legend: R1 overflow · R2 footer collision · R3 swiss bold display · R4 min font · R5 4-band density · R6 h-xl cap · R7 figure margin drift · R8 brand signature`);
+lines.push(`Legend: R1 overflow · R2 footer collision · R3 swiss bold display · R4 min font · R5 4-band density · R6 h-xl cap · R7 figure margin drift · R8 brand signature · R9 page mark`);
 lines.push(`Exit code 1 only on FAIL. Warnings are advisory.`);
 
 console.log(lines.join("\n"));

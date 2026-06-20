@@ -15,7 +15,7 @@
     "labelContrast": 5.92,
     "surfaceTitleContrast": 17.79,
     "surfaceBodyContrast": 4.67,
-    "proofContrast": 16.77,
+    "proofContrast": 17.79,
     "sections": 3,
     "status": "pass",
     "failures": []
@@ -36,7 +36,7 @@
     "labelContrast": 4.76,
     "surfaceTitleContrast": 17.47,
     "surfaceBodyContrast": 4.61,
-    "proofContrast": 16.41,
+    "proofContrast": 17.47,
     "sections": 3,
     "status": "pass",
     "failures": []
@@ -57,7 +57,7 @@
     "labelContrast": 4.74,
     "surfaceTitleContrast": 18.19,
     "surfaceBodyContrast": 5.2,
-    "proofContrast": 16.63,
+    "proofContrast": 18.19,
     "sections": 3,
     "status": "pass",
     "failures": []
@@ -78,7 +78,7 @@
     "labelContrast": 5.29,
     "surfaceTitleContrast": 18.02,
     "surfaceBodyContrast": 4.86,
-    "proofContrast": 16.7,
+    "proofContrast": 18.02,
     "sections": 3,
     "status": "pass",
     "failures": []
@@ -99,7 +99,7 @@
     "labelContrast": 8.04,
     "surfaceTitleContrast": 14.87,
     "surfaceBodyContrast": 6.28,
-    "proofContrast": 16.79,
+    "proofContrast": 14.87,
     "sections": 3,
     "status": "pass",
     "failures": []

@@ -45,6 +45,8 @@ const checks = await page.$$eval("section.poster", sections => sections.map((el,
     hasHero: Boolean(hero),
     heroRatio: heroArea / area,
     callouts: el.querySelectorAll(".pl-callout").length,
+    hasInspector: Boolean(el.querySelector(".pl-proof-inspector")),
+    inspectorItems: el.querySelectorAll(".pl-inspector-rail span").length,
     steps: el.querySelectorAll(".pl-step").length,
     beforeAfter: Boolean(el.querySelector(".pl-before-after")),
   };
@@ -54,6 +56,9 @@ const failures = [];
 if (checks.length !== 3) failures.push(`expected 3 posters, found ${checks.length}`);
 if (!checks.some(check => check.hasHero && check.heroRatio >= 0.55)) {
   failures.push("no evidence hero poster has proof area >= 55%");
+}
+if (!checks.some(check => check.hasInspector && check.inspectorItems >= 3)) {
+  failures.push("missing proof inspector with at least 3 evidence notes");
 }
 if (!checks.some(check => check.steps === 3)) {
   failures.push("missing 3-step flow poster");

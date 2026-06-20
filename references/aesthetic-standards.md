@@ -30,6 +30,7 @@ A card set is publishable only when it satisfies all of these:
 - Female/lifestyle-oriented work should feel specific, useful, and tasteful; avoid cute-but-cheap stickers, childish vector people, and plastic SaaS UI.
 - AI/tool work should feel credible and concrete; avoid fake robot art, abstract glow, and unreadable proof.
 - Every page in a set must feel like the same visual family.
+- Do not use bottom-right page serials as a design element. Covers must not show a giant `01`; interior cards should use semantic labels when a footer needs a right-side anchor.
 
 ## Blocking Visual Issues
 
@@ -41,6 +42,7 @@ Reject or redesign when any appear:
 - Cropped images lose the subject, face, product, outfit, or key UI.
 - Large blank regions are unintentional or look like missing content.
 - Text repeats the obvious instead of adding a useful reason to continue.
+- The cover looks like a PPT/template page because of a visible large page index.
 - The design depends on one good cover while later pages collapse in quality.
 - A generated or illustrated person looks crude, stiff, childish, or out of category.
 - The page looks made by copying an old output instead of applying the visual system.
