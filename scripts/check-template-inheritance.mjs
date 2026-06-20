@@ -63,7 +63,7 @@ if (!proofLabSection.includes("Status: `locked`; Gold example: `examples/proof-l
   failures.push("Proof Lab status must be `locked` with the accepted Gold example path");
 }
 
-for (const required of [".rn-hero-title", ".rn-proof-lockup", ".rn-phone-shot", ".rn-evidence-strip", ".rn-before-after", ".brand-signature::before"]) {
+for (const required of [".rn-hero-title", ".rn-proof-lockup", ".rn-phone-shot", ".rn-pain-card", ".rn-output-card", ".rn-caption-preview", ".rn-evidence-strip", ".rn-before-after", ".brand-signature::before"]) {
   if (!rednote.includes(required)) {
     failures.push(`Rednote Native template missing required primitive ${required}`);
   }
@@ -81,6 +81,9 @@ if (!rednoteSection.includes("Status: `locked`; Gold example: `examples/rednote-
 }
 if (!rednoteSection.includes("`plum-cream`") || !rednoteSection.includes("`sky-butter`")) {
   failures.push("Rednote Native visual-system docs must list the production themes");
+}
+if (!rednoteSection.includes("publishing package") || !rednoteSection.includes("feature-list explainer")) {
+  failures.push("Rednote Native visual-system docs must require publishing-package proof and reject feature-list explainers");
 }
 
 for (const required of [".lj-title", ".lj-result-board", ".lj-photo", ".lj-callouts", ".lj-item-card", ".lj-verdict", ".brand-signature::before"]) {

@@ -8,9 +8,11 @@
       "hasBrand": true,
       "hasHeroTitle": true,
       "titleSize": 118,
-      "proofRatio": 0.3501440329218107,
+      "proofRatio": 0.499697466563786,
       "hasProofLockup": true,
       "hasPhoneShot": true,
+      "hasOutputCard": true,
+      "hasPainCard": true,
       "hasEvidenceStrip": true,
       "hasBeforeAfter": false,
       "hasSaveStrip": false
@@ -25,6 +27,8 @@
       "proofRatio": 0.27935715663580246,
       "hasProofLockup": false,
       "hasPhoneShot": false,
+      "hasOutputCard": false,
+      "hasPainCard": false,
       "hasEvidenceStrip": false,
       "hasBeforeAfter": true,
       "hasSaveStrip": true

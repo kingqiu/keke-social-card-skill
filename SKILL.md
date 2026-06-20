@@ -230,6 +230,7 @@ Final response should include:
 - Do not call a result `Swiss System`, `Editorial E-ink`, `Rednote Native`, `Proof Lab`, or `Lookbook Journal` if it violates that system's template grammar.
 - Do not make claims not supported by the source.
 - Do not shrink screenshots or result images into decoration.
+- Do not use Rednote Native for a plain feature-list explainer. Show the visible result package: cover hook, card plan, proof/result, caption/title, or save reason.
 - Do not let title/caption promise something the cards do not show.
 - Do not use AI-generated full card images as the default; generate assets and compose deterministically.
 - Do not use a generated full-card image when the actual problem is only a landscape source illustration that needs portrait redraw.

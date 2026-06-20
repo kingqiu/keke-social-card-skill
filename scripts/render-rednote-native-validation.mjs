@@ -35,6 +35,7 @@ const posters = `
     </div>
     <div class="rn-proof-lockup">
       <div class="rn-hook-panel">
+        <div class="rn-pain-card">别把首图写成说明书<span>用户先要知道为什么点开、能得到什么，再决定要不要继续读。</span></div>
         <div class="rn-evidence-strip">
           <div class="rn-evidence"><b>1步</b><span>说清场景</span></div>
           <div class="rn-evidence"><b>3项</b><span>给出结果</span></div>
@@ -46,7 +47,18 @@ const posters = `
           <div class="rn-phone-bar"></div>
           <div class="rn-chat">我想做一组小红书卡片，重点要能一眼看懂。</div>
           <div class="rn-chat ai">先给你标题、结构、首图钩子，再给可发布文案。</div>
-          <div class="rn-chat ai result">结果：封面明确、证据可见、文案不空。</div>
+          <div class="rn-output-card">
+            <div class="rn-output-top"><span class="rn-output-label">XHS PACKAGE</span><span class="rn-output-pill">可直接发</span></div>
+            <div class="rn-output-hook">先看<br><strong>真实结果</strong></div>
+            <div class="rn-output-sub">封面先说清为什么点开，内页再给证据和保存价值。</div>
+            <div class="rn-output-shelf">
+              <div class="rn-output-chip">首图钩子</div>
+              <div class="rn-output-chip">结果证明</div>
+              <div class="rn-output-chip">可发文案</div>
+              <div class="rn-output-chip">保存理由</div>
+            </div>
+            <div class="rn-caption-preview"><b>标题建议：别只介绍功能点</b><span>正文直接讲内容价值，不讲生成动作。</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -119,6 +131,8 @@ const checks = await page.$$eval("section.poster", sections => sections.map((el,
     proofRatio: proofArea / area,
     hasProofLockup: Boolean(el.querySelector(".rn-proof-lockup")),
     hasPhoneShot: Boolean(el.querySelector(".rn-phone-shot")),
+    hasOutputCard: Boolean(el.querySelector(".rn-output-card")),
+    hasPainCard: Boolean(el.querySelector(".rn-pain-card")),
     hasEvidenceStrip: Boolean(el.querySelector(".rn-evidence-strip")),
     hasBeforeAfter: Boolean(el.querySelector(".rn-before-after")),
     hasSaveStrip: Boolean(el.querySelector(".rn-save-strip")),
@@ -129,6 +143,12 @@ const failures = [];
 if (checks.length !== 2) failures.push(`expected 2 posters, found ${checks.length}`);
 if (!checks.some(check => check.hasProofLockup && check.hasPhoneShot && check.hasEvidenceStrip)) {
   failures.push("missing Rednote cover proof lockup with phone shot and evidence strip");
+}
+if (!checks.some(check => check.hasOutputCard)) {
+  failures.push("missing native output/publishing package card");
+}
+if (!checks.some(check => check.hasPainCard)) {
+  failures.push("missing scenario/pain card");
 }
 if (!checks.some(check => check.hasBeforeAfter && check.hasSaveStrip)) {
   failures.push("missing before/after save-value page");

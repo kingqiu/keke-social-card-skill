@@ -113,6 +113,8 @@ body { padding: 48px; display: grid; gap: 48px; justify-content: center; }
 .rn-chip:nth-child(even) { background:#ffe8e8; }
 .rn-proof-lockup { min-height:0; display:grid; grid-template-columns:.9fr 1.1fr; gap:28px; align-items:stretch; }
 .rn-hook-panel { display:flex; flex-direction:column; gap:18px; justify-content:center; }
+.rn-pain-card { background:rgba(255,255,255,.90); border:3px solid color-mix(in srgb, var(--coral) 72%, transparent); border-radius:28px; padding:20px 22px; box-shadow:0 18px 42px rgba(38,28,18,.10); font-size:29px; line-height:1.22; font-weight:860; }
+.rn-pain-card span { display:block; margin-top:10px; color:var(--muted); font-size:23px; line-height:1.25; font-weight:680; }
 .rn-proof-panel { position:relative; background:#fff; border:2px solid rgba(17,17,17,.10); border-radius:36px; box-shadow:0 30px 76px var(--shadow); padding:24px; overflow:hidden; }
 .rn-proof-panel::before { content:""; position:absolute; inset:14px; border:1px dashed rgba(17,17,17,.16); border-radius:28px; pointer-events:none; }
 .rn-phone-shot { position:relative; z-index:1; height:100%; min-height:520px; border:12px solid #111; border-radius:44px; background:#fffdf7; padding:28px; display:flex; flex-direction:column; gap:18px; box-shadow:0 18px 44px rgba(0,0,0,.18); }
@@ -120,6 +122,22 @@ body { padding: 48px; display: grid; gap: 48px; justify-content: center; }
 .rn-chat { max-width:92%; border-radius:24px; padding:18px 20px; font-size:27px; line-height:1.25; font-weight:720; background:var(--chat-user); }
 .rn-chat.ai { margin-left:auto; background:var(--chat-ai); }
 .rn-chat.result { background:var(--chat-result); border:2px solid rgba(17,17,17,.10); }
+.rn-output-card { position:relative; min-height:0; width:100%; border-radius:24px; border:2px solid rgba(17,17,17,.12); background:#fff; padding:18px; display:flex; flex-direction:column; gap:12px; box-shadow:0 18px 44px rgba(38,28,18,.12); overflow:hidden; }
+.rn-output-card::before { content:""; position:absolute; left:18px; right:18px; top:82px; height:22px; background:var(--yellow); opacity:.7; transform:rotate(-2deg); border-radius:999px; }
+.rn-output-top { position:relative; z-index:1; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.rn-output-label { font-size:20px; line-height:1; font-weight:900; color:var(--coral); letter-spacing:.02em; }
+.rn-output-pill { font-size:18px; line-height:1; font-weight:850; padding:9px 12px; border-radius:999px; background:var(--chat-result); border:1px solid rgba(17,17,17,.10); }
+.rn-output-hook { position:relative; z-index:1; font-size:47px; line-height:.96; font-weight:950; letter-spacing:0; max-width:8.5ch; }
+.rn-output-hook strong { color:var(--coral); }
+.rn-output-sub { position:relative; z-index:1; color:var(--muted); font-size:21px; line-height:1.28; font-weight:700; }
+.rn-output-shelf { position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.rn-output-chip { min-height:70px; border-radius:18px; border:1px solid rgba(17,17,17,.10); background:#fff8f1; padding:12px; font-size:19px; line-height:1.18; font-weight:800; display:flex; align-items:center; }
+.rn-output-chip:nth-child(2) { background:var(--chat-ai); }
+.rn-output-chip:nth-child(3) { background:var(--chat-user); }
+.rn-output-chip:nth-child(4) { background:var(--chat-result); }
+.rn-caption-preview { position:relative; z-index:1; margin-top:auto; border-radius:20px; border:2px dashed rgba(17,17,17,.14); background:#fffdf8; padding:14px; display:grid; gap:8px; }
+.rn-caption-preview b { font-size:21px; line-height:1.1; }
+.rn-caption-preview span { color:var(--muted); font-size:18px; line-height:1.25; font-weight:650; }
 .rn-evidence-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:4px; }
 .rn-evidence { background:#fff; border:2px solid rgba(17,17,17,.10); border-radius:24px; padding:18px; min-height:122px; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 12px 28px rgba(38,28,18,.09); }
 .rn-evidence b { font-size:30px; line-height:1; }

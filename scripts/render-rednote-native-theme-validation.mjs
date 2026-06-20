@@ -45,6 +45,7 @@ const posters = `
     </div>
     <div class="rn-proof-lockup">
       <div class="rn-hook-panel">
+        <div class="rn-pain-card">别把首图写成说明书<span>用户先要知道为什么点开、能得到什么，再决定要不要继续读。</span></div>
         <div class="rn-evidence-strip">
           <div class="rn-evidence"><b>1</b><span>标题先让人停下</span></div>
           <div class="rn-evidence"><b>2</b><span>证明区必须可见</span></div>
@@ -56,7 +57,17 @@ const posters = `
           <div class="rn-phone-bar"></div>
           <div class="rn-chat">这篇内容适合发小红书吗？</div>
           <div class="rn-chat ai">先提炼重点，再决定封面和卡片结构。</div>
-          <div class="rn-chat ai result">结果：封面明确、证据可见、文案不空。</div>
+          <div class="rn-output-card">
+            <div class="rn-output-top"><span class="rn-output-label">XHS PACKAGE</span><span class="rn-output-pill">可直接发</span></div>
+            <div class="rn-output-hook">结果先<br><strong>被看见</strong></div>
+            <div class="rn-output-sub">不是列功能，而是先交代读者能获得什么。</div>
+            <div class="rn-output-shelf">
+              <div class="rn-output-chip">首图钩子</div>
+              <div class="rn-output-chip">结果证明</div>
+              <div class="rn-output-chip">可发文案</div>
+              <div class="rn-output-chip">保存理由</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -163,7 +174,7 @@ for (const theme of [...themes, ...legacyThemes]) {
     const subtitle = getComputedStyle(el.querySelector(".rn-subtitle"));
     const chat = getComputedStyle(el.querySelector(".rn-chat"));
     const chatAi = getComputedStyle(el.querySelector(".rn-chat.ai"));
-    const chatResult = getComputedStyle(el.querySelector(".rn-chat.result"));
+    const chatResult = getComputedStyle(el.querySelector(".rn-output-pill"));
     return {
       posterBg: poster.backgroundColor,
       posterColor: poster.color,
@@ -201,6 +212,8 @@ for (const theme of [...themes, ...legacyThemes]) {
       proofRatio: proofArea / area,
       hasProofLockup: Boolean(el.querySelector(".rn-proof-lockup")),
       hasPhoneShot: Boolean(el.querySelector(".rn-phone-shot")),
+      hasOutputCard: Boolean(el.querySelector(".rn-output-card")),
+      hasPainCard: Boolean(el.querySelector(".rn-pain-card")),
       hasEvidenceStrip: Boolean(el.querySelector(".rn-evidence-strip")),
       hasBeforeAfter: Boolean(el.querySelector(".rn-before-after")),
       hasSaveStrip: Boolean(el.querySelector(".rn-save-strip")),
@@ -240,6 +253,12 @@ for (const theme of [...themes, ...legacyThemes]) {
   if (checks.length !== 2) failures.push(`expected 2 posters, found ${checks.length}`);
   if (!checks.some(check => check.hasProofLockup && check.hasPhoneShot && check.hasEvidenceStrip)) {
     failures.push("missing proof lockup with phone shot and evidence strip");
+  }
+  if (!checks.some(check => check.hasOutputCard)) {
+    failures.push("missing native output/publishing package card");
+  }
+  if (!checks.some(check => check.hasPainCard)) {
+    failures.push("missing scenario/pain card");
   }
   if (!checks.some(check => check.hasBeforeAfter && check.hasSaveStrip)) {
     failures.push("missing before/after save-value page");

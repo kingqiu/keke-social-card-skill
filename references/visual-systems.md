@@ -111,6 +111,8 @@ Inheritance baseline:
 - Start from `assets/template-rednote-native.html`.
 - Preserve the feed-native grammar: oversized hook, concrete proof/result area, warm high-click color, sticker/brush energy, and thumbnail-first hierarchy.
 - Do not sterilize it into a clean corporate grid.
+- Use the native scenario/proof components (`.rn-pain-card`, `.rn-output-card`, `.rn-output-shelf`, `.rn-caption-preview`) when the page must prove an AI/tool result without relying on screenshots.
+- Reject feature-list explainer pages: "can generate cover/images/copy" is not proof unless the page also shows what the reader receives.
 
 Traits:
 
@@ -122,17 +124,18 @@ Traits:
 Required composition:
 
 - Cover uses a 60/40 split: one oversized hook area plus one concrete proof/result area.
-- The proof/result area must show a screenshot, chat, before/after, product result, or scenario card that validates the hook.
+- The proof/result area must show a screenshot, chat, before/after, product result, scenario card, or native publishing package that validates the hook.
 - Page 2 explains credibility quickly: why it works, who it is for, or what changed.
 - Page 3+ should become proof/process/save-value pages, not generic feature summaries.
 - Use dense but warm Xiaohongshu language: scenario, benefit, proof, and personal relevance.
+- For AI Skill launches, prefer "reader receives this result" over "this tool supports these features." The visible proof should include at least two of: cover hook, card plan, output/result, caption/title, save reason.
 
 Template validation:
 
 - Run `npm run validate:rednote-native`.
 - Run `npm run validate:rednote-native-themes`.
 - The validation sample is generated under `examples/rednote-native-validation/output`.
-- The validation checks oversized hero title, proof/result area size, phone proof, evidence strip, before/after save-value page, overflow, and exact brand signature.
+- The validation checks oversized hero title, proof/result area size, phone proof, native publishing package, evidence strip, before/after save-value page, overflow, and exact brand signature.
 - Theme validation renders all production themes plus the legacy fallback and checks background/ink contrast, accent readability, sticker contrast, chat contrast, proof/result area size, overflow, and exact brand signature.
 - This is a template smoke test only. It is not a Gold aesthetic reference.
 
@@ -153,11 +156,11 @@ Legacy theme:
 
 Good recipes:
 
-- Hook + phone proof + 3 scenario chips.
+- Hook + phone proof + native publishing package + 3 scenario chips.
 - Pain point title + before/after result panel.
 - Big question + three saved decisions/checklist.
 
-Avoid cheap big-character posters with no proof.
+Avoid cheap big-character posters with no proof, and avoid feature-list explainer covers that read like product documentation.
 
 ## Proof Lab
 
