@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>Google OKF · Swiss OKF Brief Gold Candidate</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+SC:wght@200;300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <style>
+    :root {
+      --sans: "Inter", "Helvetica Neue", Helvetica, "Noto Sans SC", -apple-system, "PingFang SC", "Microsoft YaHei UI", sans-serif;
+      --sans-zh: "Noto Sans SC", -apple-system, "PingFang SC", "Microsoft YaHei UI", "Inter", sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Consolas, monospace;
+    }
+    *,*::before,*::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: #1a1a1a; font-family: var(--sans); padding: 64px 32px; }
+    .sheet { display: flex; flex-direction: column; align-items: center; gap: 48px; }
+    .poster { position: relative; width: 1080px; height: 1440px; overflow: hidden; isolation: isolate; }
+    .brand-signature::before { content: "「两克伴」出品"; }
+
+    .poster.swiss-okf {
+      --okf-paper: #f6eed7;
+      --okf-ink: #11110f;
+      --okf-muted: #746f60;
+      --okf-line: rgba(17,17,15,.22);
+      --okf-soft: rgba(255,213,0,.12);
+      --okf-warm: #f4d7b3;
+      --okf-accent: #ffd500;
+      --okf-warn: #ff6b35;
+      background: var(--okf-paper);
+      color: var(--okf-ink);
+    }
+    .poster.swiss-okf::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 86px;
+      background: var(--okf-accent);
+      z-index: 0;
+    }
+    .poster.swiss-okf .content {
+      position: relative;
+      z-index: 2;
+      padding: 96px 80px 64px 124px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .okf-topbar,
+    .okf-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 20px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--okf-muted);
+      border-top: 1px solid var(--okf-line);
+      padding-top: 22px;
+      margin-top: 24px;
+    }
+    .okf-topbar {
+      border-top: 0;
+      border-bottom: 1px solid var(--okf-line);
+      padding-top: 0;
+      padding-bottom: 22px;
+      margin-bottom: 44px;
+      color: var(--okf-accent);
+    }
+    .okf-topbar .brand-signature::before { color: var(--okf-muted); letter-spacing: .04em; }
+    .okf-page { flex: 1; display: grid; grid-template-rows: auto auto 1fr; gap: 34px; min-height: 0; }
+    .okf-title-wrap { position: relative; }
+    .okf-title {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      max-width: 880px;
+      font-family: var(--sans);
+      font-size: 72px;
+      line-height: 1.1;
+      font-weight: 200;
+      letter-spacing: 0;
+      color: var(--okf-ink);
+    }
+    .okf-title.cover { font-size: 96px; line-height: 1.02; }
+    .okf-title .mark {
+      display: inline-block;
+      background: var(--okf-accent);
+      padding: 0 .08em .04em;
+      font-weight: 500;
+    }
+    .okf-ghost {
+      position: absolute;
+      right: -18px;
+      top: -12px;
+      font-family: var(--sans);
+      font-size: 132px;
+      line-height: 1;
+      font-weight: 200;
+      letter-spacing: .02em;
+      color: rgba(17,17,15,.045);
+      text-transform: uppercase;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .okf-lead {
+      margin: 0;
+      padding-left: 28px;
+      border-left: 8px solid var(--okf-warn);
+      max-width: 860px;
+      font-family: var(--sans-zh);
+      font-size: 31px;
+      line-height: 1.55;
+      font-weight: 400;
+      color: var(--okf-ink);
+    }
+    .okf-cover-grid { display: grid; grid-template-columns: 1.08fr 1fr; gap: 32px; align-items: stretch; margin-top: 10px; }
+    .okf-code-card,
+    .okf-text-card,
+    .okf-dark-card,
+    .okf-accent-card,
+    .okf-warm-card {
+      border: 1px solid var(--okf-line);
+      padding: 32px;
+      min-height: 0;
+    }
+    .okf-code-card {
+      background: rgba(246,238,215,.72);
+      font-family: var(--mono);
+      font-size: 24px;
+      line-height: 1.35;
+      white-space: pre-wrap;
+      color: var(--okf-ink);
+    }
+    .okf-code-card.is-compact {
+      font-size: 22px;
+      line-height: 1.3;
+    }
+    .okf-dark-card { background: var(--okf-ink); color: var(--okf-paper); border-color: var(--okf-ink); }
+    .okf-accent-card { background: var(--okf-accent); border-color: var(--okf-accent); color: var(--okf-ink); }
+    .okf-warm-card { background: var(--okf-warm); }
+    .okf-kicker {
+      margin: 0 0 22px;
+      font-family: var(--mono);
+      font-size: 19px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--okf-muted);
+    }
+    .okf-dark-card .okf-kicker,
+    .okf-dark-card .okf-card-body { color: rgba(246,238,215,.78); }
+    .okf-card-title {
+      margin: 0 0 12px;
+      font-family: var(--sans-zh);
+      font-size: 34px;
+      line-height: 1.18;
+      font-weight: 600;
+      color: inherit;
+    }
+    .okf-card-body {
+      margin: 0;
+      font-family: var(--sans-zh);
+      font-size: 25px;
+      line-height: 1.44;
+      font-weight: 400;
+      color: var(--okf-muted);
+    }
+    .okf-thesis {
+      margin: 0;
+      font-family: var(--sans-zh);
+      font-size: 30px;
+      line-height: 1.5;
+      font-weight: 500;
+      color: var(--okf-paper);
+    }
+    .okf-thesis + .okf-thesis { margin-top: 24px; }
+    .okf-proof-row {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 34px;
+      align-items: start;
+      padding: 30px 34px;
+      border: 1px solid var(--okf-line);
+      background: rgba(246,238,215,.44);
+    }
+    .okf-proof-row.is-dark { background: var(--okf-ink); color: var(--okf-paper); border-color: var(--okf-ink); }
+    .okf-proof-row.is-accent { background: var(--okf-accent); border-color: var(--okf-accent); }
+    .okf-proof-row.is-warm { background: var(--okf-warm); }
+    .okf-proof-num {
+      margin: 0;
+      font-family: var(--sans);
+      font-size: 62px;
+      line-height: 1;
+      font-weight: 200;
+      color: var(--okf-muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .okf-proof-row.is-dark .okf-proof-num,
+    .okf-proof-row.is-dark .okf-card-body { color: rgba(246,238,215,.72); }
+    .okf-list { display: grid; gap: 16px; align-content: center; }
+    .okf-list.dense { gap: 14px; }
+    .okf-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: stretch; }
+    .okf-bottom-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--okf-line);
+    }
+    .okf-bottom-cards .okf-text-card,
+    .okf-bottom-cards .okf-dark-card,
+    .okf-bottom-cards .okf-accent-card,
+    .okf-bottom-cards .okf-warm-card { padding: 24px; min-height: 150px; }
+    .okf-bottom-cards .okf-card-title { font-size: 25px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <section class="poster swiss-okf" id="okf-01" data-name="okf-01-cover">
+      <div class="content">
+        <div class="okf-topbar"><span>Google Cloud · Open Specification</span><span class="brand-signature"></span></div>
+        <main class="okf-page">
+          <div class="okf-title-wrap">
+            <h1 class="okf-title cover">Google<br>推出 <span class="mark">OKF</span></h1>
+            <span class="okf-ghost">Format</span>
+          </div>
+          <p class="okf-lead">AI Agent 的知识格式来了：用 Markdown 文件夹和 YAML 头信息，把组织知识变成可迁移、可读取、可维护的知识包。</p>
+          <div>
+            <div class="okf-cover-grid">
+              <pre class="okf-code-card">sales/
+├─ index.md
+├─ tables/orders.md
+├─ metrics/weekly_active_users.md
+└─ runbooks/incident.md</pre>
+              <pre class="okf-code-card okf-dark-card is-compact">---
+type: metric
+title: Weekly Active Users
+resource: bigquery://...
+tags: [ai, data]
+timestamp: 2026-06-13
+---</pre>
+            </div>
+            <div class="okf-bottom-cards">
+              <div class="okf-dark-card"><p class="okf-kicker">01</p><h3 class="okf-card-title">不是新平台<br>而是开放格式</h3></div>
+              <div class="okf-warm-card"><p class="okf-kicker">02</p><h3 class="okf-card-title">人类可读<br>Agent 可解析</h3></div>
+              <div class="okf-accent-card"><p class="okf-kicker">03</p><h3 class="okf-card-title">无需 SDK<br>不绑定厂商</h3></div>
+            </div>
+          </div>
+        </main>
+        <footer class="okf-footer"><span>Source: Google Cloud Blog</span><span>2026.06</span></footer>
+      </div>
+    </section>
+
+    <section class="poster swiss-okf" id="okf-02" data-name="okf-02-context-problem">
+      <div class="content">
+        <div class="okf-topbar"><span>02 · Context Problem</span><span class="brand-signature"></span></div>
+        <main class="okf-page">
+          <div class="okf-title-wrap">
+            <h2 class="okf-title">Agent 真正卡住的，往往不是模型能力</h2>
+            <span class="okf-ghost">Context</span>
+          </div>
+          <p class="okf-lead">基础模型越来越强，但一到组织内部场景，答案质量常常被“上下文缺失”限制：模型不知道表的含义、指标口径、系统关系和历史变更。</p>
+          <div class="okf-list">
+            <div class="okf-proof-row is-dark"><p class="okf-proof-num">01</p><div><h3 class="okf-card-title">知识散落在不同系统里</h3><p class="okf-card-body">元数据目录、wiki、共享网盘、代码注释、Notebook、runbook，各自有各自的入口和格式。</p></div></div>
+            <div class="okf-proof-row is-accent"><p class="okf-proof-num">02</p><div><h3 class="okf-card-title">每个 Agent 都在重复拼上下文</h3><p class="okf-card-body">想回答“周活跃用户怎么算”，它要临时跨系统找 schema、指标定义、join 路径和业务语义。</p></div></div>
+            <div class="okf-proof-row"><p class="okf-proof-num">03</p><div><h3 class="okf-card-title">知识被锁在最初产出的工具后面</h3><p class="okf-card-body">不同厂商有不同 API、SDK、知识图谱 schema，导致知识本身很难迁移、复用和共享。</p></div></div>
+          </div>
+        </main>
+        <footer class="okf-footer"><span>Open Knowledge Format</span><span>Context is the ceiling</span></footer>
+      </div>
+    </section>
+
+    <section class="poster swiss-okf" id="okf-03" data-name="okf-03-definition">
+      <div class="content">
+        <div class="okf-topbar"><span>03 · Definition</span><span class="brand-signature"></span></div>
+        <main class="okf-page">
+          <div class="okf-title-wrap">
+            <h2 class="okf-title">OKF 不是知识库产品，而是一个 <span class="mark">格式</span></h2>
+            <span class="okf-ghost">Format</span>
+          </div>
+          <p class="okf-lead">Open Knowledge Format 把 LLM-wiki 这种做法标准化：用普通文件目录表达组织知识，让人类可以读，让 AI Agent 也能直接解析。</p>
+          <div class="okf-two-col">
+            <div class="okf-accent-card">
+              <p class="okf-kicker">It is</p>
+              <h3 class="okf-card-title">一个可交换的知识包</h3>
+              <p class="okf-card-body">每个 Markdown 文件代表一个概念，比如表、指标、数据集、API、playbook 或 runbook。文件路径就是这个概念的身份。</p>
+            </div>
+            <div class="okf-text-card">
+              <p class="okf-kicker">It is not</p>
+              <h3 class="okf-card-title">不是又一个知识服务</h3>
+              <p class="okf-card-body">它不要求新运行时、不要求 SDK、不绑定云厂商。你可以把它放进 Git、打包成 tarball，或者挂载到任意文件系统。</p>
+            </div>
+          </div>
+        </main>
+        <footer class="okf-footer"><span>Markdown · YAML · Links</span><span>No translation layer</span></footer>
+      </div>
+    </section>
+
+    <section class="poster swiss-okf" id="okf-04" data-name="okf-04-structure">
+      <div class="content">
+        <div class="okf-topbar"><span>04 · How it works</span><span class="brand-signature"></span></div>
+        <main class="okf-page">
+          <div class="okf-title-wrap">
+            <h2 class="okf-title">一屏看懂 OKF 的结构</h2>
+            <span class="okf-ghost">Files</span>
+          </div>
+          <p class="okf-lead">v0.1 的设计刻意保持简单：目录承载层级，Markdown 承载正文，YAML frontmatter 承载少量可查询字段，普通链接承载概念关系。</p>
+          <div class="okf-two-col">
+            <pre class="okf-code-card">knowledge/
+├─ index.md
+├─ datasets/
+│  └─ orders_db.md
+├─ tables/
+│  ├─ orders.md
+│  └─ customers.md
+└─ metrics/
+   └─ weekly_active_users.md</pre>
+            <pre class="okf-code-card okf-dark-card">---
+type: BigQuery Table
+title: Orders
+description: One row per order.
+resource: bigquery://sales.orders
+tags: [sales, revenue]
+timestamp: 2026-05-28
+---
+# Schema
+Joined with [customers]
+(...)</pre>
+          </div>
+        </main>
+        <footer class="okf-footer"><span>Concept = one file</span><span>Path = identity</span></footer>
+      </div>
+    </section>
+
+    <section class="poster swiss-okf" id="okf-05" data-name="okf-05-principles">
+      <div class="content">
+        <div class="okf-topbar"><span>05 · Design Principles</span><span class="brand-signature"></span></div>
+        <main class="okf-page">
+          <div class="okf-title-wrap">
+            <h2 class="okf-title">它只强约束最少的东西</h2>
+            <span class="okf-ghost">Type</span>
+          </div>
+          <p class="okf-lead">OKF 的重点不是替你规定完整内容模型，而是定义一个互操作面：不同生产方写出来的知识，能被不同消费方读懂。</p>
+          <div class="okf-list">
+            <div class="okf-proof-row is-dark"><p class="okf-proof-num">01</p><div><h3 class="okf-card-title">最小化强约束</h3><p class="okf-card-body">每个概念只强制需要一个 `type` 字段。其他字段、章节和类型体系，都由生产方自行扩展。</p></div></div>
+            <div class="okf-proof-row is-accent"><p class="okf-proof-num">02</p><div><h3 class="okf-card-title">生产方和消费方解耦</h3><p class="okf-card-body">人手写的知识包、流水线导出的知识包、LLM 生成的知识包，都可以被另一个工具或 Agent 消费。</p></div></div>
+            <div class="okf-proof-row"><p class="okf-proof-num">03</p><div><h3 class="okf-card-title">格式，不是平台</h3><p class="okf-card-body">它不绑定 Google Cloud、BigQuery、某个模型或某个 Agent 框架。格式本身才是契约。</p></div></div>
+          </div>
+        </main>
+        <footer class="okf-footer"><span>Only required field: type</span><span>Producer / consumer independence</span></footer>
+      </div>
+    </section>
+
+    <section class="poster swiss-okf" id="okf-06" data-name="okf-06-implementations">
+      <div class="content">
+        <div class="okf-topbar"><span>06 · Reference Implementations</span><span class="brand-signature"></span></div>
+        <main class="okf-page">
+          <div class="okf-title-wrap">
+            <h2 class="okf-title">Google 一起开源了哪些东西？</h2>
+            <span class="okf-ghost">Ship</span>
+          </div>
+          <p class="okf-lead">这次发布不是只给一份规范。Google 同时放出了生产方、消费方和样例包，用来证明 OKF 可以被真实工具写入、浏览和验证。</p>
+          <div class="okf-list">
+            <div class="okf-proof-row is-dark"><p class="okf-kicker">Producer</p><div><h3 class="okf-card-title">BigQuery enrichment agent</h3><p class="okf-card-body">遍历数据集，为每张表和视图草拟概念文档，再补充引用、schema 和 join 路径。</p></div></div>
+            <div class="okf-proof-row is-warm"><p class="okf-kicker">Consumer</p><div><h3 class="okf-card-title">静态 HTML graph visualizer</h3><p class="okf-card-body">把任意 OKF 文档包变成可浏览的关系图；没有后端，查看时数据也不需要离开页面。</p></div></div>
+            <div class="okf-proof-row is-accent"><p class="okf-kicker">Samples</p><div><h3 class="okf-card-title">三份样例文档包</h3><p class="okf-card-body">GA4 e-commerce、Stack Overflow、Bitcoin public datasets，作为合规 OKF 的活样本。</p></div></div>
+          </div>
+        </main>
+        <footer class="okf-footer"><span>Proof of concept</span><span>Spec is still the core</span></footer>
+      </div>
+    </section>
+
+    <section class="poster swiss-okf" id="okf-07" data-name="okf-07-agent-value">
+      <div class="content">
+        <div class="okf-topbar"><span>07 · Why it matters</span><span class="brand-signature"></span></div>
+        <main class="okf-page">
+          <div class="okf-title-wrap">
+            <h2 class="okf-title">对 AI Agent 开发者，它改变的是知识交付方式</h2>
+            <span class="okf-ghost">Agent</span>
+          </div>
+          <p class="okf-lead">过去你可能要给每个 Agent 单独写检索、适配和解析逻辑。OKF 想把这层变成通用“知识货币”：谁都能产出，谁都能消费。</p>
+          <div class="okf-list dense">
+            <div class="okf-proof-row"><p class="okf-proof-num">01</p><div><h3 class="okf-card-title">把内部知识放到版本控制里</h3><p class="okf-card-body">指标、表、API、runbook 跟代码一起演进，变更可以审查、回滚、追踪。</p></div></div>
+            <div class="okf-proof-row is-accent"><p class="okf-proof-num">02</p><div><h3 class="okf-card-title">让 Agent 不再临时拼碎片</h3><p class="okf-card-body">上下文被整理成可导航的 Markdown 图谱，模型可以先读结构，再逐层展开细节。</p></div></div>
+            <div class="okf-proof-row"><p class="okf-proof-num">03</p><div><h3 class="okf-card-title">让知识离开原来的工具也能活</h3><p class="okf-card-body">同一份知识包可以被浏览器、搜索索引、数据目录或另一个 Agent 使用。</p></div></div>
+            <div class="okf-proof-row is-dark"><p class="okf-proof-num">04</p><div><h3 class="okf-card-title">为“Agent 维护知识”留出空间</h3><p class="okf-card-body">LLM 擅长更新交叉引用、同步文件、补充说明；人类负责策展和审核。</p></div></div>
+          </div>
+        </main>
+        <footer class="okf-footer"><span>Knowledge as code</span><span>Agent-readable context</span></footer>
+      </div>
+    </section>
+
+    <section class="poster swiss-okf" id="okf-08" data-name="okf-08-closing">
+      <div class="content">
+        <div class="okf-topbar"><span>08 · Closing</span><span class="brand-signature"></span></div>
+        <main class="okf-page">
+          <div class="okf-title-wrap">
+            <h2 class="okf-title">这次真正重要的，是 <span class="mark">格式本身</span></h2>
+            <span class="okf-ghost">Lingua</span>
+          </div>
+          <div class="okf-dark-card">
+            <p class="okf-thesis">如果 AI Agent 要长期接管真实工作，它需要的不只是工具调用能力，还需要一层可迁移、可审计、可共同维护的知识上下文。</p>
+            <p class="okf-thesis">OKF 的野心，是让这些知识不再困在某个产品里，而是变成不同系统之间都能交换的通用语。</p>
+          </div>
+          <div class="okf-list dense">
+            <div class="okf-proof-row"><p class="okf-kicker">记住</p><div><h3 class="okf-card-title">Markdown 是身体</h3><p class="okf-card-body">正文仍然保持人类可读，任何编辑器、GitHub、搜索工具都能处理。</p></div></div>
+            <div class="okf-proof-row is-accent"><p class="okf-kicker">记住</p><div><h3 class="okf-card-title">YAML 是索引</h3><p class="okf-card-body">只把需要查询的结构化字段放在 frontmatter 里，避免把格式做重。</p></div></div>
+            <div class="okf-proof-row"><p class="okf-kicker">记住</p><div><h3 class="okf-card-title">链接是关系</h3><p class="okf-card-body">普通 Markdown 链接让文件目录变成概念图谱，而不是一堆孤立文档。</p></div></div>
+          </div>
+        </main>
+        <footer class="okf-footer"><span>Source: Google Cloud Blog</span><span>2026.06</span></footer>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

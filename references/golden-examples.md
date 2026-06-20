@@ -19,6 +19,7 @@ Maintain examples across these scenarios:
 | Outfit/beauty/lifestyle | Lookbook Journal | result-first composition, item callouts, female-user appeal |
 | Product/gear/food breakdown | Lookbook Journal | central result, material/detail callouts, useful density |
 | Opinion/framework | Swiss System | hierarchy, memorable concept, not corporate PPT |
+| Technical announcement/open spec | Swiss System / Swiss OKF Brief | feed-native technical hook, code/spec proof, source-backed explanation |
 | Essay/culture/reading/travel | Editorial E-ink | editorial mood, image atmosphere, restrained text |
 
 Accepted Gold references:
@@ -29,6 +30,7 @@ Accepted Gold references:
 | AI workflow/tutorial | `examples/proof-lab-skill-handbook-candidate` |
 | Outfit/beauty/lifestyle | `examples/lookbook-outfit-gold-candidate` |
 | Opinion/framework | `examples/swiss-agent-infra-full-candidate` |
+| Technical announcement/open spec | `examples/swiss-okf-brief-gold-candidate` |
 
 ## Example Package Requirements
 

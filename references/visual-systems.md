@@ -51,7 +51,7 @@ Avoid for screenshot-heavy tutorials or high-click result covers.
 
 Use for workplace, data, frameworks, checklists, structured comparisons.
 
-Status: `locked`; Gold example: `examples/swiss-agent-infra-full-candidate`.
+Status: `locked`; Gold examples: `examples/swiss-agent-infra-full-candidate`, `examples/swiss-okf-brief-gold-candidate`.
 
 Inheritance baseline:
 
@@ -99,6 +99,7 @@ Swiss OKF Brief sub-template:
 
 - Use when a technical announcement, open specification, data/API framework, or knowledge-format story needs the sharper public-feed look shown by the OKF reference deck.
 - Use `.poster.swiss-okf` from `assets/template-swiss-system.html`.
+- Gold reference: `examples/swiss-okf-brief-gold-candidate`.
 - Core grammar: left yellow rail, warm paper, monospaced section label, exact brand signature, hairline top/footer rules, oversized light title, pale ghost keyword, orange lead rail, black proof block, yellow highlight block, and source/meta footer.
 - Strong pages combine one big judgment with proof rows, code/directory blocks, or producer/consumer cards. Do not use this as a decorative yellow skin for generic listicles.
 - Page numbers may appear only in the top-left section label such as `03 · DEFINITION`; do not use bottom-right serials or large cover `01`.

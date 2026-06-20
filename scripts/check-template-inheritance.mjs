@@ -32,8 +32,13 @@ for (const rule of swissForbidden) {
 }
 
 const swissSection = visualSystems.match(/## Swiss System[\s\S]*?(?=\n## |\n$)/)?.[0] || "";
-if (!swissSection.includes("Status: `locked`; Gold example: `examples/swiss-agent-infra-full-candidate`.")) {
-  failures.push("Swiss System status must be `locked` with the accepted Gold example path");
+if (!swissSection.includes("Status: `locked`;")) {
+  failures.push("Swiss System status must be `locked`");
+}
+for (const requiredGold of ["examples/swiss-agent-infra-full-candidate", "examples/swiss-okf-brief-gold-candidate"]) {
+  if (!swissSection.includes(requiredGold)) {
+    failures.push(`Swiss System docs must include accepted Gold example ${requiredGold}`);
+  }
 }
 for (const required of [".poster.swiss-okf", ".okf-topbar", ".okf-title", ".okf-ghost", ".okf-lead", ".okf-code-card", ".okf-proof-row", ".okf-footer"]) {
   if (!swiss.includes(required)) {

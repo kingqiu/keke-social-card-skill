@@ -12,6 +12,7 @@
     "check:proof-lab-theme": "node scripts/check-proof-lab-theme-contract.mjs",
     "check:all": "node scripts/run-quality-gates.mjs",
     "validate:swiss-palettes": "node scripts/render-swiss-palette-validation.mjs",
+    "validate:swiss-okf-brief": "node scripts/render-swiss-okf-brief-validation.mjs",
     "validate:proof-lab": "node scripts/render-proof-lab-validation.mjs",
     "validate:proof-lab-themes": "node scripts/render-proof-lab-theme-validation.mjs",
     "validate:rednote-native": "node scripts/render-rednote-native-validation.mjs",
