@@ -150,6 +150,10 @@ Use `references/style-routing.md`:
 - Xiaohongshu + outfit/food/home/product breakdown -> Lookbook Journal.
 - Xiaohongshu + career/data/framework/checklist -> Swiss System.
 - Xiaohongshu + essay/culture/reading/travel -> Editorial E-ink.
+- For AI tools, decide Rednote Native vs Proof Lab by the primary reader job:
+  - choose Rednote Native for launches, high-click first images, outcome promises, or native result packages without strong screenshots.
+  - choose Proof Lab when screenshots, generated outputs, before/after evidence, or workflow steps are the main proof.
+  - do not mix Rednote Native and Proof Lab inside one card deck; create separate packages if both routes are needed.
 
 ### 5. Source
 
@@ -193,6 +197,7 @@ Use `references/xhs-copywriting-guidelines.md`:
 - Check Xiaohongshu copy with `node scripts/check-xhs-copy.mjs <task-dir>`.
 - Check portrait image fit with `node scripts/check-portrait-fit.mjs <task-dir>`.
 - When using Proof Lab, check theme compliance with `node scripts/check-proof-lab-theme-contract.mjs`.
+- Check route-boundary docs with `node scripts/check-style-routing.mjs`.
 - When changing Proof Lab theme colors, validate all themes with `npm run validate:proof-lab-themes`.
 - Validate only when requested or before final handoff: `node scripts/validate-social-deck.mjs <task-dir>`.
 - Before final handoff for a publishing-quality package, run `npm run check:all -- <task-dir>`.
@@ -231,6 +236,7 @@ Final response should include:
 - Do not make claims not supported by the source.
 - Do not shrink screenshots or result images into decoration.
 - Do not use Rednote Native for a plain feature-list explainer. Show the visible result package: cover hook, card plan, proof/result, caption/title, or save reason.
+- Do not use Proof Lab without inspectable proof. If screenshots/results are missing, ask once for assets or route to Rednote Native with native result-package proof.
 - Do not let title/caption promise something the cards do not show.
 - Do not use AI-generated full card images as the default; generate assets and compose deterministically.
 - Do not use a generated full-card image when the actual problem is only a landscape source illustration that needs portrait redraw.

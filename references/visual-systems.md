@@ -162,6 +162,12 @@ Good recipes:
 
 Avoid cheap big-character posters with no proof, and avoid feature-list explainer covers that read like product documentation.
 
+Boundary with Proof Lab:
+
+- Use Rednote Native when the AI/tool card set is a launch, positioning, use-case, or high-click first-image package.
+- Use Rednote Native when proof is a native output package, chat result, scenario result, or before/after claim that does not require inspecting a real screenshot.
+- Do not use Rednote Native for step-by-step UI tutorials where the screenshot is the content.
+
 ## Proof Lab
 
 Use for AI tools, app tutorials, screenshots, product workflows, before/after proof.
@@ -219,6 +225,12 @@ Good recipes:
 - 3-step workflow with each step showing a visible output.
 
 Avoid fake robot art and unreadable screenshots.
+
+Boundary with Rednote Native:
+
+- Use Proof Lab when the reader must inspect a screenshot, generated output, workflow state, before/after result, or benchmark evidence.
+- Use Proof Lab when most pages are tutorial/proof pages rather than launch/persuasion pages.
+- Do not use Proof Lab as a generic AI-tool poster style when no inspectable proof asset exists.
 
 ## Lookbook Journal
 

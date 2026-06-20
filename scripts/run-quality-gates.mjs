@@ -16,6 +16,7 @@ const gates = [
   ["content plan", ["node", "scripts/check-content-plan.mjs", taskDir]],
   ["xhs copy", ["node", "scripts/check-xhs-copy.mjs", taskDir]],
   ["portrait fit", ["node", "scripts/check-portrait-fit.mjs", taskDir]],
+  ["style routing", ["node", "scripts/check-style-routing.mjs"]],
   ["template inheritance", ["node", "scripts/check-template-inheritance.mjs"]],
   ["proof lab theme contract", ["node", "scripts/check-proof-lab-theme-contract.mjs"]],
   ["social deck", ["node", "scripts/validate-social-deck.mjs", taskDir]],
