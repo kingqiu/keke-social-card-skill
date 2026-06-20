@@ -19,8 +19,8 @@
          ikb (Klein Blue) | lemon-yellow | lemon-green | safety-orange | peacock
 
        Fill posters where marked <!-- POSTERS_HERE -->.
-       Each poster carries one Layout Recipe (S01-S12) from
-       references/layout-recipes.md.
+       Each poster follows the Swiss composition guidance in
+       references/visual-systems.md and references/aesthetic-standards.md.
        ========================================================= */
 
     /* ---------- 1. Accent palettes (5 mutually exclusive) ---------- */
@@ -855,6 +855,226 @@
       margin-bottom: var(--sp-9);
     }
 
+    /* ---------- 11b. Swiss OKF Brief template ----------
+       Use for high-performing technical/news explanation decks where the
+       reader needs a sharp public-feed hook plus structured proof. Inherited
+       from Swiss grammar: straight modules, single yellow accent, hairlines,
+       light oversized type, no rounded cards, no shadows, no page-number
+       decoration. */
+    .poster.swiss-okf {
+      --okf-paper: #f6eed7;
+      --okf-ink: #11110f;
+      --okf-muted: #746f60;
+      --okf-line: rgba(17,17,15,.22);
+      --okf-soft: rgba(255,213,0,.12);
+      --okf-warm: #f4d7b3;
+      --okf-accent: #ffd500;
+      --okf-warn: #ff6b35;
+      background: var(--okf-paper);
+      color: var(--okf-ink);
+    }
+    .poster.swiss-okf::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 86px;
+      background: var(--okf-accent);
+      z-index: 0;
+    }
+    .poster.swiss-okf .content {
+      padding: 96px 80px 64px 124px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    .okf-topbar,
+    .okf-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 20px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--okf-muted);
+      border-top: 1px solid var(--okf-line);
+      padding-top: 22px;
+      margin-top: 24px;
+    }
+    .okf-topbar {
+      border-top: 0;
+      border-bottom: 1px solid var(--okf-line);
+      padding-top: 0;
+      padding-bottom: 22px;
+      margin-bottom: 44px;
+      color: var(--okf-accent);
+    }
+    .okf-topbar .brand-signature::before { color: var(--okf-muted); letter-spacing: .04em; }
+    .okf-page {
+      flex: 1;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 34px;
+      min-height: 0;
+    }
+    .okf-title-wrap { position: relative; }
+    .okf-title {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      max-width: 880px;
+      font-family: var(--sans);
+      font-size: 76px;
+      line-height: 1.1;
+      font-weight: 200;
+      letter-spacing: 0;
+      color: var(--okf-ink);
+    }
+    .poster.xhs .okf-title { font-size: 72px; }
+    .okf-title .mark {
+      display: inline-block;
+      background: var(--okf-accent);
+      padding: 0 .08em .04em;
+      font-weight: 500;
+    }
+    .okf-ghost {
+      position: absolute;
+      right: -18px;
+      top: -12px;
+      font-family: var(--sans);
+      font-size: 132px;
+      line-height: 1;
+      font-weight: 200;
+      letter-spacing: .02em;
+      color: rgba(17,17,15,.045);
+      text-transform: uppercase;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .okf-lead {
+      margin: 0;
+      padding-left: 28px;
+      border-left: 8px solid var(--okf-warn);
+      max-width: 860px;
+      font-family: var(--sans-zh);
+      font-size: 31px;
+      line-height: 1.55;
+      font-weight: 400;
+      color: var(--okf-ink);
+    }
+    .okf-cover-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 1fr;
+      gap: 32px;
+      align-items: stretch;
+      margin-top: 10px;
+    }
+    .okf-code-card,
+    .okf-text-card,
+    .okf-dark-card,
+    .okf-accent-card,
+    .okf-warm-card {
+      border: 1px solid var(--okf-line);
+      padding: 32px;
+      min-height: 0;
+    }
+    .okf-code-card {
+      background: rgba(246,238,215,.72);
+      font-family: var(--mono);
+      font-size: 24px;
+      line-height: 1.35;
+      white-space: pre-wrap;
+      color: var(--okf-ink);
+    }
+    .okf-dark-card {
+      background: var(--okf-ink);
+      color: var(--okf-paper);
+      border-color: var(--okf-ink);
+    }
+    .okf-dark-card .okf-kicker,
+    .okf-dark-card .okf-card-body { color: var(--okf-paper); }
+    .okf-accent-card {
+      background: var(--okf-accent);
+      border-color: var(--okf-accent);
+      color: var(--okf-ink);
+    }
+    .okf-warm-card { background: var(--okf-warm); }
+    .okf-kicker {
+      margin: 0 0 22px;
+      font-family: var(--mono);
+      font-size: 19px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--okf-muted);
+    }
+    .okf-card-title {
+      margin: 0 0 12px;
+      font-family: var(--sans-zh);
+      font-size: 34px;
+      line-height: 1.18;
+      font-weight: 600;
+      color: inherit;
+    }
+    .okf-card-body {
+      margin: 0;
+      font-family: var(--sans-zh);
+      font-size: 25px;
+      line-height: 1.44;
+      font-weight: 400;
+      color: var(--okf-muted);
+    }
+    .okf-proof-row {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 34px;
+      align-items: start;
+      padding: 30px 34px;
+      border: 1px solid var(--okf-line);
+      background: rgba(246,238,215,.44);
+    }
+    .okf-proof-row.is-dark {
+      background: var(--okf-ink);
+      color: var(--okf-paper);
+      border-color: var(--okf-ink);
+    }
+    .okf-proof-row.is-accent {
+      background: var(--okf-accent);
+      border-color: var(--okf-accent);
+    }
+    .okf-proof-row.is-warm { background: var(--okf-warm); }
+    .okf-proof-num {
+      margin: 0;
+      font-family: var(--sans);
+      font-size: 62px;
+      line-height: 1;
+      font-weight: 200;
+      color: var(--okf-muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .okf-proof-row.is-dark .okf-proof-num,
+    .okf-proof-row.is-dark .okf-card-body { color: rgba(246,238,215,.72); }
+    .okf-list { display: grid; gap: 16px; align-content: center; }
+    .okf-list.dense { gap: 14px; }
+    .okf-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: stretch; }
+    .okf-bottom-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--okf-line);
+    }
+    .okf-bottom-cards .okf-text-card,
+    .okf-bottom-cards .okf-dark-card,
+    .okf-bottom-cards .okf-accent-card,
+    .okf-bottom-cards .okf-warm-card {
+      padding: 24px;
+      min-height: 150px;
+    }
+    .okf-bottom-cards .okf-card-title { font-size: 25px; margin-top: 20px; }
+
     /* ---------- 12. Pair preview frame ---------- */
     .pair-preview {
       width: 2400px;
@@ -899,8 +1119,8 @@
     <!-- POSTERS_HERE -->
     <!--
       Replace the placeholder poster below with real content.
-      Each poster carries one Layout Recipe (S01-S12) from
-      references/layout-recipes.md.
+      Each poster follows the Swiss composition guidance in
+      references/visual-systems.md and references/aesthetic-standards.md.
 
       Use only the Xiaohongshu board size in this Skill:
         <section class="poster xhs"    id="xhs-01">…</section>   3:4

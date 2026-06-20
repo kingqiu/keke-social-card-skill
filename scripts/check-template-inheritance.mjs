@@ -35,6 +35,14 @@ const swissSection = visualSystems.match(/## Swiss System[\s\S]*?(?=\n## |\n$)/)
 if (!swissSection.includes("Status: `locked`; Gold example: `examples/swiss-agent-infra-full-candidate`.")) {
   failures.push("Swiss System status must be `locked` with the accepted Gold example path");
 }
+for (const required of [".poster.swiss-okf", ".okf-topbar", ".okf-title", ".okf-ghost", ".okf-lead", ".okf-code-card", ".okf-proof-row", ".okf-footer"]) {
+  if (!swiss.includes(required)) {
+    failures.push(`Swiss template missing OKF Brief primitive ${required}`);
+  }
+}
+if (!swissSection.includes("Swiss OKF Brief sub-template") || !swissSection.includes("left yellow rail")) {
+  failures.push("Swiss visual-system docs must describe the Swiss OKF Brief sub-template");
+}
 
 const proofLabForbidden = [
   { pattern: /\.xhs-proof-/g, reason: "Proof Lab template must not contain Keke-specific proof lookalike classes" },

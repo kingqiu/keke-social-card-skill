@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>Swiss OKF Brief Validation</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+SC:wght@200;300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <style>
+    :root {
+      --sans: "Inter", "Helvetica Neue", Helvetica, "Noto Sans SC", -apple-system, "PingFang SC", "Microsoft YaHei UI", sans-serif;
+      --sans-zh: "Noto Sans SC", -apple-system, "PingFang SC", "Microsoft YaHei UI", "Inter", sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Consolas, monospace;
+    }
+    *,*::before,*::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: #1a1a1a; font-family: var(--sans); padding: 64px 32px; }
+    .sheet { display: flex; flex-direction: column; align-items: center; gap: 48px; }
+    .poster { position: relative; width: 1080px; height: 1440px; overflow: hidden; isolation: isolate; }
+    .brand-signature::before { content: "「两克伴」出品"; }
+
+    .poster.swiss-okf {
+      --okf-paper: #f6eed7;
+      --okf-ink: #11110f;
+      --okf-muted: #746f60;
+      --okf-line: rgba(17,17,15,.22);
+      --okf-soft: rgba(255,213,0,.12);
+      --okf-warm: #f4d7b3;
+      --okf-accent: #ffd500;
+      --okf-warn: #ff6b35;
+      background: var(--okf-paper);
+      color: var(--okf-ink);
+    }
+    .poster.swiss-okf::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 86px;
+      background: var(--okf-accent);
+      z-index: 0;
+    }
+    .poster.swiss-okf .content {
+      position: relative;
+      z-index: 2;
+      padding: 96px 80px 64px 124px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .okf-topbar,
+    .okf-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 20px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--okf-muted);
+      border-top: 1px solid var(--okf-line);
+      padding-top: 22px;
+      margin-top: 24px;
+    }
+    .okf-topbar {
+      border-top: 0;
+      border-bottom: 1px solid var(--okf-line);
+      padding-top: 0;
+      padding-bottom: 22px;
+      margin-bottom: 44px;
+      color: var(--okf-accent);
+    }
+    .okf-topbar .brand-signature::before { color: var(--okf-muted); letter-spacing: .04em; }
+    .okf-page { flex: 1; display: grid; grid-template-rows: auto auto 1fr; gap: 34px; min-height: 0; }
+    .okf-title-wrap { position: relative; }
+    .okf-title {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      max-width: 880px;
+      font-family: var(--sans);
+      font-size: 72px;
+      line-height: 1.1;
+      font-weight: 200;
+      letter-spacing: 0;
+      color: var(--okf-ink);
+    }
+    .okf-title.cover { font-size: 96px; line-height: 1.02; }
+    .okf-title .mark {
+      display: inline-block;
+      background: var(--okf-accent);
+      padding: 0 .08em .04em;
+      font-weight: 500;
+    }
+    .okf-ghost {
+      position: absolute;
+      right: -18px;
+      top: -12px;
+      font-family: var(--sans);
+      font-size: 132px;
+      line-height: 1;
+      font-weight: 200;
+      letter-spacing: .02em;
+      color: rgba(17,17,15,.045);
+      text-transform: uppercase;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .okf-lead {
+      margin: 0;
+      padding-left: 28px;
+      border-left: 8px solid var(--okf-warn);
+      max-width: 860px;
+      font-family: var(--sans-zh);
+      font-size: 31px;
+      line-height: 1.55;
+      font-weight: 400;
+      color: var(--okf-ink);
+    }
+    .okf-cover-grid { display: grid; grid-template-columns: 1.08fr 1fr; gap: 32px; align-items: stretch; margin-top: 10px; }
+    .okf-code-card,
+    .okf-text-card,
+    .okf-dark-card,
+    .okf-accent-card,
+    .okf-warm-card {
+      border: 1px solid var(--okf-line);
+      padding: 32px;
+      min-height: 0;
+    }
+    .okf-code-card {
+      background: rgba(246,238,215,.72);
+      font-family: var(--mono);
+      font-size: 24px;
+      line-height: 1.35;
+      white-space: pre-wrap;
+      color: var(--okf-ink);
+    }
+    .okf-dark-card { background: var(--okf-ink); color: var(--okf-paper); border-color: var(--okf-ink); }
+    .okf-accent-card { background: var(--okf-accent); border-color: var(--okf-accent); color: var(--okf-ink); }
+    .okf-warm-card { background: var(--okf-warm); }
+    .okf-kicker {
+      margin: 0 0 22px;
+      font-family: var(--mono);
+      font-size: 19px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--okf-muted);
+    }
+    .okf-dark-card .okf-kicker,
+    .okf-dark-card .okf-card-body { color: rgba(246,238,215,.78); }
+    .okf-card-title {
+      margin: 0 0 12px;
+      font-family: var(--sans-zh);
+      font-size: 34px;
+      line-height: 1.18;
+      font-weight: 600;
+      color: inherit;
+    }
+    .okf-card-body {
+      margin: 0;
+      font-family: var(--sans-zh);
+      font-size: 25px;
+      line-height: 1.44;
+      font-weight: 400;
+      color: var(--okf-muted);
+    }
+    .okf-proof-row {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 34px;
+      align-items: start;
+      padding: 30px 34px;
+      border: 1px solid var(--okf-line);
+      background: rgba(246,238,215,.44);
+    }
+    .okf-proof-row.is-dark { background: var(--okf-ink); color: var(--okf-paper); border-color: var(--okf-ink); }
+    .okf-proof-row.is-accent { background: var(--okf-accent); border-color: var(--okf-accent); }
+    .okf-proof-row.is-warm { background: var(--okf-warm); }
+    .okf-proof-num {
+      margin: 0;
+      font-family: var(--sans);
+      font-size: 62px;
+      line-height: 1;
+      font-weight: 200;
+      color: var(--okf-muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .okf-proof-row.is-dark .okf-proof-num,
+    .okf-proof-row.is-dark .okf-card-body { color: rgba(246,238,215,.72); }
+    .okf-list { display: grid; gap: 16px; align-content: center; }
+    .okf-list.dense { gap: 14px; }
+    .okf-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: stretch; }
+    .okf-bottom-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--okf-line);
+    }
+    .okf-bottom-cards .okf-text-card,
+    .okf-bottom-cards .okf-dark-card,
+    .okf-bottom-cards .okf-accent-card,
+    .okf-bottom-cards .okf-warm-card { padding: 24px; min-height: 150px; }
+    .okf-bottom-cards .okf-card-title { font-size: 25px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <section class="poster swiss-okf" id="okf-01" data-name="okf-01-cover">
+      <div class="content">
+        <div class="okf-topbar"><span>Google Cloud · Open Specification</span><span class="brand-signature"></span></div>
+        <main class="okf-page">
+          <div class="okf-title-wrap">
+            <h1 class="okf-title cover">Google<br>推出 <span class="mark">OKF</span></h1>
+            <span class="okf-ghost">Format</span>
+          </div>
+          <p class="okf-lead">AI Agent 的知识格式来了：用 Markdown 文件夹和 YAML 头信息，把组织知识变成可迁移、可读取、可维护的知识包。</p>
+          <div>
+            <div class="okf-cover-grid">
+              <pre class="okf-code-card">sales/
+├─ index.md
+├─ tables/orders.md
+├─ metrics/weekly_active_users.md
+└─ runbooks/incident.md</pre>
+              <pre class="okf-code-card okf-dark-card">---
+type: metric
+title: Weekly Active Users
+resource: bigquery://...
+tags: [ai, data]
+timestamp: 2026-06-13
+---</pre>
+            </div>
+            <div class="okf-bottom-cards">
+              <div class="okf-dark-card"><p class="okf-kicker">01</p><h3 class="okf-card-title">不是新平台<br>而是开放格式</h3></div>
+              <div class="okf-warm-card"><p class="okf-kicker">02</p><h3 class="okf-card-title">人类可读<br>Agent 可解析</h3></div>
+              <div class="okf-accent-card"><p class="okf-kicker">03</p><h3 class="okf-card-title">无需 SDK<br>不绑定厂商</h3></div>
+            </div>
+          </div>
+        </main>
+        <footer class="okf-footer"><span>Source: Google Cloud Blog</span><span>2026.06</span></footer>
+      </div>
+    </section>
+
+    <section class="poster swiss-okf" id="okf-02" data-name="okf-02-definition">
+      <div class="content">
+        <div class="okf-topbar"><span>03 · Definition</span><span class="brand-signature"></span></div>
+        <main class="okf-page">
+          <div class="okf-title-wrap">
+            <h2 class="okf-title">OKF 不是知识库产品，而是一个 <span class="mark">格式</span></h2>
+            <span class="okf-ghost">Format</span>
+          </div>
+          <p class="okf-lead">Open Knowledge Format 把 LLM-wiki 这种做法标准化：用普通文件目录表达组织知识，让人类可以读，让 AI Agent 也能直接解析。</p>
+          <div class="okf-two-col">
+            <div class="okf-accent-card">
+              <p class="okf-kicker">It is</p>
+              <h3 class="okf-card-title">一个可交换的知识包</h3>
+              <p class="okf-card-body">每个 Markdown 文件代表一个概念，比如表、指标、数据集、API、playbook 或 runbook。文件路径就是这个概念的身份。</p>
+            </div>
+            <div class="okf-text-card">
+              <p class="okf-kicker">It is not</p>
+              <h3 class="okf-card-title">不是又一个知识服务</h3>
+              <p class="okf-card-body">它不要求新运行时、不要求 SDK、不绑定云厂商。你可以把它放进 Git、打包成 tarball，或者挂载到任意文件系统。</p>
+            </div>
+          </div>
+        </main>
+        <footer class="okf-footer"><span>Markdown · YAML · Links</span><span>No translation layer</span></footer>
+      </div>
+    </section>
+
+    <section class="poster swiss-okf" id="okf-03" data-name="okf-03-agent-value">
+      <div class="content">
+        <div class="okf-topbar"><span>07 · Why it matters</span><span class="brand-signature"></span></div>
+        <main class="okf-page">
+          <div class="okf-title-wrap">
+            <h2 class="okf-title">对 AI Agent 开发者，它改变的是知识交付方式</h2>
+            <span class="okf-ghost">Agent</span>
+          </div>
+          <p class="okf-lead">过去你可能要给每个 Agent 单独写检索、适配和解析逻辑。OKF 想把这层变成通用“知识货币”：谁都能产出，谁都能消费。</p>
+          <div class="okf-list dense">
+            <div class="okf-proof-row"><p class="okf-proof-num">01</p><div><h3 class="okf-card-title">把内部知识放到版本控制里</h3><p class="okf-card-body">指标、表、API、runbook 跟代码一起演进，变更可以审查、回滚、追踪。</p></div></div>
+            <div class="okf-proof-row is-accent"><p class="okf-proof-num">02</p><div><h3 class="okf-card-title">让 Agent 不再临时拼碎片</h3><p class="okf-card-body">上下文被整理成可导航的 Markdown 图谱，模型可以先读结构，再逐层展开细节。</p></div></div>
+            <div class="okf-proof-row"><p class="okf-proof-num">03</p><div><h3 class="okf-card-title">让知识离开原来的工具也能活</h3><p class="okf-card-body">同一份知识包可以被浏览器、搜索索引、数据目录或另一个 Agent 使用。</p></div></div>
+            <div class="okf-proof-row is-dark"><p class="okf-proof-num">04</p><div><h3 class="okf-card-title">为“Agent 维护知识”留出空间</h3><p class="okf-card-body">LLM 擅长更新交叉引用、同步文件、补充说明；人类负责策展和审核。</p></div></div>
+          </div>
+        </main>
+        <footer class="okf-footer"><span>Knowledge as code</span><span>Agent-readable context</span></footer>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

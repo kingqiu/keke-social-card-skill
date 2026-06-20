@@ -19,8 +19,8 @@
          ikb (Klein Blue) | lemon-yellow | lemon-green | safety-orange | peacock
 
        Fill posters where marked <!-- POSTERS_HERE -->.
-       Each poster carries one Layout Recipe (S01-S12) from
-       references/layout-recipes.md.
+       Each poster follows the Swiss composition guidance in
+       references/visual-systems.md and references/aesthetic-standards.md.
        ========================================================= */
 
     /* ---------- 1. Accent palettes (5 mutually exclusive) ---------- */
@@ -840,6 +840,103 @@
     .poster.square .matrix-fill{ grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; }
     .poster.square .matrix-fill .matrix-cell { min-height: 0; }
 
+    /* Validation cards should read as publishable Swiss examples, not empty
+       palette smoke tests. These primitives keep the inherited grammar:
+       straight lines, one accent, no shadows, no rounded cards. */
+    .swiss-verdict-band {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--sp-7);
+      align-items: end;
+      padding: var(--sp-8);
+      background: var(--accent);
+      color: var(--accent-on);
+    }
+    .swiss-verdict-band .t-cat,
+    .swiss-verdict-band .body,
+    .swiss-verdict-band .h-md { color: var(--accent-on); }
+    .swiss-rule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-5);
+    }
+    .swiss-rule {
+      border-top: 3px solid var(--accent);
+      background: var(--grey-1);
+      padding: var(--sp-6);
+      min-height: 170px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: var(--sp-4);
+    }
+    .swiss-rule b {
+      font-family: var(--mono);
+      font-size: 18px;
+      letter-spacing: .12em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    .swiss-rule span {
+      font-family: var(--sans-zh);
+      font-size: 24px;
+      line-height: 1.42;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .swiss-axis {
+      display: grid;
+      gap: var(--sp-5);
+      padding: var(--sp-7);
+      border: 1px solid var(--grey-2);
+    }
+    .swiss-axis-row {
+      display: grid;
+      grid-template-columns: 180px 1fr 120px;
+      gap: var(--sp-5);
+      align-items: center;
+    }
+    .swiss-axis-row .axis-name {
+      font-family: var(--sans-zh);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .swiss-axis-row .axis-track {
+      height: 22px;
+      background: var(--grey-1);
+      position: relative;
+    }
+    .swiss-axis-row .axis-fill {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: var(--w);
+      background: var(--accent);
+    }
+    .swiss-axis-row .axis-note {
+      font-family: var(--mono);
+      font-size: 18px;
+      letter-spacing: .08em;
+      color: var(--grey-3);
+      text-transform: uppercase;
+      text-align: right;
+    }
+    .swiss-bottom-label {
+      font-family: var(--mono);
+      font-size: 18px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--grey-3);
+      text-align: right;
+      white-space: nowrap;
+    }
+    .poster.xhs .swiss-rule-grid { grid-template-columns: 1fr; }
+    .poster.xhs .swiss-rule { min-height: 0; padding: var(--sp-5); }
+    .poster.xhs .swiss-rule span { font-size: 23px; line-height: 1.36; }
+    .poster.xhs .swiss-axis { padding: var(--sp-6); }
+    .poster.xhs .swiss-axis-row { grid-template-columns: 150px 1fr 96px; }
+    .poster.xhs .swiss-verdict-band { padding: var(--sp-6) var(--sp-7); }
+    .poster.xhs .swiss-cover-title { font-size: 116px; line-height: 1.02; }
+
     /* ---------- 11. Issue label + corner metadata ---------- */
     .chrome-min {
       display: flex;
@@ -897,54 +994,78 @@
   <main class="sheet">
 
     <section class="poster xhs" id="xhs-01" data-name="xhs-01-cover">
-      <div class="content stack gap-9">
-        <div class="chrome-min"><span>SWISS PALETTE · COVER</span><span class="brand-signature"></span></div>
-        <div class="stack gap-7">
-          <p class="t-cat">PALETTE SMOKE TEST</p>
-          <h1 class="h-statement">系统<br>变厚</h1>
-          <p class="lead">验证大标题、分类文字、发光色块和品牌签名在当前配色下是否仍然清楚。</p>
+      <div class="content stack gap-7">
+        <div class="chrome-min"><span>SWISS SYSTEM · COVER TEST</span><span class="brand-signature"></span></div>
+        <div class="stack gap-5">
+          <p class="t-cat">AI TOOL DECISION</p>
+          <h1 class="h-statement swiss-cover-title">这类 AI 工具<br>别急着装</h1>
+          <p class="lead">先看它能不能减少真实动作。只会多一个入口、多一套提示词的工具，最后都会变成负担。</p>
         </div>
-        <div class="grow"></div>
-        <hr class="hr-accent">
+        <div class="swiss-verdict-band">
+          <div class="stack gap-4">
+            <p class="t-cat">ONE-LINE FILTER</p>
+            <p class="h-md">能少做一步，才值得留下。</p>
+          </div>
+          <p class="t-meta">SAVE / CHECK</p>
+        </div>
+        <div class="swiss-rule-grid">
+          <div class="swiss-rule"><b>Keep</b><span>自动完成重复判断，输出能直接进入下一步。</span></div>
+          <div class="swiss-rule"><b>Wait</b><span>只是把原本清楚的流程换成聊天界面。</span></div>
+          <div class="swiss-rule"><b>Cut</b><span>需要人反复解释背景，省下的时间又被找补回来。</span></div>
+        </div>
         <div class="hero-stat-bottom">
-          <p class="body">这不是发布内容，只用于检查 Swiss System 的 accent 是否能支撑小红书 3:4 卡片。</p>
-          <p class="t-meta">Cover · no page mark</p>
+          <p class="body">验证 Swiss 封面能不能同时做到：标题有钩子、判断够清楚、配色不抢信息。</p>
+          <p class="swiss-bottom-label">Cover · No Page Mark</p>
         </div>
       </div>
     </section>
 
     <section class="poster xhs" id="xhs-02" data-name="xhs-02-matrix">
       <div class="content stack gap-7">
-        <div class="chrome-min"><span>SWISS PALETTE · MATRIX</span><span class="brand-signature"></span></div>
+        <div class="chrome-min"><span>SWISS SYSTEM · MATRIX TEST</span><span class="brand-signature"></span></div>
         <div class="stack gap-5">
-          <p class="t-cat">ACCENT CELL / BODY COPY</p>
-          <h2 class="h-xl">颜色<br>不能抢戏</h2>
-          <p class="lead">Swiss 的配色应该服务信息层级，而不是把卡片变成装饰海报。</p>
+          <p class="t-cat">DIAGNOSTIC MATRIX</p>
+          <h2 class="h-xl">三个问题<br>筛掉八成工具</h2>
+          <p class="lead">不要问“它厉不厉害”，问它是否真的改变你的工作动作。能回答这三题，才进入试用。</p>
         </div>
         <div class="matrix-fill">
-          <div class="matrix-cell is-accent"><span class="cell-nb">01</span><span class="cell-title">accent 色块里的文字必须清楚</span></div>
-          <div class="matrix-cell"><span class="cell-nb">02</span><span class="cell-title">浅灰模块里的正文要保持可读</span></div>
-          <div class="matrix-cell"><span class="cell-nb">03</span><span class="cell-title">分类小字不能因为颜色太亮而发虚</span></div>
-          <div class="matrix-cell"><span class="cell-nb">04</span><span class="cell-title">品牌签名和顶部信息不能丢</span></div>
+          <div class="matrix-cell is-accent"><span class="cell-nb">ACTION</span><span class="cell-title">它替你少做了哪一个具体动作？</span></div>
+          <div class="matrix-cell"><span class="cell-nb">INPUT</span><span class="cell-title">要不要每次重新解释背景？</span></div>
+          <div class="matrix-cell"><span class="cell-nb">OUTPUT</span><span class="cell-title">结果能不能直接复制、发布、交付？</span></div>
+          <div class="matrix-cell"><span class="cell-nb">ERROR</span><span class="cell-title">错了以后能不能快速定位原因？</span></div>
+          <div class="matrix-cell"><span class="cell-nb">ROUTINE</span><span class="cell-title">一周会不会重复用三次以上？</span></div>
+          <div class="matrix-cell"><span class="cell-nb">COST</span><span class="cell-title">学习成本有没有超过节省时间？</span></div>
+        </div>
+        <div class="swiss-axis">
+          <div class="swiss-axis-row"><span class="axis-name">少一步</span><span class="axis-track"><span class="axis-fill" style="--w: 86%"></span></span><span class="axis-note">Must</span></div>
+          <div class="swiss-axis-row"><span class="axis-name">少解释</span><span class="axis-track"><span class="axis-fill" style="--w: 62%"></span></span><span class="axis-note">Nice</span></div>
+          <div class="swiss-axis-row"><span class="axis-name">少返工</span><span class="axis-track"><span class="axis-fill" style="--w: 78%"></span></span><span class="axis-note">Proof</span></div>
         </div>
         <div class="hero-stat-bottom">
-          <p class="body">通过这一页检查矩阵、accent-on、灰阶、正文和底部编号的组合关系。</p>
-          <p class="num-mega">02</p>
+          <p class="body">这一页同时验证 accent 色块、浅灰矩阵、正文密度、条形判断和底部语义标签在五套配色下是否稳定。</p>
+          <p class="swiss-bottom-label">Diagnostic</p>
         </div>
       </div>
     </section>
 
     <section class="poster xhs" id="xhs-03" data-name="xhs-03-verdict">
       <div class="content stack gap-8">
-        <div class="chrome-min"><span>SWISS PALETTE · VERDICT</span><span class="brand-signature"></span></div>
-        <div class="card-ink">
-          <p class="t-cat">FINAL CHECK</p>
-          <p class="h-md">配色通过的标准不是“好看”，而是标题、重点、正文、签名都能在缩略图里站住。</p>
+        <div class="chrome-min"><span>SWISS SYSTEM · VERDICT TEST</span><span class="brand-signature"></span></div>
+        <div class="swiss-verdict-band">
+          <div class="stack gap-4">
+            <p class="t-cat">FINAL RULE</p>
+            <p class="h-md">先替换动作，再谈智能。</p>
+          </div>
+          <p class="t-meta">KEEP / WAIT / CUT</p>
         </div>
         <div class="stacked-ledger">
-          <div class="ledger-row"><p class="ledger-num">A</p><p class="ledger-lbl">信息层级清楚<span class="sub">大标题、说明文字、重点色块各有位置</span></p><i data-lucide="check-circle" class="ledger-icn"></i></div>
-          <div class="ledger-row"><p class="ledger-num">B</p><p class="ledger-lbl">对比度可靠<span class="sub">accent 和 accent-on 在色块里可读</span></p><i data-lucide="eye" class="ledger-icn"></i></div>
-          <div class="ledger-row"><p class="ledger-num">C</p><p class="ledger-lbl">仍然像 Swiss<span class="sub">不因为换色变成节庆海报或营销模板</span></p><i data-lucide="grid-3x3" class="ledger-icn"></i></div>
+          <div class="ledger-row"><p class="ledger-num">A</p><p class="ledger-lbl">留下：能接住真实任务<span class="sub">比如自动整理素材、生成可编辑初稿、补齐检查清单。</span></p><i data-lucide="check-circle" class="ledger-icn"></i></div>
+          <div class="ledger-row"><p class="ledger-num">B</p><p class="ledger-lbl">观察：看起来强，但入口太重<span class="sub">每次都要解释上下文，说明还没变成工作流。</span></p><i data-lucide="eye" class="ledger-icn"></i></div>
+          <div class="ledger-row"><p class="ledger-num">C</p><p class="ledger-lbl">删除：只增加新界面<span class="sub">没有少点击、少判断、少返工，就只是另一层包装。</span></p><i data-lucide="trash-2" class="ledger-icn"></i></div>
+        </div>
+        <div class="hero-stat-bottom">
+          <p class="body">最终页验证 Swiss 的 ledger 结构能否承载明确结论，而不是只做漂亮列表。读者应该能直接拿去判断一个工具值不值得试。</p>
+          <p class="swiss-bottom-label">Decision</p>
         </div>
       </div>
     </section>

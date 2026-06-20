@@ -66,6 +66,7 @@ Traits:
 - one accent color
 - clean hierarchy
 - ledgers, matrices, numbered systems
+- optional `Swiss OKF Brief` sub-template for high-performing technical announcement explainers
 
 Accent palettes:
 
@@ -82,6 +83,7 @@ Palette validation:
 - Run `npm run validate:swiss-palettes`.
 - The validation sample lives in `examples/swiss-palette-validation`.
 - All five palettes must pass paper/ink contrast, accent text contrast, overflow, and brand-signature checks before they are treated as available for production.
+- Palette validation should use publishable Xiaohongshu-style content, not empty smoke-test copy. The current validation deck uses an AI-tool decision checklist to test cover hook, diagnostic matrix, verdict ledger, semantic footer labels, and no cover page mark.
 - Do not mix palettes within one production deck.
 
 Required composition:
@@ -93,11 +95,22 @@ Required composition:
 - Page 2+ must include a reason to keep reading: a concrete test, a contradiction, a mistake to avoid, or a useful checklist.
 - Do not place a giant `01` on the cover, and do not use bottom-right page serials as decoration. Large numeric typography is for metrics, framework steps, or interior page structure, not pagination.
 
+Swiss OKF Brief sub-template:
+
+- Use when a technical announcement, open specification, data/API framework, or knowledge-format story needs the sharper public-feed look shown by the OKF reference deck.
+- Use `.poster.swiss-okf` from `assets/template-swiss-system.html`.
+- Core grammar: left yellow rail, warm paper, monospaced section label, exact brand signature, hairline top/footer rules, oversized light title, pale ghost keyword, orange lead rail, black proof block, yellow highlight block, and source/meta footer.
+- Strong pages combine one big judgment with proof rows, code/directory blocks, or producer/consumer cards. Do not use this as a decorative yellow skin for generic listicles.
+- Page numbers may appear only in the top-left section label such as `03 · DEFINITION`; do not use bottom-right serials or large cover `01`.
+
 Good recipes:
 
 - Myth/fact block + six diagnostic questions.
 - Decision map image + three routing rules + one black verdict strip.
 - One oversized number/statement + compact ledger rows.
+- OKF Brief cover: split title + directory/code proof cards + three compact bottom claims.
+- OKF Brief context page: lead paragraph + three problem rows, with one black row for the dominant pain.
+- OKF Brief definition/principle page: two-column `it is / it is not` or numbered proof rows with one yellow and one black emphasis row.
 
 Avoid turning it into generic corporate PPT.
 
