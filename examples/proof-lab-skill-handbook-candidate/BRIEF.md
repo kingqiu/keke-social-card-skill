@@ -1,6 +1,6 @@
 # Skill Handbook Proof Lab Candidate
 
-Status: Candidate validation
+Status: Gold
 Visual system: Proof Lab
 Source type: Long-form Chinese technical essay with supplied diagrams and generated article images.
 
@@ -12,7 +12,7 @@ This source needs 10 cards for faithful coverage. The article has one core defin
 
 | Card | Role | Source anchor | Must carry | Reader sentence | Visual proof | Cut |
 |---|---|---|---|---|---|---|
-| 01 | Cover | Opening paragraphs | Skill is not a plugin pile; it is an AI training manual | Skill works when it records experience and standards, not when it only adds tools. | Article hero image | Detailed AGENTS.md contrast |
+| 01 | Cover | Opening paragraphs | Skill is not a plugin pile; it is an AI training manual | Skill works when it records experience and standards, not when it only adds tools. | GPT Image 2 portrait bitmap redraw of article hero illustration, inserted into the Proof Lab template | Detailed AGENTS.md contrast |
 | 02 | Definition | `Skill 是什么` | AGENTS.md is general conduct; Skill is task-specific experience | One is a common standard, the other is concrete know-how for a scene. | Training/manual image plus framework image | Long analogy details |
 | 03 | Pattern overview | `五种 Skill 设计模式` | Decide what AI should learn before writing a Skill | The pattern depends on whether AI should use tools, generate, review, ask, or follow a process. | Five-pattern overview diagram | Citation wording |
 | 04 | Tool wrapper | `模式一：工具包装器` | Load specialized tool knowledge only when needed | Trigger wording is the key risk: too broad misfires, too narrow never fires. | Pattern 1 diagram | Extra FastAPI detail |

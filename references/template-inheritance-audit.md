@@ -34,12 +34,13 @@ Locked because:
 
 ## Proof Lab
 
-Status: `template-locked`; Gold example: `pending`.
+Status: `locked`; Gold example: `examples/proof-lab-skill-handbook-candidate`.
 
 Audit result:
 
 - The Proof Lab seed keeps the Signal Ledger / Graphite Mint evidence-first grammar.
 - The Proof Lab seed now declares the full `SL-01` to `SL-05` Signal theme token set and blocks one-off per-card palette drift.
+- The accepted Gold example is `examples/proof-lab-skill-handbook-candidate`, upgraded with portrait cover redraw, pattern evidence ledgers, caption package, and portrait-fit decisions.
 - Native primitives are `pl-evidence-hero`, `pl-callout`, `pl-step-flow`, `pl-before-after`, `pl-proof-side`, and `pl-takeaway`.
 - Public card branding is added only through `.brand-signature::before`, with exact text `「两克伴」出品`.
 - Proof Lab must keep screenshots/results as the visual center; abstract AI art and generic robot illustrations are not valid proof.
@@ -54,8 +55,9 @@ Guard:
 - `npm run validate:proof-lab`
 - `npm run check:proof-lab-theme`
 
-Still required before `locked`:
+Locked because:
 
-- One accepted Proof Lab Gold example rendered from a real AI tool/tutorial scenario.
+- A real AI workflow/tutorial Gold example exists and is rendered.
 - Proof/result areas are inspectable and not decorative.
 - Manual visual review confirms page 2+ do not collapse into generic SaaS UI.
+- `npm run check:all -- examples/proof-lab-skill-handbook-candidate` passes.

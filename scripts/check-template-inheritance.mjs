@@ -50,9 +50,13 @@ for (const required of [".pl-evidence-hero", ".pl-step-flow", ".pl-before-after"
   }
 }
 
+if (!/\.pl-before-after\s+\.pl-shot-box\s*\{[^}]*flex:\s*0\s+0\s+\d+px;[^}]*height:\s*\d+px;/s.test(proofLab)) {
+  failures.push("Proof Lab before/after image boxes must use a fixed shared height so paired images align even when captions have different line counts");
+}
+
 const proofLabSection = visualSystems.match(/## Proof Lab[\s\S]*?(?=\n## |\n$)/)?.[0] || "";
-if (!proofLabSection.includes("Status: `template-locked`; Gold example: `pending`.")) {
-  failures.push("Proof Lab status must be `template-locked` with Gold example pending after template audit passes");
+if (!proofLabSection.includes("Status: `locked`; Gold example: `examples/proof-lab-skill-handbook-candidate`.")) {
+  failures.push("Proof Lab status must be `locked` with the accepted Gold example path");
 }
 
 if (failures.length) {

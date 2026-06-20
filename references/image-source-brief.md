@@ -32,7 +32,9 @@ filename.jpg <- https://source-url
 
 ## Rules
 
-- AI generation should produce assets, not completed posters, unless explicitly requested.
+- AI generation should produce inserted assets, not completed posters, unless explicitly requested.
+- Keep the inherited HTML/CSS card template as the frame. If a landscape source illustration looks bad in a portrait card, redraw or recompose that illustration itself as a portrait bitmap, then place it back into the template.
+- For illustration redraws, prefer GPT Image 2 or an equivalent bitmap image model and save PNG/JPG/WebP. SVG is acceptable only for tiny structural icons, line markers, or template-native symbols, not as the final redraw of a source illustration.
 - Screenshots must remain readable.
 - Product, food, person, and outfit result images cannot become tiny decorations.
 - Full-bleed images need subject map, safe text zone, avoid zone, and object position.
@@ -59,3 +61,5 @@ must preserve:
 ```
 
 Do not use `object-fit: contain` as the default fix for an unsuitable landscape hero. `contain` is acceptable for proof diagrams, not for weak cover art.
+
+The redraw brief must describe the source illustration and what to preserve. It must not ask the image model to regenerate the whole Xiaohongshu card, title, footer, template border, or brand signature.

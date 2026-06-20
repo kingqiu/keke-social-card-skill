@@ -159,7 +159,9 @@ Record image role, source route, subject zone, safe text zone, avoid zone, crop,
 
 For every landscape source image considered for a portrait Xiaohongshu card, decide whether to redraw, recompose, split, or keep landscape:
 
+- Preserve the inherited HTML/CSS template as the card frame. When redraw is needed, redraw only the inserted source illustration/image asset, then place that raster asset back into the template.
 - Redraw or recompose landscape images used as cover art, hero illustration, mood, product, person, outfit, food, or scene visuals when they leave empty bands or make the subject small.
+- Use GPT Image 2 or an equivalent bitmap image model for illustration redraws by default. Save the result as PNG/JPG/WebP. Do not satisfy an illustration redraw with SVG unless the asset is only a tiny structural icon or line marker.
 - Keep landscape only when the image is itself the proof, screenshot, chart, or original diagram and fidelity matters. Record the reason in `QA.md`.
 - Do not use `object-fit: contain` as the default fix for unsuitable landscape cover art.
 
@@ -189,6 +191,7 @@ Use `references/xhs-copywriting-guidelines.md`:
 - Render with `node scripts/render-social-deck.mjs <task-dir>`.
 - For long-form sources, check planning with `node scripts/check-content-plan.mjs <task-dir>`.
 - Check Xiaohongshu copy with `node scripts/check-xhs-copy.mjs <task-dir>`.
+- Check portrait image fit with `node scripts/check-portrait-fit.mjs <task-dir>`.
 - When using Proof Lab, check theme compliance with `node scripts/check-proof-lab-theme-contract.mjs`.
 - Validate only when requested or before final handoff: `node scripts/validate-social-deck.mjs <task-dir>`.
 - Before final handoff for a publishing-quality package, run `npm run check:all -- <task-dir>`.
@@ -228,6 +231,7 @@ Final response should include:
 - Do not shrink screenshots or result images into decoration.
 - Do not let title/caption promise something the cards do not show.
 - Do not use AI-generated full card images as the default; generate assets and compose deterministically.
+- Do not use a generated full-card image when the actual problem is only a landscape source illustration that needs portrait redraw.
 - Do not omit `SOURCES.md` / `IMAGE_REQUESTS.md` for non-trivial image use.
 - Do not treat machine QA as visual approval. Human review is the final gate.
 - Do not vary the visible brand signature. It must be exactly `「两克伴」出品`.

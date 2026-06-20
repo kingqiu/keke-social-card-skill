@@ -139,7 +139,7 @@ Avoid cheap big-character posters with no proof.
 
 Use for AI tools, app tutorials, screenshots, product workflows, before/after proof.
 
-Status: `template-locked`; Gold example: `pending`.
+Status: `locked`; Gold example: `examples/proof-lab-skill-handbook-candidate`.
 
 Inheritance baseline:
 
@@ -171,7 +171,7 @@ Template validation:
 - The validation sample lives in `examples/proof-lab-validation`.
 - The validation checks evidence hero size, step-flow structure, before/after structure, overflow, callout count, and exact brand signature.
 - The theme contract check blocks non-contract hex colors and core theme variable redeclarations outside `:root` / `html[data-theme]`.
-- This system still needs a real AI tool/product Gold example with inspectable proof assets.
+- Gold reference is `examples/proof-lab-skill-handbook-candidate`, covering diagram-heavy AI workflow/tutorial content with portrait-fit decisions and Xiaohongshu copy.
 
 Good recipes:
 

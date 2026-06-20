@@ -132,6 +132,7 @@ body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
 .pl-proof-side h3 { margin:0; font-size:38px; line-height:1; }
 .pl-shot-box { flex:1; min-height:0; background:var(--soft); border:1px solid var(--line); display:grid; place-items:center; overflow:hidden; }
 .pl-shot-box img { width:100%; height:100%; object-fit:cover; }
+.pl-before-after .pl-shot-box { flex:0 0 650px; height:650px; }
 .pl-takeaway { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:20px 0 0; border-top:1px solid var(--line); color:var(--muted); font-size:21px; }
 .brand-signature::before { content:"「两克伴」出品"; }
 .poster.cover .pl-title { font-size:92px; max-width:920px; }
@@ -151,12 +152,26 @@ body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
 .pl-callout.compact p { font-size:22px; }
 .pl-proof-note { position:absolute; left:28px; bottom:28px; max-width:390px; padding:18px 20px; background:color-mix(in srgb, var(--dark) 82%, transparent); color:var(--proof-on-dark); font-size:24px; line-height:1.28; backdrop-filter:blur(10px); }
 .pl-shot-box.contain img { object-fit:contain; background:var(--bg); padding:12px; }
+.pl-shot-box.portrait img { object-fit:cover; background:var(--bg); padding:0; }
 .pl-text-board { min-height:0; display:grid; gap:18px; grid-template-columns:1fr 1fr; }
 .pl-text-card { background:var(--surface); border:1px solid var(--line); padding:28px; display:flex; flex-direction:column; justify-content:space-between; min-height:260px; box-shadow:0 12px 34px rgba(20,24,23,.07); }
 .pl-text-card strong { display:block; font-size:42px; line-height:1.05; font-weight:660; }
 .pl-text-card span { display:block; margin-top:16px; font-size:25px; line-height:1.34; color:var(--muted); }
 .pl-text-card.full { grid-column:1 / -1; min-height:210px; background:var(--dark); color:var(--proof-on-dark); }
 .pl-text-card.full span { color:color-mix(in srgb, var(--proof-on-dark) 78%, transparent); }
+.pl-cover-board { display:grid; grid-template-columns:410px 1fr; gap:24px; padding:24px; align-items:stretch; }
+.pl-cover-art { min-height:0; border-radius:24px; overflow:hidden; background:var(--bg); border:1px solid color-mix(in srgb, var(--surface) 22%, transparent); }
+.pl-cover-art img { width:100%; height:100%; object-fit:cover; display:block; }
+.pl-cover-ledger { display:grid; grid-template-rows:auto 1fr auto; gap:22px; padding:22px 10px 22px 4px; }
+.pl-cover-ledger h2 { margin:0; font-size:44px; line-height:1.02; color:var(--proof-on-dark); }
+.pl-cover-ledger p { margin:0; font-size:25px; line-height:1.34; color:color-mix(in srgb, var(--proof-on-dark) 76%, transparent); }
+.pl-ledger-list { display:grid; gap:14px; align-content:center; }
+.pl-ledger-list span { display:block; padding:16px 18px; border:1px solid color-mix(in srgb, var(--surface) 16%, transparent); background:color-mix(in srgb, var(--surface) 8%, transparent); color:var(--proof-on-dark); font-size:24px; line-height:1.18; font-weight:640; }
+.pl-pattern-proof { padding:22px; display:grid; grid-template-columns:1fr 250px; gap:18px; align-items:stretch; }
+.pl-pattern-proof img { border-radius:18px; border:1px solid var(--line); background:var(--surface); }
+.pl-pattern-ledger { display:grid; gap:14px; align-content:center; }
+.pl-pattern-ledger span { display:block; padding:14px 16px; background:var(--surface); color:var(--fg); border:1px solid var(--line); font-size:22px; line-height:1.22; font-weight:640; }
+.pl-pattern-ledger b { display:block; margin-bottom:7px; color:var(--accent); font-size:15px; letter-spacing:.08em; font-family:var(--sl-label); }
 </style>
 </head>
 <body>
@@ -168,8 +183,18 @@ body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
       <p class="pl-subtitle">装了一堆还是不好用，问题通常不在数量，而在你有没有把经验组织成可调用的流程。</p>
     </header>
     <main class="pl-proof-layout cover-proof">
-      <div class="pl-evidence-hero diagram">
-        <img src="assets/skill-hero.png" alt="Skill 实战手册头图" />
+      <div class="pl-evidence-hero pl-cover-board">
+        <div class="pl-cover-art"><img src="assets/skill-hero-portrait.png" alt="Skill 培训手册竖版位图重绘插图" /></div>
+        <div class="pl-cover-ledger">
+          <h2>先培训<br>再调用</h2>
+          <p>好的 Skill 把经验变成可复用标准，让 AI 知道何时触发、按什么流程做、怎样算合格。</p>
+          <div class="pl-ledger-list">
+            <span>Trigger：什么时候加载</span>
+            <span>Workflow：按什么步骤做</span>
+            <span>Gate：什么结果算过关</span>
+          </div>
+          <p class="sl-caption">Portrait bitmap redraw from supplied landscape concept</p>
+        </div>
       </div>
       <div class="pl-callout-row">
         <div class="pl-callout compact"><h3>常见误区</h3><p>把 Skill 当成插件仓库，装得越多越迷糊。</p></div>
@@ -190,12 +215,12 @@ body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
     <main class="pl-before-after">
       <div class="pl-proof-side">
         <h3>AGENTS.md</h3>
-        <div class="pl-shot-box contain"><img src="assets/skill-training-manual.png" alt="AI 培训手册示意图" /></div>
+        <div class="pl-shot-box portrait"><img src="assets/skillnet-framework-portrait.png" alt="通用规范框架竖版位图重绘插图" /></div>
         <p class="sl-body">写文件、搜索、复盘、协作方式，这些是所有任务都要遵守的底层规矩。</p>
       </div>
       <div class="pl-proof-side">
         <h3>Skill</h3>
-        <div class="pl-shot-box contain"><img src="assets/skillnet-framework.png" alt="Skill 框架示意图" /></div>
+        <div class="pl-shot-box portrait"><img src="assets/skill-training-manual-portrait.png" alt="Skill 场景经验竖版位图重绘插图" /></div>
         <p class="sl-body">日报格式、代码规范、行业术语、验收清单，这些是某类任务才需要的经验。</p>
       </div>
     </main>
@@ -232,7 +257,14 @@ body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
       <p class="pl-subtitle">适合 FastAPI、特定框架、内部 CLI 这类重复专业任务。关键是触发词精准，太宽会误触发，太窄又用不上。</p>
     </header>
     <main class="pl-proof-layout">
-      <div class="pl-evidence-hero diagram"><img src="assets/pattern-tool-wrapper.jpg" alt="工具包装器模式图" /></div>
+      <div class="pl-evidence-hero diagram pl-pattern-proof">
+        <img src="assets/pattern-tool-wrapper.jpg" alt="工具包装器模式图" />
+        <div class="pl-pattern-ledger">
+          <span><b>WHEN</b>重复调用特定框架、CLI 或内部工具。</span>
+          <span><b>RISK</b>触发词太宽会误触发，太窄又用不上。</span>
+          <span><b>OUTPUT</b>只加载必要工具知识，用完退出上下文。</span>
+        </div>
+      </div>
       <div class="pl-callout-row">
         <div class="pl-callout compact"><h3>解决什么</h3><p>不用每次把一整套工具规范重新塞进对话。</p></div>
         <div class="pl-callout compact"><h3>设计重点</h3><p>明确何时触发、用哪些命令、失败时怎么退回。</p></div>
@@ -250,7 +282,14 @@ body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
       <p class="pl-subtitle">如果你总嫌 AI 每次写出来格式不一样，就先定义模板和风格指南，让它像填空一样完成结果。</p>
     </header>
     <main class="pl-proof-layout">
-      <div class="pl-evidence-hero diagram"><img src="assets/pattern-generator.jpg" alt="生成器模式图" /></div>
+      <div class="pl-evidence-hero diagram pl-pattern-proof">
+        <img src="assets/pattern-generator.jpg" alt="生成器模式图" />
+        <div class="pl-pattern-ledger">
+          <span><b>WHEN</b>结果格式必须稳定，不能每次自由发挥。</span>
+          <span><b>RISK</b>只给风格词，不给字段和缺失信息处理。</span>
+          <span><b>OUTPUT</b>模板、字段、追问和验收一起固化。</span>
+        </div>
+      </div>
       <div class="pl-callout-row">
         <div class="pl-callout compact"><h3>适合场景</h3><p>会议纪要、API 文档、项目周报、固定格式内容。</p></div>
         <div class="pl-callout compact"><h3>设计重点</h3><p>模板、字段、缺失信息追问、输出验收规则都要写清楚。</p></div>
@@ -268,7 +307,14 @@ body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
       <p class="pl-subtitle">评审型 Skill 不负责替你做事，它负责检查结果有没有达标。模糊评价没用，最好写成具体的是非题。</p>
     </header>
     <main class="pl-proof-layout">
-      <div class="pl-evidence-hero diagram"><img src="assets/pattern-reviewer.jpg" alt="评审员模式图" /></div>
+      <div class="pl-evidence-hero diagram pl-pattern-proof">
+        <img src="assets/pattern-reviewer.jpg" alt="评审员模式图" />
+        <div class="pl-pattern-ledger">
+          <span><b>WHEN</b>你已有结果，需要 AI 帮你判断质量。</span>
+          <span><b>RISK</b>用“整体评价”这种模糊标准。</span>
+          <span><b>OUTPUT</b>把质量拆成可复用的是非题清单。</span>
+        </div>
+      </div>
       <div class="pl-callout-row">
         <div class="pl-callout compact"><h3>解决什么</h3><p>把“感觉不对”变成可复用、可执行的检查标准。</p></div>
         <div class="pl-callout compact"><h3>设计重点</h3><p>每条标准都要能判断：通过、失败、需要补充证据。</p></div>
@@ -286,7 +332,14 @@ body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
       <p class="pl-subtitle">很多返工不是能力问题，而是 AI 一听开头就开始猜。反转模式把 AI 变成面试官，先补齐背景、目标和限制。</p>
     </header>
     <main class="pl-proof-layout">
-      <div class="pl-evidence-hero diagram"><img src="assets/pattern-inversion.jpg" alt="反转模式图" /></div>
+      <div class="pl-evidence-hero diagram pl-pattern-proof">
+        <img src="assets/pattern-inversion.jpg" alt="反转模式图" />
+        <div class="pl-pattern-ledger">
+          <span><b>WHEN</b>任务背景不完整，贸然动手容易返工。</span>
+          <span><b>RISK</b>AI 为了显得聪明，提前猜你的意图。</span>
+          <span><b>OUTPUT</b>先提问补齐背景、目标和约束。</span>
+        </div>
+      </div>
       <div class="pl-callout-row">
         <div class="pl-callout compact"><h3>解决什么</h3><p>避免基于不完整信息输出一堆看似正确的废话。</p></div>
         <div class="pl-callout compact"><h3>设计重点</h3><p>定义必须追问的问题，以及什么时候信息足够可以开始。</p></div>
@@ -304,7 +357,14 @@ body { margin: 0; background: var(--grid); font-family: var(--sl-body); }
       <p class="pl-subtitle">有些任务天然要分阶段推进。管道型 Skill 要写清每一步做什么、产物是什么、没通过时不能进入下一步。</p>
     </header>
     <main class="pl-proof-layout">
-      <div class="pl-evidence-hero diagram"><img src="assets/pattern-pipeline.jpg" alt="管道模式图" /></div>
+      <div class="pl-evidence-hero diagram pl-pattern-proof">
+        <img src="assets/pattern-pipeline.jpg" alt="管道模式图" />
+        <div class="pl-pattern-ledger">
+          <span><b>WHEN</b>任务天然分阶段，中间步骤不能跳。</span>
+          <span><b>RISK</b>AI 直接给结论，省掉关键检查。</span>
+          <span><b>OUTPUT</b>每一步都有输入、产物、验收和失败处理。</span>
+        </div>
+      </div>
       <div class="pl-callout-row">
         <div class="pl-callout compact"><h3>解决什么</h3><p>AI 没被约束时容易省略中间步骤，直接跳到结论。</p></div>
         <div class="pl-callout compact"><h3>设计重点</h3><p>每一步都要有输入、输出、验收条件和失败处理。</p></div>
