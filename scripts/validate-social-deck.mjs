@@ -58,7 +58,13 @@ await page.waitForTimeout(1200);
 
 const style = styleOverride || await page.evaluate(() => {
   const html = document.documentElement;
-  if (html.dataset.theme) return "editorial";
+  const system = (html.dataset.system || "").toLowerCase();
+  if (system.includes("swiss")) return "swiss";
+  if (system.includes("editorial")) return "editorial";
+  if (system.includes("rednote")) return "rednote-native";
+  if (system.includes("proof") || system.includes("signal-ledger")) return "proof-lab";
+  if (system.includes("lookbook")) return "lookbook-journal";
+  if (html.dataset.theme && !html.dataset.accent) return "editorial";
   if (html.dataset.accent) return "swiss";
   // Fallback: any display class using a serif family = editorial; otherwise swiss.
   // Note: "sans-serif" generic name also contains the substring "serif", so we

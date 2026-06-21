@@ -7,6 +7,17 @@ Source:
 - Synthetic product scenario for validating the `Product/gear/food breakdown` slot in the Golden Matrix.
 - Local raster assets generated for this package and recorded in `assets/SOURCES.md`.
 
+## Route Decision
+
+- visualSystem: Lookbook Journal
+- theme: soft-paper
+- recipeSequence: result board -> buying logic
+- imagePolicy: central product raster image plus detail crop; product must be large enough to inspect
+- copyStrategy: practical gear advice with result-first language; say what to buy first and why
+- qaFocus: product result size, callout clarity, detail crop usefulness, exact brand signature, no page serials
+- confidence: high
+- matchedKeywords: product breakdown, coffee gear, buying logic, lifestyle object, result-first board
+
 ## Card Count
 
 Use 2 cards.
@@ -18,10 +29,10 @@ Reason:
 
 ## Page Plan
 
-| Card | Role | Must carry | Reader sentence | Visual proof |
-|---:|---|---|---|---|
-| 1 | cover/result board | coffee setup, detail callouts, who it is for | 如果你想把手冲咖啡从“能喝”升级到“稳定好喝”，先买对这 4 件。 | central coffee kit asset + callout cards |
-| 2 | buying logic | what to buy first, what to delay | 新手不需要一次买全，先把影响稳定性的器具买对。 | detail crop + priority list |
+| Card | Role | Source anchor | Must carry | Reader sentence | Visual proof | Cut |
+|---:|---|---|---|---|---|---|
+| 1 | cover/result board | Synthetic product scenario: beginner hand-brew setup | coffee setup, detail callouts, who it is for | 如果你想把手冲咖啡从“能喝”升级到“稳定好喝”，先买对这 4 件。 | central coffee kit asset + callout cards | exhaustive buying guide and brand ranking |
+| 2 | buying logic | Synthetic user note: buy stability first, delay non-essential upgrades | what to buy first, what to delay | 新手不需要一次买全，先把影响稳定性的器具买对。 | detail crop + priority list | grinder comparison, price tiers, shopping links |
 
 ## Visual System
 

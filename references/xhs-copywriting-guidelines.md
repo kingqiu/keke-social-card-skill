@@ -1,5 +1,18 @@
 # Xiaohongshu Copywriting Guidelines
 
+## Copy Score
+
+`node scripts/check-xhs-copy.mjs <task-dir>` now reports a 100-point copy score in addition to hard pass/fail checks.
+
+Optimize for:
+
+- Concrete title: the reader should know the object, angle, or promise before opening.
+- Source fidelity: keep the original concepts and relationships, not just a vibe summary.
+- Useful length: long-form/framework captions should usually use 650-950 compact Chinese characters within the 1000-character limit.
+- Human voice: include a real position, friction, or observation; avoid neutral brochure voice.
+- Clear takeaways: the caption should still make sense without seeing every card.
+- No production leakage: never say how many cards were generated, how the article was split, or which card explains what.
+
 This file guides Xiaohongshu titles, captions, hashtags, publishing notes, and copy QA.
 
 Official platform rules can change. When a task is high-risk, commercial, medical, financial, legal, minors-related, weight/body-related, or the user asks for compliance certainty, browse and verify current Xiaohongshu official creator/community/commercial-content rules before finalizing.

@@ -1,5 +1,11 @@
 # Roadmap
 
+## Release Hygiene
+
+- Keep route decisions, content plans, copy, image provenance, and QA files inside every Gold example.
+- Run `npm run check:regression` after changing shared templates, routing, or validation scripts.
+- Run `npm run check:package-size` before publishing the Skill repository; prune oversized experiments, rebuild font subsets, and avoid shipping private/internal design notes.
+
 Use this roadmap when improving 克克社交卡片 itself.
 
 ## Current State

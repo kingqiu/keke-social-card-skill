@@ -4,6 +4,17 @@ Status: Gold
 Visual system: Proof Lab
 Source type: Long-form Chinese technical essay with supplied diagrams and generated article images.
 
+## Route Decision
+
+- visualSystem: Proof Lab
+- theme: graphite-mint
+- recipeSequence: evidence cover -> definition -> pattern proof pages -> optimization -> future takeaway
+- imagePolicy: use supplied/generated article diagrams as inspectable proof; redraw unsuitable landscape illustrations into portrait assets before inserting them into the template
+- copyStrategy: explain each source point as a concrete pattern, not a slogan; preserve article meaning in plain Chinese
+- qaFocus: proof readability, source fidelity, diagram size, aligned media, exact brand signature, no page serials
+- confidence: high
+- matchedKeywords: long-form technical essay, Skill patterns, proof diagrams, AI workflow tutorial, screenshots/results as evidence
+
 ## Card Count
 
 This source needs 10 cards for faithful coverage. The article has one core definition, one distinction page, five named Skill design patterns, one optimization method, one future-direction section, and one concluding principle. Compressing the five patterns into a single page would preserve the names but lose the practical use cases and design cautions that make the article useful.

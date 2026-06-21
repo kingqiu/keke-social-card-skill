@@ -64,6 +64,7 @@ const workflowLeakagePatterns = [
 ];
 
 const checks = [];
+const scoreItems = [];
 
 function read(filePath) {
   try {
@@ -77,9 +78,21 @@ function add(ok, label, fix) {
   checks.push({ ok, label, fix });
 }
 
+function score(points, ok, label, fix) {
+  scoreItems.push({ points, ok, label, fix });
+}
+
 function section(text, heading) {
   const pattern = new RegExp(`(?:^|\\n)# +${heading}\\s*\\n([\\s\\S]*?)(?=\\n# +[^#\\s]|$)`);
   return text.match(pattern)?.[1]?.trim() ?? "";
+}
+
+function firstSection(text, headings) {
+  for (const heading of headings) {
+    const found = section(text, heading);
+    if (found) return found;
+  }
+  return "";
 }
 
 function countHashtags(text) {
@@ -99,14 +112,20 @@ add(Boolean(variants), "copy-variants.md exists", "Create copy-variants.md with 
 add(Boolean(qa), "QA.md exists", "Create QA.md with copy QA notes.");
 
 if (caption) {
-  const title = section(caption, "小红书标题");
-  const body = section(caption, "正文");
-  const tagsSection = section(caption, "标签");
+  const title = firstSection(caption, ["小红书标题", "标题"]);
+  const body = firstSection(caption, ["正文", "小红书正文", "小红书文案"]);
+  const tagsSection = firstSection(caption, ["标签", "小红书标签"]);
   const hashtags = countHashtags(tagsSection || caption);
   const bodyLength = compactLength(body);
+  const titleChars = [...title.replace(/\s/g, "")].length;
+  const aiFlavorCount = aiFlavorPhrases.filter((phrase) => body.includes(phrase) || title.includes(phrase)).length;
+  const concreteTermCount = [...new Set((`${title}\n${body}`).match(/[A-Za-z][A-Za-z0-9.+#-]{2,}|[\u4e00-\u9fff]{2,}/g) || [])].length;
+  const paragraphCount = body.split(/\n{2,}/).filter(part => compactLength(part) >= 20).length;
+  const humanVoiceHits = (body.match(/我|你|其实|但|不过|最近|踩过|发现|会更|别急|先|再|如果|为什么|真正|说白了/g) || []).length;
+  const takeawayHits = (body.match(/第一|第二|第三|首先|其次|最后|关键|重点|记住|换句话说|原因|建议|观察|结论|问题|价值/g) || []).length;
 
   add(Boolean(title), "Caption has title section", "Add '# 小红书标题' with one final title.");
-  add([...title].length >= 8 && [...title].length <= 40, "Title length is reasonable", "Keep final title roughly 8-40 Chinese characters.");
+  add(titleChars >= 8 && titleChars <= 40, "Title length is reasonable", "Keep final title roughly 8-40 Chinese characters.");
   add(!riskyTitleWords.some((word) => title.includes(word)), "Title avoids risky clickbait words", "Remove unsupported absolutes or low-quality bait words from the title.");
   add(Boolean(body), "Caption has body section", "Add '# 正文' with hook, promise, takeaways, limitation if relevant, and CTA.");
   add(bodyLength >= 450, "Caption body is substantial", "Write enough body copy to explain the post without relying on the cards alone; aim for 650-950 chars for long-form posts.");
@@ -114,10 +133,21 @@ if (caption) {
   add(!aiFlavorPhrases.some((phrase) => body.includes(phrase) || title.includes(phrase)), "Copy avoids common AI-flavored phrases", "Remove generic AI/product-marketing language such as 赋能、重塑、未来可期、随着、本文将.");
   add(!workflowLeakagePatterns.some((pattern) => pattern.test(body) || pattern.test(title)), "Copy avoids production workflow leakage", "Do not mention card/image count, splitting, generation, or which card/page explains what.");
   add(!body.includes("——"), "Copy avoids em dash polish", "Use commas, periods, or plain rewrites instead of decorative em dashes.");
-  add((body.match(/不是/g) || []).length <= 1, "Copy limits mechanical contrast formulas", "Avoid repeated '不是 X，而是 Y' style formulas.");
+  add((body.match(/不是[^。！？\n]{1,30}而是/g) || []).length <= 1, "Copy limits mechanical contrast formulas", "Avoid repeated '不是 X，而是 Y' style formulas.");
   add(/评论|你觉得|你会|你最|留言|想看|欢迎|一起聊|你关注/i.test(body), "Caption includes natural CTA", "End with a natural comment prompt or discussion question.");
   add(Boolean(tagsSection), "Caption has hashtag section", "Add '# 标签' with 5-8 relevant tags.");
   add(hashtags.length >= 5 && hashtags.length <= 8, "Hashtag count is 5-8", "Use 5-8 relevant hashtags; avoid stuffing unrelated hot tags.");
+
+  score(12, titleChars >= 10 && titleChars <= 32, "Title is concrete and feed-readable", "Make the title specific enough to say what the post is about in the feed.");
+  score(10, concreteTermCount >= 18, "Copy carries concrete source terms", "Keep enough original concepts, object names, scenarios, or mechanism words after compression.");
+  score(14, bodyLength >= 650 && bodyLength <= 950, "Body uses the 1000-char budget well", "For framework/long-form posts, aim for 650-950 compact characters.");
+  score(10, paragraphCount >= 3, "Body has readable paragraph rhythm", "Use short paragraphs instead of one compressed block.");
+  score(12, humanVoiceHits >= 5, "Copy has a human point of view", "Add a natural reader-facing position, friction, or observation.");
+  score(12, takeawayHits >= 4, "Copy gives clear takeaways", "State the main observations directly; avoid letting the cards do all explanation.");
+  score(10, aiFlavorCount === 0, "Copy avoids AI-brochure language", "Remove common AI/product-marketing filler.");
+  score(8, !workflowLeakagePatterns.some((pattern) => pattern.test(body) || pattern.test(title)), "Copy tells the story, not the production action", "Do not mention splitting, generating, card count, or which page explains what.");
+  score(6, /评论|你觉得|你会|你最|留言|想看|欢迎|一起聊|你关注/i.test(body), "CTA feels natural", "End with a real discussion prompt.");
+  score(6, hashtags.length >= 5 && hashtags.length <= 8, "Hashtags are platform-sized", "Use 5-8 relevant tags.");
 }
 
 if (variants) {
@@ -136,16 +166,30 @@ if (qa) {
 }
 
 const failed = checks.filter((check) => !check.ok);
+const earnedScore = scoreItems.reduce((sum, item) => sum + (item.ok ? item.points : 0), 0);
+const totalScore = scoreItems.reduce((sum, item) => sum + item.points, 0) || 100;
+const finalScore = Math.round((earnedScore / totalScore) * 100);
+const scoreRating = finalScore >= 90 ? "Gold-ready" : finalScore >= 78 ? "Pass" : finalScore >= 68 ? "Needs rewrite" : "Fail";
 
 console.log("==== check-xhs-copy ====");
 console.log(`target: ${target}`);
 console.log(`checks: ${checks.length - failed.length}/${checks.length} passed`);
+console.log(`copy score: ${finalScore}/100 · ${scoreRating}`);
 
 for (const check of checks) {
   console.log(`${check.ok ? "PASS" : "FAIL"} · ${check.label}`);
   if (!check.ok) console.log(`       fix: ${check.fix}`);
 }
 
+for (const item of scoreItems) {
+  console.log(`${item.ok ? "SCORE" : "MISS"} · ${item.points}pt · ${item.label}`);
+  if (!item.ok) console.log(`       improve: ${item.fix}`);
+}
+
 if (failed.length) {
+  process.exit(1);
+}
+
+if (finalScore < 68) {
   process.exit(1);
 }

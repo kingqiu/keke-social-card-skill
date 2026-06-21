@@ -8,6 +8,18 @@ Source:
 - User-supplied engagement screenshot showing the published graphic post performed well.
 - Public-facing source named in the supplied cards: Google Cloud Blog, 2026.06.
 
+## Route Decision
+
+- visualSystem: Swiss System
+- subTemplate: Swiss OKF Brief
+- theme: okf-yellow
+- recipeSequence: cover -> context problem -> definition -> structure -> principles -> implementations -> value -> closing
+- imagePolicy: code/directory/metadata proof; avoid decorative stock art; keep format evidence readable
+- copyStrategy: explain the technical announcement in plain Chinese and repeat the exact OKF/Open Knowledge Format object on cover and caption
+- qaFocus: source fidelity, format/spec terms, proof rows, exact brand signature, no bottom-right page serials
+- confidence: high
+- matchedKeywords: technical announcement, open format, Google Cloud, Open Knowledge Format, Agent context, YAML, Markdown
+
 ## Card Count
 
 Use 8 cards.

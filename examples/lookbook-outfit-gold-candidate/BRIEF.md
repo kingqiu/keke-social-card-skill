@@ -5,6 +5,17 @@ Visual system: Lookbook Journal
 Source type: AI Skill lifestyle use case with generated outfit result assets.
 Card count: 3
 
+## Route Decision
+
+- visualSystem: Lookbook Journal
+- theme: soft-paper
+- recipeSequence: complete outfit result -> item breakdown -> detail adjustment rules
+- imagePolicy: central full-body outfit bitmap plus flatlay/detail bitmap assets; keep clothing and accessories inspectable
+- copyStrategy: practical outfit advice for a first client meeting; explain why each item works in human language
+- qaFocus: result image appeal, annotation clarity, lifestyle usefulness, exact brand signature, no page serials
+- confidence: high
+- matchedKeywords: outfit, OOTD, first client meeting, item breakdown, lifestyle result image
+
 ## Card Count Rationale
 
 Three cards are enough because the source scenario is focused: one outfit recommendation for a first client meeting. The deck needs to prove the complete look, explain why each item works, and give practical adjustment rules. More cards would dilute the save value.

@@ -13,7 +13,9 @@ for (const arg of args) {
 }
 
 const gates = [
+  ["route decision", ["node", "scripts/check-route-decision.mjs", taskDir]],
   ["content plan", ["node", "scripts/check-content-plan.mjs", taskDir]],
+  ["aesthetic qa", ["node", "scripts/check-aesthetic-qa.mjs", taskDir]],
   ["xhs copy", ["node", "scripts/check-xhs-copy.mjs", taskDir]],
   ["portrait fit", ["node", "scripts/check-portrait-fit.mjs", taskDir]],
 ];
@@ -36,6 +38,8 @@ gates.push(
   ["style routing", ["node", "scripts/check-style-routing.mjs"]],
   ["template inheritance", ["node", "scripts/check-template-inheritance.mjs"]],
   ["proof lab theme contract", ["node", "scripts/check-proof-lab-theme-contract.mjs"]],
+  ["regression suite", ["node", "scripts/run-regression-suite.mjs"]],
+  ["package size", ["node", "scripts/check-package-size.mjs"]],
   ["social deck", ["node", "scripts/validate-social-deck.mjs", taskDir]],
 );
 

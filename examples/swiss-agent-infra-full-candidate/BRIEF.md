@@ -6,6 +6,17 @@ Source article:
 
 User-supplied long-form article: `Agent 基础设施演进全景`
 
+## Route Decision
+
+- visualSystem: Swiss System
+- theme: ikb
+- recipeSequence: cover -> nine source-section explainers -> H2 watchlist closing
+- imagePolicy: use portrait-cropped/generated technical illustrations only when they clarify the section; preserve source diagrams and avoid tiny decorative proof
+- copyStrategy: preserve the article's core observations in clear Chinese; each card should stand alone without the original article
+- qaFocus: source coverage, grid hierarchy, readable density, aligned illustrations, exact brand signature, no page serials
+- confidence: high
+- matchedKeywords: 2026 Agent infrastructure, framework, runtime, deployment, enterprise checklist, long-form technical analysis
+
 ## Card Count Decision
 
 The source has one core thesis plus nine numbered sections. Five cards can validate the Swiss visual system, but cannot fully represent the article.

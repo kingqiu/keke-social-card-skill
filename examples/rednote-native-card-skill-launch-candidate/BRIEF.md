@@ -5,6 +5,17 @@ Visual system: Rednote Native
 Source type: AI Skill launch / Xiaohongshu card-generation workflow.
 Card count: 3
 
+## Route Decision
+
+- visualSystem: Rednote Native
+- theme: plum-cream
+- recipeSequence: high-click cover -> before/after credibility -> save-value decision logic
+- imagePolicy: show native result-package proof; use phone/result panels instead of fake product screenshots
+- copyStrategy: launch copy with reader pain, visible outcome, and save reason; avoid implementation details
+- qaFocus: thumbnail hook, result package clarity, exact brand signature, no page serials
+- confidence: high
+- matchedKeywords: AI Skill launch, Xiaohongshu result package, feed hook, native publishing workflow
+
 ## Card Count Rationale
 
 Three cards are enough for this launch-style Gold candidate because the goal is to prove the Rednote Native system: one high-click cover with visible product result, one credibility page explaining what changed, and one save-value page showing how the Skill makes decisions. More pages would shift the example into a tutorial instead of a launch/proof card set.

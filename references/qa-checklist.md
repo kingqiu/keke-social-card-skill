@@ -1,5 +1,19 @@
 # QA Checklist
 
+## Aesthetic QA
+
+Every publishing-quality task should include an `Aesthetic QA` section in `QA.md`.
+
+Record:
+
+- Weakest page or most likely visual risk.
+- Whether cover hook, first evidence/result area, and caption promise match.
+- Whether inserted images are large enough to be proof, not decoration.
+- Whether paired images/cards share a clean top or baseline alignment.
+- Whether page serials, thick borders, dense black blocks, or default fonts make the deck feel like a tool manual.
+
+Run `node scripts/check-aesthetic-qa.mjs <task-dir>` before final handoff. Treat its score as a floor, not final taste approval.
+
 ## Aesthetic Gate
 
 - Read `aesthetic-standards.md` before judging visual quality.

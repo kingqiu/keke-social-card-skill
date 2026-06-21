@@ -85,3 +85,23 @@ For every task decide:
 Use `node scripts/route-style.mjs "<request or source summary>"` as a deterministic first pass, then override only when the source assets or reader job clearly contradict the keyword route.
 
 If confidence is `low`, do not silently guess for a publishing-quality package. Ask once for the missing route-changing information: platform intent, proof assets, or whether the user wants a launch deck, tutorial deck, framework deck, product/lifestyle board, or essay deck.
+
+## Route Decision Record
+
+Every `Gold` example and every publishing-quality task must write the final route to `BRIEF.md`:
+
+```text
+## Route Decision
+
+- visualSystem: Swiss System
+- subTemplate: Swiss OKF Brief
+- theme: okf-yellow
+- recipeSequence: cover -> context problem -> definition -> structure -> principles -> implementations -> value -> closing
+- imagePolicy: code/directory/metadata proof; keep screenshots faithful; redraw only unsuitable portrait assets
+- copyStrategy: explain the source point in plain Chinese; do not describe card production
+- qaFocus: source fidelity, proof readability, exact brand signature, no page serials
+- confidence: high
+- matchedKeywords: technical announcement, open format, knowledge package, Agent context
+```
+
+This record is not decoration. It lets future maintainers see why a deck used Rednote Native instead of Proof Lab, ordinary Swiss instead of Swiss OKF Brief, or Lookbook Journal instead of Editorial E-ink.

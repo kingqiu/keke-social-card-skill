@@ -156,6 +156,7 @@ Use `references/style-routing.md`:
   - choose Proof Lab when screenshots, generated outputs, before/after evidence, or workflow steps are the main proof.
   - do not mix Rednote Native and Proof Lab inside one card deck; create separate packages if both routes are needed.
 - For open specifications, public formats, API/data contracts, and technical announcement explainers, choose `Swiss OKF Brief` when the reader needs to understand why the format matters. Use code/directory/metadata proof and plan 7-9 cards by default.
+- Record the final route in `BRIEF.md` under `## Route Decision` before building: `visualSystem`, `subTemplate` when applicable, `theme`, `recipeSequence`, `imagePolicy`, `copyStrategy`, `qaFocus`, `confidence`, and `matchedKeywords`.
 
 ### 5. Source
 
@@ -195,12 +196,16 @@ Use `references/xhs-copywriting-guidelines.md`:
 - Replace `<!-- POSTERS_HERE -->` with one poster section per page.
 - Put assets under the task folder's `assets/`.
 - Render with `node scripts/render-social-deck.mjs <task-dir>`.
+- Check route documentation with `node scripts/check-route-decision.mjs <task-dir>`.
 - For long-form sources, check planning with `node scripts/check-content-plan.mjs <task-dir>`.
 - Check Xiaohongshu copy with `node scripts/check-xhs-copy.mjs <task-dir>`.
+- Check semi-automatic visual quality with `node scripts/check-aesthetic-qa.mjs <task-dir>`.
 - Check portrait image fit with `node scripts/check-portrait-fit.mjs <task-dir>`.
 - When using Proof Lab, check theme compliance with `node scripts/check-proof-lab-theme-contract.mjs`.
 - Check route-boundary docs with `node scripts/check-style-routing.mjs`.
 - When changing Proof Lab theme colors, validate all themes with `npm run validate:proof-lab-themes`.
+- When changing shared templates or routing logic, run `npm run check:regression`.
+- Before publishing the Skill itself, run `npm run check:package-size`.
 - Validate only when requested or before final handoff: `node scripts/validate-social-deck.mjs <task-dir>`.
 - Before final handoff for a publishing-quality package, run `npm run check:all -- <task-dir>`.
 

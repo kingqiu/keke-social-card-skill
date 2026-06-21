@@ -46,6 +46,15 @@ Standalone readability:
 - Brand signature: `「两克伴」出品`
 - Source images: local article assets
 
+## Aesthetic QA
+
+- Weakest visual risk: middle explanatory pages can become too much like a tool manual if image cards drift out of alignment or proof images are reduced to decoration.
+- Cover hook, caption promise, and first two cards all point to the same object: 2026 H1 Agent infrastructure shifting from model-centric to runtime/deployment-centric.
+- Inserted images are portrait-cropped technical illustrations and should remain large enough to act as section proof.
+- Paired image/proof blocks must share a clean top or baseline alignment; uneven horizontal placement is a fail, not a taste preference.
+- No bottom-right page serials or giant `01` cover mark should appear.
+- The deck keeps Swiss grid discipline, but avoids dense gray + heavy black blocks that make the cards feel cheap.
+
 ## Validation
 
 Rendered with `scripts/render-social-deck.mjs`.

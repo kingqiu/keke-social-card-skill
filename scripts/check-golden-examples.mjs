@@ -62,6 +62,16 @@ for (const [scenario, rel] of accepted) {
   if (fs.existsSync(qaPath) && !/Gold/i.test(fs.readFileSync(qaPath, "utf8"))) {
     failures.push(`${rel}/QA.md must declare Gold status`);
   }
+  const briefPath = path.join(dir, "BRIEF.md");
+  if (fs.existsSync(briefPath)) {
+    const brief = fs.readFileSync(briefPath, "utf8");
+    if (!/## +Route Decision/i.test(brief)) {
+      failures.push(`${rel}/BRIEF.md must include ## Route Decision`);
+    }
+    for (const field of ["visualSystem", "theme", "recipeSequence", "imagePolicy", "copyStrategy", "qaFocus", "confidence", "matchedKeywords"]) {
+      if (!new RegExp(`${field}\\s*:`, "i").test(brief)) failures.push(`${rel}/BRIEF.md Route Decision missing ${field}`);
+    }
+  }
   const indexPath = path.join(dir, "index.html");
   if (fs.existsSync(indexPath)) {
     const html = fs.readFileSync(indexPath, "utf8");
