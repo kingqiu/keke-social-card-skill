@@ -140,6 +140,8 @@ npm run check:regression
 npm run check:package-size
 ```
 
+稳定出品流程见 `references/operating-playbook.md`。它定义了什么时候必须先出方案、什么时候可以直接生成、以及最终交付前怎么验收。
+
 ## 质量标准
 
 这个 Skill 的核心质量门包括：

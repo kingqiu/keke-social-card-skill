@@ -103,9 +103,12 @@ const audit = await page.evaluate(() => {
         result.tinyImageCount += 1;
       }
     }
-    const media = [...section.querySelectorAll("img, figure, .proof-card, .media-card, .lj-panel, .compare-card")].filter(node => {
+    const mediaCandidates = [...section.querySelectorAll("img, figure, .proof-card, .media-card, .lj-panel, .compare-card")].filter(node => {
       const r = node.getBoundingClientRect();
       return r.width > sr.width * 0.18 && r.height > sr.height * 0.12;
+    });
+    const media = mediaCandidates.filter(node => {
+      return !mediaCandidates.some(other => other !== node && other.contains(node));
     });
     for (let i = 0; i < media.length - 1; i++) {
       const a = media[i].getBoundingClientRect();

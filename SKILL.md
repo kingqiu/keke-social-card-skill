@@ -55,6 +55,7 @@ Read only the relevant files:
 - `references/aesthetic-standards.md` before designing or revising any card set.
 - `references/golden-examples.md` when creating examples, evaluating quality, or improving this Skill.
 - `references/gold-example-inputs.md` before creating or upgrading a `Gold` example.
+- `references/operating-playbook.md` when a task spans proposal, build, QA, or Skill maintenance.
 - `references/roadmap.md` when improving the Skill itself rather than producing a user card package.
 - `references/template-inheritance-audit.md` when locking or auditing inherited visual-system templates.
 - `references/visual-systems.md` when choosing among Editorial E-ink, Swiss System, Rednote Native, Proof Lab, and Lookbook Journal.
