@@ -7,6 +7,9 @@
 Optimize for:
 
 - Concrete title: the reader should know the object, angle, or promise before opening.
+- Shelf relevance: the cover/title should make a specific reader feel "this is about me" in a fast feed.
+- Value translation: translate features, mechanisms, and technical terms into user scenes, benefits, feelings, or identity.
+- Search intent: place natural search words in the cover/title/opening/tags, not only in hashtags.
 - Source fidelity: keep the original concepts and relationships, not just a vibe summary.
 - Useful length: long-form/framework captions should usually use 650-950 compact Chinese characters within the 1000-character limit.
 - Human voice: include a real position, friction, or observation; avoid neutral brochure voice.
@@ -35,13 +38,54 @@ Before writing final copy, record or infer:
 | Item | Requirement |
 |---|---|
 | Reader | Who would save, comment, or share this post |
+| Concrete moment | When the reader would need this, see this, or search this |
 | Promise | What the title/cover promises |
 | Proof | Which card/image/result makes the promise believable |
+| Search terms | Audience, scene, problem, category, product, or honest alternative terms |
 | Tone | Personal observation, tutorial, product note, list, or opinion |
 | CTA | What kind of comment or action is natural |
 | Risk | Unsupported claims, commercial relationship, medical/financial/legal risk, external conversion pressure |
 
 The title, cover, caption opening, and first 2 cards should make the same promise. Do not let the caption sell a different post from the images.
+
+## Value Translation
+
+For products, tools, Skills, apps, tutorials, and technical mechanisms, do not stop at feature language.
+
+Translate:
+
+| Feature/concept language | Xiaohongshu language |
+|---|---|
+| `supports iCloud sync` | `记录不会丢，手机和 iPad 随时接着写` |
+| `path-scoped rules` | `只和某个目录有关的规则，不必塞进所有任务的上下文` |
+| `AI outfit stylist Skill` | `出门前不知道穿什么，可以随时让 AI 先给你搭一版` |
+
+The reader should feel one of these: less work, less risk, more clarity, more confidence, better identity, or a result worth saving.
+
+## Search Intent
+
+Before final copy, choose searchable words that naturally fit the source.
+
+Use:
+
+- audience terms: who would search this
+- scene terms: when/where it happens
+- problem terms: what they are trying to solve
+- category terms: how the platform classifies the content
+- product terms: app/tool/Skill/project names and aliases
+
+Place them naturally in the title, first paragraph, and hashtags. Do not dump unrelated tags at the end.
+
+## Shelf Test
+
+Before accepting a title/cover promise, ask:
+
+- Does it name a concrete reader problem, desire, scene, or contradiction?
+- Would a reader understand the payoff without knowing the author?
+- Is there a visible proof/result/specific claim, not only a pretty layout?
+- Is the promise honest enough that the caption and cards can deliver it?
+
+If the answer is weak, rewrite the promise before polishing wording.
 
 ## Title
 
@@ -184,6 +228,9 @@ Title variants should not be superficial rewrites. They should test different pr
 Check:
 
 - Is the title inflated?
+- Does the title/cover pass the shelf test for a concrete reader?
+- Does feature language get translated into user value?
+- Are search terms natural and visible before the hashtags?
 - Does caption invent facts?
 - Does the title match the cover and card content?
 - Does the first paragraph explain why the reader should care?

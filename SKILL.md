@@ -172,6 +172,11 @@ The proposal must include:
 - Recommended card count and the reason for that count.
 - Page-by-page plan: card role, source anchor, must-carry idea, visual proof, and what will be cut.
 - Image policy: which source images/screenshots will be used, redrawn, cropped, or omitted.
+- Concrete reader: who will care, when they will care, what pain/emotion makes the post relevant, and why they would save/share it.
+- Value translation: map source features, concepts, or technical mechanisms to user scenes, user benefits, reduced friction, or identity.
+- Shelf test: explain why the cover would make a specific reader stop and tap in a fast Xiaohongshu feed.
+- Search intent plan: audience, scene, problem, category, product, and honest alternative terms that should appear naturally in cover/title/caption/tags.
+- Product Brief when promoting an APP, AI Skill, tool, service, course, product, launch, or commercial offer.
 - Copy strategy: title direction, caption tone, and hashtag direction.
 - Main visual risks and QA focus.
 
@@ -216,6 +221,9 @@ Use `references/xhs-copywriting-guidelines.md`:
 - Generate `xiaohongshu-caption.md`.
 - Generate `copy-variants.md`.
 - Make title, cover, caption opening, and first 2 cards match the same promise.
+- Translate features/concepts into user value before writing final copy. The reader should feel less work, less risk, more clarity, more confidence, stronger identity, or a result worth saving.
+- Make the cover/title pass the shelf test: a specific reader should know in about one second why this post is about them.
+- Plan natural search terms before writing. Put audience/scene/problem/category/product terms in cover, title, opening, and tags instead of only stuffing hashtags.
 - For long-form/framework posts, preserve the source meaning while making the copy understandable without the original article.
 - Keep the main caption body within 1000 characters; for long-form/framework posts, aim for detailed 650-950 character copy rather than a tiny abstract.
 - Give the copy a visible human position, friction, or handprint. Avoid neutral brochure voice and common AI-flavored phrases.

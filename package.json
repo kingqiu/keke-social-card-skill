@@ -28,7 +28,11 @@
     "validate:lookbook-journal": "node scripts/render-lookbook-journal-validation.mjs",
     "render": "node scripts/render-social-deck.mjs",
     "validate": "node scripts/validate-social-deck.mjs",
-    "build:font-subsets": "node scripts/build-font-subsets.mjs"
+    "build:font-subsets": "node scripts/build-font-subsets.mjs",
+    "check:proposal-quality": "node scripts/check-proposal-quality.mjs",
+    "check:real-workflow-proposal": "node scripts/check-real-workflow-proposal.mjs",
+    "check:create-task": "node scripts/check-create-task-scaffold.mjs",
+    "create:task": "node scripts/create-task.mjs"
   },
   "dependencies": {
     "playwright": "^1.60.0"

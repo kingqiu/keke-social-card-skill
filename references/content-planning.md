@@ -30,6 +30,11 @@ The proposal must include:
 - recommended card count and rationale
 - page-by-page plan using the schema below
 - source image/screenshot policy
+- concrete reader scenario: who sees this, when they care, what feeling or problem makes them stop
+- value translation: translate feature/concept language into user scene, user benefit, and identity/save reason
+- shelf test: why the cover deserves a tap in a fast Xiaohongshu feed
+- search intent plan: user/search/category/product terms that should appear naturally in cover, title, caption, and tags
+- product brief when promoting an APP, Skill, tool, service, course, product, or launch
 - copy strategy for Xiaohongshu title, caption, CTA, and hashtags
 - major visual/content risks and QA focus
 
@@ -52,6 +57,83 @@ Record the confirmation in `BRIEF.md`:
 ```
 
 If the user explicitly waived confirmation, set `status: waived` and quote or summarize the waiver. Do not use `waived` by default.
+
+## Growth Translation Layer
+
+Before writing card text or Xiaohongshu copy, translate the source from "what it is" into "why a concrete reader cares".
+
+Use this structure in `PROPOSAL.md` for product, tool, Skill, app, tutorial, and framework posts:
+
+```text
+## Concrete Reader
+
+- Who: specific person, not a broad market label
+- Moment: when they would encounter or need this
+- Pain/emotion: what feels annoying, risky, slow, unclear, or desirable
+- Save/share reason: why they would save, comment, or forward
+- Identity: what using or understanding this helps them become
+
+## Value Translation
+
+| Source / feature language | User translation |
+|---|---|
+| feature, mechanism, or abstract concept | user scene + problem relieved + benefit felt |
+```
+
+Good translation turns `supports iCloud sync` into `records are not lost, and the same note is on phone/iPad when needed`.
+
+Bad translation leaves the user with a feature list that does not answer: "What does this have to do with me?"
+
+## Shelf Test
+
+Treat the cover as the shelf, not a decorative cover.
+
+Before building, the proposal should answer:
+
+- Who will stop scrolling?
+- What concrete problem, desire, or contradiction does the cover name?
+- What proof or payoff is visible enough to believe?
+- Which words are readable at thumbnail speed?
+
+If the cover cannot answer `这跟我有关吗？` in about one second, revise the promise before revising colors.
+
+## Search Intent Plan
+
+Search terms are not only hashtags. Put the reader's words naturally into the cover, title, opening paragraph, and tags.
+
+Plan at least three of these:
+
+| Search term type | Examples |
+|---|---|
+| audience terms | 上班族, 学生党, 独立开发者, 产品经理 |
+| scene terms | 加班, 旅行, 睡前, Claude Code, 小红书运营 |
+| problem terms | 不知道怎么穿, 规则太乱, 内容没人点 |
+| category terms | AI 工具, 任务管理, 穿搭, 效率工具 |
+| product terms | APP name, Skill name, project name, aliases |
+| competitor/alternative terms | only when honest and useful, never as misleading traffic capture |
+
+Do not stuff unrelated hot words. Search terms must match the source and the actual card promise.
+
+## Product Brief
+
+When the source promotes or explains an APP, AI Skill, tool, service, course, product, launch, or commercial offer, add a Product Brief before choosing the final cover promise:
+
+```text
+## Product Brief
+
+- Product / Skill name:
+- One-line value:
+- Target user:
+- Use moment:
+- Core pain:
+- Main proof/result:
+- Design intent or belief:
+- Do-not-say / boundary:
+- Search words:
+- Desired user identity:
+```
+
+The brief is a frame for translation, not final copy. Do not ask cards to sell features before the brief says who the features matter to.
 
 ## Card Count Bands
 

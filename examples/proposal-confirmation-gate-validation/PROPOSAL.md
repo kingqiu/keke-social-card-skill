@@ -22,6 +22,53 @@ The Skill must stop at proposal stage. It must not render card images, create fi
 
 ## Proposal Response
 
+### Concrete Reader
+
+- Who: already uses Claude Code or similar AI coding tools and keeps adding instructions without a stable placement system.
+- Moment: before reorganizing project rules, team workflow notes, or reusable AI coding procedures.
+- Pain/emotion: rules feel scattered, context feels heavy, and the user is unsure whether a requirement belongs in memory, a file rule, a Skill, a Hook, or a Subagent.
+- Save/share reason: the post becomes a reusable placement checklist for future Claude Code projects.
+- Identity: a more deliberate AI workflow builder, not someone who only piles prompts into one file.
+
+### Value Translation
+
+| Source / feature language | User translation |
+|---|---|
+| CLAUDE.md always loads | 常驻信息要克制，不然每个任务都会背着无关规则前进。 |
+| Rules are path-scoped | 只影响某类文件的约束，不必塞进所有任务的上下文。 |
+| Skills load procedures on demand | 发布、审查、部署这类流程，应该需要时再展开。 |
+| Hooks are deterministic | 每次必须发生的动作交给机制执行，不靠模型记住。 |
+| Subagents run separately | 会制造大量中间材料的任务，隔离出去，主会话只接结论。 |
+
+### Shelf Test
+
+- Stop reason: the cover asks a concrete Claude Code pain point: rules到底该放哪。
+- Reader relevance: it speaks to people whose AI coding workspace is becoming messy from too many instructions.
+- Visible payoff: the mechanism map shows that the post will give a placement system, not a vague productivity slogan.
+- Proof: official mechanism names and source diagrams make the advice feel grounded.
+
+### Search Intent Plan
+
+- audience terms: Claude Code 用户, AI 开发者, 独立开发者
+- scene terms: 项目规则整理, AI 编程工作流, 上下文管理
+- problem terms: 规则太乱, 上下文太重, prompt 不稳定
+- category terms: AI 工具, AI Agent, 工作流
+- product terms: Claude Code, CLAUDE.md, Skills, Hooks, Subagents
+- placement: use Claude Code / 规则 / 上下文 in cover and title; repeat mechanism terms naturally in caption opening and hashtags.
+
+### Product Brief
+
+- Product / Skill name: Claude Code customization mechanisms
+- One-line value: help users place instructions in the right layer instead of stuffing everything into one prompt file.
+- Target user: Claude Code users who maintain project rules, team workflows, or reusable coding procedures.
+- Use moment: before cleaning up CLAUDE.md, writing a Skill, adding Hooks, or delegating noisy work to Subagents.
+- Core pain: too many instructions make context heavy and behavior less reliable.
+- Main proof/result: official mechanism descriptions and diagrams.
+- Design intent or belief: context is a budget, so instruction placement should match scope and reliability.
+- Do-not-say / boundary: do not claim one mechanism replaces all others or that more automation is always better.
+- Search words: Claude Code, CLAUDE.md, Skills, Hooks, Subagents, AI 编程, 上下文管理.
+- Desired user identity: someone who manages AI coding workflows deliberately.
+
 ### Recommended Visual System
 
 - visualSystem: Swiss System
