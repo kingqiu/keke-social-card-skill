@@ -150,12 +150,14 @@ Use `references/style-routing.md`:
 - Xiaohongshu + outfit/food/home/product breakdown -> Lookbook Journal.
 - Xiaohongshu + career/data/framework/checklist -> Swiss System.
 - Xiaohongshu + technical announcement/open specification/API or data format/framework standard -> Swiss System with `subTemplate: Swiss OKF Brief`.
+- Xiaohongshu + Claude/Anthropic official article/AI workflow steering mechanism -> Swiss System with `subTemplate: Swiss Anthropic Clay` and `theme: anthropic-clay`.
 - Xiaohongshu + essay/culture/reading/travel -> Editorial E-ink.
 - For AI tools, decide Rednote Native vs Proof Lab by the primary reader job:
   - choose Rednote Native for launches, high-click first images, outcome promises, or native result packages without strong screenshots.
   - choose Proof Lab when screenshots, generated outputs, before/after evidence, or workflow steps are the main proof.
   - do not mix Rednote Native and Proof Lab inside one card deck; create separate packages if both routes are needed.
 - For open specifications, public formats, API/data contracts, and technical announcement explainers, choose `Swiss OKF Brief` when the reader needs to understand why the format matters. Use code/directory/metadata proof and plan 7-9 cards by default.
+- For Claude/Anthropic official-source explainers, choose `Swiss Anthropic Clay` when the source has warm official-brand cues or section diagrams that should be treated as evidence. Use `.clay-source-figure` for source images and `.clay-title` for Chinese-heavy display titles.
 - Record the final route in `BRIEF.md` under `## Route Decision` before building: `visualSystem`, `subTemplate` when applicable, `theme`, `recipeSequence`, `imagePolicy`, `copyStrategy`, `qaFocus`, `confidence`, and `matchedKeywords`.
 
 ### 5. Source
@@ -212,7 +214,7 @@ Use `references/xhs-copywriting-guidelines.md`:
 ## Visual Systems
 
 - **Editorial E-ink**: paper, editorial pacing, essays, travel, culture, reading notes.
-- **Swiss System**: strict grid, checklists, frameworks, data, workplace.
+- **Swiss System**: strict grid, checklists, frameworks, data, workplace; includes `Swiss OKF Brief` and `Swiss Anthropic Clay` sub-templates.
 - **Rednote Native**: feed-native Xiaohongshu hooks, large readable title, result/emotion/evidence first.
 - **Proof Lab**: screenshots, product proof, AI tools, workflows, before/after, evidence-first tutorials.
 - **Lookbook Journal**: central result plus annotations for outfit, food, beauty, home, product, gear.

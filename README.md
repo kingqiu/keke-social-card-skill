@@ -45,12 +45,14 @@ output/
 | 视觉系统 | 适合内容 |
 |---|---|
 | Editorial E-ink | 阅读、旅行、文化、随笔、生活方式 |
-| Swiss System | 职场、数据、框架、清单、技术分析 |
+| Swiss System | 职场、数据、框架、清单、技术分析、Claude/Anthropic 官方文章解读 |
 | Rednote Native | 小红书原生感、强点击、工具发布、结果展示 |
 | Proof Lab | AI 工具、教程、截图、流程、前后对比、证据型内容 |
 | Lookbook Journal | 穿搭、美妆、食物、家居、产品和单品拆解 |
 
 对于开放规范、API、数据格式、框架标准等技术公告，Swiss System 里包含 `Swiss OKF Brief` 子模板，适合做高信息密度但仍然有传播性的解释型卡片。
+
+对于 Claude/Anthropic 官方文章、AI 工作流机制、上下文治理这类内容，Swiss System 里包含 `Swiss Anthropic Clay` 子模板：暖白纸底、clay 强调色、黑色主文字、官方说明图证据框，更适合做有品牌感但仍然清晰克制的技术卡片。
 
 ## 使用方式
 

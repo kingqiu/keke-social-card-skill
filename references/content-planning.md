@@ -27,6 +27,7 @@ Use these bands as defaults:
 | One narrow tip, one product result, or one simple announcement | 3-4 | Cover + credibility/result + usage/takeaway |
 | Tool launch, checklist, or compact tutorial with 3-5 points | 5-6 | Cover + one card per core use case or step |
 | Technical announcement about an open format/spec/API/data contract | 7-9 | Use Swiss OKF Brief: cover + context + definition + structure + principles + implementation/value + closing |
+| Claude/Anthropic official article about steering/context/workflow mechanisms | 7-9 | Use Swiss Anthropic Clay: cover + context problem + one card per mechanism + decision checklist |
 | Medium essay or framework with 4-7 distinct ideas | 7-9 | Cover + grouped sections + conclusion |
 | Long essay/report with 8-10 numbered sections | 10-12 | Cover + one card per major section + conclusion |
 | More than 10 major sections or multiple audience goals | Split | Create Part 1 / Part 2 rather than overloading cards |
@@ -99,6 +100,33 @@ Writing rules:
 - Use code/directory/metadata proof when available. If none exists, create a text-based schematic rather than decorative art.
 - Use `Swiss OKF Brief` visuals only when the source has a concrete format/spec/contract object.
 - Page labels like `03 · DEFINITION` are allowed in the top-left metadata area; bottom-right page numbers are not.
+
+## Swiss Anthropic Clay Page Plan
+
+Use this sequence for Claude/Anthropic official articles about Claude Code steering, context management, rules, skills, hooks, subagents, output styles, or workflow control.
+
+Recommended length: **7-9 cards**.
+
+Default roles:
+
+| Card | Role | Must carry |
+|---:|---|---|
+| 1 | cover | Name the product/mechanism and the core placement question. Avoid vague "效率提升" headlines. |
+| 2 | context problem | Explain why the naive approach fails: context cost, irrelevant rules, weak guardrails, or noisy intermediate work. |
+| 3 | first mechanism | Explain the first steering layer and when it should be used. |
+| 4-6 | mechanism with source figure | Use official section diagrams/screenshots as evidence when the source provides them. |
+| 7 | risk / tradeoff | Explain the tool that is powerful but easy to overuse, such as output styles or system prompts. |
+| 8 | decision checklist | Turn the article into a "where should this instruction live?" table or ladder. |
+| 9 | optional caveat | Add only if the source has real limitations, security notes, or migration costs. |
+
+Writing rules:
+
+- The cover must name the concrete object, such as `Claude Code`, `CLAUDE.md`, `Skills`, `Hooks`, or `Subagents`.
+- Each mechanism page must answer "when should I use this?" rather than only defining the feature.
+- Preserve official product terms in English where they are names, but explain the consequence in plain Chinese.
+- Use official diagrams as source evidence inside `.clay-source-figure`; do not redraw them unless they are unsuitable as card evidence and the redraw decision is logged.
+- Chinese-heavy titles should use `.clay-title` / `.clay-cover-title` to keep stroke weight stable.
+- Do not mention how many cards were generated in the Xiaohongshu caption.
 
 ## Cover Requirement
 

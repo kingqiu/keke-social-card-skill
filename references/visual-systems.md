@@ -89,12 +89,13 @@ Accent palettes:
 | `lemon-green` | Fresh/diagnostic/checklist cards |
 | `safety-orange` | Warnings, contradictions, mistake-to-avoid cards |
 | `peacock` | Special edition or strong editorial emphasis |
+| `anthropic-clay` | Anthropic/Claude-adjacent explainers, official-doc analysis, warm technical mechanism cards |
 
 Palette validation:
 
 - Run `npm run validate:swiss-palettes`.
 - The validation sample lives in `examples/swiss-palette-validation`.
-- All five palettes must pass paper/ink contrast, accent text contrast, overflow, and brand-signature checks before they are treated as available for production.
+- All six palettes must pass paper/ink contrast, accent text contrast, overflow, and brand-signature checks before they are treated as available for production.
 - Palette validation should use publishable Xiaohongshu-style content, not empty smoke-test copy. The current validation deck uses an AI-tool decision checklist to test cover hook, diagnostic matrix, verdict ledger, semantic footer labels, and no cover page mark.
 - Do not mix palettes within one production deck.
 
@@ -125,6 +126,16 @@ Good recipes:
 - OKF Brief cover: split title + directory/code proof cards + three compact bottom claims.
 - OKF Brief context page: lead paragraph + three problem rows, with one black row for the dominant pain.
 - OKF Brief definition/principle page: two-column `it is / it is not` or numbered proof rows with one yellow and one black emphasis row.
+
+Swiss Anthropic Clay sub-template:
+
+- Use when a Claude/Anthropic-adjacent source, official technical article, or AI workflow mechanism explainer needs a warmer official-document feel without leaving Swiss System.
+- Use `<html data-accent="anthropic-clay">` plus `.poster.swiss-clay` from `assets/template-swiss-system.html`.
+- Gold candidate reference: `examples/anthropic-steering-claude-code-candidate`.
+- Core grammar: warm off-white paper, clay left rail, near-black ink, subtle grid/dot background, monospaced top/footer labels, exact brand signature, Chinese-first medium title weight, straight proof tiles, and official-source image frames.
+- This variant may include source article diagrams as evidence, but the image must sit inside `.clay-source-figure` and remain aligned to the grid. Landscape screenshots are allowed only when treated as source evidence or explicitly logged in `assets/IMAGE_REQUESTS.md`; otherwise redraw or crop to a portrait-friendly visual.
+- Chinese display titles should use `.clay-title` / `.clay-cover-title`; do not use ultra-light mixed Latin/CJK title stacks for large Chinese headings, because they can create visible stroke-weight inconsistency.
+- Do not use this as a generic beige skin. Route lifestyle, handwritten, or rounded proof-card work to Rednote Native / Lookbook Journal / Proof Lab instead.
 
 Avoid turning it into generic corporate PPT.
 

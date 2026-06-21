@@ -11,7 +11,7 @@ const indexPath = path.join(root, "index.html");
 const outputRoot = path.join(root, "output");
 const htmlDir = path.join(outputRoot, "html");
 const imageDir = path.join(outputRoot, "images");
-const accents = ["ikb", "lemon-yellow", "lemon-green", "safety-orange", "peacock"];
+const accents = ["ikb", "lemon-yellow", "lemon-green", "safety-orange", "peacock", "anthropic-clay"];
 const fontHref = path.relative(htmlDir, path.resolve(process.cwd(), "assets", "fonts", "keke-fonts.css")).replaceAll(path.sep, "/");
 
 if (!fs.existsSync(indexPath)) {
@@ -168,13 +168,13 @@ const contactHtml = `<!doctype html>
 <body>
   <h1>Swiss Palette Validation</h1>
   <div class="grid">
-    ${accents.map(accent => `
-      <div class="accent">${accent}</div>
-      ${[1, 2, 3].map(n => {
-        const file = fs.readdirSync(imageDir).find(name => name.startsWith(`${accent}-${String(n).padStart(2, "0")}-`));
-        return `<figure><img src="images/${file}" alt="${accent} card ${n}"><figcaption>${file}</figcaption></figure>`;
-      }).join("")}
-    `).join("")}
+${accents.map(accent => {
+  const figures = [1, 2, 3].map(n => {
+    const file = fs.readdirSync(imageDir).find(name => name.startsWith(`${accent}-${String(n).padStart(2, "0")}-`));
+    return `    <figure><img src="images/${file}" alt="${accent} card ${n}"><figcaption>${file}</figcaption></figure>`;
+  }).join("\n");
+  return `    <div class="accent">${accent}</div>\n${figures}`;
+}).join("\n")}
   </div>
 </body>
 </html>`;

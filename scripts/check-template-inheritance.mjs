@@ -63,6 +63,14 @@ for (const required of [".poster.swiss-okf", ".okf-topbar", ".okf-title", ".okf-
     failures.push(`Swiss template missing OKF Brief primitive ${required}`);
   }
 }
+for (const required of [".poster.swiss-clay", ".clay-topbar", ".clay-title", ".clay-lead", ".clay-matrix", ".clay-source-figure", ".clay-decision-row", ".clay-footer"]) {
+  if (!swiss.includes(required)) {
+    failures.push(`Swiss template missing Anthropic Clay primitive ${required}`);
+  }
+}
+if (!swiss.includes('data-accent="anthropic-clay"') && !swiss.includes('[data-accent="anthropic-clay"]')) {
+  failures.push("Swiss template missing anthropic-clay accent palette");
+}
 for (const requiredFont of ["Keke Inter", "Keke Noto Sans SC", "Keke IBM Plex Mono", "Keke Noto Serif SC", "Keke Playfair Display"]) {
   if (!localFontsCss.includes(requiredFont)) {
     failures.push(`Local font CSS missing ${requiredFont}`);
@@ -70,6 +78,9 @@ for (const requiredFont of ["Keke Inter", "Keke Noto Sans SC", "Keke IBM Plex Mo
 }
 if (!swissSection.includes("Swiss OKF Brief sub-template") || !swissSection.includes("left yellow rail")) {
   failures.push("Swiss visual-system docs must describe the Swiss OKF Brief sub-template");
+}
+if (!swissSection.includes("Swiss Anthropic Clay sub-template") || !swissSection.includes("anthropic-clay")) {
+  failures.push("Swiss visual-system docs must describe the Swiss Anthropic Clay sub-template");
 }
 
 const proofLabForbidden = [

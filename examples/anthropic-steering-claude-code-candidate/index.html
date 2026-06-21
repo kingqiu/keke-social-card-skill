@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="zh-CN" data-system="swiss-system" data-accent="anthropic-clay">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Claude Code Steering · Xiaohongshu Deck</title>
+  <link rel="stylesheet" href="../../assets/fonts/keke-fonts.css">
+  <style>
+    :root {
+      --paper: #F7F4ED;
+      --ink: #171512;
+      --muted: #746F66;
+      --line: #DDD5C9;
+      --grid: rgba(129, 92, 72, .105);
+      --soft: #EEE8DD;
+      --accent: #D46A4C;
+      --accent-on: #fffaf2;
+      --dark: #171512;
+      --surface: rgba(255, 252, 246, .78);
+      --sans: "Keke Inter", "Keke Noto Sans SC", Inter, "Noto Sans SC", -apple-system, "PingFang SC", sans-serif;
+      --title-zh: "PingFang SC", "Hiragino Sans GB", "Lantinghei SC", "Heiti SC", "Keke Noto Sans SC", sans-serif;
+      --mono: "Keke IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 48px;
+      background: #e7dfd3;
+      font-family: var(--sans);
+      color: var(--ink);
+      display: grid;
+      gap: 48px;
+      justify-content: center;
+    }
+    .poster {
+      width: 1080px;
+      height: 1440px;
+      background:
+        radial-gradient(circle at 88% 12%, rgba(212, 106, 76, .11), transparent 18%),
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+        var(--paper);
+      background-size: 72px 72px;
+      padding: 70px 78px 56px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      font-synthesis: none;
+    }
+    .poster::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 18px;
+      background: var(--accent);
+    }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 18px;
+      margin-bottom: 44px;
+      color: var(--muted);
+      font: 600 20px/1 var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .brand { font-family: var(--sans); letter-spacing: .02em; font-weight: 700; }
+    .h-xl {
+      margin: 0;
+      font-family: var(--title-zh);
+      font-size: 88px;
+      line-height: 1.02;
+      letter-spacing: 0;
+      font-weight: 500;
+      max-width: 920px;
+    }
+    .cover-title-zh {
+      margin: 0;
+      font-family: var(--title-zh);
+      font-size: 80px;
+      line-height: 1.08;
+      font-weight: 500;
+      max-width: 940px;
+      letter-spacing: 0;
+    }
+    .cover-kicker {
+      margin: 0 0 18px;
+      font: 700 24px/1 var(--mono);
+      letter-spacing: .12em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    .cover-subject {
+      margin: 0 0 24px;
+      font-family: "Keke Inter", Inter, var(--sans);
+      font-size: 112px;
+      line-height: .94;
+      font-weight: 520;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .lead {
+      margin: 30px 0 0;
+      padding-left: 24px;
+      border-left: 8px solid var(--accent);
+      max-width: 880px;
+      font-size: 32px;
+      line-height: 1.42;
+      font-weight: 500;
+    }
+    .body {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.5;
+      color: #29313a;
+      font-weight: 500;
+    }
+    .small {
+      font-size: 24px;
+      line-height: 1.45;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .matrix-grid,
+    .matrix {
+      margin-top: 54px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .tile {
+      min-height: 152px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .tile.dark {
+      background: var(--dark);
+      color: #f7f6ef;
+      border-color: var(--dark);
+    }
+    .tile.accent {
+      background: var(--accent);
+      color: var(--accent-on);
+      border-color: var(--accent);
+    }
+    .tag {
+      font: 600 18px/1 var(--mono);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .tile.dark .tag, .tile.accent .tag { color: inherit; opacity: .76; }
+    .tile strong {
+      display: block;
+      font-family: var(--title-zh);
+      font-size: 30px;
+      line-height: 1.25;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+    .route {
+      margin-top: 68px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .route-row {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 28px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+    .route-row:last-child { border-bottom: 0; }
+    .route-label {
+      font: 600 21px/1.2 var(--mono);
+      color: var(--accent);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .route-title {
+      font-family: var(--title-zh);
+      font-size: 34px;
+      line-height: 1.24;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .route-copy {
+      font-size: 27px;
+      line-height: 1.42;
+      color: #505963;
+      font-weight: 500;
+    }
+    .split {
+      margin-top: 70px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      padding: 30px;
+      min-height: 450px;
+    }
+    .panel.dark {
+      background: var(--dark);
+      color: #f7f6ef;
+      border-color: var(--dark);
+    }
+    .panel h3 {
+      margin: 0 0 28px;
+      font: 700 25px/1 var(--mono);
+      color: var(--accent);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .panel.dark h3 { color: #E3C2B3; }
+    .code {
+      font: 500 30px/1.42 var(--mono);
+      white-space: pre-line;
+    }
+    .note-list {
+      margin: 52px 0 0;
+      display: grid;
+      gap: 16px;
+    }
+    .note {
+      background: var(--soft);
+      border-left: 8px solid var(--accent);
+      padding: 24px 28px;
+      font-family: var(--title-zh);
+      font-size: 29px;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+    .decision {
+      margin-top: 64px;
+      display: grid;
+      gap: 14px;
+    }
+    .decision-row {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      min-height: 92px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+    .decision-row strong {
+      background: var(--dark);
+      color: #f7f6ef;
+      padding: 24px;
+      font-family: var(--title-zh);
+      font-size: 25px;
+      line-height: 1.2;
+      font-weight: 600;
+    }
+    .decision-row span {
+      padding: 22px 26px;
+      font-size: 27px;
+      line-height: 1.36;
+      color: #3d4650;
+      font-weight: 560;
+    }
+    .bottom {
+      margin-top: auto;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font: 600 20px/1 var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .source-figure {
+      margin: 54px 0 0;
+      border: 1px solid var(--line);
+      background: #fffcf6;
+      padding: 18px;
+      min-height: 360px;
+      display: grid;
+      align-items: center;
+      box-shadow: 0 18px 44px rgba(23, 21, 18, .08);
+    }
+    .source-figure img {
+      width: 100%;
+      max-height: 430px;
+      object-fit: contain;
+      display: block;
+    }
+    .source-figure.portrait {
+      min-height: 480px;
+      grid-template-columns: 45% 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .source-figure.portrait img {
+      max-height: 570px;
+      height: 100%;
+      object-fit: contain;
+    }
+    .source-caption {
+      margin-top: 14px;
+      color: var(--muted);
+      font: 600 18px/1.35 var(--mono);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .source-note {
+      align-self: center;
+      border-left: 7px solid var(--accent);
+      padding-left: 20px;
+      font-family: var(--title-zh);
+      font-size: 27px;
+      line-height: 1.42;
+      font-weight: 500;
+      color: #2f2a25;
+    }
+  </style>
+</head>
+<body>
+  <section class="poster xhs cover" id="claude-steering-cover" data-name="claude-steering-01-cover">
+    <div class="top"><span>Claude Code · Steering System</span><span class="brand">「两克伴」出品</span></div>
+    <p class="cover-kicker">Claude Code · Steering</p>
+    <p class="cover-subject">Claude Code</p>
+    <h1 class="cover-title-zh">规则到底该放哪？</h1>
+    <p class="lead">真正的问题不是规则不够多，而是规则放错层级：常驻事实、路径规则、流程技能、确定性钩子、隔离子代理，各自解决不同问题。</p>
+    <div class="matrix-grid matrix">
+      <div class="tile dark"><span class="tag">Always loaded</span><strong>CLAUDE.md</strong></div>
+      <div class="tile"><span class="tag">Scoped</span><strong>Rules 按路径加载</strong></div>
+      <div class="tile"><span class="tag">On demand</span><strong>Skills 放流程手册</strong></div>
+      <div class="tile accent"><span class="tag">Deterministic</span><strong>Hooks 做硬控制</strong></div>
+      <div class="tile"><span class="tag">Isolated</span><strong>Subagents 清理噪声</strong></div>
+      <div class="tile"><span class="tag">High weight</span><strong>Output Styles 慎用</strong></div>
+    </div>
+    <div class="bottom"><span>Source: Anthropic Blog</span><span>Context is a budget</span></div>
+  </section>
+
+  <section class="poster xhs" id="claude-steering-context" data-name="claude-steering-02-context">
+    <div class="top"><span>Context Problem · Load Cost</span><span class="brand">「两克伴」出品</span></div>
+    <h2 class="h-xl">先想清楚什么应该常驻上下文</h2>
+    <p class="lead">CLAUDE.md 很方便，但它像常驻内存：会话开始就加载，压缩后还会重新注入。写得越多，越容易让当前任务背着无关规则前进。</p>
+    <div class="route">
+      <div class="route-row">
+        <div class="route-label">Low scope</div>
+        <div><div class="route-title">只影响某个目录</div><div class="route-copy">用路径限定 Rules，让规则在读到相关文件时再进入上下文。</div></div>
+      </div>
+      <div class="route-row">
+        <div class="route-label">Process</div>
+        <div><div class="route-title">几十行操作流程</div><div class="route-copy">做成 Skill，按需加载步骤、脚本和资源，而不是常驻记忆。</div></div>
+      </div>
+      <div class="route-row">
+        <div class="route-label">Must run</div>
+        <div><div class="route-title">每次都必须执行</div><div class="route-copy">用 Hooks 或权限做确定性控制，不要只靠模型记住一句禁止。</div></div>
+      </div>
+    </div>
+    <div class="bottom"><span>Choose by scope</span><span>Reduce irrelevant context</span></div>
+  </section>
+
+  <section class="poster xhs" id="claude-steering-rules" data-name="claude-steering-03-rules">
+    <div class="top"><span>Rules · Path Scoped</span><span class="brand">「两克伴」出品</span></div>
+    <h2 class="h-xl">Rules 适合文件或目录相关约束</h2>
+    <p class="lead">如果规则只和某类文件有关，就不要让它污染所有任务。路径限定规则会在 Claude 读取相关路径时才加载。</p>
+    <div class="split">
+      <div class="panel">
+        <h3>Use When</h3>
+        <p class="body">API 输入校验、迁移只能追加、某类 handler 的命名规则、某个目录的安全约束。</p>
+        <div class="note-list">
+          <div class="note">规则横跨多个文件，但不应该全局常驻。</div>
+          <div class="note">它是约束，不是完整工作流程。</div>
+        </div>
+      </div>
+      <div class="panel dark">
+        <h3>Example Shape</h3>
+        <div class="code">---
+paths:
+  - "src/api/**"
+---
+API 处理前必须
+先做输入验证。</div>
+      </div>
+    </div>
+    <div class="bottom"><span>Path = trigger</span><span>Rule = local constraint</span></div>
+  </section>
+
+  <section class="poster xhs" id="claude-steering-skills" data-name="claude-steering-04-skills">
+    <div class="top"><span>Skills · Procedural Memory</span><span class="brand">「两克伴」出品</span></div>
+    <h2 class="h-xl">Skills 适合可复用流程</h2>
+    <p class="lead">部署手册、发布检查、代码审查、报告生成，这些不是常驻事实，而是被调用时才需要展开的程序。</p>
+    <figure class="source-figure">
+      <img src="assets/source-images/anthropic-skills.png" alt="Anthropic 官方 Skills 说明图">
+      <figcaption class="source-caption">Official article image · Skills load on demand</figcaption>
+    </figure>
+    <div class="note-list">
+      <div class="note">`SKILL.md` 负责触发和流程，scripts / references / assets 承载可复用资源。</div>
+      <div class="note">不要把 Skill 当插件堆；真正有用的是经验、步骤、验收标准和失败处理。</div>
+    </div>
+    <div class="bottom"><span>Process belongs here</span><span>Load on demand</span></div>
+  </section>
+
+  <section class="poster xhs" id="claude-steering-subagents" data-name="claude-steering-05-subagents">
+    <div class="top"><span>Subagents · Isolation</span><span class="brand">「两克伴」出品</span></div>
+    <h2 class="h-xl">Subagents 用来隔离噪声任务</h2>
+    <p class="lead">子代理在独立上下文里运行，返回给主会话的只是结果和元数据。它适合会产生大量中间材料的辅助工作。</p>
+    <figure class="source-figure">
+      <img src="assets/source-images/anthropic-subagents.png" alt="Anthropic 官方 Subagents 说明图">
+      <figcaption class="source-caption">Official article image · separate context window</figcaption>
+    </figure>
+    <div class="matrix-grid" style="margin-top: 28px;">
+      <div class="tile dark"><span class="tag">Log Analysis</span><strong>日志扫描与错误归因</strong></div>
+      <div class="tile"><span class="tag">Deep Search</span><strong>深度搜索和资料收集</strong></div>
+      <div class="tile"><span class="tag">Audit</span><strong>依赖、权限、安全审计</strong></div>
+      <div class="tile accent"><span class="tag">Parent Clean</span><strong>主会话只保留结论</strong></div>
+    </div>
+    <div class="bottom"><span>Separate window</span><span>Return summary only</span></div>
+  </section>
+
+  <section class="poster xhs" id="claude-steering-hooks" data-name="claude-steering-06-hooks">
+    <div class="top"><span>Hooks · Deterministic Control</span><span class="brand">「两克伴」出品</span></div>
+    <h2 class="h-xl">Hooks 负责那些必须发生的事</h2>
+    <p class="lead">当行为需要可靠执行时，指令不是最稳的工具。Hooks 可以在文件编辑、工具调用、会话事件等节点确定性触发。</p>
+    <figure class="source-figure portrait">
+      <img src="assets/source-images/anthropic-hooks.png" alt="Anthropic 官方 Hooks 生命周期说明图">
+      <div class="source-note">需要每次都发生的动作，应该交给 Hooks 或权限，而不是只写一句“请记住”。</div>
+    </figure>
+    <div class="decision" style="margin-top: 28px;">
+      <div class="decision-row"><strong>格式化</strong><span>编辑后自动运行 formatter / lint。</span></div>
+      <div class="decision-row"><strong>拦截</strong><span>`PreToolUse` 阻止危险命令。</span></div>
+    </div>
+    <div class="bottom"><span>Guardrails need code</span><span>Not just prompts</span></div>
+  </section>
+
+  <section class="poster xhs" id="claude-steering-styles" data-name="claude-steering-07-output-styles">
+    <div class="top"><span>Output Styles · System Weight</span><span class="brand">「两克伴」出品</span></div>
+    <h2 class="h-xl">Output Styles 权重高，所以更要少用</h2>
+    <p class="lead">输出样式会注入系统提示，指令权重很高；但自定义样式可能替换默认编码行为。临时标准更适合 append-system-prompt。</p>
+    <div class="route">
+      <div class="route-row">
+        <div class="route-label">Output Style</div>
+        <div><div class="route-title">适合长期改变交互模式</div><div class="route-copy">例如主动、解释、学习这类稳定风格。使用前先看内置样式。</div></div>
+      </div>
+      <div class="route-row">
+        <div class="route-label">Append Prompt</div>
+        <div><div class="route-title">适合临时追加标准</div><div class="route-copy">对一次调用添加编码规范、输出格式或领域知识，不改 Claude 的默认角色。</div></div>
+      </div>
+      <div class="route-row">
+        <div class="route-label">Tradeoff</div>
+        <div><div class="route-title">越多指令，越容易互相稀释</div><div class="route-copy">追加系统提示也会增加输入成本，并可能降低严格遵循度。</div></div>
+      </div>
+    </div>
+    <div class="bottom"><span>High weight</span><span>Use with restraint</span></div>
+  </section>
+
+  <section class="poster xhs" id="claude-steering-checklist" data-name="claude-steering-08-checklist">
+    <div class="top"><span>Decision Checklist · Where It Belongs</span><span class="brand">「两克伴」出品</span></div>
+    <h2 class="h-xl">一句话判断应该放哪里</h2>
+    <p class="lead">这篇文章最有用的不是工具清单，而是一套放置逻辑：范围、成本、可靠性和是否需要隔离。</p>
+    <div class="decision">
+      <div class="decision-row"><strong>项目事实</strong><span>放 CLAUDE.md，但保持克制，别塞 30 行流程。</span></div>
+      <div class="decision-row"><strong>路径约束</strong><span>放 Rules，用 `paths` 控制什么时候进入上下文。</span></div>
+      <div class="decision-row"><strong>复用流程</strong><span>放 Skills，让操作手册和脚本按需加载。</span></div>
+      <div class="decision-row"><strong>大量中间结果</strong><span>交给 Subagents，主会话只接收总结。</span></div>
+      <div class="decision-row"><strong>必须执行</strong><span>用 Hooks 或权限，而不是“请记住不要这样做”。</span></div>
+    </div>
+    <div class="bottom"><span>Scope · Cost · Reliability</span><span>Steer by layer</span></div>
+  </section>
+</body>
+</html>

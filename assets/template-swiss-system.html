@@ -14,7 +14,7 @@
          .poster.xhs      1080×1440  (3:4 小红书)
 
        Accent switching via <html data-accent="…">:
-         ikb (Klein Blue) | lemon-yellow | lemon-green | safety-orange | peacock
+         ikb (Klein Blue) | lemon-yellow | lemon-green | safety-orange | peacock | anthropic-clay
 
        Fill posters where marked <!-- POSTERS_HERE -->.
        Each poster follows the Swiss composition guidance in
@@ -71,6 +71,20 @@
       --rouge: #d35264;
       --moon-white: #edf5f8;
       --line-gold: #fff0c9;
+    }
+    [data-accent="anthropic-clay"] {
+      --paper: #f7f4ed;
+      --ink: #171512;
+      --grey-1: #eee8dd;
+      --grey-2: #ddd5c9;
+      --grey-3: #746f66;
+      --accent: #d46a4c;
+      --accent-on: #171512;
+      --clay-grid: rgba(129, 92, 72, .105);
+      --clay-surface: rgba(255, 252, 246, .78);
+      --clay-dark: #171512;
+      --clay-soft: #eee8dd;
+      --clay-body: #3d4650;
     }
 
     /* ---------- 2. Typography stack ---------- */
@@ -851,6 +865,257 @@
       padding-bottom: var(--sp-6);
       border-bottom: 1px solid var(--grey-2);
       margin-bottom: var(--sp-9);
+    }
+
+    /* ---------- 11a. Swiss Anthropic Clay sub-template ----------
+       Use for Claude/Anthropic-adjacent technical explainers or any deck
+       that benefits from a warmer official-document feeling while retaining
+       Swiss grid discipline. Grammar: warm off-white paper, clay rail,
+       near-black ink, subtle grid/dot background, exact brand signature,
+       Chinese-first medium-weight titles, official-source image frames,
+       and straight proof tiles. */
+    .poster.swiss-clay {
+      --clay-paper: var(--paper);
+      --clay-ink: var(--ink);
+      --clay-muted: var(--grey-3);
+      --clay-line: var(--grey-2);
+      --clay-accent: var(--accent);
+      --clay-accent-on: var(--accent-on);
+      background:
+        radial-gradient(circle at 88% 12%, rgba(212, 106, 76, .11), transparent 18%),
+        linear-gradient(var(--clay-grid, rgba(129, 92, 72, .105)) 1px, transparent 1px),
+        linear-gradient(90deg, var(--clay-grid, rgba(129, 92, 72, .105)) 1px, transparent 1px),
+        var(--clay-paper);
+      background-size: 72px 72px;
+      color: var(--clay-ink);
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+    .poster.swiss-clay::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 18px;
+      background: var(--clay-accent);
+      z-index: 1;
+    }
+    .poster.swiss-clay .content {
+      padding: 70px 78px 56px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    .clay-topbar,
+    .clay-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: var(--mono);
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--clay-muted);
+    }
+    .clay-topbar {
+      border-bottom: 1px solid var(--clay-line);
+      padding-bottom: 18px;
+      margin-bottom: 44px;
+    }
+    .clay-footer {
+      margin-top: auto;
+      padding-top: 26px;
+      border-top: 1px solid var(--clay-line);
+    }
+    .clay-topbar .brand-signature::before,
+    .clay-footer .brand-signature::before {
+      font-family: var(--sans-zh);
+      letter-spacing: .02em;
+      font-weight: 700;
+      text-transform: none;
+    }
+    .clay-kicker {
+      margin: 0 0 18px;
+      font-family: var(--mono);
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: var(--clay-accent);
+      text-transform: uppercase;
+    }
+    .clay-subject {
+      margin: 0 0 24px;
+      font-family: var(--sans);
+      font-size: 112px;
+      line-height: .94;
+      font-weight: 600;
+      letter-spacing: 0;
+      color: var(--clay-ink);
+    }
+    .clay-title {
+      margin: 0;
+      max-width: 920px;
+      font-family: var(--sans-zh);
+      font-size: 88px;
+      line-height: 1.02;
+      font-weight: 500;
+      letter-spacing: 0;
+      color: var(--clay-ink);
+    }
+    .clay-cover-title {
+      font-size: 80px;
+      line-height: 1.08;
+      max-width: 940px;
+    }
+    .clay-lead {
+      margin: 30px 0 0;
+      padding-left: 24px;
+      border-left: 8px solid var(--clay-accent);
+      max-width: 880px;
+      font-family: var(--sans-zh);
+      font-size: 32px;
+      line-height: 1.42;
+      font-weight: 500;
+      color: var(--clay-ink);
+    }
+    .clay-matrix {
+      margin-top: 54px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .clay-tile {
+      min-height: 152px;
+      border: 1px solid var(--clay-line);
+      background: var(--clay-surface, rgba(255, 252, 246, .78));
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .clay-tile.is-dark {
+      background: var(--clay-dark, var(--clay-ink));
+      color: var(--clay-paper);
+      border-color: var(--clay-dark, var(--clay-ink));
+    }
+    .clay-tile.is-accent {
+      background: var(--clay-accent);
+      color: var(--clay-accent-on);
+      border-color: var(--clay-accent);
+    }
+    .clay-tag {
+      font-family: var(--mono);
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--clay-accent);
+    }
+    .clay-tile.is-dark .clay-tag,
+    .clay-tile.is-accent .clay-tag {
+      color: inherit;
+      opacity: .76;
+    }
+    .clay-tile strong {
+      display: block;
+      font-family: var(--sans-zh);
+      font-size: 30px;
+      line-height: 1.25;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+    .clay-source-figure {
+      margin: 54px 0 0;
+      border: 1px solid var(--clay-line);
+      background: #fffcf6;
+      padding: 18px;
+      min-height: 360px;
+      display: grid;
+      align-items: center;
+      box-shadow: 0 18px 44px rgba(23, 21, 18, .08);
+    }
+    .clay-source-figure img {
+      width: 100%;
+      max-height: 430px;
+      object-fit: contain;
+      display: block;
+    }
+    .clay-source-figure.is-portrait {
+      min-height: 480px;
+      grid-template-columns: 45% 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .clay-source-figure.is-portrait img {
+      height: 100%;
+      max-height: 570px;
+      object-fit: contain;
+    }
+    .clay-source-caption {
+      margin-top: 14px;
+      color: var(--clay-muted);
+      font-family: var(--mono);
+      font-size: 18px;
+      line-height: 1.35;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .clay-source-note {
+      align-self: center;
+      border-left: 7px solid var(--clay-accent);
+      padding-left: 20px;
+      font-family: var(--sans-zh);
+      font-size: 27px;
+      line-height: 1.42;
+      font-weight: 500;
+      color: #2f2a25;
+    }
+    .clay-note-list {
+      margin: 52px 0 0;
+      display: grid;
+      gap: 16px;
+    }
+    .clay-note {
+      background: var(--clay-soft, var(--grey-1));
+      border-left: 8px solid var(--clay-accent);
+      padding: 24px 28px;
+      font-family: var(--sans-zh);
+      font-size: 29px;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+    .clay-decision {
+      margin-top: 64px;
+      display: grid;
+      gap: 14px;
+    }
+    .clay-decision-row {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      min-height: 92px;
+      border: 1px solid var(--clay-line);
+      background: var(--clay-surface, rgba(255, 252, 246, .78));
+    }
+    .clay-decision-row strong {
+      background: var(--clay-dark, var(--clay-ink));
+      color: var(--clay-paper);
+      padding: 24px;
+      font-family: var(--sans-zh);
+      font-size: 25px;
+      line-height: 1.2;
+      font-weight: 600;
+    }
+    .clay-decision-row span {
+      padding: 22px 26px;
+      font-family: var(--sans-zh);
+      font-size: 27px;
+      line-height: 1.36;
+      color: var(--clay-body, #3d4650);
+      font-weight: 500;
     }
 
     /* ---------- 11b. Swiss OKF Brief template ----------

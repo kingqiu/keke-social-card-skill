@@ -68,5 +68,19 @@
     "sections": 3,
     "status": "pass",
     "failures": []
+  },
+  {
+    "accent": "anthropic-clay",
+    "palette": {
+      "paper": "#f7f4ed",
+      "ink": "#171512",
+      "accent": "#d46a4c",
+      "accentOn": "#171512"
+    },
+    "posterContrast": 16.59,
+    "accentContrast": 5.18,
+    "sections": 3,
+    "status": "pass",
+    "failures": []
   }
 ]

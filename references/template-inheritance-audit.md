@@ -4,7 +4,7 @@ Use this file to record visual-system inheritance status without exposing privat
 
 ## Swiss System
 
-Status: `locked`; Gold example: `examples/swiss-agent-infra-full-candidate`.
+Status: `locked`; Gold examples: `examples/swiss-agent-infra-full-candidate`, `examples/swiss-okf-brief-gold-candidate`; Anthropic Clay reference: `examples/anthropic-steering-claude-code-candidate`.
 
 Audit result:
 
@@ -12,7 +12,8 @@ Audit result:
 - Xiaohongshu-only adaptation is limited to using the 1080x1440 board as the production target.
 - Public card branding is added only through `.brand-signature::before`, with exact text `「两克伴」出品`.
 - Custom rounded/pastel/heavy-title Swiss lookalike components are not allowed.
-- Swiss palette smoke test covers `ikb`, `lemon-yellow`, `lemon-green`, `safety-orange`, and `peacock`.
+- Swiss palette smoke test covers `ikb`, `lemon-yellow`, `lemon-green`, `safety-orange`, `peacock`, and `anthropic-clay`.
+- The Swiss seed includes `Swiss Anthropic Clay` primitives (`.poster.swiss-clay`, `.clay-title`, `.clay-source-figure`, `.clay-decision-row`) for warm official-source explainers.
 
 Accepted deviations:
 
@@ -20,6 +21,7 @@ Accepted deviations:
 - The visible brand signature may be added as a neutral utility class.
 - `safety-orange` uses black `accent-on` for contrast.
 - `peacock` uses darker green paper `#12633c` for readable body text.
+- `anthropic-clay` intentionally departs from pure white Swiss paper to match Anthropic-like warm official-document cues while preserving straight modules, hairlines, grid, and source-evidence frames.
 
 Guard:
 

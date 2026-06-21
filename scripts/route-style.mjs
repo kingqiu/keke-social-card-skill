@@ -12,6 +12,16 @@ const RULES = [
     keywords: ["开放规范", "open specification", "open spec", "api contract", "数据格式", "知识格式", "file format", "framework standard", "互操作", "schema", "yaml", "markdown", "okf"],
   },
   {
+    visualSystem: "Swiss System",
+    subTemplate: "Swiss Anthropic Clay",
+    theme: "anthropic-clay",
+    recipeSequence: "cover -> context problem -> mechanism pages with source figures -> decision checklist",
+    imagePolicy: "use official diagrams in .clay-source-figure; log portrait-fit decisions; redraw only unsuitable non-evidence landscape assets",
+    copyStrategy: "explain mechanism placement in plain Chinese; preserve product terms like CLAUDE.md, Skills, Hooks, Subagents",
+    qaFocus: "title stroke consistency, source-image alignment, Anthropic clay palette, no page serials, exact brand signature",
+    keywords: ["anthropic", "claude", "claude code", "claude.md", "hooks", "subagents", "skills", "output styles", "steering", "上下文治理", "上下文", "子代理", "钩子", "技能", "规则放哪"],
+  },
+  {
     visualSystem: "Proof Lab",
     theme: "SL-02 Graphite Mint",
     recipeSequence: "evidence hero -> step flow -> before/after -> takeaway",

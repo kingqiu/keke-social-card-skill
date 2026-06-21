@@ -11,6 +11,7 @@ Route by platform, intent, assets, and content type.
 | 小红书 + 穿搭 / 食谱 / 单品拆解 | Lookbook Journal | Result image is the anchor. |
 | 小红书 + 职场 / 数据 / 框架 / 清单 | Swiss System | Keep hierarchy clean, but avoid PPT-like pages. |
 | 小红书 + 技术公告 / 开放规范 / API 或数据格式 / 开源框架解读 | Swiss OKF Brief | Use the Swiss sub-template when a public technical announcement needs a high-click explainer with code/format proof. |
+| 小红书 + Claude/Anthropic 官方文章 / 上下文治理 / AI 工作流机制 | Swiss Anthropic Clay | Use the Swiss sub-template when warm official-brand cues and source diagrams should become credible evidence. |
 | 小红书 + 旅行 / 生活 / 读书 / 情绪 | Editorial E-ink | Photo and mood can lead. |
 | 工具测评 + 有证据图 | Proof Lab | Evidence first. |
 | 工具测评 + 无证据图 | Rednote Native or Swiss | Ask once for assets. |
@@ -33,10 +34,12 @@ Use one visual system per Xiaohongshu card deck. Do not mix Rednote Native and P
 | Tool review with no screenshots or concrete evidence | Ask once for assets; if unavailable, route to Rednote Native and make the limitation explicit in `QA.md` | Do not pretend that feature lists are proof. |
 | Long-form thought piece about a tool category, with no product UI focus | Swiss System or Rednote Native | Choose Swiss for frameworks/checklists; choose Rednote Native for feed-native hook and personal relevance. |
 | Technical announcement about an open specification, file format, API contract, data/knowledge format, or framework standard | Swiss OKF Brief | The reader job is "understand why this format matters"; use code/directory proof, definition cards, and producer/consumer or implementation rows. |
+| Claude/Anthropic official article about Claude Code steering, context, skills, hooks, subagents, or workflow rules | Swiss Anthropic Clay | The reader job is "place the mechanism correctly"; use source article diagrams as evidence and keep Chinese headings medium-weight. |
 
 Tie-breakers:
 
 - If the source is a technology announcement whose strongest hook is a new public format/spec rather than a product result, choose Swiss OKF Brief before ordinary Swiss.
+- If the source is a Claude/Anthropic official article and the strongest hook is steering/context/workflow mechanism rather than a UI tutorial, choose Swiss Anthropic Clay before ordinary Swiss or Proof Lab.
 - If over half the pages need screenshots, diagrams, or visible workflow states, choose Proof Lab.
 - If the cover promise is an emotional/use-case hook and proof can be represented as a native result package, choose Rednote Native.
 - If the source has both a high-click launch angle and detailed tutorial proof, produce separate Rednote Native and Proof Lab decks rather than merging grammars.
@@ -67,6 +70,32 @@ Swiss OKF Brief route output should include:
 - `imagePolicy: prefer code/directory/metadata proof; avoid decorative stock art`
 - `copyStrategy: technical announcement explained in plain Chinese, with the exact format/spec name repeated on cover and caption`
 - `qaFocus: source fidelity, format/spec terms, proof rows, no bottom-right page serials, exact brand signature`
+
+## Swiss Anthropic Clay Routing
+
+Route to the Swiss Anthropic Clay sub-template when most of these are true:
+
+- The source is Anthropic/Claude official material or a closely adjacent Claude Code workflow analysis.
+- The topic is mechanism placement: context, steering, rules, skills, hooks, subagents, output styles, or prompt/system layers.
+- The source contains official diagrams or screenshots that should appear as evidence instead of decorative illustration.
+- The desired mood is warm, restrained, official, and technical, not native Xiaohongshu sticker/card energy.
+- The card titles contain Chinese-heavy phrases that need stable medium-weight rendering.
+
+Do not route to Swiss Anthropic Clay when:
+
+- The post is primarily a UI tutorial or screenshot walkthrough. Use Proof Lab.
+- The post is primarily a launch/result/emotion hook. Use Rednote Native.
+- The source is unrelated to Claude/Anthropic and only wants a warm palette. Use ordinary Swiss, Editorial, or the appropriate system.
+
+Swiss Anthropic Clay route output should include:
+
+- `visualSystem: Swiss System`
+- `subTemplate: Swiss Anthropic Clay`
+- `theme: anthropic-clay`
+- `recipeSequence: cover -> context problem -> mechanism pages with source figures -> decision checklist`
+- `imagePolicy: use official diagrams in .clay-source-figure; log portrait-fit decisions; redraw only unsuitable non-evidence landscape assets`
+- `copyStrategy: explain mechanism placement in plain Chinese; preserve product terms like CLAUDE.md, Skills, Hooks, Subagents`
+- `qaFocus: title stroke consistency, source-image alignment, Anthropic clay palette, no page serials, exact brand signature`
 
 ## Route Output
 

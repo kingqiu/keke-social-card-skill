@@ -28,8 +28,10 @@ requireText("references/style-routing.md", "If over half the pages need screensh
 requireText("references/style-routing.md", "native result package", "Rednote Native needs a non-screenshot proof route");
 requireText("references/style-routing.md", "do not call it proof", "feature lists must not be treated as evidence");
 requireText("references/style-routing.md", "Swiss OKF Brief", "technical format/spec announcements need an explicit Swiss OKF Brief route");
+requireText("references/style-routing.md", "Swiss Anthropic Clay", "Claude/Anthropic official explainers need an explicit Swiss Anthropic Clay route");
 requireText("references/style-routing.md", "open specification", "open specs and technical formats should route before ordinary Swiss");
 requireText("references/style-routing.md", "subTemplate: Swiss OKF Brief", "route output should expose the Swiss OKF Brief sub-template");
+requireText("references/style-routing.md", "subTemplate: Swiss Anthropic Clay", "route output should expose the Swiss Anthropic Clay sub-template");
 requireText("references/style-routing.md", "confidence", "route output should include confidence");
 requireText("references/style-routing.md", "matchedKeywords", "route output should expose routing evidence");
 
@@ -41,6 +43,7 @@ requireText("SKILL.md", "choose Rednote Native for launches", "main workflow mus
 requireText("SKILL.md", "choose Proof Lab when screenshots", "main workflow must expose the screenshot/proof route");
 requireText("SKILL.md", "do not mix Rednote Native and Proof Lab inside one card deck", "main workflow must prevent grammar mixing");
 requireText("SKILL.md", "subTemplate: Swiss OKF Brief", "main workflow must expose the OKF Brief route");
+requireText("SKILL.md", "subTemplate: Swiss Anthropic Clay", "main workflow must expose the Anthropic Clay route");
 
 const contentPlanning = fs.readFileSync(path.join(root, "references", "content-planning.md"), "utf8");
 if (!contentPlanning.includes("## Swiss OKF Brief Page Plan")) {
@@ -49,9 +52,13 @@ if (!contentPlanning.includes("## Swiss OKF Brief Page Plan")) {
 if (!contentPlanning.includes("7-9 cards")) {
   failures.push("references/content-planning.md: missing 7-9 card default for Swiss OKF Brief");
 }
+if (!contentPlanning.includes("## Swiss Anthropic Clay Page Plan")) {
+  failures.push("references/content-planning.md: missing Swiss Anthropic Clay page planning rules");
+}
 
 const routeFixtures = [
   ["Google 推出 Open Knowledge Format，开放规范，Markdown YAML 知识格式", "Swiss OKF Brief"],
+  ["Anthropic 官方文章 Steering Claude Code，CLAUDE.md，Skills，Hooks，Subagents，上下文治理", "Swiss Anthropic Clay"],
   ["AI 工具教程，三张 UI 截图，前后对比，操作步骤", "Proof Lab"],
   ["新开发的 AI Skill 发布，小红书结果包，使用场景和省时间", "Rednote Native"],
   ["新手手冲咖啡器具购买，滤杯，电子秤，产品拆解", "Lookbook Journal"],
