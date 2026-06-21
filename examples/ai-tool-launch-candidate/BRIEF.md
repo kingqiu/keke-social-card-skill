@@ -4,6 +4,12 @@ Status: `Pending Assets`
 
 Purpose: become the first `Gold` reference for AI tool launch posts using Rednote Native + Proof Lab.
 
+## Proposal Confirmation
+
+- requiredBeforeBuild: yes
+- status: legacy-confirmed
+- confirmationSource: accepted reference example or validation package created before the proposal-confirmation gate became mandatory; future article/long-form tasks must receive explicit user confirmation before build
+
 ## Needed From User
 
 To turn this candidate into `Gold`, provide:

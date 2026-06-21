@@ -18,6 +18,41 @@ Start from the source structure:
 
 Then choose card count.
 
+## Proposal Confirmation Gate
+
+For article links, attached long-form articles, PDFs, markdown files, or any request asking which template/card count/design to use, do not proceed straight to card rendering.
+
+Before building, present a design proposal and wait for user confirmation.
+
+The proposal must include:
+
+- visual system, sub-template when applicable, and palette/theme
+- recommended card count and rationale
+- page-by-page plan using the schema below
+- source image/screenshot policy
+- copy strategy for Xiaohongshu title, caption, CTA, and hashtags
+- major visual/content risks and QA focus
+
+Ask this confirmation question:
+
+```text
+你确认这套方案后，我再开始生成卡片图片和小红书文案。要按这个方案继续吗？
+```
+
+Only after the user confirms should the task folder include final rendered cards and final Xiaohongshu publishing copy.
+
+Record the confirmation in `BRIEF.md`:
+
+```text
+## Proposal Confirmation
+
+- requiredBeforeBuild: yes
+- status: confirmed
+- confirmationSource: user confirmed the proposed visual system, card count, page plan, image policy, and copy strategy before build
+```
+
+If the user explicitly waived confirmation, set `status: waived` and quote or summarize the waiver. Do not use `waived` by default.
+
 ## Card Count Bands
 
 Use these bands as defaults:

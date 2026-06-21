@@ -7,6 +7,12 @@ Source:
 - Public article: Anthropic, `Steering Claude Code: CLAUDE.md files, skills, hooks, rules, subagents and more`, published 2026-06-18.
 - User-provided Chinese translation and interpretation notes.
 
+## Proposal Confirmation
+
+- requiredBeforeBuild: yes
+- status: legacy-confirmed
+- confirmationSource: accepted reference example or validation package created before the proposal-confirmation gate became mandatory; future article/long-form tasks must receive explicit user confirmation before build
+
 ## Route Decision
 
 - visualSystem: Swiss System

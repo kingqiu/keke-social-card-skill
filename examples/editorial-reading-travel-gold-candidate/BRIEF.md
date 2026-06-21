@@ -7,6 +7,12 @@ Source:
 - Synthetic essay scenario for validating the `Essay/culture/reading/travel` slot in the Golden Matrix.
 - Local raster atmosphere image generated for this package and recorded in `assets/SOURCES.md`.
 
+## Proposal Confirmation
+
+- requiredBeforeBuild: yes
+- status: legacy-confirmed
+- confirmationSource: accepted reference example or validation package created before the proposal-confirmation gate became mandatory; future article/long-form tasks must receive explicit user confirmation before build
+
 ## Route Decision
 
 - visualSystem: Editorial E-ink

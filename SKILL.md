@@ -160,7 +160,42 @@ Use `references/style-routing.md`:
 - For Claude/Anthropic official-source explainers, choose `Swiss Anthropic Clay` when the source has warm official-brand cues or section diagrams that should be treated as evidence. Use `.clay-source-figure` for source images and `.clay-title` for Chinese-heavy display titles.
 - Record the final route in `BRIEF.md` under `## Route Decision` before building: `visualSystem`, `subTemplate` when applicable, `theme`, `recipeSequence`, `imagePolicy`, `copyStrategy`, `qaFocus`, `confidence`, and `matchedKeywords`.
 
-### 5. Source
+### 5. Proposal Confirmation Gate
+
+This is mandatory for article links, attached long-form articles, PDFs, markdown files, or any request that asks what template/card count/design should be used.
+
+Before creating rendered card images, final Xiaohongshu captions, or output assets, stop and present a design proposal for user confirmation.
+
+The proposal must include:
+
+- Recommended visual system, sub-template when applicable, and theme/palette.
+- Recommended card count and the reason for that count.
+- Page-by-page plan: card role, source anchor, must-carry idea, visual proof, and what will be cut.
+- Image policy: which source images/screenshots will be used, redrawn, cropped, or omitted.
+- Copy strategy: title direction, caption tone, and hashtag direction.
+- Main visual risks and QA focus.
+
+Use this exact confirmation question:
+
+```text
+你确认这套方案后，我再开始生成卡片图片和小红书文案。要按这个方案继续吗？
+```
+
+Do not build cards, render images, or write final `xiaohongshu-caption.md` until the user clearly confirms with words such as `确认`, `继续`, `可以`, `开始生成`, or equivalent.
+
+Exception: if the user explicitly says `直接生成完整小红书发布包`, `不用确认方案`, or equivalent, you may proceed to Build, but still create `BRIEF.md` with a `## Proposal Confirmation` section that records the user waived confirmation.
+
+Every publishing-quality task folder must record the confirmation in `BRIEF.md`:
+
+```text
+## Proposal Confirmation
+
+- requiredBeforeBuild: yes
+- status: confirmed
+- confirmationSource: user confirmed the proposed visual system, card count, page plan, image policy, and copy strategy before build
+```
+
+### 6. Source
 
 Create `assets/IMAGE_REQUESTS.md` and `assets/SOURCES.md` whenever images are used.
 
@@ -174,7 +209,7 @@ For every landscape source image considered for a portrait Xiaohongshu card, dec
 - Keep landscape only when the image is itself the proof, screenshot, chart, or original diagram and fidelity matters. Record the reason in `QA.md`.
 - Do not use `object-fit: contain` as the default fix for unsuitable landscape cover art.
 
-### 6. Copy
+### 7. Copy
 
 Use `references/xhs-copywriting-guidelines.md`:
 
@@ -191,8 +226,9 @@ Use `references/xhs-copywriting-guidelines.md`:
 - Avoid hard external conversion pressure unless the user provides a compliant commercial flow.
 - Mark official/platform-rule uncertainty in `QA.md` when needed.
 
-### 7. Build
+### 8. Build
 
+- Confirm `BRIEF.md` contains `## Proposal Confirmation` with `status: confirmed` or an explicit waiver before building.
 - Create a task folder in the current workspace or requested output folder.
 - Copy the relevant seed template from `assets/`.
 - Replace `<!-- POSTERS_HERE -->` with one poster section per page.
@@ -240,6 +276,7 @@ Final response should include:
 ## Non-Negotiables
 
 - Do not silently publish image-only output for Xiaohongshu when the user expects a post.
+- Do not build cards, render images, or write final Xiaohongshu copy from a new article/long-form source before the user confirms the design proposal, unless the user explicitly waived confirmation.
 - Do not approximate inherited templates from memory. Use the seed template and its rules as the baseline.
 - Do not call a result `Swiss System`, `Editorial E-ink`, `Rednote Native`, `Proof Lab`, or `Lookbook Journal` if it violates that system's template grammar.
 - Do not make claims not supported by the source.

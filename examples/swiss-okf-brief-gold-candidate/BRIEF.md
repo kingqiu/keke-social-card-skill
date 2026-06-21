@@ -8,6 +8,12 @@ Source:
 - User-supplied engagement screenshot showing the published graphic post performed well.
 - Public-facing source named in the supplied cards: Google Cloud Blog, 2026.06.
 
+## Proposal Confirmation
+
+- requiredBeforeBuild: yes
+- status: legacy-confirmed
+- confirmationSource: accepted reference example or validation package created before the proposal-confirmation gate became mandatory; future article/long-form tasks must receive explicit user confirmation before build
+
 ## Route Decision
 
 - visualSystem: Swiss System

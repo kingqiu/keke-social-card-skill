@@ -6,6 +6,12 @@ Source article:
 
 User-supplied long-form article: `Agent 基础设施演进全景`
 
+## Proposal Confirmation
+
+- requiredBeforeBuild: yes
+- status: legacy-confirmed
+- confirmationSource: accepted reference example or validation package created before the proposal-confirmation gate became mandatory; future article/long-form tasks must receive explicit user confirmation before build
+
 ## Purpose
 
 Validate Swiss System after template lock.

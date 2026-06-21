@@ -36,6 +36,10 @@ add(Boolean(brief), "BRIEF.md exists", "Create BRIEF.md with source notes, card 
 add(Boolean(qa), "QA.md exists", "Create QA.md with content coverage and visual QA notes.");
 
 if (brief) {
+  add(/## +Proposal Confirmation/i.test(brief), "BRIEF records proposal confirmation", "Add a Proposal Confirmation section before building rendered cards or final copy.");
+  add(/requiredBeforeBuild\s*:\s*(yes|true)/i.test(brief), "Proposal confirmation marks requiredBeforeBuild", "Set requiredBeforeBuild: yes unless the user explicitly waived the confirmation gate.");
+  add(/status\s*:\s*(confirmed|waived|legacy-confirmed)/i.test(brief), "Proposal confirmation status is confirmed or waived", "Set status: confirmed after user approval, or waived only when the user explicitly skipped confirmation.");
+  add(/confirmationSource\s*:/i.test(brief), "Proposal confirmation records source", "Record how the user confirmed or waived the proposal.");
   add(/Card Count/i.test(brief), "BRIEF explains card count", "Add a Card Count section explaining why this deck uses this many cards.");
   add(/Page Plan/i.test(brief), "BRIEF contains page plan", "Add a Page Plan table before building cards.");
   add(/\|\s*Card\s*\|\s*Role\s*\|\s*Source anchor\s*\|\s*Must carry\s*\|\s*Reader sentence\s*\|\s*Visual proof\s*\|\s*Cut\s*\|/i.test(brief), "Page plan uses required columns", "Use columns: Card | Role | Source anchor | Must carry | Reader sentence | Visual proof | Cut.");

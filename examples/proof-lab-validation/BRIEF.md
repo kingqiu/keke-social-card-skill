@@ -8,6 +8,12 @@ Purpose:
 - Cover the three core Proof Lab page modes: evidence hero, step flow, and before/after.
 - Check that proof remains inspectable instead of becoming decoration.
 
+## Proposal Confirmation
+
+- requiredBeforeBuild: yes
+- status: legacy-confirmed
+- confirmationSource: accepted reference example or validation package created before the proposal-confirmation gate became mandatory; future article/long-form tasks must receive explicit user confirmation before build
+
 ## Page Plan
 
 1. Evidence hero: screenshot/result area must be the main visual object.

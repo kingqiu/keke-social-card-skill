@@ -4,6 +4,12 @@ Status: Gold
 Visual system: Proof Lab
 Source type: Long-form Chinese technical essay with supplied diagrams and generated article images.
 
+## Proposal Confirmation
+
+- requiredBeforeBuild: yes
+- status: legacy-confirmed
+- confirmationSource: accepted reference example or validation package created before the proposal-confirmation gate became mandatory; future article/long-form tasks must receive explicit user confirmation before build
+
 ## Route Decision
 
 - visualSystem: Proof Lab

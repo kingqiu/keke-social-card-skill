@@ -44,6 +44,8 @@ requireText("SKILL.md", "choose Proof Lab when screenshots", "main workflow must
 requireText("SKILL.md", "do not mix Rednote Native and Proof Lab inside one card deck", "main workflow must prevent grammar mixing");
 requireText("SKILL.md", "subTemplate: Swiss OKF Brief", "main workflow must expose the OKF Brief route");
 requireText("SKILL.md", "subTemplate: Swiss Anthropic Clay", "main workflow must expose the Anthropic Clay route");
+requireText("SKILL.md", "Proposal Confirmation Gate", "main workflow must require proposal confirmation before build");
+requireText("SKILL.md", "你确认这套方案后，我再开始生成卡片图片和小红书文案。要按这个方案继续吗？", "main workflow must use the explicit confirmation question");
 
 const contentPlanning = fs.readFileSync(path.join(root, "references", "content-planning.md"), "utf8");
 if (!contentPlanning.includes("## Swiss OKF Brief Page Plan")) {
@@ -54,6 +56,12 @@ if (!contentPlanning.includes("7-9 cards")) {
 }
 if (!contentPlanning.includes("## Swiss Anthropic Clay Page Plan")) {
   failures.push("references/content-planning.md: missing Swiss Anthropic Clay page planning rules");
+}
+if (!contentPlanning.includes("## Proposal Confirmation Gate")) {
+  failures.push("references/content-planning.md: missing proposal confirmation gate");
+}
+if (!contentPlanning.includes("status: confirmed")) {
+  failures.push("references/content-planning.md: missing confirmed proposal status example");
 }
 
 const routeFixtures = [

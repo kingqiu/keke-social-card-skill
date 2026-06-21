@@ -5,6 +5,12 @@ Visual system: Rednote Native
 Source type: AI Skill launch / Xiaohongshu card-generation workflow.
 Card count: 3
 
+## Proposal Confirmation
+
+- requiredBeforeBuild: yes
+- status: legacy-confirmed
+- confirmationSource: accepted reference example or validation package created before the proposal-confirmation gate became mandatory; future article/long-form tasks must receive explicit user confirmation before build
+
 ## Route Decision
 
 - visualSystem: Rednote Native
