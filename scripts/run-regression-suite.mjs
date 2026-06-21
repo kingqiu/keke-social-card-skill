@@ -8,6 +8,7 @@ const examples = [
   "examples/proof-lab-skill-handbook-candidate",
   "examples/lookbook-coffee-gear-gold-candidate",
   "examples/swiss-okf-brief-gold-candidate",
+  "examples/anthropic-steering-claude-code-candidate",
   "examples/editorial-reading-travel-gold-candidate",
 ];
 

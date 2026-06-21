@@ -1,6 +1,17 @@
 # QA
 
-Status: `Candidate`
+Status: `Gold`
+
+## Gold Reference
+
+Use this package as the first `Swiss Anthropic Clay` reference for official Claude/Anthropic explainers.
+
+It proves:
+
+- Anthropic clay palette can replace default Swiss blue without losing Swiss hierarchy.
+- Large mixed English/Chinese titles can stay visually stable with the Chinese-first title stack.
+- Official article images can sit inside the Swiss grid as evidence rather than decorative screenshots.
+- Decision/checklist pages can be dense enough without bringing back bottom-right page numbers.
 
 ## Card Count
 
@@ -51,4 +62,6 @@ Generated as a P1 end-to-end validation package from a real article.
 
 - `npm run check:all -- examples/anthropic-steering-claude-code-candidate --skip-palettes`
 - Result: all quality gates passed.
-- Notes: aesthetic QA scored 90/100 Gold-ready; social deck has advisory density warnings on three text-heavy cards, with zero hard failures.
+- `node scripts/validate-social-deck.mjs examples/anthropic-steering-claude-code-candidate`
+- Result: 8 clean sections, 0 fails, 0 warnings.
+- Notes: aesthetic QA scored 90/100 Gold-ready; the remaining media-alignment advisory is a false positive from treating the evidence figure and lower card grid as a same-row media pair.

@@ -1,6 +1,6 @@
 # Anthropic Steering Claude Code Candidate
 
-Status: `Candidate`
+Status: `Gold`
 
 Source:
 

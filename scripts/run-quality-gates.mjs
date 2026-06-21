@@ -35,6 +35,7 @@ gates.push(
   ["proof lab", ["node", "scripts/render-proof-lab-validation.mjs"]],
   ["local fonts", ["node", "scripts/check-local-fonts.mjs"]],
   ["golden examples", ["node", "scripts/check-golden-examples.mjs"]],
+  ["proposal confirmation gate", ["node", "scripts/check-proposal-confirmation-gate.mjs"]],
   ["style routing", ["node", "scripts/check-style-routing.mjs"]],
   ["template inheritance", ["node", "scripts/check-template-inheritance.mjs"]],
   ["proof lab theme contract", ["node", "scripts/check-proof-lab-theme-contract.mjs"]],

@@ -16,6 +16,7 @@ const requiredScenarios = [
   "Product/gear/food breakdown",
   "Opinion/framework",
   "Technical announcement/open spec",
+  "Official AI product explainer",
   "Essay/culture/reading/travel",
 ];
 
@@ -26,6 +27,7 @@ const accepted = [
   ["Product/gear/food breakdown", "examples/lookbook-coffee-gear-gold-candidate"],
   ["Opinion/framework", "examples/swiss-agent-infra-full-candidate"],
   ["Technical announcement/open spec", "examples/swiss-okf-brief-gold-candidate"],
+  ["Official AI product explainer", "examples/anthropic-steering-claude-code-candidate"],
   ["Essay/culture/reading/travel", "examples/editorial-reading-travel-gold-candidate"],
 ];
 

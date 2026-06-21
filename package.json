@@ -1,6 +1,6 @@
 {
   "name": "keke-social-card-skill",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "克克社交卡片 Skill: deterministic Chinese social card images plus Xiaohongshu copy packages.",
   "scripts": {
@@ -11,6 +11,7 @@
     "check:xhs-copy": "node scripts/check-xhs-copy.mjs",
     "check:portrait-fit": "node scripts/check-portrait-fit.mjs",
     "check:style-routing": "node scripts/check-style-routing.mjs",
+    "check:proposal-gate": "node scripts/check-proposal-confirmation-gate.mjs",
     "check:regression": "node scripts/run-regression-suite.mjs",
     "check:package-size": "node scripts/check-package-size.mjs",
     "route:style": "node scripts/route-style.mjs",

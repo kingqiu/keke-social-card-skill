@@ -20,6 +20,7 @@ Maintain examples across these scenarios:
 | Product/gear/food breakdown | Lookbook Journal | central result, material/detail callouts, useful density |
 | Opinion/framework | Swiss System | hierarchy, memorable concept, not corporate PPT |
 | Technical announcement/open spec | Swiss System / Swiss OKF Brief | feed-native technical hook, code/spec proof, source-backed explanation |
+| Official AI product explainer | Swiss System / Swiss Anthropic Clay | official-source images, mechanism distinctions, warm Anthropic palette, stable mixed Chinese/English titles |
 | Essay/culture/reading/travel | Editorial E-ink | editorial mood, image atmosphere, restrained text |
 
 Accepted Gold references:
@@ -32,6 +33,7 @@ Accepted Gold references:
 | Product/gear/food breakdown | `examples/lookbook-coffee-gear-gold-candidate` |
 | Opinion/framework | `examples/swiss-agent-infra-full-candidate` |
 | Technical announcement/open spec | `examples/swiss-okf-brief-gold-candidate` |
+| Official AI product explainer | `examples/anthropic-steering-claude-code-candidate` |
 | Essay/culture/reading/travel | `examples/editorial-reading-travel-gold-candidate` |
 
 Coverage gaps:
