@@ -67,6 +67,8 @@ output/
 
 对于 Claude/Anthropic 官方文章、AI 工作流机制、上下文治理这类内容，Swiss System 里包含 `Swiss Anthropic Clay` 子模板：暖白纸底、clay 强调色、黑色主文字、官方说明图证据框，更适合做有品牌感但仍然清晰克制的技术卡片。
 
+Swiss System 也可以使用 `ikb`（库里蓝 / Klein Blue）作为高信任技术管理配色：适合 AI 工作流、工程效率、技术管理、组织机制、严肃 checklist 这类内容。它保留 Swiss 的暖纸底、黑色判断块和严格网格，只把强调色换成库里蓝；蓝色块中的文字必须使用白色或高对比浅色。
+
 ## 使用方式
 
 在 Codex 中启用 Skill 后，可以直接这样请求：

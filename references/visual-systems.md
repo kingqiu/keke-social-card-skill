@@ -84,7 +84,7 @@ Accent palettes:
 
 | Accent | Use |
 |---|---|
-| `ikb` | Default serious technical/workplace deck |
+| `ikb` | Klein Blue high-trust technical/workplace deck; strong for AI workflow, technical management, engineering productivity, and sober framework posts |
 | `lemon-yellow` | High-visibility notes, lightweight frameworks |
 | `lemon-green` | Fresh/diagnostic/checklist cards |
 | `safety-orange` | Warnings, contradictions, mistake-to-avoid cards |
@@ -98,6 +98,14 @@ Palette validation:
 - All six palettes must pass paper/ink contrast, accent text contrast, overflow, and brand-signature checks before they are treated as available for production.
 - Palette validation should use publishable Xiaohongshu-style content, not empty smoke-test copy. The current validation deck uses an AI-tool decision checklist to test cover hook, diagnostic matrix, verdict ledger, semantic footer labels, and no cover page mark.
 - Do not mix palettes within one production deck.
+
+Klein Blue / IKB usage note:
+
+- Use `ikb` when a Swiss deck should feel more credible, technical, and managerial than the higher-click `lemon-yellow` route. It works especially well for AI workflow, engineering productivity, technical management, strategy memos, and source-backed framework posts where the reader needs trust before excitement.
+- Keep the warm paper background, strict grid, hairline rules, black proof blocks, and one-accent discipline from Swiss System. Do not turn `ikb` into a corporate blue dashboard with rounded cards, gradients, or large blue backgrounds everywhere.
+- When converting a `lemon-yellow` layout to `ikb`, preserve the layout and black proof blocks; change only accent rails, highlight chips, metric blocks, and selected action rows to Klein Blue. Text inside blue accent blocks must switch to white or a verified high-contrast light tone.
+- Prefer `ikb` over `lemon-yellow` when the post's promise is "understand the management mechanism" or "save a serious checklist" rather than "stop the feed with a bright note". Prefer `lemon-yellow` when visibility and public-feed pop matter more than institutional trust.
+- QA focus for `ikb`: blue block text contrast, enough thumbnail impact despite cooler color, no overuse of dark/blue blocks, no bottom-right page serials, exact brand signature.
 
 Required composition:
 

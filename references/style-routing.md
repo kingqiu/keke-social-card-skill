@@ -9,7 +9,7 @@ Route by platform, intent, assets, and content type.
 | 小红书 + 强点击 / 结果 / 情绪 | Rednote Native | First image must stop the feed. |
 | 小红书 + AI 工具 / 截图 / 教程 | Proof Lab | Screenshot/result must be readable. |
 | 小红书 + 穿搭 / 食谱 / 单品拆解 | Lookbook Journal | Result image is the anchor. |
-| 小红书 + 职场 / 数据 / 框架 / 清单 | Swiss System | Keep hierarchy clean, but avoid PPT-like pages. |
+| 小红书 + 职场 / 数据 / 框架 / 清单 | Swiss System | Keep hierarchy clean, but avoid PPT-like pages. Use `ikb` when the topic is technical management, AI workflow, engineering productivity, or a serious source-backed checklist. |
 | 小红书 + 技术公告 / 开放规范 / API 或数据格式 / 开源框架解读 | Swiss OKF Brief | Use the Swiss sub-template when a public technical announcement needs a high-click explainer with code/format proof. |
 | 小红书 + Claude/Anthropic 官方文章 / 上下文治理 / AI 工作流机制 | Swiss Anthropic Clay | Use the Swiss sub-template when warm official-brand cues and source diagrams should become credible evidence. |
 | 小红书 + 旅行 / 生活 / 读书 / 情绪 | Editorial E-ink | Photo and mood can lead. |
@@ -43,6 +43,7 @@ Tie-breakers:
 - If over half the pages need screenshots, diagrams, or visible workflow states, choose Proof Lab.
 - If the cover promise is an emotional/use-case hook and proof can be represented as a native result package, choose Rednote Native.
 - If the source has both a high-click launch angle and detailed tutorial proof, produce separate Rednote Native and Proof Lab decks rather than merging grammars.
+- If the source is a management/workflow analysis where trust and clarity matter more than bright-feed energy, choose Swiss System with `theme: ikb`; if the same layout needs stronger feed pop, choose `lemon-yellow`.
 - If the only "proof" is a list of features, do not call it proof. Rewrite it as reader outcome, ask for assets, or lower confidence in `QA.md`.
 
 ## Swiss OKF Brief Routing
