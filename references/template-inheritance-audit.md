@@ -2,6 +2,37 @@
 
 Use this file to record visual-system inheritance status without exposing private source notes.
 
+## Longform Reader
+
+Status: `template-locked`; reference template: `assets/template-longform-reader.html`; rule reference: `references/longform-reader.md`; first production reference: Meta AI transformation Longform Reader deck.
+
+Audit result:
+
+- The Longform Reader seed keeps a distinct 3:5 reading-card grammar rather than borrowing 3:4 Swiss pages.
+- The template structure is separated from palette: `Longform Reader` is the system, `highlighter-blue` is the first theme.
+- The seed includes cover highlighter title blocks, cover reading map, wide cover visual, bottom callout, editorial content-page typography, subject-crop / wide-band / art-crop image slots, metric strips, note boxes, verdict strips, list/checklist rows, comparison rows, quote lines, and exact brand signature.
+- The system is designed for long articles, reports, WeChat articles, and source-backed case analyses where story continuity matters more than compact framework density.
+- Content images are governed by a flexible treatment rule: direct original, subject crop, wide band, redraw/recompose, or omit. Subject crop is not mandatory; it is only used when the meaningful visual is inside a larger incompatible image.
+- Public card branding is added through `.brand::before`, with exact text `「两克伴」出品`.
+
+Accepted deviations:
+
+- The board ratio is 3:5 instead of the default 3:4 Xiaohongshu template ratio because long-form reading cards need more vertical text capacity.
+- Cover images may be toned for palette cohesion. Content-page images preserve original color by default.
+- Cover and closing pages may use stronger editorial/display title treatment, while interior content pages keep a consistent title style.
+
+Guard:
+
+- Use `references/longform-reader.md` for page planning and image policy.
+- Run `npm run validate -- <task-dir>` for rendered output.
+- Run `npm run check:content-plan -- <task-dir>` and `npm run check:xhs-copy -- <task-dir>` when the task folder includes the full planning/copy package.
+- Manual visual review must check story continuity, image treatment intent, accidental blank zones, and final word-count/read-time.
+
+Locked gap:
+
+- Additional themes beyond `highlighter-blue` need production examples before being treated as validated palettes.
+- A second accepted example in a non-AI topic would upgrade the system from `template-locked` to `locked`.
+
 ## Swiss System
 
 Status: `locked`; Gold examples: `examples/swiss-agent-infra-full-candidate`, `examples/swiss-okf-brief-gold-candidate`; Anthropic Clay reference: `examples/anthropic-steering-claude-code-candidate`.

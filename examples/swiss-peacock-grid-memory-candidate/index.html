@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>智能体是怎么记事的</title>
+  <link rel="stylesheet" href="./assets/fonts/keke-fonts.css" />
+  <style>
+    :root {
+      --paper: #f8f6ef;
+      --ink: #141413;
+      --muted: #77736a;
+      --line: rgba(20, 20, 19, .16);
+      --grid: rgba(31, 111, 107, .045);
+      --accent: #1f6f6b;
+      --accent-on: #f7f0df;
+      --mono: "Keke IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --sans: "Keke Noto Sans SC", "Keke Inter", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #ddd8cb; color: var(--ink); font-family: var(--sans); }
+    .sheet { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: flex-start; }
+    .poster {
+      width: 1080px;
+      height: 1440px;
+      flex: 0 0 auto;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+        var(--paper);
+      background-size: 52px 52px;
+      border: 1px solid rgba(20,20,19,.2);
+    }
+    .content {
+      height: 100%;
+      padding: 78px 82px 64px;
+      display: grid;
+      grid-template-rows: 68px auto 1fr 68px;
+      gap: 26px;
+      position: relative;
+      z-index: 1;
+    }
+    .topbar, .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      font-family: var(--mono);
+      font-size: 22px;
+      letter-spacing: .14em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .brand { color: var(--accent); letter-spacing: .08em; }
+    .kicker {
+      margin: 0 0 18px;
+      font-family: var(--mono);
+      font-size: 24px;
+      letter-spacing: .17em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: 74px;
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: 0;
+      max-width: 900px;
+    }
+    .cover h1 { font-size: 90px; line-height: 1.08; max-width: 920px; }
+    h1 .accent { color: var(--accent); }
+    .subtitle {
+      margin: 18px 0 0;
+      font-size: 30px;
+      line-height: 1.48;
+      font-weight: 500;
+      color: #24231f;
+      max-width: 860px;
+    }
+    .body { display: grid; gap: 22px; align-content: start; }
+    .figure {
+      margin: 0;
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      display: grid;
+      place-items: center;
+      padding: 20px 0;
+      min-height: 470px;
+    }
+    .figure img { width: 100%; height: 460px; object-fit: contain; display: block; }
+    .figure.wide img { height: 364px; object-fit: cover; object-position: center; }
+    .figure.tall { min-height: 560px; }
+    .figure.tall img { height: 520px; object-fit: contain; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .module {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.38);
+      padding: 24px 26px;
+      min-height: 152px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .module.dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .module.accent { background: var(--accent); color: var(--accent-on); border-color: var(--accent); }
+    .label {
+      font-family: var(--mono);
+      font-size: 18px;
+      letter-spacing: .15em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .dark .label { color: color-mix(in srgb, var(--accent) 70%, white); }
+    .accent .label { color: var(--accent-on); opacity: .76; }
+    .module-title { font-size: 32px; line-height: 1.18; font-weight: 700; margin: 0; }
+    .module-text { font-size: 25px; line-height: 1.38; margin: 12px 0 0; color: #3b3933; }
+    .dark .module-text, .accent .module-text { color: inherit; opacity: .9; }
+    .statement {
+      background: var(--ink);
+      color: #fff;
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 20px;
+      align-items: center;
+    }
+    .statement .main { font-size: 34px; line-height: 1.35; font-weight: 700; }
+    .statement .note { font-size: 24px; line-height: 1.45; color: rgba(255,255,255,.78); }
+    .chips { display: flex; flex-wrap: wrap; gap: 14px; }
+    .chip {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.42);
+      padding: 14px 20px;
+      font-family: var(--mono);
+      font-size: 21px;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .chip.hot { background: var(--accent); border-color: var(--accent); color: var(--accent-on); font-weight: 600; }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .flow .module { min-height: 190px; }
+    .matrix { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .matrix .module { min-height: 208px; }
+    .checklist {
+      display: grid;
+      gap: 18px;
+      margin-top: 16px;
+    }
+    .check {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+    .num {
+      font-family: var(--mono);
+      color: var(--accent);
+      font-size: 28px;
+      letter-spacing: .08em;
+    }
+    .check p { margin: 0; font-size: 31px; line-height: 1.35; font-weight: 600; }
+    .cover-body {
+      display: grid;
+      grid-template-rows: 410px 184px;
+      gap: 22px;
+      align-content: end;
+    }
+    .cover-verdict {
+      display: grid;
+      grid-template-columns: 1.2fr .9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .cover-verdict .module { min-height: 182px; }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <section class="poster cover" data-name="xhs-01-cover">
+      <div class="content">
+        <div class="topbar"><span>AI Agent Memory</span><span class="brand">「两克伴」出品</span></div>
+        <header>
+          <p class="kicker">Context · Retrieval · Memory</p>
+          <h1>智能体是<br>怎么<span class="accent">记事</span>的？</h1>
+          <p class="subtitle">模型没有记忆，记忆在系统外面。</p>
+        </header>
+        <div class="cover-body">
+          <figure class="figure wide">
+            <img src="./assets/cover-memory-system.png" alt="AI 智能体记忆系统横向总览图" />
+          </figure>
+          <section class="cover-verdict">
+            <div class="module dark">
+              <div>
+                <div class="label">CORE TAKEAWAY</div>
+                <p class="module-title">不是模型会记，<br>是系统会取。</p>
+              </div>
+            </div>
+            <div class="chips">
+              <span class="chip hot">stateless</span>
+              <span class="chip">context</span>
+              <span class="chip hot">retrieval</span>
+              <span class="chip">long-term</span>
+            </div>
+          </section>
+        </div>
+        <div class="footer"><span>Source · ByteByteGo</span><span>Agent Memory</span></div>
+      </div>
+    </section>
+
+    <section class="poster" data-name="xhs-02-stateless">
+      <div class="content">
+        <div class="topbar"><span>02 · Statelessness</span><span class="brand">「两克伴」出品</span></div>
+        <header>
+          <p class="kicker">MODEL CONTRACT</p>
+          <h1>模型每次都从<br><span class="accent">空白</span>开始</h1>
+          <p class="subtitle">你感受到的连续性，不是模型自己记住了，而是平台在每次调用前重新摆好上下文。</p>
+        </header>
+        <div class="body">
+          <div class="flow">
+            <div class="module accent">
+              <div class="label">CALL 01</div>
+              <p class="module-title">Prompt</p>
+              <p class="module-text">系统把当前可见内容交给模型。</p>
+            </div>
+            <div class="module">
+              <div class="label">MODEL</div>
+              <p class="module-title">Run once</p>
+              <p class="module-text">模型只处理这一轮窗口里的文本。</p>
+            </div>
+            <div class="module dark">
+              <div class="label">NEXT CALL</div>
+              <p class="module-title">Blank again</p>
+              <p class="module-text">下一次调用，本身没有上一轮状态。</p>
+            </div>
+          </div>
+          <section class="statement">
+            <div class="main">“Claude 记得我”是产品属性，不是模型属性。</div>
+            <div class="note">平台替模型保存、检索、摘要，再把相关内容塞回 prompt。</div>
+          </section>
+          <div class="grid-2">
+            <div class="module"><div class="label">模型内部</div><p class="module-title">智能</p><p class="module-text">推理能力来自模型。</p></div>
+            <div class="module"><div class="label">模型外部</div><p class="module-title">记忆</p><p class="module-text">连续性来自系统工程。</p></div>
+          </div>
+        </div>
+        <div class="footer"><span>Every API call starts fresh</span><span>Stateless</span></div>
+      </div>
+    </section>
+
+    <section class="poster" data-name="xhs-03-context-window">
+      <div class="content">
+        <div class="topbar"><span>03 · Context Window</span><span class="brand">「两克伴」出品</span></div>
+        <header>
+          <p class="kicker">CONTEXT IS NOT MEMORY</p>
+          <h1>上下文窗口<br>不是<span class="accent">记忆</span></h1>
+          <p class="subtitle">把历史全塞进去，短期有用；对话一长，成本、延迟和中间迷失会一起出现。</p>
+        </header>
+        <div class="body">
+          <figure class="figure tall">
+            <img src="./assets/fig-context-window.png" alt="Context Window 与 Lost in the Middle 信息图" />
+          </figure>
+          <section class="statement">
+            <div class="main">窗口再大，也不等于记忆可靠。</div>
+            <div class="note">模型能看到窗口内文本，但长上下文中间的信息仍可能被忽略。</div>
+          </section>
+        </div>
+        <div class="footer"><span>Cost · Latency · Lost in the Middle</span><span>Context</span></div>
+      </div>
+    </section>
+
+    <section class="poster" data-name="xhs-04-memory-hierarchy">
+      <div class="content">
+        <div class="topbar"><span>04 · Hierarchy</span><span class="brand">「两克伴」出品</span></div>
+        <header>
+          <p class="kicker">MEMORY SYSTEM</p>
+          <h1>记忆系统<br>要<span class="accent">分层</span></h1>
+          <p class="subtitle">真实生产系统会在速度、容量和成本之间分层管理信息。</p>
+        </header>
+        <div class="body">
+          <figure class="figure tall">
+            <img src="./assets/fig-memory-hierarchy.png" alt="AI Agent Memory Hierarchy 信息图" />
+          </figure>
+          <section class="statement">
+            <div class="main">相关时提升进窗口，不相关时沉到存储层。</div>
+            <div class="note">这更像操作系统内存分页，而不是模型脑子里多了一块记忆。</div>
+          </section>
+        </div>
+        <div class="footer"><span>Context · Session · Long-term · Archive</span><span>Hierarchy</span></div>
+      </div>
+    </section>
+
+    <section class="poster" data-name="xhs-05-memory-types">
+      <div class="content">
+        <div class="topbar"><span>05 · Memory Types</span><span class="brand">「两克伴」出品</span></div>
+        <header>
+          <p class="kicker">FOUR TYPES</p>
+          <h1>AI 要记的<br>不是<span class="accent">一种东西</span></h1>
+          <p class="subtitle">记忆层级回答“存在哪里”，记忆类型回答“这条信息是什么”。</p>
+        </header>
+        <div class="body">
+          <div class="matrix">
+            <div class="module accent"><div class="label">WORKING</div><p class="module-title">工作记忆</p><p class="module-text">当前任务现场：代码、文件、最近几句话。</p></div>
+            <div class="module"><div class="label">EPISODIC</div><p class="module-title">情景记忆</p><p class="module-text">某次具体互动：什么时候讨论过什么。</p></div>
+            <div class="module"><div class="label">SEMANTIC</div><p class="module-title">语义记忆</p><p class="module-text">稳定事实和偏好：你常用什么工具。</p></div>
+            <div class="module dark"><div class="label">PROCEDURAL</div><p class="module-title">程序性记忆</p><p class="module-text">做事方式：你希望它按什么格式工作。</p></div>
+          </div>
+          <section class="statement">
+            <div class="main">正确的混合是设计选择，不是固定公式。</div>
+            <div class="note">客服智能体偏情景和语义；编码智能体更依赖程序性记忆。</div>
+          </section>
+        </div>
+        <div class="footer"><span>Working · Episodic · Semantic · Procedural</span><span>Types</span></div>
+      </div>
+    </section>
+
+    <section class="poster" data-name="xhs-06-retrieval-loop">
+      <div class="content">
+        <div class="topbar"><span>06 · Retrieval</span><span class="brand">「两克伴」出品</span></div>
+        <header>
+          <p class="kicker">REAL HARD PART</p>
+          <h1>难点不是存，<br>而是<span class="accent">取</span></h1>
+          <p class="subtitle">每条用户消息都要判断：哪些记忆此刻应该进入模型的感知？</p>
+        </header>
+        <div class="body">
+          <figure class="figure tall">
+            <img src="./assets/fig-retrieval-loop.png" alt="AI Agent Retrieval Loop 信息图" />
+          </figure>
+          <section class="statement">
+            <div class="main">生产环境里的记忆失败，常常是检索失败的伪装。</div>
+            <div class="note">取错旧信息，比完全没有记忆更容易让模型自信地错。</div>
+          </section>
+        </div>
+        <div class="footer"><span>Retrieve · Assemble · Generate · Write Back</span><span>Retrieval</span></div>
+      </div>
+    </section>
+
+    <section class="poster" data-name="xhs-07-tradeoffs">
+      <div class="content">
+        <div class="topbar"><span>07 · Trade-offs</span><span class="brand">「两克伴」出品</span></div>
+        <header>
+          <p class="kicker">MEMORY RISKS</p>
+          <h1>记忆越强，<br>越要处理<span class="accent">权衡</span></h1>
+          <p class="subtitle">有用的长期记忆，也会带来过期、压缩损失和安全攻击面。</p>
+        </header>
+        <div class="body">
+          <figure class="figure tall">
+            <img src="./assets/fig-tradeoffs.png" alt="AI Agent Memory Trade-offs 信息图" />
+          </figure>
+          <section class="statement">
+            <div class="main">记得越久，越要判断它还靠不靠谱。</div>
+            <div class="note">记忆不是只管写入，还要更新、衰减、验证和防污染。</div>
+          </section>
+        </div>
+        <div class="footer"><span>Recency · Fidelity · Staleness · Poisoning</span><span>Trade-offs</span></div>
+      </div>
+    </section>
+
+    <section class="poster" data-name="xhs-08-closing-checklist">
+      <div class="content">
+        <div class="topbar"><span>08 · Checklist</span><span class="brand">「两克伴」出品</span></div>
+        <header>
+          <p class="kicker">PRACTICAL QUESTION</p>
+          <h1>别问模型<br>记不<span class="accent">记得</span></h1>
+          <p class="subtitle">下次看到 memory 功能，真正该问的是它周围那套系统怎么工作。</p>
+        </header>
+        <div class="body">
+          <section class="checklist">
+            <div class="check"><div class="num">01</div><p>它把什么内容写进长期记忆？</p></div>
+            <div class="check"><div class="num">02</div><p>每一轮如何判断什么该被取回？</p></div>
+            <div class="check"><div class="num">03</div><p>旧事实过期后，系统怎么发现和更新？</p></div>
+            <div class="check"><div class="num">04</div><p>错误或恶意记忆，如何被隔离和清理？</p></div>
+          </section>
+          <section class="statement">
+            <div class="main">智能体记忆不是魔法，是上下文工程。</div>
+            <div class="note">模型负责推理；系统负责把“该看的东西”放到它眼前。</div>
+          </section>
+        </div>
+        <div class="footer"><span>Saveable AI Framework</span><span>Memory Architecture</span></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

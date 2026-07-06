@@ -12,6 +12,8 @@ Route by platform, intent, assets, and content type.
 | 小红书 + 职场 / 数据 / 框架 / 清单 | Swiss System | Keep hierarchy clean, but avoid PPT-like pages. Use `ikb` when the topic is technical management, AI workflow, engineering productivity, or a serious source-backed checklist. |
 | 小红书 + 技术公告 / 开放规范 / API 或数据格式 / 开源框架解读 | Swiss OKF Brief | Use the Swiss sub-template when a public technical announcement needs a high-click explainer with code/format proof. |
 | 小红书 + Claude/Anthropic 官方文章 / 上下文治理 / AI 工作流机制 | Swiss Anthropic Clay | Use the Swiss sub-template when warm official-brand cues and source diagrams should become credible evidence. |
+| 小红书 + 长文 / 报告 / 微信文章 / 案例分析 / 叙事型商业或技术解读 | Longform Reader | Use when the reader needs a story arc and enough text capacity. Structure and theme must be chosen separately. |
+| 用户说「长文阅读卡片」「深度阅读卡片」「公众号长文转小红书」「把这篇长文/报告做成小红书」「像上次 Meta 那套长文卡片」「适合长文章的阅读型模板」 | Longform Reader | Treat these as natural-language aliases. The user should not need to remember the English template name. |
 | 小红书 + 旅行 / 生活 / 读书 / 情绪 | Editorial E-ink | Photo and mood can lead. |
 | 工具测评 + 有证据图 | Proof Lab | Evidence first. |
 | 工具测评 + 无证据图 | Rednote Native or Swiss | Ask once for assets. |
@@ -35,6 +37,7 @@ Use one visual system per Xiaohongshu card deck. Do not mix Rednote Native and P
 | Long-form thought piece about a tool category, with no product UI focus | Swiss System or Rednote Native | Choose Swiss for frameworks/checklists; choose Rednote Native for feed-native hook and personal relevance. |
 | Technical announcement about an open specification, file format, API contract, data/knowledge format, or framework standard | Swiss OKF Brief | The reader job is "understand why this format matters"; use code/directory proof, definition cards, and producer/consumer or implementation rows. |
 | Claude/Anthropic official article about Claude Code steering, context, skills, hooks, subagents, or workflow rules | Swiss Anthropic Clay | The reader job is "place the mechanism correctly"; use source article diagrams as evidence and keep Chinese headings medium-weight. |
+| Long article, report, markdown note, WeChat article, or source-backed business/technology case analysis | Longform Reader | The reader job is "understand and save the reasoning"; use a story arc rather than a directory of extracted points. |
 
 Tie-breakers:
 
@@ -44,7 +47,46 @@ Tie-breakers:
 - If the cover promise is an emotional/use-case hook and proof can be represented as a native result package, choose Rednote Native.
 - If the source has both a high-click launch angle and detailed tutorial proof, produce separate Rednote Native and Proof Lab decks rather than merging grammars.
 - If the source is a management/workflow analysis where trust and clarity matter more than bright-feed energy, choose Swiss System with `theme: ikb`; if the same layout needs stronger feed pop, choose `lemon-yellow`.
+- If the source is a long-form case or report where the core value is the narrative chain, choose Longform Reader before ordinary Swiss. Use Swiss only when the source is mostly framework/checklist and can be expressed in compact modules.
 - If the only "proof" is a list of features, do not call it proof. Rewrite it as reader outcome, ask for assets, or lower confidence in `QA.md`.
+
+## Longform Reader Routing
+
+Route to Longform Reader when most of these are true:
+
+- The source is a long article, report, essay, markdown note, WeChat article, or source-backed case analysis.
+- The deck needs to teach a reader who has not read the source, not merely summarize sections.
+- The article has a story arc: event, baseline, reversal, mechanism, consequence, reader takeaway.
+- Honest coverage likely needs more than 9 cards, or 9 cards would make the text too small.
+- The user asks for a reading-card style, longform interpretation, or high-text Xiaohongshu deck.
+
+Natural-language aliases that should trigger this route:
+
+- "长文阅读卡片"
+- "深度阅读卡片"
+- "阅读型小红书模板"
+- "公众号长文转小红书"
+- "把这篇长文/报告做成小红书"
+- "像上次 Meta 那套长文卡片"
+- "适合长文章的阅读型模板"
+- "长文章不要做成目录，要讲成一组卡片"
+
+Do not route to Longform Reader when:
+
+- The strongest evidence is screenshots/workflow states. Use Proof Lab.
+- The strongest job is a launch/result/emotion hook. Use Rednote Native.
+- The content is a compact checklist/framework with little narrative. Use Swiss System.
+
+Longform Reader route output should include:
+
+- `visualSystem: Longform Reader`
+- `template: Highlight Cover + refined reading pages`
+- `ratio: 3:5`
+- `theme: highlighter-blue` unless another named palette is requested
+- `recipeSequence: event hook -> baseline contrast -> reversal -> mechanisms -> consequences -> reader checklist -> final takeaway`
+- `imagePolicy: choose per image: direct original, subject crop, wide band, redraw/recompose, or omit; preserve content-page original color by default`
+- `copyStrategy: faithful source-backed longform rewrite in natural Chinese; story arc, not directory summary`
+- `qaFocus: story continuity, content-page title consistency, image treatment intent, whitespace, readable brand signature, final package word-count/read-time`
 
 ## Swiss OKF Brief Routing
 

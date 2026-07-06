@@ -22,6 +22,15 @@ const RULES = [
     keywords: ["anthropic", "claude", "claude code", "claude.md", "hooks", "subagents", "skills", "output styles", "steering", "上下文治理", "上下文", "子代理", "钩子", "技能", "规则放哪"],
   },
   {
+    visualSystem: "Longform Reader",
+    theme: "highlighter-blue",
+    recipeSequence: "event hook -> baseline contrast -> reversal -> mechanisms -> consequences -> reader checklist -> final takeaway",
+    imagePolicy: "choose per image: direct original, subject crop, wide band, redraw/recompose, or omit; preserve content-page original color by default",
+    copyStrategy: "faithful source-backed longform rewrite in natural Chinese; story arc, not directory summary",
+    qaFocus: "story continuity, content-page title consistency, image treatment intent, whitespace, readable brand signature, final package word-count/read-time",
+    keywords: ["长文", "报告", "深度解读", "案例分析", "商业解读", "技术解读", "微信文章", "公众号文章", "阅读卡片", "长文阅读卡片", "深度阅读卡片", "阅读型小红书模板", "公众号长文转小红书", "像上次 Meta 那套", "适合长文章", "longform", "report", "case study", "source-backed", "story arc", "叙事"],
+  },
+  {
     visualSystem: "Proof Lab",
     theme: "SL-02 Graphite Mint",
     recipeSequence: "evidence hero -> step flow -> before/after -> takeaway",

@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="zh-CN" data-accent="peacock">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{POST_TITLE}}</title>
+  <link rel="stylesheet" href="./assets/fonts/keke-fonts.css" />
+  <style>
+    :root {
+      --paper: #f8f6ef;
+      --ink: #141413;
+      --muted: #77736a;
+      --line: rgba(20, 20, 19, .16);
+      --grid: rgba(31, 111, 107, .045);
+      --accent: #1f6f6b;
+      --accent-on: #f7f0df;
+      --mono: "Keke IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --sans: "Keke Noto Sans SC", "Keke Inter", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #ddd8cb;
+      color: var(--ink);
+      font-family: var(--sans);
+    }
+    .sheet {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding: 40px;
+      align-items: flex-start;
+    }
+    .poster {
+      width: 1080px;
+      height: 1440px;
+      flex: 0 0 auto;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+        var(--paper);
+      background-size: 52px 52px;
+      border: 1px solid rgba(20,20,19,.2);
+    }
+    .content {
+      height: 100%;
+      padding: 78px 82px 64px;
+      display: grid;
+      grid-template-rows: 68px auto 1fr 68px;
+      gap: 26px;
+      position: relative;
+      z-index: 1;
+    }
+    .topbar,
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      font-family: var(--mono);
+      font-size: 22px;
+      letter-spacing: .14em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .brand {
+      color: var(--accent);
+      letter-spacing: .08em;
+      text-transform: none;
+    }
+    .kicker {
+      margin: 0 0 18px;
+      font-family: var(--mono);
+      font-size: 24px;
+      letter-spacing: .17em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: 74px;
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: 0;
+      max-width: 900px;
+    }
+    .cover h1 {
+      font-size: 90px;
+      line-height: 1.08;
+      max-width: 920px;
+    }
+    h1 .accent { color: var(--accent); }
+    .subtitle {
+      margin: 18px 0 0;
+      font-size: 30px;
+      line-height: 1.48;
+      font-weight: 500;
+      color: #24231f;
+      max-width: 860px;
+    }
+    .body {
+      display: grid;
+      gap: 22px;
+      align-content: start;
+    }
+    .figure {
+      margin: 0;
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      display: grid;
+      place-items: center;
+      padding: 20px 0;
+      min-height: 470px;
+    }
+    .figure img {
+      width: 100%;
+      height: 460px;
+      object-fit: contain;
+      display: block;
+    }
+    .figure.wide img {
+      height: 364px;
+      object-fit: cover;
+      object-position: center;
+    }
+    .figure.tall {
+      min-height: 560px;
+    }
+    .figure.tall img {
+      height: 520px;
+      object-fit: contain;
+    }
+    .grid-2,
+    .matrix {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .module {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.38);
+      padding: 24px 26px;
+      min-height: 152px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .flow .module { min-height: 190px; }
+    .matrix .module { min-height: 208px; }
+    .module.dark {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+    .module.accent {
+      background: var(--accent);
+      color: var(--accent-on);
+      border-color: var(--accent);
+    }
+    .label {
+      font-family: var(--mono);
+      font-size: 18px;
+      letter-spacing: .15em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .dark .label {
+      color: color-mix(in srgb, var(--accent) 70%, white);
+    }
+    .accent .label {
+      color: var(--accent-on);
+      opacity: .76;
+    }
+    .module-title {
+      font-size: 32px;
+      line-height: 1.18;
+      font-weight: 700;
+      margin: 0;
+    }
+    .module-text {
+      font-size: 25px;
+      line-height: 1.38;
+      margin: 12px 0 0;
+      color: #3b3933;
+    }
+    .dark .module-text,
+    .accent .module-text {
+      color: inherit;
+      opacity: .9;
+    }
+    .statement {
+      background: var(--ink);
+      color: #fff;
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 20px;
+      align-items: center;
+    }
+    .statement .main {
+      font-size: 34px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+    .statement .note {
+      font-size: 24px;
+      line-height: 1.45;
+      color: rgba(255,255,255,.78);
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-content: start;
+    }
+    .chip {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.42);
+      padding: 14px 20px;
+      font-family: var(--mono);
+      font-size: 21px;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .chip.hot {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--accent-on);
+      font-weight: 600;
+    }
+    .checklist {
+      display: grid;
+      gap: 18px;
+      margin-top: 16px;
+    }
+    .check {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+    .num {
+      font-family: var(--mono);
+      color: var(--accent);
+      font-size: 28px;
+      letter-spacing: .08em;
+    }
+    .check p {
+      margin: 0;
+      font-size: 31px;
+      line-height: 1.35;
+      font-weight: 600;
+    }
+    .cover-body {
+      display: grid;
+      grid-template-rows: 410px 184px;
+      gap: 22px;
+      align-content: end;
+    }
+    .cover-verdict {
+      display: grid;
+      grid-template-columns: 1.2fr .9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .cover-verdict .module {
+      min-height: 182px;
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <section class="poster cover" data-name="xhs-01-cover">
+      <div class="content">
+        <div class="topbar"><span>{{TOPIC_LABEL}}</span><span class="brand">「两克伴」出品</span></div>
+        <header>
+          <p class="kicker">{{KICKER}}</p>
+          <h1>{{COVER_TITLE_LINE_1}}<br>{{COVER_TITLE_LINE_2}}<span class="accent">{{COVER_ACCENT}}</span></h1>
+          <p class="subtitle">{{COVER_SUBTITLE}}</p>
+        </header>
+        <div class="cover-body">
+          <figure class="figure wide">
+            <img src="./assets/{{COVER_INFORMATION_DIAGRAM}}.png" alt="{{COVER_IMAGE_ALT}}" />
+          </figure>
+          <section class="cover-verdict">
+            <div class="module dark">
+              <div>
+                <div class="label">CORE TAKEAWAY</div>
+                <p class="module-title">{{CORE_TAKEAWAY}}</p>
+              </div>
+            </div>
+            <div class="chips">
+              <span class="chip hot">{{CHIP_1}}</span>
+              <span class="chip">{{CHIP_2}}</span>
+              <span class="chip hot">{{CHIP_3}}</span>
+              <span class="chip">{{CHIP_4}}</span>
+            </div>
+          </section>
+        </div>
+        <div class="footer"><span>{{SOURCE_LABEL}}</span><span>{{CATEGORY}}</span></div>
+      </div>
+    </section>
+
+    <section class="poster" data-name="xhs-02-diagnostic">
+      <div class="content">
+        <div class="topbar"><span>02 · {{SECTION_NAME}}</span><span class="brand">「两克伴」出品</span></div>
+        <header>
+          <p class="kicker">{{PAGE_KICKER}}</p>
+          <h1>{{PAGE_TITLE}}</h1>
+          <p class="subtitle">{{PAGE_SUBTITLE}}</p>
+        </header>
+        <div class="body">
+          <div class="flow">
+            <div class="module accent"><div><div class="label">{{LABEL_1}}</div><p class="module-title">{{TITLE_1}}</p><p class="module-text">{{TEXT_1}}</p></div></div>
+            <div class="module"><div><div class="label">{{LABEL_2}}</div><p class="module-title">{{TITLE_2}}</p><p class="module-text">{{TEXT_2}}</p></div></div>
+            <div class="module dark"><div><div class="label">{{LABEL_3}}</div><p class="module-title">{{TITLE_3}}</p><p class="module-text">{{TEXT_3}}</p></div></div>
+          </div>
+          <section class="statement">
+            <div class="main">{{JUDGMENT}}</div>
+            <div class="note">{{EXPLANATION}}</div>
+          </section>
+          <div class="grid-2">
+            <div class="module"><div><div class="label">{{PAIR_A_LABEL}}</div><p class="module-title">{{PAIR_A_TITLE}}</p><p class="module-text">{{PAIR_A_TEXT}}</p></div></div>
+            <div class="module"><div><div class="label">{{PAIR_B_LABEL}}</div><p class="module-title">{{PAIR_B_TITLE}}</p><p class="module-text">{{PAIR_B_TEXT}}</p></div></div>
+          </div>
+        </div>
+        <div class="footer"><span>{{FOOTER_LEFT}}</span><span>{{FOOTER_RIGHT}}</span></div>
+      </div>
+    </section>
+
+    <section class="poster" data-name="xhs-03-information-diagram">
+      <div class="content">
+        <div class="topbar"><span>03 · {{SECTION_NAME}}</span><span class="brand">「两克伴」出品</span></div>
+        <header>
+          <p class="kicker">{{PAGE_KICKER}}</p>
+          <h1>{{PAGE_TITLE}}</h1>
+          <p class="subtitle">{{PAGE_SUBTITLE}}</p>
+        </header>
+        <div class="body">
+          <figure class="figure tall">
+            <img src="./assets/{{INFORMATION_DIAGRAM}}.png" alt="{{IMAGE_ALT}}" />
+          </figure>
+          <section class="statement">
+            <div class="main">{{DIAGRAM_TAKEAWAY}}</div>
+            <div class="note">{{DIAGRAM_NOTE}}</div>
+          </section>
+        </div>
+        <div class="footer"><span>{{FOOTER_LEFT}}</span><span>{{FOOTER_RIGHT}}</span></div>
+      </div>
+    </section>
+
+    <section class="poster" data-name="xhs-04-matrix">
+      <div class="content">
+        <div class="topbar"><span>04 · {{SECTION_NAME}}</span><span class="brand">「两克伴」出品</span></div>
+        <header>
+          <p class="kicker">{{PAGE_KICKER}}</p>
+          <h1>{{PAGE_TITLE}}</h1>
+          <p class="subtitle">{{PAGE_SUBTITLE}}</p>
+        </header>
+        <div class="body">
+          <div class="matrix">
+            <div class="module accent"><div><div class="label">{{LABEL_1}}</div><p class="module-title">{{TITLE_1}}</p><p class="module-text">{{TEXT_1}}</p></div></div>
+            <div class="module"><div><div class="label">{{LABEL_2}}</div><p class="module-title">{{TITLE_2}}</p><p class="module-text">{{TEXT_2}}</p></div></div>
+            <div class="module"><div><div class="label">{{LABEL_3}}</div><p class="module-title">{{TITLE_3}}</p><p class="module-text">{{TEXT_3}}</p></div></div>
+            <div class="module dark"><div><div class="label">{{LABEL_4}}</div><p class="module-title">{{TITLE_4}}</p><p class="module-text">{{TEXT_4}}</p></div></div>
+          </div>
+          <section class="statement">
+            <div class="main">{{JUDGMENT}}</div>
+            <div class="note">{{EXPLANATION}}</div>
+          </section>
+        </div>
+        <div class="footer"><span>{{FOOTER_LEFT}}</span><span>{{FOOTER_RIGHT}}</span></div>
+      </div>
+    </section>
+
+    <section class="poster" data-name="xhs-05-tradeoffs">
+      <div class="content">
+        <div class="topbar"><span>05 · {{SECTION_NAME}}</span><span class="brand">「两克伴」出品</span></div>
+        <header>
+          <p class="kicker">{{PAGE_KICKER}}</p>
+          <h1>{{PAGE_TITLE}}</h1>
+          <p class="subtitle">{{PAGE_SUBTITLE}}</p>
+        </header>
+        <div class="body">
+          <figure class="figure tall">
+            <img src="./assets/{{TRADEOFF_DIAGRAM}}.png" alt="{{IMAGE_ALT}}" />
+          </figure>
+          <div class="grid-4">
+            <div class="module"><div><div class="label">{{TRADEOFF_1_LABEL}}</div><p class="module-title">{{TRADEOFF_1_TITLE}}</p></div></div>
+            <div class="module accent"><div><div class="label">{{TRADEOFF_2_LABEL}}</div><p class="module-title">{{TRADEOFF_2_TITLE}}</p></div></div>
+            <div class="module dark"><div><div class="label">{{TRADEOFF_3_LABEL}}</div><p class="module-title">{{TRADEOFF_3_TITLE}}</p></div></div>
+            <div class="module"><div><div class="label">{{TRADEOFF_4_LABEL}}</div><p class="module-title">{{TRADEOFF_4_TITLE}}</p></div></div>
+          </div>
+        </div>
+        <div class="footer"><span>{{FOOTER_LEFT}}</span><span>{{FOOTER_RIGHT}}</span></div>
+      </div>
+    </section>
+
+    <section class="poster" data-name="xhs-06-checklist">
+      <div class="content">
+        <div class="topbar"><span>06 · {{SECTION_NAME}}</span><span class="brand">「两克伴」出品</span></div>
+        <header>
+          <p class="kicker">{{PAGE_KICKER}}</p>
+          <h1>{{PAGE_TITLE}}</h1>
+          <p class="subtitle">{{PAGE_SUBTITLE}}</p>
+        </header>
+        <div class="body">
+          <section class="statement">
+            <div class="main">{{FINAL_JUDGMENT}}</div>
+            <div class="note">{{FINAL_NOTE}}</div>
+          </section>
+          <div class="checklist">
+            <div class="check"><span class="num">01</span><p>{{CHECK_1}}</p></div>
+            <div class="check"><span class="num">02</span><p>{{CHECK_2}}</p></div>
+            <div class="check"><span class="num">03</span><p>{{CHECK_3}}</p></div>
+            <div class="check"><span class="num">04</span><p>{{CHECK_4}}</p></div>
+            <div class="check"><span class="num">05</span><p>{{CHECK_5}}</p></div>
+          </div>
+        </div>
+        <div class="footer"><span>{{FOOTER_LEFT}}</span><span>{{FOOTER_RIGHT}}</span></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+

@@ -58,6 +58,61 @@ Traits:
 
 Avoid for screenshot-heavy tutorials or high-click result covers.
 
+## Longform Reader
+
+Use for source-backed long articles, reports, WeChat articles, business/technology case analyses, and high-text Xiaohongshu reading decks.
+
+Status: `template-locked`; reference template: `assets/template-longform-reader.html`; rule reference: `references/longform-reader.md`; first accepted production case: Meta AI transformation Longform Reader deck.
+
+Inheritance baseline:
+
+- Start from `assets/template-longform-reader.html`.
+- Preserve the 3:5 portrait ratio, editorial paper surface, cover highlighter title blocks, reading map, refined content-page typography, hairline rules, top-right brand signature, and prose-first page rhythm.
+- Use vendored local fonts from `assets/fonts/keke-fonts.css`.
+- Template structure and theme/palette are separate decisions. The structure is Longform Reader; `highlighter-blue` is only the first theme.
+- Do not convert it into Swiss System simply because the topic is business/technology. Use Longform Reader when the reader needs the story arc and text capacity.
+
+Traits:
+
+- 3:5 high-capacity reading cards
+- source-backed story arc
+- clear cover reading promise
+- text-forward interior pages
+- optional subject images, metrics, note boxes, verdict strips, and checklists
+
+Default theme:
+
+| Theme | Use |
+|---|---|
+| `highlighter-blue` | Default for serious business/technology reading decks: pale yellow/blue title highlights, warm paper, restrained ochre accents, optional red-toned cover image |
+
+Required structure:
+
+- Use a narrative page plan, not a section directory: event hook -> baseline contrast -> reversal -> mechanisms -> consequences -> reader checklist -> final takeaway.
+- Page 2 must explain why the source deserves attention.
+- Every interior card must have one story job and a `Reader sentence` in `BRIEF.md`.
+- Content pages must use a consistent title style. Cover and closing may use a stronger editorial/display style as bookends.
+- `全文约X字｜阅读约Y分钟` must reflect the final card/caption package, not the original source length.
+- The visible brand signature must be exact and readable: `「两克伴」出品`.
+
+Image policy:
+
+- Images are optional and must serve the story.
+- For each image, choose one treatment: direct original, subject crop, wide band, redraw/recompose, or omit.
+- Do not mechanically crop every original image. Use the original directly when its ratio and composition already fit the page and the whole image is meaningful.
+- Use subject crop when the original is effectively a mini-card, includes embedded slogans/footers/small figures, or has a useful diagram/object inside a larger incompatible composition.
+- Preserve content-page image color by default. Cover images may be toned to fit the cover palette.
+- Never stretch images to fill a slot.
+- Record image treatment and reason in `assets/SOURCES.md` or `assets/IMAGE_REQUESTS.md`.
+
+QA focus:
+
+- Story continuity, not only page beauty.
+- No accidental middle/bottom blank zones.
+- No full-card source image embedded inside a new content page unless the original full card is itself the proof.
+- Page 2+ should remain as strong as the cover.
+- Final caption should be detailed enough for long-form posts, usually 650-950 Chinese characters.
+
 ## Swiss System
 
 Use for workplace, data, frameworks, checklists, structured comparisons.
@@ -106,6 +161,16 @@ Klein Blue / IKB usage note:
 - When converting a `lemon-yellow` layout to `ikb`, preserve the layout and black proof blocks; change only accent rails, highlight chips, metric blocks, and selected action rows to Klein Blue. Text inside blue accent blocks must switch to white or a verified high-contrast light tone.
 - Prefer `ikb` over `lemon-yellow` when the post's promise is "understand the management mechanism" or "save a serious checklist" rather than "stop the feed with a bright note". Prefer `lemon-yellow` when visibility and public-feed pop matter more than institutional trust.
 - QA focus for `ikb`: blue block text contrast, enough thumbnail impact despite cooler color, no overuse of dark/blue blocks, no bottom-right page serials, exact brand signature.
+
+Swiss Peacock Grid sub-template:
+
+- Use when source-backed AI, agent, system architecture, or technical mechanism explainers need a calmer but still save-worthy visual direction than `lemon-yellow`.
+- Use `assets/template-swiss-peacock-grid.html` as a reusable skeleton and `examples/swiss-peacock-grid-memory-candidate` as the first reference case.
+- Core grammar: strict Swiss layout, warm off-white grid paper, Peacock blue-green as the only accent, straight modules, hairline rules, exact brand signature, and information-rich GPT Image diagrams.
+- Cover should prefer a wide mechanism/architecture image whose background blends with the card paper. Avoid narrow portrait inserts that leave the visual proof area underused.
+- Diagram pages must carry real source structure, flow, hierarchy, or trade-offs. Do not substitute abstract AI art for source diagrams just because it looks more polished.
+- If Chinese labels inside generated diagrams are unreliable, English labels are acceptable, but the card title, subtitle, and explanatory copy must make the meaning clear in Chinese.
+- Good default sequence: cover, diagnostic misconception, source diagram, system layer, comparison matrix, process loop, trade-off diagram, closing checklist.
 
 Required composition:
 

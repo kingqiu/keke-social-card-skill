@@ -59,6 +59,7 @@ Read only the relevant files:
 - `references/roadmap.md` when improving the Skill itself rather than producing a user card package.
 - `references/template-inheritance-audit.md` when locking or auditing inherited visual-system templates.
 - `references/visual-systems.md` when choosing among Editorial E-ink, Swiss System, Rednote Native, Proof Lab, and Lookbook Journal.
+- `references/longform-reader.md` when using or proposing the Longform Reader template for source-backed long articles, reports, essays, or WeChat-to-Xiaohongshu reading decks.
 - `references/xhs-feed-strategy.md` for Xiaohongshu first-image strategy.
 - `references/xhs-cover-quality.md` before delivering a Xiaohongshu cover.
 - `references/xhs-copywriting-guidelines.md` before writing Xiaohongshu titles/captions.
@@ -152,6 +153,8 @@ Use `references/style-routing.md`:
 - Xiaohongshu + career/data/framework/checklist -> Swiss System.
 - Xiaohongshu + technical announcement/open specification/API or data format/framework standard -> Swiss System with `subTemplate: Swiss OKF Brief`.
 - Xiaohongshu + Claude/Anthropic official article/AI workflow steering mechanism -> Swiss System with `subTemplate: Swiss Anthropic Clay` and `theme: anthropic-clay`.
+- Xiaohongshu + long-form article/report/WeChat article/business or technology case analysis -> Longform Reader with a separate theme such as `highlighter-blue`.
+- User says "长文阅读卡片", "深度阅读卡片", "公众号长文转小红书", "把这篇长文/报告做成小红书", "像上次 Meta 那套长文卡片", or "适合长文章的阅读型模板" -> route to Longform Reader. The user does not need to remember the English template name.
 - Xiaohongshu + essay/culture/reading/travel -> Editorial E-ink.
 - For AI tools, decide Rednote Native vs Proof Lab by the primary reader job:
   - choose Rednote Native for launches, high-click first images, outcome promises, or native result packages without strong screenshots.
@@ -260,6 +263,7 @@ Use `references/xhs-copywriting-guidelines.md`:
 
 - **Editorial E-ink**: paper, editorial pacing, essays, travel, culture, reading notes.
 - **Swiss System**: strict grid, checklists, frameworks, data, workplace; includes `Swiss OKF Brief` and `Swiss Anthropic Clay` sub-templates.
+- **Longform Reader**: 3:5 source-backed reading decks for long articles, reports, case studies, and WeChat-to-Xiaohongshu adaptations; template structure and palette/theme are selected separately.
 - **Rednote Native**: feed-native Xiaohongshu hooks, large readable title, result/emotion/evidence first.
 - **Proof Lab**: screenshots, product proof, AI tools, workflows, before/after, evidence-first tutorials.
 - **Lookbook Journal**: central result plus annotations for outfit, food, beauty, home, product, gear.
