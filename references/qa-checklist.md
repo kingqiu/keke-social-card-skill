@@ -21,6 +21,9 @@ Run `node scripts/check-aesthetic-qa.mjs <task-dir>` before final handoff. Treat
 - Page 2+ do not collapse into an engineering demo after a strong cover.
 - The design improves the reusable system, not only the current demo.
 - If this is a golden example, classify it using `golden-examples.md`.
+- The set has been reviewed as a thumbnail overview, not only page by page.
+- The approved cover and approved content-page sample remain available and have not been overwritten.
+- Later revisions improve a specific documented issue and do not silently weaken an already approved version.
 
 ## Brand Signature
 
@@ -47,6 +50,12 @@ Run `node scripts/check-aesthetic-qa.mjs <task-dir>` before final handoff. Treat
 - Source illustration redraws use PNG/JPG/WebP; SVG is not accepted as the final redraw unless it is only a tiny structural symbol.
 - Faces, logos, food, product details, and key UI text are not covered.
 - 3:4 cards fill the portrait canvas intentionally.
+- Pages in the same set use one coherent visual system, palette logic, typography hierarchy, and illustration language.
+- No page is visually empty because an illustration replaced the information the reader needs.
+- No page is overcrowded merely to eliminate white space.
+- Source images keep their intended proportions and are not stretched or arbitrarily recolored.
+- Labeled architecture diagrams and semantic illustrations read as cohesive assets rather than pasted boxes and labels.
+- Paper, report, and tutorial pages retain appropriate source evidence instead of relying only on concept art.
 
 ## Xiaohongshu QA
 
@@ -98,3 +107,10 @@ At 25% size, cover should show:
 ## Human Gate
 
 Technical PASS does not equal visual PASS. Human review is the final gate.
+
+Before delivery:
+
+1. Compare the rendered cover with the approved cover direction.
+2. Compare the weakest content page with the approved sample page.
+3. Inspect all pages together at thumbnail size.
+4. Show the rendered result directly in Codex.
