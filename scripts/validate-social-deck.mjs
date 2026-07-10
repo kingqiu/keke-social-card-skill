@@ -17,6 +17,7 @@
  *   R7  figure margin drift    browser-default <figure> margin offsets media alignment
  *   R8  brand signature        visible card signature must be exactly 「两克伴」出品
  *   R9  cover page mark        cover must not use a giant page number such as 01
+ *   R10 xhs geometry           Xiaohongshu boards must be exactly 1080x1440
  */
 import { chromium } from "playwright";
 import { fileURLToPath } from "node:url";
@@ -190,6 +191,15 @@ for (let sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
       ? `right-footer page serial ${mark.cls} "${mark.text}" makes the card feel like a slide`
       : `cover uses giant page mark ${mark.cls} "${mark.text}" at ${mark.size}px`;
     fails.push({ rule: "R9", msg, fix: "omit page-number marks; use a small semantic metadata label only if needed" });
+  }
+
+  // R10 exact Xiaohongshu board geometry
+  if (meta.board === "xhs" && (meta.clientW !== 1080 || meta.clientH !== 1440)) {
+    fails.push({
+      rule: "R10",
+      msg: `Xiaohongshu board is ${meta.clientW}x${meta.clientH}; expected 1080x1440`,
+      fix: "use the locked 3:4 Xiaohongshu canvas without scaling or stretching the poster element",
+    });
   }
 
   // R1 overflow
@@ -437,7 +447,7 @@ for (const { meta, fails, warns } of report) {
 }
 
 lines.push("");
-lines.push(`Legend: R1 overflow · R2 footer collision · R3 swiss bold display · R4 min font · R5 4-band density · R6 h-xl cap · R7 figure margin drift · R8 brand signature · R9 page mark`);
+lines.push(`Legend: R1 overflow · R2 footer collision · R3 swiss bold display · R4 min font · R5 4-band density · R6 h-xl cap · R7 figure margin drift · R8 brand signature · R9 page mark · R10 xhs geometry`);
 lines.push(`Exit code 1 only on FAIL. Warnings are advisory.`);
 
 console.log(lines.join("\n"));

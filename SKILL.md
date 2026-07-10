@@ -204,11 +204,27 @@ Every publishing-quality task folder must record the confirmation in `BRIEF.md`:
 - confirmationSource: user confirmed the proposed visual system, card count, page plan, image policy, and copy strategy before build
 ```
 
+### 5.1 Sample Gate And Decision Lock
+
+For a new or materially changed visual direction, proposal confirmation is followed by a minimum visual approval set:
+
+- Build one cover and one representative content page before producing the full deck.
+- Record approved and rejected decisions in `BRIEF.md` under `## Decision Lock`: title, ratio, visual system, sub-template, palette, page plan, image roles, brand signature, and output path.
+- Never silently return to an earlier title, layout, image, or content plan.
+- Never overwrite an approved asset. Save later attempts as new versions and keep the approved version available for comparison.
+- After the sample set is approved, continue through the agreed batch without asking for approval after every page.
+
+Skip the sample gate only when the user explicitly requests direct full generation or is reusing an already approved template, palette, and content-page grammar. Record the waiver in `BRIEF.md`.
+
 ### 6. Source
 
 Create `assets/IMAGE_REQUESTS.md` and `assets/SOURCES.md` whenever images are used.
 
 Record image role, source route, subject zone, safe text zone, avoid zone, crop, and `object-position`.
+
+For a labeled architecture diagram or a single semantic illustration that must read as one visual object, generate the diagram/illustration as one cohesive bitmap asset through the requested image-generation channel. Do not imitate it with loosely assembled HTML/SVG boxes, pasted labels, or mismatched fragments. Keep page chrome, typography, captions, page numbers, and brand elements in the deterministic template.
+
+For papers, reports, tutorials, and product workflows, do not replace every source figure or screenshot with generic concept art. Preserve useful evidence, official logos, UI screenshots, and source diagrams when they improve trust or instruction.
 
 For every landscape source image considered for a portrait Xiaohongshu card, decide whether to redraw, recompose, split, or keep landscape:
 
@@ -256,8 +272,10 @@ Use `references/xhs-copywriting-guidelines.md`:
 - When changing Proof Lab theme colors, validate all themes with `npm run validate:proof-lab-themes`.
 - When changing shared templates or routing logic, run `npm run check:regression`.
 - Before publishing the Skill itself, run `npm run check:package-size`.
-- Validate only when requested or before final handoff: `node scripts/validate-social-deck.mjs <task-dir>`.
+- Always validate before final handoff: `node scripts/validate-social-deck.mjs <task-dir>`.
 - Before final handoff for a publishing-quality package, run `npm run check:all -- <task-dir>`.
+- Render a thumbnail overview and inspect the whole set for style drift, weak pages, excessive empty space, overcrowding, crop errors, evidence quality, and inconsistent illustration language.
+- Fix every FAIL before delivery. Warnings require a visual judgment and a note in `QA.md` when intentionally accepted.
 
 ## Visual Systems
 
@@ -270,13 +288,7 @@ Use `references/xhs-copywriting-guidelines.md`:
 
 ## Delivery
 
-Show the rendered cover/cards inline when useful, then ask:
-
-```text
-先你自己看，还是我先自动核查一遍？
-```
-
-If the user asks for auto-check, run the validator, fix FAILs, and re-render.
+Run the automated checks and human visual review before showing the result. Show the rendered cover and representative cards inline in Codex; do not claim delivery when only a file path, SVG, or unrendered source exists.
 
 Final response should include:
 
@@ -298,8 +310,12 @@ Final response should include:
 - Do not use Proof Lab without inspectable proof. If screenshots/results are missing, ask once for assets or route to Rednote Native with native result-package proof.
 - Do not let title/caption promise something the cards do not show.
 - Do not use AI-generated full card images as the default; generate assets and compose deterministically.
+- Do not use deterministic HTML/SVG composition as a substitute for a cohesive semantic illustration or labeled architecture diagram when the user explicitly requests image-model generation.
 - Do not use a generated full-card image when the actual problem is only a landscape source illustration that needs portrait redraw.
 - Do not omit `SOURCES.md` / `IMAGE_REQUESTS.md` for non-trivial image use.
 - Do not treat machine QA as visual approval. Human review is the final gate.
+- Do not deliver a set without checking the cover and the weakest content page at thumbnail size.
+- Do not overwrite or silently replace an approved version with an unreviewed revision.
+- Do not let pages in one set drift into different illustration languages, palettes, or information-density regimes unless the approved design explicitly calls for that contrast.
 - Do not vary the visible brand signature. It must be exactly `「两克伴」出品`.
 - Do not optimize the Skill around one demo. Improve standards, visual systems, and golden examples first.
