@@ -44,3 +44,48 @@ html[data-theme="forest-pink"] {
   --on-secondary: #171719;
   --on-signal: #171719;
 }
+
+/* Silicon Valley blue + bright orange. */
+html[data-theme="silicon-orange"] {
+  --paper: #ffffff;
+  --ink: #172554;
+  --muted: #40527e;
+  --line: rgba(23, 37, 84, .22);
+  --surface: #f5f7fb;
+  --primary: #1e40af;
+  --secondary: #ff6b00;
+  --signal: #ff6b00;
+  --on-primary: #ffffff;
+  --on-secondary: #ffffff;
+  --on-signal: #ffffff;
+}
+
+/* Cosmic black + electric blue. */
+html[data-theme="cosmic-blue"] {
+  --paper: #f4f6f9;
+  --ink: #020205;
+  --muted: #596273;
+  --line: rgba(2, 2, 5, .22);
+  --surface: #e9edf5;
+  --primary: #3a6fff;
+  --secondary: #020205;
+  --signal: #3a6fff;
+  --on-primary: #ffffff;
+  --on-secondary: #ffffff;
+  --on-signal: #ffffff;
+}
+
+/* Digital green + electric blue. */
+html[data-theme="digital-green"] {
+  --paper: #ebf0f5;
+  --ink: #123b35;
+  --muted: #4e665f;
+  --line: rgba(18, 59, 53, .22);
+  --surface: #f7fafc;
+  --primary: #10b981;
+  --secondary: #2563eb;
+  --signal: #10b981;
+  --on-primary: #ffffff;
+  --on-secondary: #ffffff;
+  --on-signal: #ffffff;
+}

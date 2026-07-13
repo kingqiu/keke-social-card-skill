@@ -16,6 +16,7 @@
 - Image integrity: cover uses a complete GPT Image 2 inserted portrait asset; the official source panel is never cropped into portrait cover decoration.
 - Illustration integrity: cards 5 and 7 use matched square GPT Image 2 bitmap assets with four-sided safe margins and the cover’s cool ivory/engineering-line material language; the earlier CSS/HTML loop diagrams, cropped landscape assets, and warm craft-paper v2 assets were rejected.
 - Cover typography revision: title, subtitle, and thesis were given additional vertical breathing room after the user review; the lower information rail remains independent and collision-free.
+- Cover rail revision: the redundant secondary proof tile was replaced by a four-item information index (`目标 / 上下文 / 输出 / 边界`), reducing decorative weight and making the cover structure more regular across themes.
 - Cover illustration revision: the redundant white annotation label over the right-side hero image was removed; the unoccluded illustration now carries the visual message by itself.
 - System consistency: all cards use the cobalt/coral/lime Chromatic Modular Grid grammar, Source Han Sans SC display titles, Noto Sans SC body text, and IBM Plex Mono labels.
 - Weakest-page risk: cards 9–11 have the highest information density. Their titles, task modules, and footers must remain readable after rendering.

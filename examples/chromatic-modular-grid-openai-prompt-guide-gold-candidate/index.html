@@ -16,6 +16,24 @@
     .cover-thesis { margin-top:32px; padding-top:21px; line-height:1.35; }
     .semantic-art { padding:0; background:var(--surface); }
     .semantic-art img { display:block; width:100%; height:100%; object-fit:cover; object-position:center; }
+    /* Cover rail revision: a readable information index replaces the decorative proof tile. */
+    .cover .cover-rail > div:nth-child(2) .proof-window,
+    .cover .cover-rail > div:nth-child(2) .chip,
+    .cover .cover-rail > div:nth-child(2) .rail-copy { display:none; }
+    .cover .cover-rail > div:nth-child(2)::after {
+      content:"01  目标\A 02  上下文\A 03  输出\A 04  边界";
+      display:block;
+      white-space:pre;
+      margin-top:24px;
+      padding:14px 0 10px;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      color:var(--ink);
+      font-family:"Keke Noto Sans SC",sans-serif;
+      font-size:22px;
+      line-height:1.45;
+      font-weight:700;
+    }
   </style>
 </head>
 <body>

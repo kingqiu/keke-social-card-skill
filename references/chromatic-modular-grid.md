@@ -19,6 +19,7 @@ It is not a 3D-product template. Images may be source screenshots, diagrams, pho
 - 3:4 portrait board with a narrow masthead and semantic footer.
 - Cover: large Chinese title on the left, one dominant image/assembly zone on the right, then a three-part evidence rail.
 - Content: one main judgment, one inspectable proof field, two to three supporting proof/action modules, and a takeaway strip.
+- Cover evidence rail: use a compact readable evidence index (`结果 / 来源 / 关系 / 边界`) instead of a second decorative proof image; inspectable images belong in the dominant assembly or content-page proof field.
 - Straight rules and modular alignment; slight rotation is reserved for one image or proof tile, never repeated as decoration.
 - Chinese titles use `Keke Source Han Sans SC` at 900 and remain visibly open. Cover display line-height: `1.08`; content display line-height: `1.12`.
 - No giant cover page numbers, generic SaaS cards, stickers, or nested-card stacks.
@@ -52,6 +53,9 @@ Themes live in `assets/themes/chromatic-modular-grid.css`. Layout files may not 
 | `cobalt-coral-lime` | Cobalt, coral, and acid-lime signal on warm paper | Strong product/tool launches, visual frameworks, high-stop covers |
 | `ultramarine-sand` | Deeper blue, rust orange, ochre signal | Serious technology, research, product strategy |
 | `forest-pink` | Forest green, rose, chartreuse signal | Design, culture, consumer/product commentary without becoming pastel |
+| `silicon-orange` | Clean white, technology blue, bright orange | AI/product/workflow explainers, business systems, modern collaboration |
+| `cosmic-blue` | Pale mist field, cosmic black, electric blue | Infrastructure, cloud services, hardware, high-contrast technical subjects |
+| `digital-green` | Mist grey, digital green, electric blue | Data products, health technology, consumer technology, active utility products |
 
 Do not mix themes in one deck. A new theme must define every token and be rendered against both the cover and content-page recipes before it is considered production-ready.
 
@@ -67,7 +71,7 @@ Before accepting a new implementation into this system, test it on one actual ar
 ## Lock Record
 
 - The OpenAI Prompting guide deck is the first accepted production example: it uses the cover assembly, content-page evidence field, source-proof treatment, semantic GPT Image 2 bitmap assets, and the `cobalt-coral-lime` theme across a complete 12-card set.
-- The template and theme remain decoupled: `assets/template-chromatic-modular-grid.html` defines structure and `assets/themes/chromatic-modular-grid.css` defines the three supported themes.
+- The template and theme remain decoupled: `assets/template-chromatic-modular-grid.html` defines structure and `assets/themes/chromatic-modular-grid.css` defines the six supported themes.
 - The system is approved for future AI tools, product, framework, workflow, and technical explainer packages when the page has a clear evidence/result role.
 ## Typography Standard
 

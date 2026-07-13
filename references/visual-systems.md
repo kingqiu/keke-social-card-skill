@@ -36,8 +36,9 @@ Status: `locked`; reference template: `assets/template-chromatic-modular-grid.ht
 
 - This is an independent visual system, not a Swiss System theme. It keeps grid discipline but intentionally supports a controlled primary/secondary/signal color trio.
 - The template and themes are separate. Structure lives in the template; color tokens live in `assets/themes/chromatic-modular-grid.css`.
+- The cover evidence rail uses a readable four-item index instead of a second decorative image tile; image proof belongs in the dominant assembly or content-page proof field.
 - Use real screenshots, diagrams, source figures, photos, generated semantic illustrations, or intentional crops in the visual assembly zones. Do not make 3D assets mandatory and do not fill evidence zones with decorative stand-ins.
-- Do not route production work to it automatically until a real-source cover and representative content page are approved.
+- Production routing is enabled after the accepted OpenAI Prompting Gold example and the six-theme preview set.
 
 Inheritance status must be explicit:
 

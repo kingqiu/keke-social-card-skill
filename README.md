@@ -70,7 +70,7 @@ output/
 
 Swiss System 也可以使用 `ikb`（库里蓝 / Klein Blue）作为高信任技术管理配色：适合 AI 工作流、工程效率、技术管理、组织机制、严肃 checklist 这类内容。它保留 Swiss 的暖纸底、黑色判断块和严格网格，只把强调色换成库里蓝；蓝色块中的文字必须使用白色或高对比浅色。
 
-`Chromatic Modular Grid` 是独立于 Swiss System 的现代模块化卡片模板，结构与配色解耦，支持 `cobalt-coral-lime`、`ultramarine-sand` 和 `forest-pink` 三套主题。它适合需要同时承载大标题、图片证据、局部细节和可保存结论的 AI/产品/框架类内容。
+`Chromatic Modular Grid` 是独立于 Swiss System 的现代模块化卡片模板，结构与配色解耦，支持 `cobalt-coral-lime`、`ultramarine-sand`、`forest-pink`、`silicon-orange`、`cosmic-blue` 和 `digital-green` 六套主题。它适合需要同时承载大标题、图片证据、局部细节和可保存结论的 AI/产品/框架类内容。
 
 ## 使用方式
 

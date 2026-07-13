@@ -51,6 +51,14 @@
     .section-index { font-family:"Keke IBM Plex Mono",monospace; color:var(--primary); font-size:18px; letter-spacing:.11em; }
     .rail-title { margin:27px 0 15px; font-size:43px; line-height:1.03; letter-spacing:-.04em; }
     .rail-copy { margin:0; font-size:22px; line-height:1.42; color:var(--muted); }
+    /* Cover rail rule: use a readable evidence index instead of a second decorative image tile. Keep proof-window for inspectable content-page proof only. */
+    .evidence-index .evidence-list { margin-top:22px; border-top:1px solid var(--line); }
+    .evidence-index .evidence-item { display:grid; grid-template-columns:50px 1fr; align-items:center; min-height:48px; border-bottom:1px solid var(--line); }
+    .evidence-index .evidence-item b { font-family:"Keke IBM Plex Mono",monospace; font-size:20px; color:var(--primary); }
+    .evidence-index .evidence-item span { font-size:23px; font-weight:700; }
+    .evidence-index .evidence-note { margin-top:17px; font-size:19px; line-height:1.35; color:var(--muted); }
+    .semantic-art { padding:0; background:var(--surface); }
+    .semantic-art img { display:block; width:100%; height:100%; object-fit:cover; object-position:center; }
     .proof-chip { display:inline-flex; margin-top:20px; padding:8px 10px; background:var(--signal); font-family:"Keke IBM Plex Mono",monospace; font-size:15px; font-weight:700; }
     .proof-window { height:151px; margin-top:21px; position:relative; overflow:hidden; border:1px solid var(--ink); background:var(--ink); }
     .proof-window::before { content:""; position:absolute; width:190px; height:190px; border:18px solid var(--primary); border-radius:50%; left:-28px; top:-52px; }
