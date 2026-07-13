@@ -157,12 +157,17 @@ Accent palettes:
 | `safety-orange` | Warnings, contradictions, mistake-to-avoid cards |
 | `peacock` | Special edition or strong editorial emphasis |
 | `anthropic-clay` | Anthropic/Claude-adjacent explainers, official-doc analysis, warm technical mechanism cards |
+| `falu-editorial` | Dark editorial pages for risk, boundaries, retrospectives, and hard judgments; Falu Red is the signal accent |
+| `graphite-red` | Light Swiss pages with graphite content blocks and restrained Falu Red emphasis for frameworks and analysis |
+| `falu-dark-lakers` | Dark high-contrast edition using Lakers Gold `#FDB927` as the signal accent over the Falu graphite base |
+| `iris-embossed` | Light lavender Swiss pages with deep Iris Purple `#594587`, muted gold rules `#9D8957`, and a restrained embossed-paper surface for premium editorial explainers |
+| `graphite-mint` | Light graphite-green Swiss pages with `#0B7A5B` mint emphasis bands for calm workflow, systems, and product-structure explainers |
 
 Palette validation:
 
 - Run `npm run validate:swiss-palettes`.
 - The validation sample lives in `examples/swiss-palette-validation`.
-- All six palettes must pass paper/ink contrast, accent text contrast, overflow, and brand-signature checks before they are treated as available for production.
+- All eleven palettes must pass paper/ink contrast, accent text contrast, overflow, and brand-signature checks before they are treated as available for production.
 - Palette validation should use publishable Xiaohongshu-style content, not empty smoke-test copy. The current validation deck uses an AI-tool decision checklist to test cover hook, diagnostic matrix, verdict ledger, semantic footer labels, and no cover page mark.
 - Do not mix palettes within one production deck.
 

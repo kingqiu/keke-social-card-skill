@@ -11,7 +11,10 @@ const indexPath = path.join(root, "index.html");
 const outputRoot = path.join(root, "output");
 const htmlDir = path.join(outputRoot, "html");
 const imageDir = path.join(outputRoot, "images");
-const accents = ["ikb", "lemon-yellow", "lemon-green", "safety-orange", "peacock", "anthropic-clay"];
+const accents = [
+  "ikb", "lemon-yellow", "lemon-green", "safety-orange", "peacock", "anthropic-clay",
+  "falu-editorial", "graphite-red", "falu-dark-lakers", "iris-embossed", "graphite-mint",
+];
 const fontHref = path.relative(htmlDir, path.resolve(process.cwd(), "assets", "fonts", "keke-fonts.css")).replaceAll(path.sep, "/");
 
 if (!fs.existsSync(indexPath)) {

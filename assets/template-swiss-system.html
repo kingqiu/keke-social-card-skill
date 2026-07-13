@@ -14,14 +14,15 @@
          .poster.xhs      1080×1440  (3:4 小红书)
 
        Accent switching via <html data-accent="…">:
-         ikb (Klein Blue) | lemon-yellow | lemon-green | safety-orange | peacock | anthropic-clay
+         ikb | lemon-yellow | lemon-green | safety-orange | peacock | anthropic-clay |
+         falu-editorial | graphite-red | falu-dark-lakers | iris-embossed | graphite-mint
 
        Fill posters where marked <!-- POSTERS_HERE -->.
        Each poster follows the Swiss composition guidance in
        references/visual-systems.md and references/aesthetic-standards.md.
        ========================================================= */
 
-    /* ---------- 1. Accent palettes (5 mutually exclusive) ---------- */
+    /* ---------- 1. Accent palettes (11 mutually exclusive) ---------- */
     :root,
     [data-accent="ikb"] {
       --paper: #fafaf8;
@@ -85,6 +86,60 @@
       --clay-dark: #171512;
       --clay-soft: #eee8dd;
       --clay-body: #3d4650;
+    }
+    [data-accent="falu-editorial"] {
+      --paper: #141616;
+      --ink: #f5f3f0;
+      --grey-1: #3d3c38;
+      --grey-2: #746d67;
+      --grey-3: #a49f9d;
+      --accent: #7f1d1a;
+      --accent-on: #ffffff;
+    }
+    [data-accent="graphite-red"] {
+      --paper: #f5f3f0;
+      --ink: #141616;
+      --grey-1: #3d3c38;
+      --grey-2: #746d67;
+      --grey-3: #a49f9d;
+      --accent: #7f1d1a;
+      --accent-on: #ffffff;
+    }
+    [data-accent="falu-dark-lakers"] {
+      --paper: #141616;
+      --ink: #f5f3f0;
+      --grey-1: #3d3c38;
+      --grey-2: #746d67;
+      --grey-3: #a49f9d;
+      --accent: #fdb927;
+      --accent-on: #141616;
+    }
+    [data-accent="iris-embossed"] {
+      --paper: #f7f3fb;
+      --ink: #2d2c27;
+      --grey-1: #f0ebfa;
+      --grey-2: #bca4e9;
+      --grey-3: #594587;
+      --accent: #594587;
+      --accent-on: #ffffff;
+      --line-gold: #9d8957;
+    }
+    [data-accent="iris-embossed"] .poster {
+      background-color: var(--paper);
+      background-image: linear-gradient(rgba(247,243,251,.72), rgba(247,243,251,.72)), url("textures/iris-embossed-paper.png");
+      background-size: cover;
+      background-position: center;
+    }
+    [data-accent="iris-embossed"] .poster .chrome-min,
+    [data-accent="iris-embossed"] .poster .hero-stat-bottom { border-color: var(--line-gold); }
+    [data-accent="graphite-mint"] {
+      --paper: #f3f5f2;
+      --ink: #171b19;
+      --grey-1: #dce4df;
+      --grey-2: #b7c5bd;
+      --grey-3: #68766e;
+      --accent: #0b7a5b;
+      --accent-on: #ffffff;
     }
 
     /* ---------- 2. Typography stack ---------- */
@@ -823,6 +878,10 @@
     }
     .matrix-fill .matrix-cell.is-accent .cell-nb,
     .matrix-fill .matrix-cell.is-accent .cell-title { color: var(--accent-on); }
+    [data-accent="graphite-red"] .matrix-fill .matrix-cell:not(.is-accent) .cell-nb,
+    [data-accent="graphite-red"] .matrix-fill .matrix-cell:not(.is-accent) .cell-title {
+      color: var(--paper);
+    }
     .hero-stat-bottom {
       margin-top: var(--sp-9);
       padding-top: var(--sp-7);
@@ -1387,7 +1446,8 @@
 <body>
   <!-- ACCENT_OVERRIDE
        Change <html data-accent="…"> above to:
-       ikb | lemon-yellow | lemon-green | safety-orange | peacock
+       ikb | lemon-yellow | lemon-green | safety-orange | peacock | anthropic-clay |
+       falu-editorial | graphite-red | falu-dark-lakers
        One deck — one accent. Never combine.
   -->
   <main class="sheet">

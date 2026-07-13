@@ -68,7 +68,7 @@ Audit result:
 - Xiaohongshu-only adaptation is limited to using the 1080x1440 board as the production target.
 - Public card branding is added only through `.brand-signature::before`, with exact text `「两克伴」出品`.
 - Custom rounded/pastel/heavy-title Swiss lookalike components are not allowed.
-- Swiss palette smoke test covers `ikb`, `lemon-yellow`, `lemon-green`, `safety-orange`, `peacock`, and `anthropic-clay`.
+- Swiss palette smoke test covers `ikb`, `lemon-yellow`, `lemon-green`, `safety-orange`, `peacock`, `anthropic-clay`, `falu-editorial`, `graphite-red`, `falu-dark-lakers`, `iris-embossed`, and `graphite-mint`.
 - The Swiss seed includes `Swiss Anthropic Clay` primitives (`.poster.swiss-clay`, `.clay-title`, `.clay-source-figure`, `.clay-decision-row`) for warm official-source explainers.
 
 Accepted deviations:
