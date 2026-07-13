@@ -75,6 +75,21 @@ html[data-theme="cosmic-blue"] {
   --on-signal: #ffffff;
 }
 
+/* Orbit black + polar white + electric blue. */
+html[data-theme="orbit-blue"] {
+  --paper: #f4f6f9;
+  --ink: #020205;
+  --muted: #596273;
+  --line: rgba(2, 2, 5, .22);
+  --surface: #e9edf5;
+  --primary: #3a6fff;
+  --secondary: #020205;
+  --signal: #3a6fff;
+  --on-primary: #ffffff;
+  --on-secondary: #ffffff;
+  --on-signal: #ffffff;
+}
+
 /* Digital green + electric blue. */
 html[data-theme="digital-green"] {
   --paper: #ebf0f5;

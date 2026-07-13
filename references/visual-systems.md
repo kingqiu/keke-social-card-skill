@@ -38,7 +38,9 @@ Status: `locked`; reference template: `assets/template-chromatic-modular-grid.ht
 - The template and themes are separate. Structure lives in the template; color tokens live in `assets/themes/chromatic-modular-grid.css`.
 - The cover evidence rail uses a readable four-item index instead of a second decorative image tile; image proof belongs in the dominant assembly or content-page proof field.
 - Use real screenshots, diagrams, source figures, photos, generated semantic illustrations, or intentional crops in the visual assembly zones. Do not make 3D assets mandatory and do not fill evidence zones with decorative stand-ins.
-- Production routing is enabled after the accepted OpenAI Prompting Gold example and the six-theme preview set.
+- Production routing is enabled after the accepted OpenAI Prompting Gold example and the seven-theme preview set.
+
+Current themes include `cobalt-coral-lime`, `ultramarine-sand`, `forest-pink`, `silicon-orange`, `cosmic-blue`, `orbit-blue`, and `digital-green`. `orbit-blue` is the restrained black / polar-white / electric-blue option for premium technical explainers and AI infrastructure topics.
 
 Inheritance status must be explicit:
 
@@ -352,6 +354,15 @@ Signal themes:
 | `SL-03 Safety Coral` | warnings, before/after, failure analysis, mistakes |
 | `SL-04 Acid Lime` | diagnostic/checklist/highlight pages that need sharper attention |
 | `SL-05 Signal Noir` | dark product screenshots, premium/night-mode proof pages |
+
+Approved production palette set:
+
+- `SL-01 Electric Blue`
+- `SL-02 Graphite Mint`
+- `SL-03 Safety Coral`
+- `SL-05 Signal Noir`
+
+These four themes were reviewed together as the standard Proof Lab comparison set and are approved for regular card production. `SL-04 Acid Lime` remains available as an existing optional theme, but is not part of this newly approved set.
 
 Good recipes:
 

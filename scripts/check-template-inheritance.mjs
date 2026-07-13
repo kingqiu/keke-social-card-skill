@@ -42,7 +42,7 @@ for (const required of ["fonts/keke-fonts.css", "themes/chromatic-modular-grid.c
     failures.push(`Chromatic Modular Grid template missing required primitive ${required}`);
   }
 }
-for (const theme of ["cobalt-coral-lime", "ultramarine-sand", "forest-pink", "silicon-orange", "cosmic-blue", "digital-green"]) {
+for (const theme of ["cobalt-coral-lime", "ultramarine-sand", "forest-pink", "silicon-orange", "cosmic-blue", "orbit-blue", "digital-green"]) {
   if (!fs.readFileSync(path.join(root, "assets", "themes", "chromatic-modular-grid.css"), "utf8").includes(`html[data-theme=\"${theme}\"]`)) {
     failures.push(`Chromatic Modular Grid theme file missing ${theme}`);
   }
