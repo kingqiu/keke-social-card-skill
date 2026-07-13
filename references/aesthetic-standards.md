@@ -40,6 +40,7 @@ Reject or redesign when any appear:
 - The main proof/result is smaller than surrounding decoration.
 - Cards float without a real composition logic.
 - Cropped images lose the subject, face, product, outfit, or key UI.
+- A third-party screenshot on a cover is partial, unreadable, or merely a blown-up crop rather than a complete visual asset.
 - Large blank regions are unintentional or look like missing content.
 - Text repeats the obvious instead of adding a useful reason to continue.
 - The cover looks like a PPT/template page because of a visible large page index.

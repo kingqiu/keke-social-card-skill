@@ -1,0 +1,3 @@
+openai-prompting-source.png <- Source article local asset: OpenAI 官方 Prompt 指南.md, `images/img_001.png`; article front matter cites https://mp.weixin.qq.com/s/QK61rmL_DknIb5X52FfkVg and learn.chatgpt.com/docs/prompting.
+openai-prompting-panel.png <- Complete official ChatGPT Prompting panel cropped from openai-prompting-source.png; retained only as labelled source evidence on the content card.
+prompt-structure-hero-v1.png <- GPT Image 2 generated inserted cover asset; four connected paper modules visualise goal, context, output, and boundary. Generated 2026-07-12 from a Chromatic Modular Grid art direction prompt; contains no text or third-party logo.

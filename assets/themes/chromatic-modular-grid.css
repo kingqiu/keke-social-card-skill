@@ -1,0 +1,46 @@
+/* Chromatic Modular Grid themes.
+ * Template layout must consume these semantic tokens only.
+ */
+
+:root,
+html[data-theme="cobalt-coral-lime"] {
+  --paper: #f4f1e9;
+  --ink: #171719;
+  --muted: #625f5a;
+  --line: rgba(23, 23, 25, .22);
+  --surface: #ebe7de;
+  --primary: #1745e8;
+  --secondary: #fb5a43;
+  --signal: #c8f52a;
+  --on-primary: #fffdf8;
+  --on-secondary: #171719;
+  --on-signal: #171719;
+}
+
+html[data-theme="ultramarine-sand"] {
+  --paper: #f1ede4;
+  --ink: #141519;
+  --muted: #67645e;
+  --line: rgba(20, 21, 25, .22);
+  --surface: #e6e0d4;
+  --primary: #1329a7;
+  --secondary: #e16a31;
+  --signal: #f4c645;
+  --on-primary: #fffdf8;
+  --on-secondary: #171719;
+  --on-signal: #171719;
+}
+
+html[data-theme="forest-pink"] {
+  --paper: #f5f3ec;
+  --ink: #172019;
+  --muted: #61705f;
+  --line: rgba(23, 32, 25, .22);
+  --surface: #e7ece0;
+  --primary: #1c6c52;
+  --secondary: #e94f7a;
+  --signal: #b8e33d;
+  --on-primary: #fffdf8;
+  --on-secondary: #171719;
+  --on-signal: #171719;
+}

@@ -14,6 +14,8 @@ const lookbookPath = path.join(root, "assets", "template-lookbook-journal.html")
 const lookbook = fs.readFileSync(lookbookPath, "utf8");
 const editorialPath = path.join(root, "assets", "template-editorial-eink.html");
 const editorial = fs.readFileSync(editorialPath, "utf8");
+const chromaticPath = path.join(root, "assets", "template-chromatic-modular-grid.html");
+const chromatic = fs.readFileSync(chromaticPath, "utf8");
 const visualSystems = fs.readFileSync(path.join(root, "references", "visual-systems.md"), "utf8");
 const localFontsCss = fs.readFileSync(path.join(root, "assets", "fonts", "keke-fonts.css"), "utf8");
 
@@ -25,6 +27,7 @@ for (const [label, html] of [
   ["Rednote Native", rednote],
   ["Lookbook Journal", lookbook],
   ["Editorial E-ink", editorial],
+  ["Chromatic Modular Grid", chromatic],
 ]) {
   if (html.includes("fonts.googleapis.com") || html.includes("fonts.gstatic.com")) {
     failures.push(`${label} template must use vendored local font assets, not external Google Fonts links`);
@@ -32,6 +35,21 @@ for (const [label, html] of [
   if (!html.includes("fonts/keke-fonts.css")) {
     failures.push(`${label} template must load assets/fonts/keke-fonts.css`);
   }
+}
+
+for (const required of ["fonts/keke-fonts.css", "themes/chromatic-modular-grid.css", ".poster", ".cover", ".semantic-art", ".brand-signature::before"]) {
+  if (!chromatic.includes(required)) {
+    failures.push(`Chromatic Modular Grid template missing required primitive ${required}`);
+  }
+}
+for (const theme of ["cobalt-coral-lime", "ultramarine-sand", "forest-pink"]) {
+  if (!fs.readFileSync(path.join(root, "assets", "themes", "chromatic-modular-grid.css"), "utf8").includes(`html[data-theme=\"${theme}\"]`)) {
+    failures.push(`Chromatic Modular Grid theme file missing ${theme}`);
+  }
+}
+const chromaticSection = visualSystems.match(/## Chromatic Modular Grid[\s\S]*?(?=\n## |\n$)/)?.[0] || "";
+if (!chromaticSection.includes("Status: `locked`;") || !chromaticSection.includes("examples/chromatic-modular-grid-openai-prompt-guide-gold-candidate")) {
+  failures.push("Chromatic Modular Grid status must be locked with the accepted Gold example path");
 }
 
 const swissForbidden = [

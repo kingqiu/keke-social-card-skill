@@ -70,6 +70,15 @@
   src: url("./keke-noto-sans-sc/NotoSansSC-700.woff2") format("woff2");
 }
 
+/* Display only: Chinese-heavy cover and conclusion titles. */
+@font-face {
+  font-family: "Keke Source Han Sans SC";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("./keke-source-han-sans-sc/SourceHanSansSC-Heavy.woff2") format("woff2");
+}
+
 @font-face {
   font-family: "Keke IBM Plex Mono";
   font-style: normal;

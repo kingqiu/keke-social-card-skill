@@ -39,6 +39,19 @@ filename.jpg <- https://source-url
 - Product, food, person, and outfit result images cannot become tiny decorations.
 - Full-bleed images need subject map, safe text zone, avoid zone, and object position.
 
+## Cover Visual Integrity Gate — Hard Rule
+
+Do not use a third-party screenshot, public image crop, or source preview as cover decoration when its essential subject, title, logo, data, or UI is cut off, unreadable, or stripped of context.
+
+Before placing it on a cover:
+
+1. Look for a complete original asset in the source material.
+2. If that asset cannot fit intact in the portrait composition, generate a new topic-matched bitmap asset with GPT Image 2 and use that asset for the cover.
+3. Preserve the original source screenshot only as a clearly labelled, inspectable proof image on a content card.
+4. In `IMAGE_REQUESTS.md`, record `cover-integrity decision`, `original checked`, `replacement route`, and `visual inspection result`.
+
+This gate applies even for validation samples. A crop that technically fills a box but loses the image's identity fails the gate.
+
 ## Portrait Fit Gate
 
 Xiaohongshu cards are portrait-first. Do not treat a wide image as automatically usable just because CSS can `contain` it.

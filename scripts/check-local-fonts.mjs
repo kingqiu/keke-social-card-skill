@@ -15,6 +15,7 @@ const failures = [];
 const requiredFamilies = [
   "Keke Inter",
   "Keke Noto Sans SC",
+  "Keke Source Han Sans SC",
   "Keke IBM Plex Mono",
   "Keke Noto Serif SC",
   "Keke Playfair Display",
@@ -83,6 +84,7 @@ if (!failures.length) {
       </head>
       <body>
         <div id="sans" style="font-family:'Keke Noto Sans SC'; font-weight:400">测试字体</div>
+        <div id="display" style="font-family:'Keke Source Han Sans SC'; font-weight:900">复杂任务</div>
         <div id="serif" style="font-family:'Keke Noto Serif SC'; font-weight:700">测试字体</div>
         <div id="inter" style="font-family:'Keke Inter'; font-weight:500">Agent OKF</div>
         <div id="mono" style="font-family:'Keke IBM Plex Mono'; font-weight:500">type: metric</div>

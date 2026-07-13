@@ -62,12 +62,15 @@ output/
 | Rednote Native | 小红书原生感、强点击、工具发布、结果展示 |
 | Proof Lab | AI 工具、教程、截图、流程、前后对比、证据型内容 |
 | Lookbook Journal | 穿搭、美妆、食物、家居、产品和单品拆解 |
+| Chromatic Modular Grid | AI 工具、产品、框架、工作流、技术解释；高密度图文与证据拼图 |
 
 对于开放规范、API、数据格式、框架标准等技术公告，Swiss System 里包含 `Swiss OKF Brief` 子模板，适合做高信息密度但仍然有传播性的解释型卡片。
 
 对于 Claude/Anthropic 官方文章、AI 工作流机制、上下文治理这类内容，Swiss System 里包含 `Swiss Anthropic Clay` 子模板：暖白纸底、clay 强调色、黑色主文字、官方说明图证据框，更适合做有品牌感但仍然清晰克制的技术卡片。
 
 Swiss System 也可以使用 `ikb`（库里蓝 / Klein Blue）作为高信任技术管理配色：适合 AI 工作流、工程效率、技术管理、组织机制、严肃 checklist 这类内容。它保留 Swiss 的暖纸底、黑色判断块和严格网格，只把强调色换成库里蓝；蓝色块中的文字必须使用白色或高对比浅色。
+
+`Chromatic Modular Grid` 是独立于 Swiss System 的现代模块化卡片模板，结构与配色解耦，支持 `cobalt-coral-lime`、`ultramarine-sand` 和 `forest-pink` 三套主题。它适合需要同时承载大标题、图片证据、局部细节和可保存结论的 AI/产品/框架类内容。
 
 ## 使用方式
 

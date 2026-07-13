@@ -76,6 +76,7 @@ const allowedSystems = [
   "Rednote Native",
   "Proof Lab",
   "Lookbook Journal",
+  "Chromatic Modular Grid",
 ];
 if (values.visualSystem) {
   add(

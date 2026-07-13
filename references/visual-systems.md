@@ -28,6 +28,17 @@ The five visual systems are inherited template systems. They are not mood-board 
 - If the desired effect needs different visual grammar, switch systems or create a clearly named new system.
 - Keke-specific value should appear in routing, page planning, Xiaohongshu copy, proof selection, and QA, not in loosening the inherited template standards.
 
+## Chromatic Modular Grid
+
+Use for high-density Xiaohongshu explainers where a large Chinese claim, visual evidence, detail crops, and a conclusion need to coexist in a modern modular collage.
+
+Status: `locked`; reference template: `assets/template-chromatic-modular-grid.html`; detailed rules: `references/chromatic-modular-grid.md`; first accepted Gold example: `examples/chromatic-modular-grid-openai-prompt-guide-gold-candidate`.
+
+- This is an independent visual system, not a Swiss System theme. It keeps grid discipline but intentionally supports a controlled primary/secondary/signal color trio.
+- The template and themes are separate. Structure lives in the template; color tokens live in `assets/themes/chromatic-modular-grid.css`.
+- Use real screenshots, diagrams, source figures, photos, generated semantic illustrations, or intentional crops in the visual assembly zones. Do not make 3D assets mandatory and do not fill evidence zones with decorative stand-ins.
+- Do not route production work to it automatically until a real-source cover and representative content page are approved.
+
 Inheritance status must be explicit:
 
 - `template-locked`: source template grammar is audited and protected by checks, but no accepted Gold example exists yet.

@@ -1,0 +1,37 @@
+version: 1
+task:
+  topic: "Chromatic Modular Grid template validation"
+  core_claim: "A high-density social card can combine title, image evidence, and a save-worthy takeaway without becoming a dashboard."
+  audience: "Chinese readers of AI, product, design, and framework explainers"
+  platform: "xiaohongshu"
+  output_directory: "examples/chromatic-modular-grid-openai-prompt-guide-gold-candidate/output"
+canvas:
+  aspect_ratio: "3:4"
+  width: 1080
+  height: 1440
+visual_system:
+  template: "chromatic-modular-grid"
+  palette: "cobalt-coral-lime"
+  typography: "Keke Source Han Sans SC + Keke Noto Sans SC + Keke Inter + Keke IBM Plex Mono"
+  reference_images: ["openai-prompting-panel.png", "prompt-structure-hero-v1.png", "prompt-boundaries-hero-v3.png", "prompt-iterate-hero-v3.png"]
+  brand_signature: "「两克伴」出品"
+story:
+  page_count: 12
+  approval_set: ["cover", "representative_content_page", "weakest_content_page"]
+assets:
+  preserve_original_ratio: true
+  preserve_original_color: true
+  generated_illustrations: ["prompt-structure-hero-v1.png", "prompt-boundaries-hero-v3.png", "prompt-iterate-hero-v3.png"]
+generation_rules:
+  deterministic_page_chrome: true
+  no_overwrite_of_approved_assets: true
+qa:
+  run_validator: true
+  inspect_thumbnail_overview: true
+  inspect_weakest_page: true
+  show_rendered_images_in_codex: true
+approval:
+  approved_template: true
+  approved_cover: true
+  approved_content_sample: true
+  approved_for_batch: true

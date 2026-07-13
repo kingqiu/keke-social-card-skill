@@ -154,6 +154,7 @@ Use `references/style-routing.md`:
 - Xiaohongshu + technical announcement/open specification/API or data format/framework standard -> Swiss System with `subTemplate: Swiss OKF Brief`.
 - Xiaohongshu + Claude/Anthropic official article/AI workflow steering mechanism -> Swiss System with `subTemplate: Swiss Anthropic Clay` and `theme: anthropic-clay`.
 - Xiaohongshu + long-form article/report/WeChat article/business or technology case analysis -> Longform Reader with a separate theme such as `highlighter-blue`.
+- If the user explicitly selects `Chromatic Modular Grid`, use the locked `assets/template-chromatic-modular-grid.html` seed and choose its theme independently from `assets/themes/chromatic-modular-grid.css`.
 - User says "长文阅读卡片", "深度阅读卡片", "公众号长文转小红书", "把这篇长文/报告做成小红书", "像上次 Meta 那套长文卡片", or "适合长文章的阅读型模板" -> route to Longform Reader. The user does not need to remember the English template name.
 - Xiaohongshu + essay/culture/reading/travel -> Editorial E-ink.
 - For AI tools, decide Rednote Native vs Proof Lab by the primary reader job:
@@ -215,8 +216,10 @@ For every landscape source image considered for a portrait Xiaohongshu card, dec
 - Preserve the inherited HTML/CSS template as the card frame. When redraw is needed, redraw only the inserted source illustration/image asset, then place that raster asset back into the template.
 - Redraw or recompose landscape images used as cover art, hero illustration, mood, product, person, outfit, food, or scene visuals when they leave empty bands or make the subject small.
 - Use GPT Image 2 or an equivalent bitmap image model for illustration redraws by default. Save the result as PNG/JPG/WebP. Do not satisfy an illustration redraw with SVG unless the asset is only a tiny structural icon or line marker.
+- For every generated illustration, compose for its actual insertion bay: match the bay aspect ratio or reserve a clearly sufficient safe margin on all four sides. Do not crop a finished semantic visual merely to force it into the layout.
 - Keep landscape only when the image is itself the proof, screenshot, chart, or original diagram and fidelity matters. Record the reason in `QA.md`.
 - Do not use `object-fit: contain` as the default fix for unsuitable landscape cover art.
+- **Cover visual-integrity gate:** never use a partial, clipped, unreadable, or contextless third-party screenshot as cover decoration. First locate a complete source asset; if none fits intact in the portrait composition, generate a topic-matched bitmap asset with GPT Image 2 and reserve the source screenshot for labelled proof on a content card. Record the decision in `IMAGE_REQUESTS.md` and the visual inspection in `QA.md`.
 
 ### 7. Copy
 
@@ -267,6 +270,7 @@ Use `references/xhs-copywriting-guidelines.md`:
 - **Rednote Native**: feed-native Xiaohongshu hooks, large readable title, result/emotion/evidence first.
 - **Proof Lab**: screenshots, product proof, AI tools, workflows, before/after, evidence-first tutorials.
 - **Lookbook Journal**: central result plus annotations for outfit, food, beauty, home, product, gear.
+- **Chromatic Modular Grid**: high-density modern modular cards for AI tools, products, frameworks, workflows, and technical explainers; template and theme remain decoupled.
 
 ## Delivery
 
@@ -298,6 +302,8 @@ Final response should include:
 - Do not use Proof Lab without inspectable proof. If screenshots/results are missing, ask once for assets or route to Rednote Native with native result-package proof.
 - Do not let title/caption promise something the cards do not show.
 - Do not use AI-generated full card images as the default; generate assets and compose deterministically.
+- For semantic illustrations, workflow metaphors, and architecture-style explanatory visuals, use GPT Image 2 (or an equivalent bitmap image model) to generate inserted assets. Do not substitute SVG/HTML/CSS diagram stand-ins; code-native shapes are limited to structural frame elements, dividers, and tiny accents.
+- Treat a generated illustration that loses a meaningful object, connector, or shadow at the insertion edge as a visual failure, even if the asset itself looks good in isolation. Regenerate or recompose it before delivery.
 - Do not use a generated full-card image when the actual problem is only a landscape source illustration that needs portrait redraw.
 - Do not omit `SOURCES.md` / `IMAGE_REQUESTS.md` for non-trivial image use.
 - Do not treat machine QA as visual approval. Human review is the final gate.

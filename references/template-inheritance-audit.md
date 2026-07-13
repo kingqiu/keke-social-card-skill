@@ -2,6 +2,31 @@
 
 Use this file to record visual-system inheritance status without exposing private source notes.
 
+## Chromatic Modular Grid
+
+Status: `locked`; Gold example: `examples/chromatic-modular-grid-openai-prompt-guide-gold-candidate`.
+
+Audit result:
+
+- The seed template preserves the Chromatic Modular Grid grammar: 3:4 portrait board, narrow masthead, large Chinese claim, dominant image/assembly zone, three-part evidence rail, content-page proof field, supporting action modules, takeaway strip, and exact brand signature.
+- Structure and palette are decoupled. `assets/template-chromatic-modular-grid.html` is the structural source of truth; `assets/themes/chromatic-modular-grid.css` owns `cobalt-coral-lime`, `ultramarine-sand`, and `forest-pink`.
+- The typography stack is vendored locally: Source Han Sans Heavy for Chinese display titles, Noto Sans SC for body copy, IBM Plex Mono for labels, and Inter for Latin/numerals.
+- Semantic illustrations are inserted GPT Image 2 bitmap assets. SVG/HTML/CSS may provide only the card frame, dividers, grid marks, and tiny accents.
+- The accepted Gold example uses a real source-backed OpenAI Prompting deck, a complete official source proof image, a reviewed generated cover asset, and two reviewed generated semantic illustrations.
+
+Guard:
+
+- Run `npm run check:inheritance`.
+- Run `node scripts/validate-social-deck.mjs examples/chromatic-modular-grid-openai-prompt-guide-gold-candidate`.
+- Run `npm run check:portrait-fit -- examples/chromatic-modular-grid-openai-prompt-guide-gold-candidate` when image assets change.
+- Inspect the cover and weakest content page at full size and thumbnail size before delivery.
+
+Locked because:
+
+- The user approved the template direction and the decoupled palette contract.
+- The actual 12-card OpenAI Prompting guide passed route, content, layout, portrait-fit, copy, aesthetic, and source-integrity checks.
+- The three themes are declared in one theme file and are protected from per-card core-color drift.
+
 ## Longform Reader
 
 Status: `template-locked`; reference template: `assets/template-longform-reader.html`; rule reference: `references/longform-reader.md`; first production reference: Meta AI transformation Longform Reader deck.

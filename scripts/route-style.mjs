@@ -2,6 +2,15 @@
 
 const RULES = [
   {
+    visualSystem: "Chromatic Modular Grid",
+    theme: "cobalt-coral-lime",
+    recipeSequence: "cover assembly -> evidence map -> mechanism/action pages -> saveable takeaway",
+    imagePolicy: "use real source proof, diagrams, photos, or reviewed GPT Image 2 semantic bitmap assets; keep evidence inspectable",
+    copyStrategy: "direct, source-backed, high-density explanation with a clear reader action",
+    qaFocus: "cover hook, image integrity, one judgment per page, template/theme separation, exact brand signature",
+    keywords: ["chromatic modular grid", "模块化拼图", "高密度卡片", "视觉证据", "图文拼接", "modular card"],
+  },
+  {
     visualSystem: "Swiss System",
     subTemplate: "Swiss OKF Brief",
     theme: "okf-yellow",

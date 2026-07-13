@@ -1,0 +1,43 @@
+version: 1
+task:
+  topic: "OpenAI 官方 Prompt 指南"
+  core_claim: "复杂任务的 Prompt 不靠万能公式，而是补齐会改变结果的目标、上下文、输出与边界。"
+  audience: "希望把 ChatGPT / Codex 用得更稳的中文知识工作者、产品与开发从业者"
+  platform: "xiaohongshu"
+  output_directory: "examples/chromatic-modular-grid-openai-prompt-guide-sample/output"
+canvas:
+  aspect_ratio: "3:4"
+  width: 1080
+  height: 1440
+copy:
+  public_title: "OpenAI 官方 Prompt 指南：复杂任务只补 4 件事"
+  cover_title: "复杂任务只补 4 件事"
+  subtitle: "目标、上下文、输出、边界"
+  must_keep_terms: ["OpenAI", "Prompt", "目标", "上下文", "输出", "边界"]
+visual_system:
+  template: "chromatic-modular-grid"
+  palette: "ultramarine-sand"
+  typography: "Keke Noto Sans SC + Keke Inter + Keke IBM Plex Mono"
+  reference_images: ["assets/openai-prompting-source.png"]
+  brand_signature: "「两克伴」出品"
+story:
+  page_count: 2
+  approval_set: ["cover", "representative_content_page"]
+assets:
+  official_logos: []
+  source_evidence: ["assets/openai-prompting-source.png"]
+  preserve_original_ratio: true
+  preserve_original_color: true
+generation_rules:
+  deterministic_page_chrome: true
+  no_overwrite_of_approved_assets: true
+qa:
+  run_validator: true
+  inspect_thumbnail_overview: true
+  inspect_weakest_page: true
+  show_rendered_images_in_codex: true
+approval:
+  approved_template: true
+  approved_cover: false
+  approved_content_sample: false
+  approved_for_batch: false

@@ -48,11 +48,12 @@ const subsetText = [...chars].sort().join("");
 fs.writeFileSync(subsetTextPath, subsetText + "\n");
 
 const fontFiles = [];
+const fontExtensions = new Set([".ttf", ".otf"]);
 function collectFonts(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) collectFonts(full);
-    else if (entry.name.endsWith(".ttf")) fontFiles.push(full);
+    else if (fontExtensions.has(path.extname(entry.name).toLowerCase())) fontFiles.push(full);
   }
 }
 collectFonts(fontsDir);
@@ -63,7 +64,7 @@ if (!fontFiles.length) {
 }
 
 for (const fontFile of fontFiles) {
-  const out = fontFile.replace(/\.ttf$/i, ".woff2");
+  const out = fontFile.replace(/\.(ttf|otf)$/i, ".woff2");
   const result = spawnSync(pyftsubset, [
     fontFile,
     `--text-file=${subsetTextPath}`,
@@ -81,7 +82,9 @@ for (const fontFile of fontFiles) {
 const cssPath = path.join(fontsDir, "keke-fonts.css");
 const css = fs.readFileSync(cssPath, "utf8")
   .replaceAll(".ttf", ".woff2")
-  .replaceAll('format("truetype")', 'format("woff2")');
+  .replaceAll(".otf", ".woff2")
+  .replaceAll('format("truetype")', 'format("woff2")')
+  .replaceAll('format("opentype")', 'format("woff2")');
 fs.writeFileSync(cssPath, css);
 
 if (removeTtf) {
