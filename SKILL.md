@@ -131,6 +131,7 @@ Rules:
 - Card text must be understandable without the original article.
 - Do not compress unrelated major sections into one card only to keep the deck short.
 - If honest coverage needs more than 12 cards, split into Part 1 / Part 2.
+- Before writing final copy, record a `## Search Intent Plan` in `BRIEF.md` with audience, scene, problem, category, product when applicable, and honest alternative search terms. Also record where each term will appear: cover, title, opening, body, or tags.
 
 ### 3. Standard
 
@@ -230,9 +231,12 @@ Use `references/xhs-copywriting-guidelines.md`:
 - Make title, cover, caption opening, and first 2 cards match the same promise.
 - Translate features/concepts into user value before writing final copy. The reader should feel less work, less risk, more clarity, more confidence, stronger identity, or a result worth saving.
 - Make the cover/title pass the shelf test: a specific reader should know in about one second why this post is about them.
-- Plan natural search terms before writing. Put audience/scene/problem/category/product terms in cover, title, opening, and tags instead of only stuffing hashtags.
+- Complete the `Search Intent Plan` before writing. Use natural audience/scene/problem/category/product terms in the title, opening, body, and tags; do not rely on hashtag stuffing.
+- Make the title carry an object plus an audience/scene/problem term and one honest contrast, result, or question when the source supports it. Keep the default title within 20 Chinese characters unless a longer title is necessary for clarity and explicitly recorded in `QA.md`.
+- Allow the publishing title and a locked cover title to differ when they serve different jobs. Record the relationship in `BRIEF.md`; do not rewrite a confirmed cover merely to add search terms.
 - For long-form/framework posts, preserve the source meaning while making the copy understandable without the original article.
 - Keep the main caption body within 1000 characters; for long-form/framework posts, aim for detailed 650-950 character copy rather than a tiny abstract.
+- For long-form source posts, make the first three lines identify the source/event, the core tension, and why the reader should care. Follow every important data group with a plain-language interpretation; do not leave the reader with a number dump.
 - Give the copy a visible human position, friction, or handprint. Avoid neutral brochure voice and common AI-flavored phrases.
 - Do not expose production workflow in the caption. Never say how many cards/images were generated, how the article was split, or which page/card contains what. Tell the source story directly.
 - Include 3-5 title variants, 2-3 opening variants, 2-3 CTA/comment prompts, and compact/broader hashtag sets in `copy-variants.md`.
@@ -240,6 +244,7 @@ Use `references/xhs-copywriting-guidelines.md`:
 - Avoid inflated claims, fake data, fake endorsements, and misleading tags.
 - Avoid hard external conversion pressure unless the user provides a compliant commercial flow.
 - Mark official/platform-rule uncertainty in `QA.md` when needed.
+- When revising copy, preserve prior versions and save the selected revision as `V2`, `V3`, or the next explicit version; never overwrite a previously approved or published copy.
 
 ### 8. Build
 
@@ -252,6 +257,7 @@ Use `references/xhs-copywriting-guidelines.md`:
 - Check route documentation with `node scripts/check-route-decision.mjs <task-dir>`.
 - For long-form sources, check planning with `node scripts/check-content-plan.mjs <task-dir>`.
 - Check Xiaohongshu copy with `node scripts/check-xhs-copy.mjs <task-dir>`.
+- Run the copy check against the selected final caption file. The checker defaults to `xiaohongshu-caption.md`, but versioned delivery must pass the chosen `V2`/`V3` file explicitly rather than silently rechecking an older draft.
 - Check semi-automatic visual quality with `node scripts/check-aesthetic-qa.mjs <task-dir>`.
 - Check portrait image fit with `node scripts/check-portrait-fit.mjs <task-dir>`.
 - When using Proof Lab, check theme compliance with `node scripts/check-proof-lab-theme-contract.mjs`.
@@ -261,6 +267,7 @@ Use `references/xhs-copywriting-guidelines.md`:
 - Before publishing the Skill itself, run `npm run check:package-size`.
 - Validate only when requested or before final handoff: `node scripts/validate-social-deck.mjs <task-dir>`.
 - Before final handoff for a publishing-quality package, run `npm run check:all -- <task-dir>`.
+- Manually inspect every rendered page one by one after automated checks. Record typography consistency, title weight/line-height, vertical alignment, image integrity, spacing, footer/brand placement, and the weakest page in `QA.md`. Machine PASS is not sufficient.
 
 ## Visual Systems
 
@@ -289,6 +296,7 @@ Final response should include:
 - `xiaohongshu-caption.md` path.
 - QA status.
 - Source/provenance notes.
+- State which copy version is the publishable version and confirm that its title, caption, tags, and card set are synchronized.
 
 ## Non-Negotiables
 
@@ -307,5 +315,8 @@ Final response should include:
 - Do not use a generated full-card image when the actual problem is only a landscape source illustration that needs portrait redraw.
 - Do not omit `SOURCES.md` / `IMAGE_REQUESTS.md` for non-trivial image use.
 - Do not treat machine QA as visual approval. Human review is the final gate.
+- Do not let a generic validator override an approved visual reference. Record intentional rule exceptions in `QA.md` and preserve the approved cover's typography, spacing, and composition as the visual baseline.
+- Once a cover is approved, treat its display font family, weight, line-height, tracking, and title rhythm as locked. Content-page display titles must inherit that title system; adjust size or line wrapping only when needed for fit.
+- If a later revision changes title typography, re-render and inspect the entire set again; do not assume a local CSS change is isolated to one page.
 - Do not vary the visible brand signature. It must be exactly `「两克伴」出品`.
 - Do not optimize the Skill around one demo. Improve standards, visual systems, and golden examples first.

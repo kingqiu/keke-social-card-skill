@@ -74,7 +74,22 @@ Use:
 - category terms: how the platform classifies the content
 - product terms: app/tool/Skill/project names and aliases
 
-Place them naturally in the title, first paragraph, and hashtags. Do not dump unrelated tags at the end.
+Place them naturally in the title, first paragraph, body, and hashtags. Do not dump unrelated tags at the end.
+
+### Search Intent Gate
+
+Before writing the final caption, record a search-intent plan in `BRIEF.md`:
+
+| Term type | Required question |
+|---|---|
+| Audience | Who would search this? |
+| Scene | In what work/life/content moment would they search it? |
+| Problem | What pain, uncertainty, or decision are they trying to solve? |
+| Category | What honest Xiaohongshu category does this belong to? |
+| Product | Which app/tool/Skill/project name or alias matters, if any? |
+| Alternative | What other truthful wording might the reader use? |
+
+Then map the terms to their visible locations: cover, title, opening, body, and tags. A caption passes this gate only when search terms appear naturally before the hashtags and the title/cover promise remains honest.
 
 ## Shelf Test
 
@@ -99,6 +114,9 @@ Rules:
 - Avoid low-quality bait: `震惊`, `爆火`, `不看后悔`.
 - Match the image promise.
 - Prefer one clear reason to tap over clever wording.
+- For search-led posts, prefer `object + audience/scene/problem + honest contrast/result/question`; do not force all keyword classes into one title.
+- Default to 20 Chinese characters or fewer. If clarity requires more, record the tradeoff in `QA.md` and keep the extra words purposeful.
+- A locked cover title may differ from the publishing title. Keep the distinction intentional and record it in `BRIEF.md` rather than weakening the approved cover.
 
 Length:
 
@@ -127,6 +145,8 @@ Recommended structure:
 4. Proof/context: where the insight comes from or which cards/results support it.
 5. Limitation: honest boundary if relevant.
 6. CTA: comment prompt asking for scenes, questions, feedback, or experience.
+
+For long-form or report-based posts, the first three lines should identify the source/event, state the core tension, and explain why the reader should care. Group data by one argument, then interpret the group in plain language. Do not let a list of percentages carry the entire explanation.
 
 Length:
 
@@ -231,6 +251,8 @@ Check:
 - Does the title/cover pass the shelf test for a concrete reader?
 - Does feature language get translated into user value?
 - Are search terms natural and visible before the hashtags?
+- Is there a completed Search Intent Plan covering audience, scene, problem, category, product when applicable, and honest alternatives?
+- Do the search terms appear naturally in the selected final version's title, opening/body, and tags rather than only in an older draft?
 - Does caption invent facts?
 - Does the title match the cover and card content?
 - Does the first paragraph explain why the reader should care?
@@ -247,5 +269,6 @@ Check:
 - Are rankings, numbers, endorsements, and results sourced?
 - Does it create misleading platform-external conversion pressure?
 - Does it match the rendered images?
+- Is the checker reading the selected final caption version rather than silently checking `xiaohongshu-caption.md` from an earlier draft?
 
 If any answer is weak, fix the copy before delivery. Do not treat copy as a final afterthought.

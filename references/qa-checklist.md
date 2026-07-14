@@ -47,6 +47,9 @@ Run `node scripts/check-aesthetic-qa.mjs <task-dir>` before final handoff. Treat
 - Source illustration redraws use PNG/JPG/WebP; SVG is not accepted as the final redraw unless it is only a tiny structural symbol.
 - Faces, logos, food, product details, and key UI text are not covered.
 - 3:4 cards fill the portrait canvas intentionally.
+- The approved cover is the visual baseline. Check every page against its display font family, weight, line-height, tracking, title rhythm, and vertical alignment.
+- Inspect every rendered page individually after the thumbnail pass. Do not mark a deck visually approved from an aggregate score or contact sheet alone.
+- If the approved reference conflicts with a generic validator rule, record the intentional exception in `QA.md`; do not silently revert the approved typography or composition.
 
 ## Xiaohongshu QA
 
@@ -84,6 +87,10 @@ At 25% size, cover should show:
 - High-risk claims are sourced or removed.
 - Copy matches the card images.
 - `copy-variants.md` includes title options, opening options, CTA/comment prompts, and hashtag alternatives.
+- `BRIEF.md` contains a Search Intent Plan with audience, scene, problem, category, product when applicable, and honest alternative terms.
+- The selected final copy version has been checked directly; versioned drafts must not be bypassed by a fixed filename default.
+- Long-form copy uses a 650-950 character target, opens with source/event + tension + reader relevance, and interprets important data groups instead of only listing numbers.
+- If the cover title and publishing title differ, `BRIEF.md` records why and confirms that both make the same content promise.
 
 ## Asset QA
 
@@ -98,3 +105,4 @@ At 25% size, cover should show:
 ## Human Gate
 
 Technical PASS does not equal visual PASS. Human review is the final gate.
+- Human review must name the weakest page and confirm title typography, vertical alignment, image integrity, spacing, footer, and brand placement for every page.

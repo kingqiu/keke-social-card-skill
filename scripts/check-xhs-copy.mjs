@@ -5,14 +5,21 @@ import path from "node:path";
 import process from "node:process";
 
 const target = process.argv[2];
+const captionArgIndex = process.argv.indexOf("--caption");
+const captionRelativePath = captionArgIndex >= 0 ? process.argv[captionArgIndex + 1] : "xiaohongshu-caption.md";
 
 if (!target) {
-  console.error("Usage: node scripts/check-xhs-copy.mjs <task-dir>");
+  console.error("Usage: node scripts/check-xhs-copy.mjs <task-dir> [--caption <relative-caption-path>]");
+  process.exit(2);
+}
+
+if (captionArgIndex >= 0 && !captionRelativePath) {
+  console.error("Missing caption path after --caption");
   process.exit(2);
 }
 
 const root = path.resolve(process.cwd(), target);
-const captionPath = path.join(root, "xiaohongshu-caption.md");
+const captionPath = path.join(root, captionRelativePath);
 const variantsPath = path.join(root, "copy-variants.md");
 const qaPath = path.join(root, "QA.md");
 
@@ -36,7 +43,6 @@ const aiFlavorPhrases = [
   "赋能",
   "颠覆",
   "重塑",
-  "重新定义",
   "开启新篇章",
   "未来可期",
   "彰显",
@@ -132,9 +138,9 @@ if (caption) {
   add(bodyLength <= 1000, "Caption body stays within 1000 chars", "Keep the main body within 1000 characters.");
   add(!aiFlavorPhrases.some((phrase) => body.includes(phrase) || title.includes(phrase)), "Copy avoids common AI-flavored phrases", "Remove generic AI/product-marketing language such as 赋能、重塑、未来可期、随着、本文将.");
   add(!workflowLeakagePatterns.some((pattern) => pattern.test(body) || pattern.test(title)), "Copy avoids production workflow leakage", "Do not mention card/image count, splitting, generation, or which card/page explains what.");
-  add(!body.includes("——"), "Copy avoids em dash polish", "Use commas, periods, or plain rewrites instead of decorative em dashes.");
+  add((body.match(/——/g) || []).length <= 1, "Copy limits em dash polish", "Avoid repeated decorative em dashes; keep at most one when it clarifies a relationship.");
   add((body.match(/不是[^。！？\n]{1,30}而是/g) || []).length <= 1, "Copy limits mechanical contrast formulas", "Avoid repeated '不是 X，而是 Y' style formulas.");
-  add(/评论|你觉得|你会|你最|留言|想看|欢迎|一起聊|你关注/i.test(body), "Caption includes natural CTA", "End with a natural comment prompt or discussion question.");
+  add(/评论|你觉得|你会|你最|留言|想看|欢迎|一起聊|你关注|哪一边|哪一种|哪一类|更接近哪/i.test(body), "Caption includes natural CTA", "End with a natural comment prompt or discussion question.");
   add(Boolean(tagsSection), "Caption has hashtag section", "Add '# 标签' with 5-8 relevant tags.");
   add(hashtags.length >= 5 && hashtags.length <= 8, "Hashtag count is 5-8", "Use 5-8 relevant hashtags; avoid stuffing unrelated hot tags.");
 
@@ -146,7 +152,7 @@ if (caption) {
   score(12, takeawayHits >= 4, "Copy gives clear takeaways", "State the main observations directly; avoid letting the cards do all explanation.");
   score(10, aiFlavorCount === 0, "Copy avoids AI-brochure language", "Remove common AI/product-marketing filler.");
   score(8, !workflowLeakagePatterns.some((pattern) => pattern.test(body) || pattern.test(title)), "Copy tells the story, not the production action", "Do not mention splitting, generating, card count, or which page explains what.");
-  score(6, /评论|你觉得|你会|你最|留言|想看|欢迎|一起聊|你关注/i.test(body), "CTA feels natural", "End with a real discussion prompt.");
+  score(6, /评论|你觉得|你会|你最|留言|想看|欢迎|一起聊|你关注|哪一边|哪一种|哪一类|更接近哪/i.test(body), "CTA feels natural", "End with a real discussion prompt.");
   score(6, hashtags.length >= 5 && hashtags.length <= 8, "Hashtags are platform-sized", "Use 5-8 relevant tags.");
 }
 
@@ -173,6 +179,7 @@ const scoreRating = finalScore >= 90 ? "Gold-ready" : finalScore >= 78 ? "Pass" 
 
 console.log("==== check-xhs-copy ====");
 console.log(`target: ${target}`);
+console.log(`caption: ${captionRelativePath}`);
 console.log(`checks: ${checks.length - failed.length}/${checks.length} passed`);
 console.log(`copy score: ${finalScore}/100 · ${scoreRating}`);
 

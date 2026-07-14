@@ -13,6 +13,7 @@ The goal is not to maximize features. The goal is to avoid skipping the decision
 5. Build cards, Xiaohongshu copy, sources, and QA.
 6. Render and run checks.
 7. Inspect the weakest page before final handoff.
+8. Inspect every rendered page individually and verify the selected copy version is the one being checked and delivered.
 
 ## When To Stop At Proposal
 
@@ -65,6 +66,8 @@ Before final delivery:
 - Run full `npm run check:all -- <task-dir>` after shared template/routing/checker changes.
 - Manually inspect cover, the weakest content page, and any page with source images.
 - Confirm the caption tells the source story, not the production action.
+- Run the copy checker against the selected versioned caption when the package contains `V2`, `V3`, or later revisions.
+- Treat an approved cover as a typography and composition lock. If a later edit touches shared title CSS, rerender and recheck the whole set.
 
 ## Common Failure Modes
 
@@ -77,6 +80,9 @@ Before final delivery:
 | Landscape image looks small in portrait | Redraw/recompose inserted asset unless it is source evidence. |
 | Caption sounds like AI summary | Add position, friction, concrete takeaways, and natural CTA. |
 | QA warning feels noisy | Fix the checker if it is a false signal; do not normalize noisy gates. |
+| Final copy check reads an old draft | Pass the selected versioned caption path explicitly; never infer the publishable version from a fixed filename. |
+| Cover and content titles drift | Inherit the locked cover title system and adjust only size/wrap for content-page fit. |
+| Numbers are listed without meaning | Group related metrics and add a plain-language interpretation after each group. |
 
 ## Release Discipline
 
@@ -84,3 +90,4 @@ Before final delivery:
 - Keep private/internal design notes out of commits.
 - Run regression after changing shared scripts or templates.
 - Prefer small, boring checks over broad subjective rules.
+- Keep approved V1/V2/V3 artifacts intact; record the selected publishable version and synchronize it with the rendered images before delivery.
