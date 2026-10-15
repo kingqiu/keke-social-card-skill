@@ -5,6 +5,8 @@
   "description": "克克社交卡片 Skill: deterministic Chinese social card images plus Xiaohongshu copy packages.",
   "scripts": {
     "check:inheritance": "node scripts/check-template-inheritance.mjs",
+    "check:handdrawn": "node scripts/check-handdrawn-deck.mjs",
+    "check:handdrawn-routing": "node scripts/check-handdrawn-routing.mjs",
     "check:route-decision": "node scripts/check-route-decision.mjs",
     "check:content-plan": "node scripts/check-content-plan.mjs",
     "check:aesthetic-qa": "node scripts/check-aesthetic-qa.mjs",

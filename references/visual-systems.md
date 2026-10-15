@@ -12,7 +12,7 @@ Before using any visual system, apply `aesthetic-standards.md`. A visual system 
 
 All production visual systems must load vendored fonts from `assets/fonts/keke-fonts.css`; do not depend on external font services during rendering. Typography should be system-specific, not a single generic stack:
 
-- Swiss System: `Keke Inter` for Latin/numeric structure, `Keke Noto Sans SC` for Chinese reading, `Keke IBM Plex Mono` for code and labels. Large Chinese titles should stay light but not fragile.
+- Swiss System: `Keke Noto Serif SC` at weight 900 for Xiaohongshu cover/key display titles, `Keke Noto Sans SC` for Chinese reading and card copy, `Keke Inter` for Latin/numeric structure, and `Keke IBM Plex Mono` for code and labels. The serif display treatment is scoped to `.poster.xhs .h-statement` / `.poster.xhs .h-xl`; it improves title character and keeps the body system Swiss sans.
 - Rednote Native: `Keke Noto Sans SC` first; use heavier weights and compact line-height for thumbnail impact. Avoid thin titles that look like tool documentation.
 - Proof Lab: `Keke Inter` for labels/numbers and `Keke Noto Sans SC` for Chinese explanation. Keep weights precise and restrained so evidence feels credible.
 - Lookbook Journal: `Keke Noto Serif SC` for editorial/result titles, `Keke Noto Sans SC` for callouts. The serif should add lifestyle warmth without becoming a scrapbook font.
@@ -81,14 +81,14 @@ Status: `template-locked`; reference template: `assets/template-longform-reader.
 Inheritance baseline:
 
 - Start from `assets/template-longform-reader.html`.
-- Preserve the 3:5 portrait ratio, editorial paper surface, cover highlighter title blocks, reading map, refined content-page typography, hairline rules, top-right brand signature, and prose-first page rhythm.
+- Preserve the 3:4 portrait ratio, editorial paper surface, cover highlighter title blocks, reading map, refined content-page typography, hairline rules, top-right brand signature, and prose-first page rhythm.
 - Use vendored local fonts from `assets/fonts/keke-fonts.css`.
 - Template structure and theme/palette are separate decisions. The structure is Longform Reader; `highlighter-blue` is only the first theme.
 - Do not convert it into Swiss System simply because the topic is business/technology. Use Longform Reader when the reader needs the story arc and text capacity.
 
 Traits:
 
-- 3:5 high-capacity reading cards
+- 3:4 portrait reading cards
 - source-backed story arc
 - clear cover reading promise
 - text-forward interior pages
@@ -209,6 +209,14 @@ Swiss OKF Brief sub-template:
 - Core grammar: left yellow rail, warm paper, monospaced section label, exact brand signature, hairline top/footer rules, oversized light title, pale ghost keyword, orange lead rail, black proof block, yellow highlight block, and source/meta footer.
 - Strong pages combine one big judgment with proof rows, code/directory blocks, or producer/consumer cards. Do not use this as a decorative yellow skin for generic listicles.
 - Page numbers may appear only in the top-left section label such as `03 · DEFINITION`; do not use bottom-right serials or large cover `01`.
+
+Approved OKF Brief palette combinations:
+
+- `graphite-red`: light paper, Falu Red rail and emphasis blocks; use light text on red or graphite surfaces.
+- `iris-embossed`: lavender paper, deep Iris Purple rail and emphasis blocks, muted gold lead rule; use white text on purple surfaces.
+- `falu-dark-lakers`: dark Falu graphite paper, Lakers Gold rail and emphasis blocks; use dark text on gold and light text on graphite surfaces.
+
+Set the combination with `<html data-accent="graphite-red">`, `<html data-accent="iris-embossed">`, or `<html data-accent="falu-dark-lakers">` while retaining `.poster.swiss-okf`. The OKF-specific foreground tokens (`--okf-accent-ink` and `--okf-warm-ink`) keep text readable when a palette introduces a dark emphasis surface.
 
 Good recipes:
 
@@ -420,3 +428,16 @@ Good recipes:
 - Product/food board with numbered detail crops and texture swatches.
 
 Avoid e-commerce detail-page clutter.
+
+
+## Handdrawn Insight / 手绘观点解读
+
+Supplemental visual system; it does not replace any existing template. Use for illustrated author viewpoints, interviews and reading insights. White ground, black ink hand-drawing, sparing orange emphasis, an identifiable author portrait in the attribution panel, and account interpretation separated from source viewpoints. Cover, insight/comparison/case, and checklist recipes share one visual grammar.
+
+Read [handdrawn-insight.md](handdrawn-insight.md) for the reusable template, prompt and production contract. Approved reference images live in `assets/handdrawn-insight/`. This system uses `renderMode: imagegen-full-card`; do not relabel it as an Editorial or Longform palette, or apply their HTML validators to raster cards. Attribution, readability, source coverage and human inspection remain required.
+
+## Ruled Field Guide / 横线纸知识图鉴
+
+Status: `template-locked`; seed: `assets/template-ruled-field-guide.html`; recipe/QA rules: `references/ruled-field-guide.md`; structural smoke example: `examples/ruled-field-guide-template-smoke/index.html`.
+
+This is a separate opt-in knowledge-card system, not a recolor of Editorial E-ink or Swiss System. Preserve the warm ruled paper, left line-number gutter, black/lime sequential page bar, heavy black display type, fine blue/black boxes, pale-blue badges inside blue modules, and centered exact brand signature. Use it for compact frameworks, comparisons, processes, matrices, and lists when selected by the user. Keep long narrative and screenshot-led default routing unchanged.

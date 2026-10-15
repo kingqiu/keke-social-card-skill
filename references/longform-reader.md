@@ -34,7 +34,7 @@ Record both in `BRIEF.md`:
 ```text
 - visualSystem: Longform Reader
 - template: Highlight Cover + refined reading pages
-- ratio: 3:5
+- ratio: 3:4
 - theme: highlighter-blue
 - recipeSequence: event hook -> baseline contrast -> reversal -> mechanisms -> consequences -> reader checklist -> final takeaway
 ```
@@ -67,9 +67,9 @@ Future themes should be added as named palettes, for example `peacock-paper`, `m
 
 ## Ratio
 
-Default ratio: `3:5`.
+Default ratio: `3:4`.
 
-Use 1440 x 2400 for deterministic render output. This ratio gives long-form text more room than 3:4 while staying portrait-native for Xiaohongshu.
+Use 1080 x 1440 for deterministic render output. This matches Xiaohongshu's default portrait ratio while retaining Longform Reader's editorial reading rhythm.
 
 Do not hard-stretch a landscape source image to fill a square or portrait hole. Preserve meaningful proportions through one of:
 
@@ -257,6 +257,6 @@ If you already want the full package:
 
 ```text
 用 keke-social-card-skill 的 Longform Reader 模板直接生成完整小红书发布包。
-结构用 Longform Reader，theme 用 highlighter-blue，比例 3:5。
+结构用 Longform Reader，theme 用 highlighter-blue，比例 3:4。
 内容页图片按规则判断：可直接用原图、截主体、宽图保留、重绘或不用图，不要机械裁切。
 ```

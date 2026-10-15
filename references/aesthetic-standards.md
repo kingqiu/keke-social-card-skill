@@ -14,6 +14,16 @@ When improving this Skill, optimize in this order:
 
 Do not keep iterating on a single demo if the underlying visual system is weak.
 
+## Constraint Memory and Semantic Composition
+
+Treat user-approved components and user-rejected motifs as persistent constraints throughout the task. A later edit, compression pass, or new render does not reset them.
+
+- Record the no-go list in `BRIEF.md`; never reintroduce a rejected motif such as dashboards, control rooms, generic robots, people, or pseudo-UI unless the user explicitly changes the constraint.
+- Give every large element a semantic job. Numbers, dots, labels, dividers, and footer text must identify a real concept, source, or navigation role; remove decorative leftovers.
+- The cover's dominant title and visual must represent the whole post's reader promise. A visual that only explains one subpoint belongs on a content page or an explicitly labelled A/B cover, not as the only cover.
+- Keep intentional negative space when it creates pause, hierarchy, proof space, or balance. Remove only purposeless empty zones; never fill space with redundant text just because it is blank.
+- Preserve confirmed content when revising. A shorter or cleaner version is not better if it silently loses an approved image, scenario, URL, hook, or section.
+
 If a card looks publishable but no longer follows the inherited template grammar, treat it as a new visual system candidate, not as a valid upgrade of the original system.
 
 ## Publishing-Level Bar
@@ -67,6 +77,16 @@ This Skill does not generate WeChat Official Account covers or forwarding images
 - If AI-generated full-card imagery is used as a visual reference or source asset, record it in `SOURCES.md` and explain how it is used.
 - For deterministic HTML cards, prefer composing real visual assets inside HTML over hand-drawing complex lifestyle subjects from scratch.
 
+### Composition Before Asset Generation
+
+Do not choose an illustration's orientation or generate a redraw in isolation. Before making or adapting an asset, define its **insertion bay** in the finished card: its role, available proportion, crop-safe area, and the relationship between the asset and the headline/proof.
+
+- A portrait card does not automatically need a portrait illustration. A wide source image may work better as a deliberately wide evidence band with supporting text above and below.
+- Decide whether to keep, crop, redraw, split, or omit a source asset only after the card composition is known.
+- Judge a candidate asset inside the intended layout, not as a standalone attractive image.
+- User-provided published references and stated dislikes are constraints. Do not reintroduce a rejected visual metaphor merely because it is a familiar shorthand for the topic.
+- After placing the asset, inspect the whole card rather than judging the asset alone. Verify that the image is neither clipped nor oversized, that the copy still has hierarchy, and that the visual adds information instead of competing with the claim.
+
 ## Self-Review Before Delivery
 
 Before final delivery, inspect rendered images manually and answer:
@@ -76,5 +96,6 @@ Before final delivery, inspect rendered images manually and answer:
 3. Is the evidence/result large enough to inspect?
 4. Does each page have a reason to exist?
 5. Is the visual language reusable for the next project?
+6. Does every large area of negative space have a job—pause, hierarchy, proof, or balance—rather than looking like missing content?
 
 If any answer is weak, continue improving the system or example before calling it done.

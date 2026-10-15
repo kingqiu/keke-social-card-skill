@@ -86,24 +86,118 @@ const RULES = [
   },
 ];
 
+const HANDDRAWN = {
+  visualSystem: "Handdrawn Insight",
+  theme: "ink-orange",
+  renderMode: "imagegen-full-card",
+  recipeSequence: "benefit cover -> illustrated insights with attributed author panel -> reader checklist",
+  imagePolicy: "generate complete cards using approved visual references; verify author identity and all rendered text",
+  copyStrategy: "source-backed viewpoints plus clearly separated personal interpretation; direct reader benefit",
+  qaFocus: "text accuracy, portrait identity, attribution, readability, style consistency, selected final versions",
+  keywords: ["手绘观点解读", "黑白橙手绘", "作者头像观点卡", "像上次 pg 那套", "handdrawn insight"],
+};
+
+const ALIASES = new Map([
+  ["Handdrawn Insight", HANDDRAWN.keywords],
+  ["Longform Reader", ["longform reader", "长文阅读卡片", "深度阅读卡片", "长文阅读模板", "像上次 meta 那套"]],
+  ["Swiss System", ["swiss system", "swiss", "瑞士网格"]],
+  ["Proof Lab", ["proof lab", "证据型模板"]],
+  ["Editorial E-ink", ["editorial e-ink", "电子墨水编辑模板"]],
+  ["Rednote Native", ["rednote native"]],
+  ["Lookbook Journal", ["lookbook journal"]],
+  ["Chromatic Modular Grid", ["chromatic modular grid", "模块化拼图"]],
+]);
+
 function normalize(input) {
   return String(input || "").toLowerCase();
 }
 
+function optionFor(rule) {
+  const descriptions = {
+    "Handdrawn Insight": ["手绘观点解读", "人物场景解释独立观点，作者观点与个人启发分开呈现"],
+    "Longform Reader": ["长文阅读", "保留案例和连续因果，适合需要读懂完整论证的内容"],
+    "Swiss System": ["瑞士网格", "用紧凑的比较、框架和清单承载信息"],
+    "Proof Lab": ["证据型模板", "以真实截图、操作过程和结果证据为主体"],
+    "Editorial E-ink": ["编辑阅读", "重阅读氛围和自然叙述，结构较轻"],
+  };
+  const [label, reason] = descriptions[rule.visualSystem] || [rule.visualSystem, rule.copyStrategy];
+  return { visualSystem: rule.visualSystem, ...(rule.subTemplate ? {subTemplate: rule.subTemplate} : {}), theme: rule.theme, label, reason };
+}
+
 export function routeStyle(input) {
   const text = normalize(input);
-  const scored = RULES.map((rule, index) => {
+  const excluded = new Set();
+  const explicit = new Set();
+  for (const [system, aliases] of ALIASES) {
+    for (const alias of aliases) {
+      const index = text.indexOf(alias);
+      if (index < 0) continue;
+      const before = text.slice(Math.max(0, index - 12), index);
+      if (/(?:不要|不用|不选|避免|排除|别用)\s*(?:再|使用|采用|用)?\s*$/.test(before)) excluded.add(system);
+      else explicit.add(system);
+    }
+  }
+  const scored = RULES.filter(rule => !excluded.has(rule.visualSystem)).map((rule, index) => {
     const hits = rule.keywords.filter(keyword => text.includes(keyword.toLowerCase()));
     return { rule, score: hits.length, hits, index };
   }).sort((a, b) => b.score - a.score || a.index - b.index);
+  const oldBest = scored[0];
+  const findRule = system => system === HANDDRAWN.visualSystem ? HANDDRAWN :
+    scored.find(item => item.rule.visualSystem === system)?.rule;
+  const source = /访谈|演讲|作者|名人|阅读笔记|读书笔记|paul graham|\bpg\b|商业文章/.test(text);
+  const insights = /观点|启发|启示|商业思考|管理建议|经营建议|独立判断/.test(text);
+  const narrative = /完整(?:论证|因果|故事)|连续(?:叙事|因果)|故事线|叙事|事件经过|案例演变/.test(text);
+  const proof = /真实截图|操作步骤|操作教程|实测|终端输出|benchmark|ui 截图/.test(text);
+  const handdrawnFits = source && insights && !proof && !excluded.has(HANDDRAWN.visualSystem);
+  const choiceRequested = /给.{0,8}(?:选择项|选项)|让我选|供我选|选哪(?:个|种)|哪种模板|比较.{0,12}(?:模板|风格)/.test(text);
+  const autoRequested = /自动选|自动判断|你来选|直接选/.test(text) && !choiceRequested;
+  const explicitRules = [...explicit].filter(s => !excluded.has(s)).map(findRule).filter(Boolean);
+  let best = oldBest?.rule || RULES[RULES.length - 1];
+  let confidence = oldBest?.score >= 2 ? "high" : oldBest?.score === 1 ? "medium" : "low";
+  let selectionMode = "recommend";
+  let reason = "按内容线索推荐；需结合原文与用户参考图复核";
+  let candidates = [];
 
-  const best = scored[0];
-  const confidence = best.score >= 2 ? "high" : best.score === 1 ? "medium" : "low";
+  if (explicitRules.length === 1 && !choiceRequested) {
+    best = explicitRules[0];
+    confidence = "high";
+    selectionMode = "selected";
+    reason = "用户指定模板，沿用明确选择";
+  } else if (explicitRules.length > 1) {
+    best = explicitRules[0]; candidates = explicitRules;
+    selectionMode = "choose"; confidence = "medium";
+    reason = "请求涉及多个模板，展示差异供用户选择";
+  } else if (handdrawnFits) {
+    best = narrative ? findRule("Longform Reader") || best : HANDDRAWN;
+    candidates = [best, narrative ? HANDDRAWN : findRule("Longform Reader"), findRule("Swiss System")].filter(Boolean);
+    selectionMode = narrative || choiceRequested ? "choose" : "recommend";
+    confidence = narrative ? "medium" : "high";
+    reason = narrative ? "既有独立观点也要求连续因果，需选择图解重点或叙事完整度" : "明确作者来源与可独立解释的观点，适合手绘场景及观点框";
+  } else if (choiceRequested || confidence === "low" ||
+    (oldBest?.score > 0 && scored[1]?.score === oldBest.score && scored[1].rule.visualSystem !== best.visualSystem)) {
+    selectionMode = "choose";
+    reason = "信息不足、匹配接近或用户要求选项；给出少量候选而非强制选定";
+  }
+  if (selectionMode === "choose" && !candidates.length) {
+    candidates = explicitRules.length ? explicitRules : scored.filter(x => x.score > 0).map(x => x.rule);
+    if (candidates.length < 2) candidates.push(...[findRule("Swiss System"), findRule("Editorial E-ink")].filter(Boolean));
+  }
+  if (selectionMode === "choose" && candidates.length && !candidates.includes(best)) best = candidates[0];
+  if (selectionMode === "choose" && autoRequested) {
+    selectionMode = "recommend";
+    reason = "用户授权自动选择，采用当前最匹配模板并说明取舍";
+  }
+  const options = [...new Map(candidates.map(rule => [rule.visualSystem, optionFor(rule)])).values()].slice(0, 3);
   return {
-    ...best.rule,
+    ...best,
+    renderMode: best.renderMode || "html-template",
     confidence,
-    matchedKeywords: best.hits,
-    oneDeckRule: "Use one visual system per Xiaohongshu card deck. If two reader jobs are equally strong, create separate packages.",
+    selectionMode,
+    reason,
+    options: selectionMode === "choose" ? options : [],
+    matchedKeywords: best === HANDDRAWN ? [...(source ? ["source: 作者来源"] : []), ...(insights ? ["reader: 观点/启发"] : []), ...HANDDRAWN.keywords.filter(k => text.includes(k)).map(k => `keyword: ${k}`)] :
+      (scored.find(x => x.rule === best)?.hits || []),
+    oneDeckRule: "Use one visual system per Xiaohongshu card deck. If options are returned, let the user select before mixing visual grammars.",
   };
 }
 

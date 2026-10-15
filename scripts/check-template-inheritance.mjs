@@ -57,7 +57,6 @@ const swissForbidden = [
   { pattern: /\.xhs-myth-/g, reason: "Swiss template must not contain rounded myth panel components" },
   { pattern: /\.xhs-check-/g, reason: "Swiss template must not contain pastel checklist components" },
   { pattern: /\.xhs-diagnosis-/g, reason: "Swiss template must not contain custom diagnosis board components" },
-  { pattern: /font-weight:\s*9\d\d/g, reason: "Swiss template must not add 900-weight display styles" },
 ];
 
 for (const rule of swissForbidden) {
@@ -65,6 +64,18 @@ for (const rule of swissForbidden) {
   if (matches.length > 0) {
     failures.push(`${rule.reason}: ${matches.length} match(es)`);
   }
+}
+
+// Swiss keeps its light display grammar by default. The XHS seed has one
+// intentional, scoped exception: the approved serif title treatment for
+// `.poster.xhs .h-statement` / `.poster.xhs .h-xl`.
+const swiss900Matches = [...swiss.matchAll(/font-weight:\s*9\d\d/g)];
+const swiss900Unscoped = swiss900Matches.filter(({ index }) => {
+  const context = swiss.slice(Math.max(0, index - 260), index);
+  return !context.includes('.poster.xhs .h-statement');
+});
+if (swiss900Unscoped.length > 0) {
+  failures.push(`Swiss template must not add unscoped 900-weight display styles: ${swiss900Unscoped.length} match(es)`);
 }
 
 const swissSection = visualSystems.match(/## Swiss System[\s\S]*?(?=\n## |\n$)/)?.[0] || "";

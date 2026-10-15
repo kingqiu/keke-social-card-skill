@@ -57,6 +57,10 @@ Run:
 npm run check:proposal-quality -- <proposal-dir>
 ```
 
+## Supplemental Handdrawn Route
+
+For `Handdrawn Insight`, read `handdrawn-insight.md` and generate complete cards from the approved references. Do not copy a seed HTML or run the HTML renderer. Keep source/copy/planning checks and inspect every generated card; save `deck-manifest.json` with per-image review hashes. `npm run check:all -- <task-dir>` dispatches this route to `check-handdrawn-deck.mjs`; this is not a substitute for reading the text in each image. Existing HTML-system instructions below remain unchanged.
+
 ## Build Quality Bar
 
 Before final delivery:
@@ -68,6 +72,7 @@ Before final delivery:
 - Confirm the caption tells the source story, not the production action.
 - Run the copy checker against the selected versioned caption when the package contains `V2`, `V3`, or later revisions.
 - Treat an approved cover as a typography and composition lock. If a later edit touches shared title CSS, rerender and recheck the whole set.
+- After a rerender, reordering, or filename change, compare the expected page manifest with the delivery directory. Copy only the selected final set and remove only clearly identified superseded files.
 
 ## Common Failure Modes
 
@@ -80,6 +85,9 @@ Before final delivery:
 | Landscape image looks small in portrait | Redraw/recompose inserted asset unless it is source evidence. |
 | Caption sounds like AI summary | Add position, friction, concrete takeaways, and natural CTA. |
 | QA warning feels noisy | Fix the checker if it is a false signal; do not normalize noisy gates. |
+| Automatic QA says 100 but the deck still feels weak | Treat the score as a structural floor; inspect every page, especially the cover's lower half and weakest content page, then revise composition. |
+| A generated image looks fine alone but wrong in the card | Define the insertion bay before choosing orientation; test it in the intended composition, and keep wide evidence wide when that fits better. |
+| Readers need many URLs | Add 1-2 dedicated resource-directory pages instead of shrinking links into explanatory cards. |
 | Final copy check reads an old draft | Pass the selected versioned caption path explicitly; never infer the publishable version from a fixed filename. |
 | Cover and content titles drift | Inherit the locked cover title system and adjust only size/wrap for content-page fit. |
 | Numbers are listed without meaning | Group related metrics and add a plain-language interpretation after each group. |

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN" data-system="ruled-field-guide">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ruled Field Guide · 小红书知识图鉴</title>
+<link rel="stylesheet" href="fonts/keke-fonts.css">
+<style>
+
+:root { --paper:#FCFAF1; --ink:#111214; --rule:rgba(73,78,72,.13); --lime:#BEFA3D; --lime-light:#F0FFCC; --blue:#0968E8; --blue-light:#EAF4FF; --badge-blue:#C7E0FF; --muted:#687480; }
+* { box-sizing:border-box; }
+html,body { margin:0;padding:0; }
+body { background:#d8dad6;font-family:"PingFang SC",sans-serif; }
+.poster { width:1080px;height:1440px;position:relative;overflow:hidden;margin:0 0 24px;background:var(--paper);color:var(--ink); }
+.poster::before { content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 29px,var(--rule) 30px);pointer-events:none; }
+.gutter { position:absolute;z-index:1;left:0;top:0;bottom:0;width:62px;border-right:1px solid rgba(60,65,62,.22);font:500 12px/1 "Keke IBM Plex Mono",monospace;color:#8D9AA5; }
+.gutter span { position:absolute;left:22px; }
+.sheet { position:absolute;z-index:2;left:80px;right:31px;top:0;bottom:0; }
+.meta { position:absolute;top:15px;left:15px;right:0;height:27px;border-bottom:2px solid var(--ink);font:500 18px/1.25 "Keke IBM Plex Mono",monospace;letter-spacing:.01em;white-space:nowrap; }
+.chapter { position:absolute;top:55px;left:0;right:0;height:68px;border:2px solid var(--ink);border-radius:5px;background:var(--lime);display:flex;align-items:stretch;overflow:hidden; }
+.chapter .n { width:69px;border-right:2px solid var(--ink);display:grid;place-items:center;background:var(--ink);color:var(--lime);font:900 43px/1 "Keke Inter",sans-serif; }
+.chapter .label { display:flex;align-items:center;padding-left:25px;font:900 35px/1 "Keke Source Han Sans SC",sans-serif;letter-spacing:-.035em; }
+.hero { position:absolute;left:3px;right:0;top:153px; }
+.eyebrow { font-size:30px;font-weight:900;line-height:1.2;letter-spacing:.01em; }
+.hero-title { margin:21px 0 0;font:900 108px/1.08 "Keke Source Han Sans SC",sans-serif;letter-spacing:-.07em;white-space:nowrap; }
+.hero-title span { display:block; }
+.hero-title .second { margin-top:6px; }
+.lede { margin-top:10px;font-size:29px;line-height:1.35;font-weight:700;white-space:nowrap; }
+.major-rule { position:absolute;left:0;right:0;border-top:2px solid var(--ink); }
+.bar { height:54px;border:2px solid var(--ink);border-radius:4px;display:flex;align-items:center;background:var(--ink);color:#fff;padding:0 18px;font-size:31px;font-weight:900;letter-spacing:-.01em; }
+.foot { position:absolute;left:0;right:0;bottom:25px;display:flex;align-items:center;gap:20px;font:600 17px/1 "Keke IBM Plex Mono",monospace; }
+.foot::before,.foot::after { content:"";height:2px;background:var(--ink);flex:1; }
+.foot .brand { font:600 22px/1 "PingFang SC",sans-serif;white-space:nowrap; }
+.cover .major-rule { top:505px; }
+.cover .bar { position:absolute;top:522px;left:0;right:0; }
+.cover .models { position:absolute;top:596px;left:0;right:0;display:grid;grid-template-columns:1fr 1fr;gap:18px; }
+.cover .model { border:2px solid var(--ink);border-radius:5px;overflow:hidden;background:rgba(255,255,255,.88); }
+.cover .model .mh { height:54px;display:flex;align-items:center;gap:14px;background:var(--ink);color:white;padding:0 17px;font-size:31px;font-weight:900; }
+.cover .model .badge { height:37px;min-width:42px;display:grid;place-items:center;border-radius:3px;background:var(--lime);color:var(--ink);font:900 27px/1 "Keke Inter",sans-serif; }
+.cover .model .body { height:176px;padding:24px 26px; }
+.cover .model .sell { font:600 55px/1.1 "PingFang SC",sans-serif;-webkit-text-stroke:1.2px currentColor; }
+.cover .model .who { margin-top:17px;font-size:26px;line-height:1.3; }
+.cover .model.saas { border-color:var(--blue);background:var(--blue-light); }
+.cover .model.saas .mh { background:var(--blue); }
+.cover .model.saas .badge { background:var(--badge-blue);color:var(--ink); }
+.cover .model.result { grid-column:1/-1;border-color:var(--ink);background:#F3FFD6; }
+.cover .model.result .mh { background:var(--lime);color:var(--ink);border-bottom:2px solid var(--ink); }
+.cover .model.result .badge { background:var(--ink);color:var(--lime); }
+.cover .model.result .body { height:161px;display:flex;align-items:center;justify-content:space-between; }
+.cover .model.result .sell { font-size:68px;-webkit-text-stroke:1.5px currentColor; }
+.cover .model.result .who { margin:0 8px 0 0;font-size:29px;font-weight:700; }
+.cover .takeaway { position:absolute;top:1115px;left:0;right:0;height:91px;border:2px solid var(--ink);border-radius:4px;background:var(--ink);color:white;display:flex;align-items:center;padding:0 24px;font-size:34px;font-weight:800;white-space:nowrap; }
+.cover .takeaway b { color:var(--lime); }
+.cover .takeaway .label { margin-right:16px; }
+.cover .minor { position:absolute;top:1244px;left:0;right:0;border-top:2px solid var(--ink);font-size:22px;padding-top:13px;color:#414B50;font-weight:600; }
+.map .hero { top:158px; }
+.map .hero-title { font-size:89px;letter-spacing:-.055em;margin-top:18px; }
+.map .lede { margin-top:14px;font-size:28px; }
+.map .major-rule { top:366px; }
+.map .bar { position:absolute;top:382px;left:0;right:0; }
+.map .axis-top { position:absolute;top:453px;left:145px;right:0;display:grid;grid-template-columns:1fr 1fr;gap:10px; }
+.map .axis-top div { height:38px;display:grid;place-items:center;border:1.5px solid var(--ink);border-radius:3px;background:var(--lime);font-size:22px;font-weight:900; }
+.map .axis-top div:first-child { background:var(--blue-light);border-color:var(--blue); }
+.map .matrix-wrap { position:absolute;top:504px;left:0;right:0;height:611px;display:grid;grid-template-columns:134px 1fr;gap:10px; }
+.map .axis-side { display:grid;grid-template-rows:1fr 1fr;gap:10px; }
+.map .axis-side div { border:1.5px solid var(--ink);border-radius:4px;display:flex;align-items:center;padding:0 12px;font-size:23px;line-height:1.37;font-weight:900;background:rgba(255,255,255,.78); }
+.map .axis-side div:first-child { border-color:var(--blue);background:var(--blue-light); }
+.map .grid { display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px; }
+.map .cell { border:1.5px solid var(--ink);border-radius:5px;background:rgba(255,255,255,.91);overflow:hidden; }
+.map .cell .ch { height:52px;display:flex;align-items:center;gap:14px;border-bottom:1.5px solid var(--ink);background:var(--ink);color:white;padding:0 14px;font-size:25px;font-weight:900; }
+.map .cell .ch .num { font:900 25px/1 "Keke Inter",sans-serif;background:var(--lime);color:var(--ink);border-radius:3px;min-width:40px;height:34px;display:grid;place-items:center; }
+.map .cell .body { padding:21px 20px; }
+.map .cell h3 { margin:0;font:600 38px/1.12 "PingFang SC",sans-serif;letter-spacing:-.03em;-webkit-text-stroke:.8px currentColor; }
+.map .cell p { margin:15px 0 0;font-size:24px;line-height:1.4; }
+.map .cell.judge { border-color:var(--blue);background:var(--blue-light); }
+.map .cell.judge .ch { border-color:var(--blue);background:var(--blue); }
+.map .cell.judge .ch .num { background:var(--badge-blue);color:var(--ink); }
+.map .cell.sweet { background:#F1FFD7;border:2px solid var(--ink); }
+.map .cell.sweet .ch { background:var(--lime);color:var(--ink); }
+.map .cell.sweet .ch .num { background:var(--ink);color:var(--lime); }
+.map .cell.internal { border-color:var(--blue); }
+.map .cell.internal .ch .num { background:var(--badge-blue);color:var(--ink); }
+.map .cell.internal h3 { color:var(--blue); }
+.map .axis-bottom { position:absolute;top:1129px;left:145px;right:0;height:37px;border-top:2px solid var(--ink);padding-top:9px;text-align:center;font-size:23px;font-weight:900; }
+.map .conclusion { position:absolute;top:1202px;left:0;right:0;height:86px;border:2px solid var(--ink);border-radius:4px;background:var(--ink);color:white;display:flex;align-items:center;padding:0 24px;font-size:36px;font-weight:900;white-space:nowrap; }
+.map .conclusion b { color:var(--lime);margin-left:12px; }
+
+/* Full-deck pages. The cover and quadrant concept CSS above stay unchanged. */
+.info .hero { top:153px; }
+.info .hero-title { margin-top:18px;font-size:84px;line-height:1.08;letter-spacing:-.06em; }
+.info .hero-title .second { margin-top:0; }
+.info .lede { margin-top:13px;font-size:27px;line-height:1.28; }
+.info .major-rule { top:466px; }
+.info .bar { position:absolute;top:482px;left:0;right:0; }
+.info .takeaway { position:absolute;left:0;right:0;top:1254px;height:80px;border:2px solid var(--ink);border-radius:4px;background:var(--ink);color:white;display:flex;align-items:center;padding:0 23px;font-size:30px;font-weight:800;line-height:1.25; }
+.info .takeaway b { color:var(--lime); }
+.info .takeaway .mini-n { font:900 26px/1 "Keke Inter",sans-serif;min-width:48px;height:39px;margin-right:15px;border-radius:3px;display:grid;place-items:center;background:var(--lime);color:var(--ink); }
+.definition .claim { position:absolute;top:558px;left:0;right:0;height:151px;border:2px solid var(--ink);border-radius:5px;background:rgba(255,255,255,.91);padding:22px 27px; }
+.definition .claim .small { font-size:31px;font-weight:700; }
+.definition .claim .big { margin-top:5px;font:600 62px/1.05 "PingFang SC",sans-serif;letter-spacing:-.04em;-webkit-text-stroke:1px currentColor; }
+.definition .triad { position:absolute;top:729px;left:0;right:0;height:332px;display:grid;grid-template-columns:repeat(3,1fr);gap:13px; }
+.definition .triad .card { border:1.5px solid var(--ink);border-radius:5px;background:rgba(255,255,255,.93);overflow:hidden; }
+.definition .triad .head { height:55px;display:flex;align-items:center;gap:11px;background:var(--ink);color:white;padding:0 12px;font-size:29px;font-weight:900; }
+.definition .triad .n { width:41px;height:37px;border-radius:3px;display:grid;place-items:center;background:var(--lime);color:var(--ink);font:900 24px/1 "Keke Inter",sans-serif; }
+.definition .triad .card.blue { border-color:var(--blue);background:var(--blue-light); }
+.definition .triad .card.blue .head { background:var(--blue); }
+.definition .triad .card.blue .n { background:var(--badge-blue); }
+.definition .triad .card.lime { background:#F2FFD4; }
+.definition .triad .card.lime .head { background:var(--lime);color:var(--ink);border-bottom:1.5px solid var(--ink); }
+.definition .triad .card.lime .n { background:var(--ink);color:var(--lime); }
+.definition .triad .desc { padding:30px 19px;font-size:27px;line-height:1.47; }
+.definition .note { position:absolute;top:1090px;left:0;right:0;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:18px 9px;font-size:27px;font-weight:700; }
+.workflow .steps { position:absolute;top:558px;left:0;right:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,189px);gap:11px 13px; }
+.workflow .step { border:1.5px solid var(--ink);border-radius:5px;overflow:hidden;background:rgba(255,255,255,.93); }
+.workflow .step .head { height:53px;background:var(--ink);color:white;display:flex;align-items:center;gap:13px;padding:0 14px;font-size:29px;font-weight:900; }
+.workflow .step .num { width:43px;height:36px;border-radius:3px;display:grid;place-items:center;background:var(--lime);color:var(--ink);font:900 24px/1 "Keke Inter",sans-serif; }
+.workflow .step .desc { padding:23px 20px;font-size:25px;line-height:1.4; }
+.workflow .step.blue { border-color:var(--blue);background:var(--blue-light); }
+.workflow .step.blue .head { background:var(--blue); }
+.workflow .step.blue .num { background:var(--badge-blue); }
+.workflow .step.lime { background:#F2FFD4; }
+.workflow .step.lime .head { background:var(--lime);color:var(--ink);border-bottom:1.5px solid var(--ink); }
+.workflow .step.lime .num { background:var(--ink);color:var(--lime); }
+.workflow .rule-note { position:absolute;top:1180px;left:0;right:0;font-size:25px;font-weight:700; }
+.pricing .methods { position:absolute;top:558px;left:0;right:0;height:444px;display:grid;grid-template-columns:1fr 1fr;gap:15px; }
+.pricing .method { border:2px solid var(--ink);border-radius:5px;overflow:hidden;background:#F2FFD4; }
+.pricing .method .head { height:61px;background:var(--lime);border-bottom:2px solid var(--ink);display:flex;align-items:center;gap:15px;padding:0 16px;font-size:32px;font-weight:900; }
+.pricing .method .num { width:44px;height:40px;border-radius:3px;background:var(--ink);color:var(--lime);display:grid;place-items:center;font:900 27px/1 "Keke Inter",sans-serif; }
+.pricing .method .big { padding:30px 26px 16px;font:600 49px/1.18 "PingFang SC",sans-serif;-webkit-text-stroke:.8px currentColor; }
+.pricing .method p { margin:0;padding:0 26px;font-size:27px;line-height:1.49; }
+.pricing .method .end { margin:31px 26px 0;border-top:1.5px solid var(--ink);padding-top:20px;font-size:25px;font-weight:700; }
+.pricing .method.blue { background:var(--blue-light);border-color:var(--blue); }
+.pricing .method.blue .head { background:var(--blue);color:white;border-color:var(--blue); }
+.pricing .method.blue .num { background:var(--badge-blue);color:var(--ink); }
+.pricing .method.blue .end { border-color:var(--blue); }
+.pricing .unit-strip { position:absolute;top:1025px;left:0;right:0;height:164px;border:2px solid var(--ink);border-radius:5px;background:rgba(255,255,255,.93);overflow:hidden; }
+.pricing .unit-strip .head { height:55px;background:var(--ink);color:white;padding:8px 19px;font-size:31px;font-weight:900; }
+.pricing .unit-strip .body { padding:21px 19px;font-size:29px;font-weight:700;white-space:nowrap; }
+.pricing .unit-strip .body span { color:var(--blue); }
+.opportunity .axes { position:absolute;top:553px;left:144px;right:0;display:grid;grid-template-columns:1fr 1fr;gap:9px; }
+.opportunity .axes div { height:37px;border:1.5px solid var(--ink);border-radius:3px;display:grid;place-items:center;background:var(--lime);font-size:22px;font-weight:900; }
+.opportunity .axes div:first-child { background:var(--blue-light);border-color:var(--blue); }
+.opportunity .matrix { position:absolute;top:600px;left:0;right:0;height:524px;display:grid;grid-template-columns:134px 1fr;gap:10px; }
+.opportunity .rowlabels { display:grid;grid-template-rows:1fr 1fr;gap:10px; }
+.opportunity .rowlabels div { border:1.5px solid var(--ink);border-radius:4px;display:flex;align-items:center;padding:0 12px;background:rgba(255,255,255,.87);font-size:23px;font-weight:800;line-height:1.35; }
+.opportunity .rowlabels div:first-child { background:var(--blue-light);border-color:var(--blue); }
+.opportunity .cells { display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px; }
+.opportunity .cell { border:1.5px solid var(--ink);border-radius:5px;background:rgba(255,255,255,.91);overflow:hidden; }
+.opportunity .cell.blue { border-color:var(--blue);background:var(--blue-light); }
+.opportunity .cell.hot { background:#F1FFD7;border:2px solid var(--ink); }
+.opportunity .cell .head { height:49px;padding:0 12px;display:flex;align-items:center;gap:10px;background:var(--ink);color:white;font-size:25px;font-weight:900; }
+.opportunity .cell.blue .head { background:var(--blue); }
+.opportunity .cell.hot .head { background:var(--lime);color:var(--ink);border-bottom:1.5px solid var(--ink); }
+.opportunity .cell .num { min-width:37px;height:33px;border-radius:3px;display:grid;place-items:center;background:var(--lime);color:var(--ink);font:900 23px/1 "Keke Inter",sans-serif; }
+.opportunity .cell.blue .num { background:var(--badge-blue); }
+.opportunity .cell.hot .num { background:var(--ink);color:var(--lime); }
+.opportunity .cell .body { padding:15px 17px; }
+.opportunity .cell h3 { margin:0 0 9px;font-size:31px;line-height:1.17;font-weight:600;-webkit-text-stroke:.55px currentColor; }
+.opportunity .cell p { margin:0;font-size:23px;line-height:1.35; }
+.opportunity .cell.hot p { line-height:1.32; }
+.opportunity .note { position:absolute;top:1145px;left:0;right:0;border-top:2px solid var(--ink);padding-top:12px;font-size:23px;line-height:1.35;font-weight:700; }
+.examples .rows { position:absolute;top:558px;left:0;right:0;display:grid;grid-template-rows:repeat(5,114px);gap:9px; }
+.examples .row { display:grid;grid-template-columns:66px 1fr 244px;align-items:center;gap:18px;border:1.5px solid var(--ink);border-radius:4px;padding:0 18px;background:rgba(255,255,255,.90); }
+.examples .row:nth-child(even) { border-color:var(--blue);background:var(--blue-light); }
+.examples .num { height:46px;width:55px;display:grid;place-items:center;background:var(--lime);color:var(--ink);border-radius:3px;font:900 29px/1 "Keke Inter",sans-serif; }
+.examples .row:nth-child(even) .num { background:var(--badge-blue); }
+.examples .name { font-size:34px;font-weight:700;white-space:nowrap; }
+.examples .unit { text-align:right;color:var(--blue);font-size:27px;font-weight:700;white-space:nowrap; }
+.examples .note { position:absolute;top:1177px;left:0;right:0;font-size:22px;line-height:1.35;font-weight:700; }
+.firststeps .rows { position:absolute;top:558px;left:0;right:0;display:grid;grid-template-rows:repeat(4,144px);gap:11px; }
+.firststeps .row { display:grid;grid-template-columns:76px 1fr;align-items:center;gap:17px;border:1.5px solid var(--ink);border-radius:5px;padding:0 24px;background:rgba(255,255,255,.92); }
+.firststeps .row:nth-child(2) { border-color:var(--blue);background:var(--blue-light); }
+.firststeps .row:nth-child(3) { background:#F2FFD4; }
+.firststeps .num { width:56px;height:58px;display:grid;place-items:center;border-radius:3px;background:var(--lime);color:var(--ink);font:900 35px/1 "Keke Inter",sans-serif; }
+.firststeps .row:nth-child(2) .num { background:var(--badge-blue); }
+.firststeps .row:nth-child(3) .num { background:var(--ink);color:var(--lime); }
+.firststeps h3 { margin:0 0 8px;font-size:34px;font-weight:700; }
+.firststeps p { margin:0;font-size:26px;line-height:1.3; }
+
+/* Sequential page labels are CSS counters, never manually repeated chapter numerals. */
+body { counter-reset:rfg-page; }
+.poster.rfg { counter-increment:rfg-page; }
+.poster.rfg .chapter .n::before { content:counter(rfg-page); }
+.poster.rfg .gutter::before { content:"01\A 02\A 03\A 04\A 05\A 06\A 07\A 08\A 09\A 10\A 11\A 12\A 13\A 14\A 15\A 16\A 17\A 18\A 19\A 20\A 21\A 22\A 23\A 24\A 25\A 26\A 27\A 28\A 29\A 30\A 31\A 32\A 33\A 34\A 35\A 36\A 37\A 38\A 39\A 40\A 41\A 42\A 43\A 44\A 45\A 46";position:absolute;left:22px;top:19px;white-space:pre;font:500 12px/30px "Keke IBM Plex Mono",monospace; }
+</style>
+</head>
+<body>
+<main>
+<!-- POSTERS_HERE -->
+</main>
+</body>
+</html>

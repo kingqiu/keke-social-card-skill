@@ -1,11 +1,36 @@
 # Style Routing
 
-Route by platform, intent, assets, and content type.
+Route by platform, intent, assets, and content type. Explicit style selection and approved visual references take precedence over the keyword tables below.
+
+## Selection Policy
+
+Respect the user's named style and approved reference first. Use `route-style.mjs` with the request plus a concise source summary, not a filename alone. Treat its result as a reasoned first pass, not a substitute for reading the source.
+
+- `selectionMode: selected`: honor the existing selection; do not repeat the style question.
+- `selectionMode: recommend`: recommend the content-matched system with a short reason in the proposal.
+- `selectionMode: choose`: offer 2–3 choices from `options`, with recommendation and a plain-language tradeoff. Combine this choice with the normal proposal conversation; avoid separate redundant approvals.
+- If the user requests automatic selection, make the best supported recommendation without a separate style-selection question; preserve the proposal authorization rules.
+- Explicitly rejected styles must not be recommended. Keywords alone cannot override a supplied reference or a previously confirmed choice.
+
+## Handdrawn Insight Routing
+
+Choose **Handdrawn Insight / 手绘观点解读**, `theme: ink-orange`, `renderMode: imagegen-full-card`, for source-backed standalone opinions, interviews, talks, business reflections and reading insights that benefit from people/scenes plus author attribution. Aliases: “手绘观点解读”, “黑白橙手绘”, “作者头像观点卡”, “像上次 PG 那套”. Read `handdrawn-insight.md` and inspect its bundled cover/content references.
+
+Boundary: if a complete causal story is essential, use Longform Reader; if real UI/evidence is essential, use Proof Lab; if compact matrices/checklists dominate, use Swiss System. Where independent insights and narrative are equally important, offer Handdrawn Insight versus Longform Reader (and Swiss only if genuinely useful), explaining the difference. Do not route here on the author's name alone.
+
+Example choice:
+
+- 手绘观点解读（推荐）：一页一个判断，人物场景＋作者观点＋你的解读。
+- 长文阅读：保留案例经过与连续论证，文字容量更大。
+- 瑞士网格：适合压缩成框架、比较与检查表。
+
+Offer only the applicable choices, not always all three. Once selected, use one visual system per deck.
 
 ## Routing Table
 
 | Request | Visual System | Notes |
 |---|---|---|
+| 作者文章 / 访谈 / 演讲 + 独立观点 / 启发 + 手绘场景 | Handdrawn Insight | See selection policy; full-card generation, not an HTML palette. |
 | 小红书 + 强点击 / 结果 / 情绪 | Rednote Native | First image must stop the feed. |
 | 小红书 + AI 工具 / 截图 / 教程 | Proof Lab | Screenshot/result must be readable. |
 | 小红书 + 穿搭 / 食谱 / 单品拆解 | Lookbook Journal | Result image is the anchor. |
@@ -60,7 +85,7 @@ Route to Longform Reader when most of these are true:
 - Honest coverage likely needs more than 9 cards, or 9 cards would make the text too small.
 - The user asks for a reading-card style, longform interpretation, or high-text Xiaohongshu deck.
 
-Natural-language aliases that should trigger this route:
+Natural-language aliases that suggest this route when no other style is selected and narrative reading is the primary job:
 
 - "长文阅读卡片"
 - "深度阅读卡片"
@@ -81,7 +106,7 @@ Longform Reader route output should include:
 
 - `visualSystem: Longform Reader`
 - `template: Highlight Cover + refined reading pages`
-- `ratio: 3:5`
+- `ratio: 3:4`
 - `theme: highlighter-blue` unless another named palette is requested
 - `recipeSequence: event hook -> baseline contrast -> reversal -> mechanisms -> consequences -> reader checklist -> final takeaway`
 - `imagePolicy: choose per image: direct original, subject crop, wide band, redraw/recompose, or omit; preserve content-page original color by default`
@@ -177,3 +202,7 @@ Every `Gold` example and every publishing-quality task must write the final rout
 ```
 
 This record is not decoration. It lets future maintainers see why a deck used Rednote Native instead of Proof Lab, ordinary Swiss instead of Swiss OKF Brief, or Lookbook Journal instead of Editorial E-ink.
+
+## Ruled Field Guide Explicit Route
+
+When the user names “横线纸知识图鉴”, “Ruled Field Guide”, or the approved Greg AI-native-services card look, select the additive `Ruled Field Guide` visual system and read `ruled-field-guide.md`. Use its seed `assets/template-ruled-field-guide.html`. This explicit choice takes precedence over keyword routing; ordinary default routes remain unchanged.

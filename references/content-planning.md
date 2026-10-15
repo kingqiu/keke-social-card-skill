@@ -190,6 +190,14 @@ Definitions:
 
 Every non-cover card should map to at least one source anchor. Do not create filler cards.
 
+## Resource Directory Pages
+
+When a post recommends several named Skills, tools, projects, or references and readers need their actual access addresses, plan one or two dedicated resource-directory cards. Do not shrink long URLs into unreadable footnotes on explanatory cards.
+
+- Put the directory after the core explanation/application cards and before the closing card unless the reader needs the links earlier.
+- Use direct, complete addresses that readers can save or transcribe; prefer an official project or source repository where one exists.
+- Record the added page count and source anchors in the page plan so the resource cards are coverage, not filler.
+
 ## Swiss OKF Brief Page Plan
 
 Use this sequence for technical announcements about open specifications, public formats, APIs, data contracts, knowledge formats, or framework standards.

@@ -1,6 +1,6 @@
 ---
 name: keke-social-card-skill
-description: "Generate Xiaohongshu/Rednote card-style image sets plus Chinese titles, captions, hashtags, source notes, and QA. Use when asked for 小红书图文, Rednote images, 小红书卡片, carousel covers, 小红书标题/正文/文案, or Chinese Rednote publishing packages."
+description: "Generate Xiaohongshu/Rednote card sets, titles, captions, hashtags and QA. Route content to existing templates or supplemental 手绘观点解读/黑白橙手绘, automatically or with 2–3 choices. Use for 小红书图文, 小红书卡片, carousel covers, 小红书标题/正文/文案, 作者头像观点卡 or 像上次 PG 那套."
 ---
 
 # 克克社交卡片 Skill
@@ -10,10 +10,10 @@ Create complete Xiaohongshu/Rednote publishing packages: rendered 3:4 card-style
 Architecture:
 
 ```text
-deterministic render workflow + locked source templates + Xiaohongshu routing/copy layer
+content routing + (locked HTML templates OR Handdrawn Insight generation) + Xiaohongshu copy/QA
 ```
 
-- Use seed HTML templates, local assets, HTML/CSS to PNG, platform specs, provenance files, and QA.
+- Existing visual systems use seed HTML templates and HTML/CSS to PNG. The supplemental **Handdrawn Insight / 手绘观点解读** mode uses approved image references and full-card image generation. Both share platform specs, source provenance, copy and QA; choose the route before building.
 - Preserve inherited template standards before adding new styling. Keke may route, adapt copy, and add QA; it must not replace a source template with a looser lookalike.
 - Use routing to choose the inherited visual system, copy strategy, image policy, and QA focus.
 
@@ -51,6 +51,7 @@ Do not replace the brackets, omit `出品`, use half-width punctuation, or show 
 Read only the relevant files:
 
 - `references/style-routing.md` for platform/category/intent routing.
+- `references/handdrawn-insight.md` for 手绘观点解读、黑白橙手绘、作者头像观点卡 or “像上次 PG 那套”; includes reference assets, page recipes, prompt template and a dedicated generation/QA branch.
 - `references/content-planning.md` before choosing card count or compressing long-form source material.
 - `references/aesthetic-standards.md` before designing or revising any card set.
 - `references/golden-examples.md` when creating examples, evaluating quality, or improving this Skill.
@@ -59,6 +60,7 @@ Read only the relevant files:
 - `references/roadmap.md` when improving the Skill itself rather than producing a user card package.
 - `references/template-inheritance-audit.md` when locking or auditing inherited visual-system templates.
 - `references/visual-systems.md` when choosing among Editorial E-ink, Swiss System, Rednote Native, Proof Lab, and Lookbook Journal.
+- `references/ruled-field-guide.md` when the user chooses the 横线纸知识图鉴 / Ruled Field Guide template or refers to the Greg AI-native-services card style.
 - `references/longform-reader.md` when using or proposing the Longform Reader template for source-backed long articles, reports, essays, or WeChat-to-Xiaohongshu reading decks.
 - `references/xhs-feed-strategy.md` for Xiaohongshu first-image strategy.
 - `references/xhs-cover-quality.md` before delivering a Xiaohongshu cover.
@@ -69,7 +71,7 @@ Read only the relevant files:
 
 ## Template Inheritance Contract
 
-This Skill is an integration layer, not a freehand visual rewrite.
+This Skill is an integration layer, not a freehand visual rewrite. The following HTML inheritance contract applies to existing HTML systems. Handdrawn Insight is a separately named supplemental visual system with its own locked reference images and generation contract; it does not alter the inherited systems.
 
 - Start every card set from one of the seed templates in `assets/`.
 - Treat each seed template as the source of truth for typography, spacing, palette, shape language, and component behavior.
@@ -81,6 +83,22 @@ This Skill is an integration layer, not a freehand visual rewrite.
 - If a page cannot be made publishable while keeping the inherited template rules, route it to another visual system rather than diluting the current one.
 
 ## Workflow
+
+### 0. Lock the Brief and User Constraints
+
+Before proposing or building a card set, record a compact `Locked Brief` in `BRIEF.md`:
+
+- reader promise and the one claim the cover must represent;
+- source entities and their exact types;
+- confirmed sections, images, links, scenarios, and wording that must survive revision;
+- visual no-go list from the user, including rejected metaphors and composition patterns;
+- final package manifest, including whether A/B cover variants are intentional.
+
+Do not place the production story (“I read an article”, “I added items”, “this was generated”) in reader-facing copy. Do not remove a confirmed component during compression or a visual revision unless the user explicitly asks to replace it. If a revision changes a count, cover, or core claim, rerun coverage QA for the entire package.
+
+### 0.5 Composition Before Assets
+
+Before generating or adapting any illustration, lock its insertion bay in the finished card: visual role, aspect ratio, safe area, text relationship, and the exact source claim it proves. Do not generate an attractive standalone image first and force it into the layout later. For A/B testing, vary one meaningful reader promise at a time; do not fuse multiple competing hero metaphors into one cover.
 
 ### 1. Intake
 
@@ -146,6 +164,18 @@ Use `references/roadmap.md` to keep the improvement order focused on standards, 
 
 ### 4. Route
 
+First respect an explicit user-selected template or approved reference. Otherwise inspect the reader job and source structure, using `node scripts/route-style.mjs "<request + source summary>"` as a first pass. It now returns `selectionMode`, `reason`, and at most three `options` in addition to the existing route fields:
+
+- `selected`: the user named a style; use it without asking them to select again.
+- `recommend`: a clear content fit; include the recommended route and a short reason in the normal proposal.
+- `choose`: content fits competing systems or the user asks for options; show 2–3 named choices with reader benefit, text density and visual differences, mark the recommendation, then use the user's choice. Do not make users choose from the entire catalog or infer consent from a timeout.
+
+Auto-selecting a route does not waive required proposal confirmation, but prior confirmation remains valid; never ask again merely because the route is being recorded.
+
+- Source-backed independent opinions, author interviews, talks or reading insights -> consider **Handdrawn Insight**, especially when cartoons/author portraits are requested. Read `references/handdrawn-insight.md`.
+- A continuous case narrative -> prefer Longform Reader; genuine screenshot/operation proof -> prefer Proof Lab; compact matrices/data/checklists -> prefer Swiss System. Source format alone (for example “公众号文章”) must not override reader job or explicit style selection.
+
+
 Use `references/style-routing.md`:
 
 - Xiaohongshu + hook/result/emotion -> Rednote Native.
@@ -156,7 +186,8 @@ Use `references/style-routing.md`:
 - Xiaohongshu + Claude/Anthropic official article/AI workflow steering mechanism -> Swiss System with `subTemplate: Swiss Anthropic Clay` and `theme: anthropic-clay`.
 - Xiaohongshu + long-form article/report/WeChat article/business or technology case analysis -> Longform Reader with a separate theme such as `highlighter-blue`.
 - If the user explicitly selects `Chromatic Modular Grid`, use the locked `assets/template-chromatic-modular-grid.html` seed and choose its theme independently from `assets/themes/chromatic-modular-grid.css`.
-- User says "长文阅读卡片", "深度阅读卡片", "公众号长文转小红书", "把这篇长文/报告做成小红书", "像上次 Meta 那套长文卡片", or "适合长文章的阅读型模板" -> route to Longform Reader. The user does not need to remember the English template name.
+- If the user explicitly selects `Ruled Field Guide`, 横线纸知识图鉴, or the approved Greg AI-native-services card style, use `assets/template-ruled-field-guide.html` and `references/ruled-field-guide.md`. Keep this an explicit choice; do not change the existing automatic route defaults.
+- Unless another style/reference is explicitly selected or the primary job is independent opinion illustration, user says "长文阅读卡片", "深度阅读卡片", "公众号长文转小红书", "把这篇长文/报告做成小红书", "像上次 Meta 那套长文卡片", or "适合长文章的阅读型模板" -> route to Longform Reader. The user does not need to remember the English template name.
 - Xiaohongshu + essay/culture/reading/travel -> Editorial E-ink.
 - For AI tools, decide Rednote Native vs Proof Lab by the primary reader job:
   - choose Rednote Native for launches, high-click first images, outcome promises, or native result packages without strong screenshots.
@@ -208,6 +239,8 @@ Every publishing-quality task folder must record the confirmation in `BRIEF.md`:
 
 ### 6. Source
 
+For Handdrawn Insight, follow its reference-image and author-identity rules. The inserted-asset/HTML rules below apply to HTML-template routes only. Keep SOURCES.md and IMAGE_REQUESTS.md in both routes.
+
 Create `assets/IMAGE_REQUESTS.md` and `assets/SOURCES.md` whenever images are used.
 
 Record image role, source route, subject zone, safe text zone, avoid zone, crop, and `object-position`.
@@ -248,6 +281,11 @@ Use `references/xhs-copywriting-guidelines.md`:
 
 ### 8. Build
 
+**Handdrawn Insight branch:** follow `references/handdrawn-insight.md`; use `imagegen`/`image_gen` to create finished cards, not a seed HTML render. Preserve confirmed samples. Save exact page copy/prompts and `deck-manifest.json`, inspect every image, and run `node scripts/check-handdrawn-deck.mjs <task-dir>`. `npm run check:all -- <task-dir>` dispatches to this branch using the declared route or manifest. This checks assets and review records, not OCR/DOM typography. Do not run HTML rendering/portrait-slot/font validators on a full-card PNG or claim those checks passed.
+
+**Existing HTML branches:** continue with the following unchanged template workflow.
+
+
 - Confirm `BRIEF.md` contains `## Proposal Confirmation` with `status: confirmed` or an explicit waiver before building.
 - Create a task folder in the current workspace or requested output folder.
 - Copy the relevant seed template from `assets/`.
@@ -271,9 +309,12 @@ Use `references/xhs-copywriting-guidelines.md`:
 
 ## Visual Systems
 
+- **Ruled Field Guide / 横线纸知识图鉴**: lined warm paper, line-number gutter, automatic sequential page numbers, lime chapter strips, black headlines, and blue/lime knowledge modules. An additional explicit-choice HTML template for compact source-backed frameworks and matrices.
+- **Handdrawn Insight / 手绘观点解读**: optional black/white/orange illustrated opinions with author portraits, attributed viewpoints, personal interpretation and reader questions; full-card image generation. Fits independent insights, not every long article.
+
 - **Editorial E-ink**: paper, editorial pacing, essays, travel, culture, reading notes.
 - **Swiss System**: strict grid, checklists, frameworks, data, workplace; includes `Swiss OKF Brief` and `Swiss Anthropic Clay` sub-templates.
-- **Longform Reader**: 3:5 source-backed reading decks for long articles, reports, case studies, and WeChat-to-Xiaohongshu adaptations; template structure and palette/theme are selected separately.
+- **Longform Reader**: 3:4 source-backed reading decks for long articles, reports, case studies, and WeChat-to-Xiaohongshu adaptations; template structure and palette/theme are selected separately.
 - **Rednote Native**: feed-native Xiaohongshu hooks, large readable title, result/emotion/evidence first.
 - **Proof Lab**: screenshots, product proof, AI tools, workflows, before/after, evidence-first tutorials.
 - **Lookbook Journal**: central result plus annotations for outfit, food, beauty, home, product, gear.
@@ -302,14 +343,14 @@ Final response should include:
 
 - Do not silently publish image-only output for Xiaohongshu when the user expects a post.
 - Do not build cards, render images, or write final Xiaohongshu copy from a new article/long-form source before the user confirms the design proposal, unless the user explicitly waived confirmation.
-- Do not approximate inherited templates from memory. Use the seed template and its rules as the baseline.
+- Do not approximate inherited templates from memory. Use the seed template and its rules as the baseline for HTML systems; inspect the bundled approved reference images for Handdrawn Insight.
 - Do not call a result `Swiss System`, `Editorial E-ink`, `Rednote Native`, `Proof Lab`, or `Lookbook Journal` if it violates that system's template grammar.
 - Do not make claims not supported by the source.
 - Do not shrink screenshots or result images into decoration.
 - Do not use Rednote Native for a plain feature-list explainer. Show the visible result package: cover hook, card plan, proof/result, caption/title, or save reason.
 - Do not use Proof Lab without inspectable proof. If screenshots/results are missing, ask once for assets or route to Rednote Native with native result-package proof.
 - Do not let title/caption promise something the cards do not show.
-- Do not use AI-generated full card images as the default; generate assets and compose deterministically.
+- For existing HTML-template systems, do not use AI-generated full card images as the default; generate assets and compose deterministically. Handdrawn Insight is the explicit supplemental full-card generation route, selected by content or user preference and checked using its own rules.
 - For semantic illustrations, workflow metaphors, and architecture-style explanatory visuals, use GPT Image 2 (or an equivalent bitmap image model) to generate inserted assets. Do not substitute SVG/HTML/CSS diagram stand-ins; code-native shapes are limited to structural frame elements, dividers, and tiny accents.
 - Treat a generated illustration that loses a meaningful object, connector, or shadow at the insertion edge as a visual failure, even if the asset itself looks good in isolation. Regenerate or recompose it before delivery.
 - Do not use a generated full-card image when the actual problem is only a landscape source illustration that needs portrait redraw.

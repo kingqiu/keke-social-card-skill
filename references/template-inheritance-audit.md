@@ -33,7 +33,7 @@ Status: `template-locked`; reference template: `assets/template-longform-reader.
 
 Audit result:
 
-- The Longform Reader seed keeps a distinct 3:5 reading-card grammar rather than borrowing 3:4 Swiss pages.
+- The Longform Reader seed keeps a distinct 3:4 reading-card grammar while preserving its editorial reading rhythm instead of borrowing Swiss page recipes.
 - The template structure is separated from palette: `Longform Reader` is the system, `highlighter-blue` is the first theme.
 - The seed includes cover highlighter title blocks, cover reading map, wide cover visual, bottom callout, editorial content-page typography, subject-crop / wide-band / art-crop image slots, metric strips, note boxes, verdict strips, list/checklist rows, comparison rows, quote lines, and exact brand signature.
 - The system is designed for long articles, reports, WeChat articles, and source-backed case analyses where story continuity matters more than compact framework density.
@@ -42,7 +42,7 @@ Audit result:
 
 Accepted deviations:
 
-- The board ratio is 3:5 instead of the default 3:4 Xiaohongshu template ratio because long-form reading cards need more vertical text capacity.
+- The board ratio is 3:4 to align with Xiaohongshu's default portrait template ratio; long-form capacity is protected through denser, editorial page recipes rather than a taller canvas.
 - Cover images may be toned for palette cohesion. Content-page images preserve original color by default.
 - Cover and closing pages may use stronger editorial/display title treatment, while interior content pages keep a consistent title style.
 
@@ -64,7 +64,7 @@ Status: `locked`; Gold examples: `examples/swiss-agent-infra-full-candidate`, `e
 
 Audit result:
 
-- The Swiss seed keeps the canonical typography stack, light display type, spacing tokens, accent palettes, straight modules, card primitives, image frames, screenshot frames, and layout primitives.
+- The Swiss seed keeps the canonical typography stack, spacing tokens, accent palettes, straight modules, card primitives, image frames, screenshot frames, and layout primitives. For Xiaohongshu boards, `.h-statement` and `.h-xl` use the locked `Keke Noto Serif SC` 900 display treatment; body, labels, and evidence text remain Swiss sans/mono.
 - Xiaohongshu-only adaptation is limited to using the 1080x1440 board as the production target.
 - Public card branding is added only through `.brand-signature::before`, with exact text `「两克伴」出品`.
 - Custom rounded/pastel/heavy-title Swiss lookalike components are not allowed.
@@ -185,3 +185,11 @@ Locked because:
 - `examples/lookbook-outfit-gold-candidate` is accepted as the Lookbook Journal Gold reference.
 - Manual visual review confirms page 2+ do not collapse into weak template filler.
 - Realistic bitmap assets are documented and used inside the inherited template rather than replacing the whole card with generated posters.
+
+## Ruled Field Guide
+
+Status: `template-locked`; reference seed: `assets/template-ruled-field-guide.html`; structural smoke example: `examples/ruled-field-guide-template-smoke/index.html`.
+
+The seed was extracted from the user-approved nine-card reference style and made topic-neutral. Its original composition grammar is preserved: 1080×1440 warm ruled paper, left line-number gutter, lime page strip with black numeral cell, heavy title, black section bars, fine blue/lime information modules, and centered exact brand. Page numbering is now a CSS counter, so the left number follows the actual card order instead of repeating a chapter marker. The font path is relative and no private workspace path is embedded. No existing seed or automatic route was changed.
+
+Guard: render the two-card smoke example; run `node scripts/validate-social-deck.mjs examples/ruled-field-guide-template-smoke --style=editorial`; visually inspect both images and verify visible page numbers 1 and 2. Before a production deck is delivered, inspect every full-size page and confirm blue badges, line weights, font coverage, and sequential page numbers. The smoke example is not a Gold content example.

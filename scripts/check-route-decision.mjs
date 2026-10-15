@@ -77,6 +77,8 @@ const allowedSystems = [
   "Proof Lab",
   "Lookbook Journal",
   "Chromatic Modular Grid",
+  "Longform Reader",
+  "Handdrawn Insight",
 ];
 if (values.visualSystem) {
   add(
@@ -92,6 +94,10 @@ if (values.confidence) {
     "confidence is high/medium/low",
     "Set confidence to high, medium, or low.",
   );
+}
+
+if (values.visualSystem === "Handdrawn Insight") {
+  add(fieldValue(block, "renderMode") === "imagegen-full-card", "Handdrawn route declares full-card generation", "Set renderMode: imagegen-full-card.");
 }
 
 const subTemplate = fieldValue(block, "subTemplate");

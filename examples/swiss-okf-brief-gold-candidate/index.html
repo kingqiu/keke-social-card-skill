@@ -27,8 +27,52 @@
       --okf-warm: #f4d7b3;
       --okf-accent: #ffd500;
       --okf-warn: #ff6b35;
+      --okf-accent-ink: var(--okf-ink);
+      --okf-accent-muted: var(--okf-muted);
+      --okf-warm-ink: var(--okf-ink);
+      --okf-warm-muted: var(--okf-muted);
       background: var(--okf-paper);
       color: var(--okf-ink);
+    }
+    html[data-accent="graphite-red"] .poster.swiss-okf {
+      --okf-paper: #f5f3f0;
+      --okf-ink: #141616;
+      --okf-muted: #746d67;
+      --okf-line: rgba(20,22,22,.24);
+      --okf-soft: rgba(127,29,26,.10);
+      --okf-warm: #3d3c38;
+      --okf-accent: #7f1d1a;
+      --okf-warn: #b84932;
+      --okf-accent-ink: #f5f3f0;
+      --okf-accent-muted: #ebe8e3;
+      --okf-warm-ink: #f5f3f0;
+      --okf-warm-muted: #ebe8e3;
+    }
+    html[data-accent="iris-embossed"] .poster.swiss-okf {
+      --okf-paper: #f7f3fb;
+      --okf-ink: #2d2c27;
+      --okf-muted: #594587;
+      --okf-line: rgba(89,69,135,.24);
+      --okf-soft: rgba(188,164,233,.22);
+      --okf-warm: #bca4e9;
+      --okf-accent: #594587;
+      --okf-warn: #9d8957;
+      --okf-accent-ink: #ffffff;
+      --okf-accent-muted: #f0ebfa;
+    }
+    html[data-accent="falu-dark-lakers"] .poster.swiss-okf {
+      --okf-paper: #141616;
+      --okf-ink: #f5f3f0;
+      --okf-muted: #a49f9d;
+      --okf-line: rgba(245,243,240,.26);
+      --okf-soft: rgba(253,185,39,.14);
+      --okf-warm: #3d3c38;
+      --okf-accent: #fdb927;
+      --okf-warn: #ff6b35;
+      --okf-accent-ink: #141616;
+      --okf-accent-muted: #3d3c38;
+      --okf-warm-ink: #f5f3f0;
+      --okf-warm-muted: #ebe8e3;
     }
     .poster.swiss-okf::before {
       content: "";
@@ -89,6 +133,7 @@
     .okf-title .mark {
       display: inline-block;
       background: var(--okf-accent);
+      color: var(--okf-accent-ink);
       padding: 0 .08em .04em;
       font-weight: 500;
     }
@@ -140,8 +185,12 @@
       line-height: 1.3;
     }
     .okf-dark-card { background: var(--okf-ink); color: var(--okf-paper); border-color: var(--okf-ink); }
-    .okf-accent-card { background: var(--okf-accent); border-color: var(--okf-accent); color: var(--okf-ink); }
-    .okf-warm-card { background: var(--okf-warm); }
+    .okf-accent-card { background: var(--okf-accent); border-color: var(--okf-accent); color: var(--okf-accent-ink); }
+    .okf-accent-card .okf-kicker,
+    .okf-accent-card .okf-card-body { color: var(--okf-accent-muted); }
+    .okf-warm-card { background: var(--okf-warm); color: var(--okf-warm-ink); }
+    .okf-warm-card .okf-kicker,
+    .okf-warm-card .okf-card-body { color: var(--okf-warm-muted); }
     .okf-kicker {
       margin: 0 0 22px;
       font-family: var(--mono);
@@ -187,8 +236,10 @@
       background: rgba(246,238,215,.44);
     }
     .okf-proof-row.is-dark { background: var(--okf-ink); color: var(--okf-paper); border-color: var(--okf-ink); }
-    .okf-proof-row.is-accent { background: var(--okf-accent); border-color: var(--okf-accent); }
-    .okf-proof-row.is-warm { background: var(--okf-warm); }
+    .okf-proof-row.is-accent { background: var(--okf-accent); border-color: var(--okf-accent); color: var(--okf-accent-ink); }
+    .okf-proof-row.is-accent .okf-card-body { color: var(--okf-accent-muted); }
+    .okf-proof-row.is-warm { background: var(--okf-warm); color: var(--okf-warm-ink); }
+    .okf-proof-row.is-warm .okf-card-body { color: var(--okf-warm-muted); }
     .okf-proof-num {
       margin: 0;
       font-family: var(--sans);

@@ -27,8 +27,11 @@ if (args.includes("--help") || args.includes("-h")) usage();
 const taskDir = option("--dir");
 const name = option("--name") || path.basename(taskDir || "");
 const source = option("--source");
-const visualSystem = option("--system") || "TBD";
-const theme = option("--theme") || "TBD";
+const requestedSystem = option("--system") || "TBD";
+const visualSystem = ["手绘观点解读", "黑白橙手绘", "作者头像观点卡"].includes(requestedSystem) ? "Handdrawn Insight" : requestedSystem;
+const handdrawn = visualSystem === "Handdrawn Insight";
+const theme = option("--theme") || (handdrawn ? "ink-orange" : "TBD");
+const renderModeLine = handdrawn ? "- renderMode: imagegen-full-card\n" : "";
 const subTemplate = option("--sub-template");
 
 if (!taskDir || !name) usage();
@@ -102,7 +105,7 @@ ${sourceLine}
 ## Recommended Visual System
 
 - visualSystem: ${visualSystem}
-${subTemplateLine}- theme: ${theme}
+${subTemplateLine}${renderModeLine}- theme: ${theme}
 - reason: TBD
 
 ## Recommended Card Count
@@ -125,7 +128,7 @@ Reason:
 
 - Source/proof assets: TBD
 - Crop/redraw/portrait-fit decisions: TBD
-- Full-card AI image policy: do not generate full-card AI posters unless explicitly requested and confirmed.
+${handdrawn ? "- Full-card AI image policy: use Handdrawn Insight approved references and imagegen after current-task authorization; follow references/handdrawn-insight.md, inspect every card and save deck-manifest.json." : "- Full-card AI image policy: do not generate full-card AI posters unless explicitly requested and confirmed."}
 
 ## Copy Strategy
 
@@ -158,7 +161,7 @@ Created: ${today}
 ## Route Decision
 
 - visualSystem: ${visualSystem}
-${subTemplateLine}- theme: ${theme}
+${subTemplateLine}${renderModeLine}- theme: ${theme}
 - recipeSequence: TBD
 - imagePolicy: see PROPOSAL.md
 - copyStrategy: see PROPOSAL.md

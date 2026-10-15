@@ -14,6 +14,8 @@ Record:
 
 Run `node scripts/check-aesthetic-qa.mjs <task-dir>` before final handoff. Treat its score as a floor, not final taste approval.
 
+A checker score is a structural signal, not an overall quality score or substitute for human approval. Never describe an automatic `100` as “满分” or publish-ready without the manual gate below.
+
 ## Aesthetic Gate
 
 - Read `aesthetic-standards.md` before judging visual quality.
@@ -50,6 +52,12 @@ Run `node scripts/check-aesthetic-qa.mjs <task-dir>` before final handoff. Treat
 - The approved cover is the visual baseline. Check every page against its display font family, weight, line-height, tracking, title rhythm, and vertical alignment.
 - Inspect every rendered page individually after the thumbnail pass. Do not mark a deck visually approved from an aggregate score or contact sheet alone.
 - If the approved reference conflicts with a generic validator rule, record the intentional exception in `QA.md`; do not silently revert the approved typography or composition.
+- Inspect the cover's lower half and the weakest content page for purposeless negative space. If a large empty area does not create a deliberate pause, hierarchy, proof area, or balance, revise the composition.
+- Verify that every visible number, dot, label, divider, and footer line has a semantic role. Remove page-like serials and decorative labels that do not help the reader.
+- Verify that the cover represents the complete reader promise, not merely one later subpoint. If a narrower visual is retained, label it as an A/B variant and keep the primary cover aligned to the deck's full argument.
+- Check final rendered text for orphan characters, orphan punctuation, broken key terms, and forced one-word lines. Rephrase or explicitly rebalance line breaks before reducing body type.
+- Use readable supporting type. Do not shrink text to rescue a crowded composition; cut, recompose, or split the information instead.
+- Review every final PNG individually after any typography, asset, or spacing change. A previous manual pass does not automatically approve a later render.
 
 ## Xiaohongshu QA
 
@@ -101,8 +109,11 @@ At 25% size, cover should show:
 - Wide source images record `portrait-fit decision` in `IMAGE_REQUESTS.md` or `QA.md`.
 - `object-fit: contain` is not used as a lazy fix for unsuitable landscape cover art.
 - `IMAGE_REQUESTS.md` states whether AI generation redrew an inserted asset or a complete poster; complete-poster generation requires explicit user request.
+- Before delivery or copying a final package, compare the expected page/file manifest with the actual output. Do not leave superseded renders in the delivery folder; remove only files positively identified as stale.
+- `IMAGE_REQUESTS.md` names each generated or adapted asset's insertion bay, aspect ratio, safe zone, and source claim. Do not approve “image first, layout later” work.
 
 ## Human Gate
 
 Technical PASS does not equal visual PASS. Human review is the final gate.
 - Human review must name the weakest page and confirm title typography, vertical alignment, image integrity, spacing, footer, and brand placement for every page.
+- Record the human score separately from structural checks. Automatic PASS or 100/100 is a floor, never proof of aesthetic perfection.
